@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Bordsysteme · 3D · Segelyacht 10 m</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{ --bg-0:#05101a; --bg-1:#0a1a28; --panel:rgba(10,24,37,.82);
+    --line:rgba(120,170,195,.16); --line-strong:rgba(120,170,195,.32);
+    --ink:#dcecf1; --ink-dim:#7f97a3; --ink-faint:#4f6470; --accent:#54ffe0; --accent-dim:rgba(84,255,224,.14); }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ height:100%; overflow:hidden; }
+  body{ font-family:"Space Grotesk",system-ui,-apple-system,sans-serif; color:var(--ink);
+    background:radial-gradient(120% 90% at 70% -10%,#10283b 0%,var(--bg-1) 40%,var(--bg-0) 100%);
+    -webkit-font-smoothing:antialiased; user-select:none; touch-action:none; }
+  #stage{ position:fixed; inset:0; } canvas{ display:block; }
+  .topbar{ position:fixed; top:0; left:0; right:0; z-index:8; display:flex; align-items:center; gap:14px; padding:14px 18px; pointer-events:none; }
+  .brand{ font-weight:700; font-size:15px; } .brand b{ color:var(--accent); }
+  .modes{ margin-left:auto; display:flex; gap:3px; pointer-events:auto; background:var(--panel); border:1px solid var(--line);
+    border-radius:11px; padding:3px; backdrop-filter:blur(14px); max-width:70vw; overflow-x:auto; scrollbar-width:none; }
+  .modes::-webkit-scrollbar{ display:none; }
+  .mode-btn{ font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--ink-dim); padding:7px 12px; border-radius:8px; cursor:pointer; transition:.14s; white-space:nowrap; }
+  .mode-btn:hover{ color:var(--ink); } .mode-btn.active{ background:var(--accent); color:#04131a; font-weight:600; }
+  .panel{ position:fixed; z-index:6; background:var(--panel); border:1px solid var(--line); border-radius:12px; backdrop-filter:blur(14px) saturate(1.1); box-shadow:0 18px 50px -20px rgba(0,0,0,.7); }
+  .panel-head{ font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.13em; text-transform:uppercase; color:var(--ink-dim); padding:13px 15px 9px; }
+  #leftPanel{ left:16px; top:66px; width:224px; max-height:calc(100vh - 96px); overflow-y:auto; }
+  .sys-row{ display:flex; align-items:center; gap:10px; padding:8px 15px; cursor:pointer; transition:background .12s; }
+  .sys-row:hover{ background:rgba(255,255,255,.03); }
+  .sys-row .dot{ width:11px; height:11px; border-radius:3px; flex:none; box-shadow:0 0 9px -1px currentColor; }
+  .sys-row .name{ font-size:13px; flex:1; } .sys-row .count{ font-family:"IBM Plex Mono",monospace; font-size:10px; color:var(--ink-faint); }
+  .sys-row.off{ opacity:.34; } .sys-row.off .dot{ box-shadow:none; }
+  .sys-row.pick.sel{ background:var(--accent-dim); } .sys-row.pick.sel .name{ color:var(--accent); }
+  .foot{ padding:9px 15px 12px; border-top:1px solid var(--line); display:flex; gap:8px; }
+  .mini-btn{ flex:1; text-align:center; cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:10px; color:var(--ink-dim); padding:6px; border-radius:6px; border:1px solid var(--line); transition:.12s; }
+  .mini-btn:hover{ color:var(--ink); border-color:var(--line-strong); }
+  .add-row{ padding:10px 15px 4px; display:flex; flex-direction:column; gap:6px; }
+  .add-btn{ text-align:center; cursor:pointer; font-size:12px; color:var(--accent); padding:8px; border-radius:8px; border:1px dashed var(--line-strong); transition:.12s; }
+  .add-btn:hover{ border-color:var(--accent); background:var(--accent-dim); }
+  .swrow{ display:flex; align-items:center; gap:10px; padding:7px 15px; }
+  .swrow .ldot{ width:8px; height:8px; border-radius:2px; flex:none; }
+  .swrow .lname{ font-size:12.5px; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .toggle{ width:34px; height:19px; border-radius:20px; background:#2a3946; position:relative; cursor:pointer; flex:none; transition:background .16s; border:1px solid var(--line); }
+  .toggle::after{ content:""; position:absolute; top:2px; left:2px; width:13px; height:13px; border-radius:50%; background:#8397a2; transition:.16s; }
+  .toggle.on{ background:var(--accent); } .toggle.on::after{ left:16px; background:#04131a; }
+  .seg{ display:flex; gap:4px; padding:2px 15px 8px; }
+  .sgb{ flex:1; text-align:center; font-family:"IBM Plex Mono",monospace; font-size:11px; padding:6px; border-radius:7px; border:1px solid var(--line); color:var(--ink-dim); cursor:pointer; }
+  .sgb.on{ background:var(--accent); color:#04131a; border-color:var(--accent); }
+  .big-file{ margin:2px 15px 12px; text-align:center; padding:12px; border:1px dashed var(--line-strong); border-radius:9px; color:var(--ink); cursor:pointer; font-size:12.5px; }
+  .big-file:hover{ border-color:var(--accent); color:var(--accent); }
+  .ctrl{ display:flex; align-items:center; gap:10px; padding:5px 15px; }
+  .ctrl label{ font-family:"IBM Plex Mono",monospace; font-size:9.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-dim); width:70px; }
+  .note{ padding:0 15px 12px; font-size:11.5px; line-height:1.5; color:var(--ink-dim); }
+  input[type=range]{ -webkit-appearance:none; appearance:none; flex:1; height:3px; border-radius:3px; background:var(--line-strong); outline:none; }
+  input[type=range]::-webkit-slider-thumb{ -webkit-appearance:none; width:15px; height:15px; border-radius:50%; background:var(--accent); cursor:pointer; }
+  input[type=range]::-moz-range-thumb{ width:15px; height:15px; border:none; border-radius:50%; background:var(--accent); cursor:pointer; }
+  #detail{ right:16px; top:66px; width:276px; opacity:0; transform:translateY(-6px); pointer-events:none; transition:opacity .2s,transform .2s; max-height:calc(100vh - 96px); overflow-y:auto; }
+  #detail.show{ opacity:1; transform:none; pointer-events:auto; }
+  .d-title{ padding:14px 16px 3px; font-size:17px; font-weight:600; }
+  .d-type{ padding:0 16px 12px; font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-dim); }
+  .d-chips{ display:flex; flex-wrap:wrap; gap:6px; padding:0 16px 12px; }
+  .chip{ display:inline-flex; align-items:center; gap:6px; font-size:11px; padding:3px 9px 3px 7px; border-radius:20px; border:1px solid var(--line-strong); background:rgba(255,255,255,.02); }
+  .chip .dot{ width:8px; height:8px; border-radius:2px; }
+  .d-desc{ padding:0 16px 14px; font-size:13px; line-height:1.55; color:#b9cdd5; }
+  .prod{ margin:0 16px 14px; padding:11px 12px; border:1px solid var(--line-strong); border-radius:9px; background:rgba(255,255,255,.02); }
+  .prod-name{ font-size:13px; font-weight:600; color:var(--ink); }
+  .prod-note{ font-size:12px; color:var(--ink-dim); margin-top:4px; line-height:1.45; }
+  .prod-link{ display:inline-block; margin-top:7px; font-size:12px; color:var(--accent); text-decoration:none; font-family:"IBM Plex Mono",monospace; }
+  .prod-link:hover{ text-decoration:underline; }
+  .txt+.txt{ margin-top:6px; }
+  .d-extra{ padding:0 16px; } .d-extra.pad{ padding:2px 16px 14px; border-top:1px solid var(--line); }
+  .edit-lab{ font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-dim); padding:11px 0 5px; }
+  .txt{ width:100%; background:rgba(255,255,255,.04); border:1px solid var(--line-strong); border-radius:7px; color:var(--ink); font-family:inherit; font-size:13px; padding:7px 9px; outline:none; }
+  .txt:focus{ border-color:var(--accent); }
+  .systog{ display:flex; flex-wrap:wrap; gap:5px; }
+  .stog{ display:inline-flex; align-items:center; gap:5px; font-size:11px; padding:3px 8px; border-radius:16px; border:1px solid var(--line-strong); cursor:pointer; opacity:.4; transition:.12s; }
+  .stog.on{ opacity:1; } .stog .dot{ width:8px; height:8px; border-radius:2px; }
+  .slider-row{ display:flex; align-items:center; gap:10px; padding:11px 0 4px; }
+  .slider-row label{ font-family:"IBM Plex Mono",monospace; font-size:10px; color:var(--ink-dim); text-transform:uppercase; letter-spacing:.07em; width:44px; }
+  .coord{ font-family:"IBM Plex Mono",monospace; font-size:10.5px; color:var(--ink-faint); padding:2px 0 6px; }
+  .row-btns{ padding:12px 0 4px; } .row-btns .mini-btn{ border-color:#7c3b3b; color:#ff9a9a; }
+  .bigswitch{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 0 14px; }
+  .simstat{ display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.06em; padding:3px 9px; border-radius:6px; margin-top:2px; }
+  .simstat.on{ color:#04131a; background:var(--accent); } .simstat.off{ color:var(--ink-dim); border:1px solid var(--line-strong); }
+  .d-conn-head{ padding:11px 16px 4px; border-top:1px solid var(--line); font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-dim); }
+  .conn-list{ padding:2px 10px 12px; max-height:140px; overflow:auto; }
+  .conn-item{ display:flex; align-items:center; gap:9px; padding:7px 8px; border-radius:7px; cursor:pointer; font-size:13px; transition:background .12s; }
+  .conn-item:hover{ background:rgba(255,255,255,.04); } .conn-item .bar{ width:3px; height:15px; border-radius:2px; flex:none; } .conn-item .arrow{ color:var(--ink-faint); margin-left:auto; font-size:12px; }
+  #hint{ left:16px; bottom:16px; padding:11px 15px; width:246px; font-family:"IBM Plex Mono",monospace; font-size:10.5px; line-height:1.75; color:var(--ink-dim); }
+  #hint b{ color:var(--ink); font-weight:500; } #hint .k{ color:var(--accent); }
+  .botbar{ position:fixed; right:16px; bottom:16px; z-index:6; display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; max-width:62vw; }
+  .pbtn{ padding:10px 14px; cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--ink); background:var(--panel); border:1px solid var(--line-strong); border-radius:10px; backdrop-filter:blur(14px); white-space:nowrap; }
+  .pbtn:hover{ border-color:var(--accent); color:var(--accent); }
+  .pbtn.primary{ background:var(--accent); color:#04131a; border-color:var(--accent); font-weight:600; }
+  .pbtn.primary:hover{ filter:brightness(1.08); color:#04131a; }
+  @media (max-width:760px){ .pbtn{ padding:9px 10px; } }
+  .scrim{ scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent; } .scrim::-webkit-scrollbar{ width:6px; } .scrim::-webkit-scrollbar-thumb{ background:var(--line-strong); border-radius:3px; }
+  @media (max-width:760px){ #leftPanel{ width:188px; top:58px; } #detail{ width:222px; top:58px; } #hint{ display:none; } .brand{ font-size:12px; } .mode-btn{ padding:7px 8px; font-size:10px; } }
+
+  /* Bootswechsler */
+  .boatbar{ display:flex; align-items:center; gap:6px; pointer-events:auto; }
+  .boatsel{ background:var(--panel); border:1px solid var(--line); color:var(--ink); border-radius:9px; padding:6px 8px; font-family:"IBM Plex Mono",monospace; font-size:11px; max-width:150px; }
+  .iconbtn{ width:30px; height:30px; display:flex; align-items:center; justify-content:center; cursor:pointer; background:var(--panel); border:1px solid var(--line); border-radius:9px; color:var(--ink-dim); font-size:14px; }
+  .iconbtn:hover{ color:var(--accent); border-color:var(--line-strong); }
+
+  /* Foto im Detail */
+  .photo{ margin:0 16px 12px; border-radius:9px; overflow:hidden; border:1px solid var(--line-strong); }
+  .photo img{ display:block; width:100%; }
+  .photo-edit{ display:flex; gap:6px; margin-top:6px; }
+  .tk-grid{ display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+  .tk-grid .txt{ margin-top:0; }
+
+  /* Szenarien */
+  .scen-row{ display:flex; align-items:center; gap:6px; padding:6px 15px; }
+  .scen-row .snm{ flex:1; font-size:12.5px; cursor:pointer; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .scen-row .snm:hover{ color:var(--accent); }
+  .scen-row .del{ cursor:pointer; color:var(--ink-faint); font-size:14px; }
+  .scen-row .del:hover{ color:#ff9a9a; }
+
+  /* Auswertungs-Modal */
+  .modal{ position:fixed; inset:0; z-index:20; background:rgba(3,10,16,.6); backdrop-filter:blur(4px); display:none; align-items:center; justify-content:center; }
+  .modal.show{ display:flex; }
+  .modal-card{ width:min(880px,94vw); max-height:88vh; display:flex; flex-direction:column; background:var(--panel-solid); border:1px solid var(--line-strong); border-radius:14px; overflow:hidden; box-shadow:0 30px 80px -20px rgba(0,0,0,.8); }
+  .modal-top{ display:flex; align-items:center; gap:10px; padding:14px 16px; border-bottom:1px solid var(--line); }
+  .modal-top .mt-title{ font-weight:700; font-size:15px; }
+  .modal-top .mt-x{ margin-left:auto; cursor:pointer; color:var(--ink-dim); font-size:20px; line-height:1; }
+  .modal-top .mt-x:hover{ color:var(--ink); }
+  .tabs{ display:flex; gap:4px; padding:10px 16px 0; flex-wrap:wrap; }
+  .tab{ font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--ink-dim); padding:7px 12px; border-radius:8px 8px 0 0; cursor:pointer; }
+  .tab.on{ background:rgba(255,255,255,.04); color:var(--accent); border:1px solid var(--line); border-bottom:none; }
+  .rep-body{ padding:16px; overflow:auto; }
+  .stat-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-bottom:14px; }
+  .stat{ background:rgba(255,255,255,.02); border:1px solid var(--line); border-radius:10px; padding:12px 14px; }
+  .stat .k{ font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-dim); }
+  .stat .v{ font-size:22px; font-weight:600; margin-top:3px; } .stat .v small{ font-size:12px; color:var(--ink-dim); font-weight:400; }
+  table.rep{ width:100%; border-collapse:collapse; font-size:12.5px; }
+  table.rep th{ text-align:left; font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-dim); padding:8px 8px; border-bottom:1px solid var(--line-strong); }
+  table.rep td{ padding:8px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.rep td a{ color:var(--accent); text-decoration:none; } table.rep td a:hover{ text-decoration:underline; }
+  table.rep .num{ text-align:right; font-family:"IBM Plex Mono",monospace; }
+  .rep-note{ font-size:11.5px; color:var(--ink-dim); margin-top:10px; line-height:1.5; }
+  .modal-foot{ display:flex; gap:8px; padding:12px 16px; border-top:1px solid var(--line); }
+  .modal-foot .spacer{ flex:1; }
+
+  @media print{
+    body>*{ display:none !important; }
+    #report{ display:block !important; position:static; background:#fff; inset:auto; }
+    #report .modal-card{ box-shadow:none; border:none; max-height:none; width:100%; background:#fff; color:#111; }
+    #report .modal-top,.tabs,.modal-foot{ display:none !important; }
+    #report .rep-body{ overflow:visible; color:#111; }
+    #report .stat,#report table.rep th,#report table.rep td{ color:#111 !important; border-color:#bbb !important; }
+    #report .stat .k,#report .rep-note,#report table.rep th{ color:#444 !important; }
+    #report .print-only{ display:block !important; }
+  }
+  .print-only{ display:none; }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<input type="file" id="planFile" accept="image/*" style="display:none">
+<div class="topbar">
+  <div class="brand"><b>◈</b> Bordsysteme</div>
+  <div class="boatbar" style="pointer-events:auto">
+    <select class="boatsel" id="boatSel"></select>
+    <div class="iconbtn" id="boatNew" title="Neues Boot">＋</div>
+    <div class="iconbtn" id="boatRen" title="Umbenennen">✎</div>
+    <div class="iconbtn" id="boatDel" title="Boot löschen">🗑</div>
+  </div>
+  <div class="modes" id="modes">
+    <div class="mode-btn active" data-mode="view">Ansicht</div>
+    <div class="mode-btn" data-mode="plan">Plan</div>
+    <div class="mode-btn" data-mode="move">Verschieben</div>
+    <div class="mode-btn" data-mode="connect">Verbinden</div>
+    <div class="mode-btn" data-mode="sim">Simulation</div>
+  </div>
+</div>
+<div class="panel scrim" id="leftPanel"></div>
+<div class="panel scrim" id="detail">
+  <div class="d-title" id="dTitle"></div><div class="d-type" id="dType"></div>
+  <div class="d-chips" id="dChips"></div><div class="d-desc" id="dDesc"></div>
+  <div class="d-extra" id="dExtra"></div>
+  <div class="d-conn-head">Verbunden mit</div><div class="conn-list scrim" id="dConns"></div>
+</div>
+<div class="panel" id="hint"></div>
+<input type="file" id="stateFile" accept="application/json,.json" style="display:none">
+<input type="file" id="photoFile" accept="image/*" style="display:none">
+<div class="modal" id="report">
+  <div class="modal-card">
+    <div class="modal-top"><span class="mt-title">Auswertung</span><span class="mt-x" id="repX">×</span></div>
+    <div class="tabs" id="repTabs"></div>
+    <div class="rep-body scrim" id="repBody"></div>
+    <div class="modal-foot"><div class="mini-btn" id="repCSV" style="flex:none;padding:8px 14px">Stückliste als CSV</div><div class="spacer"></div><div class="mini-btn" id="repPrint" style="flex:none;padding:8px 14px">Drucken / PDF</div></div>
+  </div>
+</div>
+<div class="botbar">
+  <button id="saveBtn" class="pbtn primary">⤓ Speichern</button>
+  <button id="loadBtn" class="pbtn">⤒ Laden</button>
+  <button id="repBtn" class="pbtn">▤ Auswertung</button>
+  <button id="imgBtn" class="pbtn">◲ Bild</button>
+  <button id="resetBtn" class="pbtn">⟲ Ansicht</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ============================================================
+   BOOTSDATEN — Segelyacht ~10 m.  x = Länge (0 Heck…10 Bug)
+   shape: 'box' | 'disc' (Borddurchlass) | 'valve' (Hahn) | 'node' (NMEA-Bus)
+   ============================================================ */
+const SYSTEMS = {
+  dc12:{name:"12 V Bordnetz",color:"#ffb020"}, ac230:{name:"230 V Landstrom",color:"#ff5d5d"},
+  fresh:{name:"Frischwasser",color:"#37a7ff"}, black:{name:"Fäkalien",color:"#b08542"},
+  fuel:{name:"Diesel",color:"#ff7a2f"}, gas:{name:"Gas (LPG)",color:"#d16bff"},
+  bilge:{name:"Bilge / Lenz",color:"#2ba9c0"}, n2k:{name:"NMEA 2000",color:"#8b9dff"},
+};
+/* Innenausbau (schematisch, von vorn=Bug nach achtern=Heck). Zentrum cx,cy,cz + Größe sx,sy,sz */
+const INTERIOR = [
+  {name:"Ankerkasten", cx:9.2, cy:0.05, cz:0.0,  sx:0.9, sy:0.7, sz:0.9, kind:'zone'},
+  {name:"Bugkoje",     cx:8.1, cy:0.02, cz:0.0,  sx:1.7, sy:0.45,sz:2.0, kind:'furn'},
+  {name:"Nasszelle",   cx:6.9, cy:0.18, cz:-0.65,sx:1.1, sy:1.0, sz:1.1, kind:'zone'},
+  {name:"Schrank",     cx:6.9, cy:0.18, cz:0.7,  sx:1.1, sy:1.0, sz:0.9, kind:'furn'},
+  {name:"Salontisch",  cx:5.3, cy:0.05, cz:-0.05,sx:0.9, sy:0.3, sz:0.6, kind:'furn', nolabel:true},
+  {name:"Sitzecke",    cx:5.3, cy:0.08, cz:-0.6, sx:1.9, sy:0.4, sz:1.0, kind:'seat'},
+  {name:"Kochzeile",   cx:4.7, cy:0.12, cz:0.9,  sx:1.9, sy:0.5, sz:0.55,kind:'furn'},
+  {name:"Niedergang",  cx:3.8, cy:0.2,  cz:0.0,  sx:0.7, sy:0.85,sz:1.0, kind:'stairs'},
+  {name:"Cockpit",     cx:2.0, cy:0.4,  cz:0.0,  sx:2.6, sy:0.05,sz:1.1, kind:'floor', nolabel:true},
+  {name:"Sitzbank Stb",cx:2.0, cy:0.58, cz:0.85, sx:2.4, sy:0.16,sz:0.55,kind:'seat', nolabel:true},
+  {name:"Sitzbank Bb", cx:2.0, cy:0.58, cz:-0.85,sx:2.4, sy:0.16,sz:0.55,kind:'seat', nolabel:true},
+  {name:"Motorraum",   cx:3.0, cy:-0.5, cz:0.0,  sx:1.5, sy:0.95,sz:1.5, kind:'engine'},
+];
+const COMPONENTS = [
+  {id:"shore",name:"Landstromanschluss",type:"Einspeisung",sys:["ac230"],source:["ac230"],sw:true,pos:[0.7,0.80,1.20],desc:"Steckdose am Heck. Speist am Steg das 230-V-Netz und das Ladegerät."},
+  {id:"charger",name:"Batterieladegerät",type:"Wandler",sys:["ac230","dc12"],converts:{from:"ac230",to:"dc12"},sw:true,pos:[2.4,-0.30,0.70],desc:"Macht aus Landstrom 12 V und lädt die Bordbatterien."},
+  {id:"house_bat",name:"Bordbatterien (Bank)",type:"Speicher",sys:["dc12"],source:["dc12"],sw:true,pos:[3.0,-0.55,0.55],desc:"Verbraucherbank im Motorraum. Hauptschalter für das 12-V-Netz."},
+  {id:"start_bat",name:"Starterbatterie",type:"Speicher",sys:["dc12"],source:["dc12"],sw:true,pos:[3.0,-0.55,-0.55],desc:"Getrennte Batterie zum Anlassen des Motors."},
+  {id:"solar",name:"Solarpanel",type:"Erzeuger",sys:["dc12"],source:["dc12"],sw:true,pos:[1.0,0.95,0.0],desc:"Lädt über einen Regler die Bordbatterien."},
+  {id:"inverter",name:"Wechselrichter",type:"Wandler",sys:["dc12","ac230"],converts:{from:"dc12",to:"ac230"},sw:true,on:false,pos:[2.4,-0.30,-0.70],desc:"Erzeugt aus 12 V 230 V ohne Landstrom."},
+  {id:"panel",name:"Hauptschalttafel",type:"Verteilung",sys:["dc12","ac230"],pos:[4.3,0.35,1.05],desc:"Sicherungs- und Verteiltafel am Kartentisch, Steuerbord am Niedergang."},
+  {id:"engine",name:"Dieselmotor",type:"Antrieb",sys:["fuel","dc12"],source:["dc12"],needs:"fuel",sw:true,on:false,pos:[3.0,-0.55,0.0],desc:"Saildrive im Motorraum unter dem Cockpit. Lichtmaschine lädt mit."},
+  {id:"fueltank",name:"Dieseltank",type:"Tank",sys:["fuel"],source:["fuel"],pos:[1.5,-0.55,-0.30],desc:"Kraftstoffvorrat achtern unter dem Cockpit."},
+  {id:"watertank",name:"Frischwassertank",type:"Tank",sys:["fresh"],source:["fresh"],pos:[5.5,-0.62,0.0],desc:"Trinkwasservorrat unter der Salon-Sole."},
+  {id:"waterpump",name:"Druckwasserpumpe",type:"Pumpe",sys:["fresh","dc12"],needs:"dc12",sw:true,pos:[5.6,-0.35,0.50],desc:"Baut Wasserdruck auf — nur mit 12 V."},
+  {id:"boiler",name:"Warmwasserboiler",type:"Erhitzer",sys:["fresh","ac230"],needs:"ac230",sw:true,pos:[3.6,-0.30,0.55],desc:"Erwärmt Wasser über Landstrom. Ohne 230 V nur Kaltwasser."},
+  {id:"galley_sink",name:"Spüle Pantry",type:"Zapfstelle",sys:["fresh"],pos:[5.0,0.15,0.90],desc:"Spüle in der Kochzeile."},
+  {id:"head_sink",name:"Waschbecken Bad",type:"Zapfstelle",sys:["fresh"],pos:[7.0,0.20,-0.70],desc:"Waschbecken in der Nasszelle."},
+  {id:"wc",name:"Bordtoilette",type:"Zapfstelle",sys:["fresh","black"],source:["black"],sw:true,pos:[6.7,-0.05,-0.70],desc:"Spülwasser rein, Fäkalien in den Sammeltank."},
+  {id:"holding",name:"Fäkalientank",type:"Tank",sys:["black"],pos:[6.9,-0.55,-0.40],desc:"Sammeltank unter der Nasszelle."},
+  {id:"bilge",name:"Bilgepumpe",type:"Pumpe",sys:["bilge","dc12"],source:["bilge"],needs:"dc12",sw:true,on:false,pos:[3.4,-0.88,0.0],desc:"Pumpt Leckwasser am tiefsten Punkt nach außen."},
+  {id:"seacock_bilge",name:"Seeventil Bilge",type:"Absperrhahn",sys:["bilge"],shape:"valve",sw:true,on:true,pos:[3.7,-0.80,0.40],desc:"Absperrhahn im Lenzstrang. Geschlossen sperrt er den Auslass."},
+  {id:"thruhull_bilge",name:"Borddurchlass Lenz",type:"Borddurchlass",sys:["bilge"],shape:"disc",pos:[3.7,-0.96,0.50],desc:"Rumpfdurchbruch für den Bilgeauslass über der Wasserlinie."},
+  {id:"gas",name:"Gasflasche",type:"Speicher",sys:["gas"],source:["gas"],sw:true,on:false,pos:[0.5,0.50,-1.05],desc:"LPG im Gaskasten. Ventil standardmäßig zu."},
+  {id:"stove",name:"Herd / Kocher",type:"Verbraucher",sys:["gas"],sw:true,on:false,pos:[4.4,0.15,0.90],desc:"Kardanischer Gasherd in der Kochzeile."},
+  {id:"fridge",name:"Kühlbox",type:"Verbraucher",sys:["dc12"],sw:true,pos:[4.0,-0.05,0.85],desc:"Kompressorkühlung in der Kochzeile."},
+  {id:"n2k_bus",name:"NMEA-Backbone",type:"Datenbus",sys:["n2k","dc12"],converts:{from:"dc12",to:"n2k"},sw:true,shape:"node",pos:[4.5,0.28,0.90],desc:"Rückgrat des NMEA-2000-Netzes. Wird aus 12 V gespeist; alle Geber hängen als Stichleitung daran."},
+  {id:"nav",name:"Navigationsanlage / MFD",type:"Elektronik",sys:["n2k","dc12"],sw:true,pos:[4.3,0.40,0.85],desc:"Kartenplotter am Kartentisch. Anzeige aller NMEA-Daten."},
+  {id:"masttop",name:"Windgeber (Masttop)",type:"Sensor",sys:["n2k"],pos:[4.5,2.60,0.0],desc:"Wind- und Positionsdaten vom Masttop (schematisch tiefer gesetzt)."},
+  {id:"gps",name:"GPS-Antenne",type:"Sensor",sys:["n2k"],pos:[1.5,0.95,0.55],desc:"Liefert Position und Kurs ins NMEA-Netz."},
+  {id:"ais",name:"AIS-Transponder",type:"Elektronik",sys:["n2k","dc12"],sw:true,pos:[4.2,0.20,0.80],desc:"Sendet/empfängt Schiffspositionen über das NMEA-Netz."},
+  {id:"depth",name:"Echolot- / Log-Geber",type:"Borddurchlass",sys:["n2k"],shape:"disc",pos:[5.4,-0.85,0.0],desc:"Geber im Rumpf (Borddurchlass) für Tiefe und Fahrt — hängt am NMEA-Netz."},
+  {id:"windlass",name:"Ankerwinsch",type:"Verbraucher",sys:["dc12"],sw:true,on:false,pos:[9.3,0.90,0.0],desc:"Elektrische Winsch am Ankerkasten auf dem Bugdeck."},
+];
+let CONNECTIONS = [
+  ["shore","charger","ac230"],["shore","panel","ac230"],["charger","house_bat","dc12"],["solar","house_bat","dc12"],
+  ["engine","house_bat","dc12"],["engine","start_bat","dc12"],["start_bat","engine","dc12"],["house_bat","panel","dc12"],
+  ["inverter","house_bat","dc12"],["inverter","panel","ac230"],["panel","fridge","dc12"],
+  ["panel","waterpump","dc12"],["panel","bilge","dc12"],["panel","windlass","dc12"],["panel","boiler","ac230"],
+  ["fueltank","engine","fuel"],["watertank","waterpump","fresh"],["waterpump","boiler","fresh"],
+  ["waterpump","galley_sink","fresh"],["boiler","galley_sink","fresh"],["waterpump","head_sink","fresh"],
+  ["boiler","head_sink","fresh"],["waterpump","wc","fresh"],["wc","holding","black"],["gas","stove","gas"],
+  ["bilge","seacock_bilge","bilge"],["seacock_bilge","thruhull_bilge","bilge"],
+  ["panel","n2k_bus","dc12"],["panel","nav","dc12"],["panel","ais","dc12"],
+  ["n2k_bus","nav","n2k"],["n2k_bus","masttop","n2k"],["n2k_bus","gps","n2k"],["n2k_bus","ais","n2k"],["n2k_bus","depth","n2k"],
+];
+
+/* ============================================================ SZENE ============================================================ */
+const stage=document.getElementById('stage');
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(45,innerWidth/innerHeight,0.1,500);
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,preserveDrawingBuffer:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(innerWidth,innerHeight); stage.appendChild(renderer.domElement);
+scene.add(new THREE.HemisphereLight(0x88bbdd,0x0a1420,0.85));
+const key=new THREE.DirectionalLight(0xffffff,0.9); key.position.set(6,14,8); scene.add(key);
+const fill=new THREE.DirectionalLight(0x557799,0.4); fill.position.set(-8,4,-6); scene.add(fill);
+scene.add(new THREE.AmbientLight(0x223344,0.6));
+const world=new THREE.Group(); scene.add(world);
+const hullGroup=new THREE.Group(); world.add(hullGroup);
+
+const L=10,BEAM=3.4,DRAFT=1.05;
+function halfBeamAt(s){ const m=BEAM/2;
+  if(s>0.74){ const t=Math.max(0,(1-s)/0.26); return m*Math.pow(t,0.62); }      // spitzer Bug
+  if(s<0.16){ const t=s/0.16; return m*(0.52+0.48*Math.pow(t,0.65)); }          // schlankes Heck
+  return m; }
+function draftAt(s){ if(s>0.80){ const t=(1-s)/0.20; return DRAFT*(0.25+0.75*Math.pow(t,0.7)); } return DRAFT; }
+function freeboardAt(s){ return 0.72+0.36*Math.pow(s,1.6); }                     // Bug höher (Sprung)
+function profilePoint(hb,dr,fb,t){ if(t<0.6){ const phi=(t/0.6)*(Math.PI/2); return {y:-dr*Math.cos(phi),zf:Math.sin(phi)}; }
+  const u=(t-0.6)/0.4; return {y:fb*u,zf:1}; }
+function buildHull(){
+  const nS=48,nP=16,ring=2*nP+1,verts=[],idx=[];
+  for(let i=0;i<nS;i++){ const s=i/(nS-1),x=s*L,hb=halfBeamAt(s),dr=draftAt(s),fb=freeboardAt(s);
+    for(let k=0;k<ring;k++){ let t,side; if(k<=nP){t=1-k/nP;side=-1;}else{t=(k-nP)/nP;side=1;} const p=profilePoint(hb,dr,fb,t); verts.push(x,p.y,side*p.zf*hb); } }
+  for(let i=0;i<nS-1;i++) for(let k=0;k<ring-1;k++){ const a=i*ring+k,b=(i+1)*ring+k,c=(i+1)*ring+k+1,d=i*ring+k+1; idx.push(a,b,d,b,c,d); }
+  const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(verts,3)); g.setIndex(idx); g.computeVertexNormals();
+  hullGroup.add(new THREE.Mesh(g,new THREE.MeshStandardMaterial({color:0x5b7f97,metalness:0.25,roughness:0.65,transparent:true,opacity:0.10,side:THREE.DoubleSide,depthWrite:false})));
+  const strong=new THREE.LineBasicMaterial({color:0x6f9ab0,transparent:true,opacity:0.5});
+  const faint=new THREE.LineBasicMaterial({color:0x6f9ab0,transparent:true,opacity:0.20});
+  for(let i=0;i<nS;i++){ const s=i/(nS-1),x=s*L,hb=halfBeamAt(s),dr=draftAt(s),fb=freeboardAt(s),pts=[];
+    for(let k=0;k<ring;k++){ let t,side; if(k<=nP){t=1-k/nP;side=-1;}else{t=(k-nP)/nP;side=1;} const p=profilePoint(hb,dr,fb,t); pts.push(new THREE.Vector3(x,p.y,side*p.zf*hb)); }
+    hullGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),(i%6===0)?strong:faint)); }
+  for(const side of [-1,0,1]){ const pts=[];
+    for(let i=0;i<nS;i++){ const s=i/(nS-1),x=s*L,hb=halfBeamAt(s),dr=draftAt(s),fb=freeboardAt(s),t=side===0?0:1; const p=profilePoint(hb,dr,fb,t); pts.push(new THREE.Vector3(x,p.y,side*p.zf*hb)); }
+    hullGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),strong)); }
+}
+buildHull();
+(function sailboatBits(){
+  const dark=new THREE.MeshStandardMaterial({color:0x36505f,metalness:0.4,roughness:0.6,transparent:true,opacity:0.55});
+  const fin=new THREE.Mesh(new THREE.BoxGeometry(1.5,1.6,0.16),dark); fin.position.set(4.6,-1.85,0); hullGroup.add(fin);
+  const bulb=new THREE.Mesh(new THREE.CylinderGeometry(0.18,0.18,1.3,12),dark); bulb.rotation.z=Math.PI/2; bulb.position.set(4.6,-2.6,0); hullGroup.add(bulb);
+  const rud=new THREE.Mesh(new THREE.BoxGeometry(0.45,1.2,0.09),dark); rud.position.set(0.7,-1.2,0); hullGroup.add(rud);
+  const mastMat=new THREE.MeshStandardMaterial({color:0x9fb6c2,metalness:0.6,roughness:0.4,transparent:true,opacity:0.6});
+  const mast=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.075,7.2,12),mastMat); mast.position.set(4.5,4.5,0); hullGroup.add(mast);
+})();
+function makeRoomLabel(text){ const pad=12,fs=30,cv=document.createElement('canvas'),ctx=cv.getContext('2d');
+  ctx.font=`500 ${fs}px "IBM Plex Mono",monospace`; const w=ctx.measureText(text).width; cv.width=w+pad*2; cv.height=fs+pad*2; ctx.font=`500 ${fs}px "IBM Plex Mono",monospace`;
+  ctx.fillStyle='rgba(6,16,26,.5)'; ctx.fillRect(0,0,cv.width,cv.height);
+  ctx.fillStyle='#cdbfa0'; ctx.textBaseline='middle'; ctx.fillText(text,pad,cv.height/2+1);
+  const tex=new THREE.CanvasTexture(cv); tex.minFilter=THREE.LinearFilter;
+  const spr=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,transparent:true,opacity:0.85,depthTest:false,depthWrite:false})); const sc=0.0046; spr.scale.set(cv.width*sc,cv.height*sc,1); spr.renderOrder=9; return spr; }
+function buildInterior(){
+  const wood=0x9a8b70, seat=0xb0a488, steel=0x7d8a92, floor=0x51697a;
+  function edges(cx,cy,cz,sx,sy,sz,col,op){ const e=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(sx,sy,sz)),new THREE.LineBasicMaterial({color:col,transparent:true,opacity:op})); e.position.set(cx,cy,cz); hullGroup.add(e); }
+  function fillbox(cx,cy,cz,sx,sy,sz,col,op){ const m=new THREE.Mesh(new THREE.BoxGeometry(sx,sy,sz),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:op,depthWrite:false})); m.position.set(cx,cy,cz); hullGroup.add(m); }
+  INTERIOR.forEach(r=>{
+    let col=wood, edgeOp=0.4, fillOp=0.05;
+    if(r.kind==='seat'){ col=seat; fillOp=0.12; }
+    else if(r.kind==='engine'){ col=steel; edgeOp=0.55; fillOp=0.06; }
+    else if(r.kind==='floor'){ col=floor; edgeOp=0.3; fillOp=0.10; }
+    else if(r.kind==='zone'){ fillOp=0.03; }
+    fillbox(r.cx,r.cy,r.cz,r.sx,r.sy,r.sz,col,fillOp);
+    edges(r.cx,r.cy,r.cz,r.sx,r.sy,r.sz,col,edgeOp);
+    if(r.kind==='stairs'){ for(let i=-1;i<=1;i++){ const y=r.cy+i*0.22; edges(r.cx,y,r.cz,r.sx,0.02,r.sz,col,0.3); } }
+    if(!r.nolabel){ const lab=makeRoomLabel(r.name); lab.position.set(r.cx,r.cy+r.sy/2+0.16,r.cz); hullGroup.add(lab); }
+  });
+}
+buildInterior();
+(function deckTop(){ /* Kajütaufbau + Vorluk auf Deck */
+  const lm=new THREE.LineBasicMaterial({color:0x6f9ab0,transparent:true,opacity:0.32});
+  const cab=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(3.6,0.5,2.0)),lm); cab.position.set(5.7,1.15,0); hullGroup.add(cab);
+  const luk=new THREE.Mesh(new THREE.TorusGeometry(0.28,0.02,8,22),new THREE.MeshBasicMaterial({color:0x6f9ab0,transparent:true,opacity:0.4})); luk.rotation.x=-Math.PI/2; luk.position.set(8.0,0.98,0.0); hullGroup.add(luk);
+})();
+let waterMesh=null;
+(function(){ const m=new THREE.Mesh(new THREE.PlaneGeometry(26,16),new THREE.MeshBasicMaterial({color:0x1f4a63,transparent:true,opacity:0.13,side:THREE.DoubleSide,depthWrite:false}));
+  m.rotation.x=-Math.PI/2; m.position.set(L/2,-0.02,0); hullGroup.add(m); waterMesh=m; })();
+
+/* ---- Referenzplan ---- */
+const ref={tex:null,mesh:null,pivot:null,mode:'top',scale:1,ox:L/2,oy:0,oz:0,rot:0,opacity:0.6,visible:true,aspect:1};
+function updateRef(){ if(!ref.mesh) return; ref.pivot.visible=ref.visible; ref.mesh.material.opacity=ref.opacity; ref.mesh.scale.set(ref.scale,ref.scale,1); ref.pivot.position.set(ref.ox,ref.oy,ref.oz);
+  if(ref.mode==='top'){ ref.mesh.rotation.set(-Math.PI/2,0,0); ref.pivot.rotation.set(0,ref.rot*Math.PI/180,0); } else { ref.mesh.rotation.set(0,0,0); ref.pivot.rotation.set(0,0,ref.rot*Math.PI/180); } }
+function loadPlanFromDataURL(dataURL){ const img=new Image(); img.onload=()=>{ if(ref.pivot){ world.remove(ref.pivot); ref.mesh.geometry.dispose(); }
+    ref.aspect=img.width/img.height||ref.aspect||1; ref.dataURL=dataURL;
+    const tex=new THREE.Texture(img); tex.needsUpdate=true; ref.tex=tex;
+    ref.mesh=new THREE.Mesh(new THREE.PlaneGeometry(L,L/ref.aspect),new THREE.MeshBasicMaterial({map:tex,transparent:true,opacity:ref.opacity,side:THREE.DoubleSide,depthWrite:false}));
+    ref.pivot=new THREE.Group(); ref.pivot.add(ref.mesh); world.add(ref.pivot); updateRef(); if(mode==='plan') renderLeft(); }; img.src=dataURL; }
+function loadPlanFile(file){ const rd=new FileReader(); rd.onload=()=>{ markDirty(); loadPlanFromDataURL(rd.result); }; rd.readAsDataURL(file); }
+function removePlan(){ if(ref.pivot){ world.remove(ref.pivot); ref.mesh.geometry.dispose(); } ref.tex=null; ref.mesh=null; ref.pivot=null; ref.dataURL=null; renderLeft(); }
+document.getElementById('planFile').onchange=e=>{ if(e.target.files[0]) loadPlanFile(e.target.files[0]); e.target.value=''; };
+
+/* ---- Labels & Komponenten ---- */
+function roundRect(c,x,y,w,h,r){ c.beginPath(); c.moveTo(x+r,y); c.arcTo(x+w,y,x+w,y+h,r); c.arcTo(x+w,y+h,x,y+h,r); c.arcTo(x,y+h,x,y,r); c.arcTo(x,y,x+w,y,r); c.closePath(); }
+function makeLabel(text,hex){ const pad=14,fs=42,cv=document.createElement('canvas'),ctx=cv.getContext('2d');
+  ctx.font=`600 ${fs}px "IBM Plex Mono",monospace`; const w=ctx.measureText(text).width; cv.width=w+pad*2; cv.height=fs+pad*2; ctx.font=`600 ${fs}px "IBM Plex Mono",monospace`;
+  ctx.fillStyle='rgba(6,16,26,.82)'; roundRect(ctx,1,1,cv.width-2,cv.height-2,12); ctx.fill();
+  ctx.strokeStyle=hex; ctx.globalAlpha=.55; ctx.lineWidth=2; roundRect(ctx,1,1,cv.width-2,cv.height-2,12); ctx.stroke(); ctx.globalAlpha=1;
+  ctx.fillStyle='#e6f2f6'; ctx.textBaseline='middle'; ctx.fillText(text,pad,cv.height/2+2);
+  const tex=new THREE.CanvasTexture(cv); tex.minFilter=THREE.LinearFilter;
+  const spr=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,transparent:true,depthTest:false,depthWrite:false})); const sc=0.0055; spr.scale.set(cv.width*sc,cv.height*sc,1); spr.renderOrder=10; return spr; }
+function compGeometry(shape){ switch(shape){
+  case 'disc': return new THREE.CylinderGeometry(0.24,0.24,0.12,18);
+  case 'valve': return new THREE.OctahedronGeometry(0.27);
+  case 'node': return new THREE.SphereGeometry(0.2,18,18);
+  default: return new THREE.BoxGeometry(0.4,0.4,0.4); } }
+const compById={}, compMeshes=[];
+function buildCompVisuals(c){ if(c.on===undefined) c.on=true; c._on=c.on;
+  const col=new THREE.Color(SYSTEMS[c.sys[0]].color);
+  const mesh=new THREE.Mesh(compGeometry(c.shape),new THREE.MeshStandardMaterial({color:col,emissive:col,emissiveIntensity:0.35,metalness:0.4,roughness:0.4,transparent:true,opacity:1}));
+  mesh.position.set(c.pos[0],c.pos[1],c.pos[2]); mesh.userData.comp=c; world.add(mesh); compMeshes.push(mesh); c._mesh=mesh;
+  const halo=new THREE.Mesh(new THREE.SphereGeometry(0.55,16,16),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0})); halo.position.copy(mesh.position); world.add(halo); c._halo=halo;
+  const lab=makeLabel(c.name,SYSTEMS[c.sys[0]].color); lab.position.set(c.pos[0],c.pos[1]+0.5,c.pos[2]); world.add(lab); c._label=lab; compById[c.id]=c; }
+COMPONENTS.forEach(buildCompVisuals);
+function refreshLabel(c){ world.remove(c._label); if(c._label.material.map) c._label.material.map.dispose(); c._label=makeLabel(c.name,SYSTEMS[c.sys[0]].color); c._label.position.set(c.pos[0],c.pos[1]+0.5,c.pos[2]); world.add(c._label); }
+function setPrimaryColor(c){ const col=SYSTEMS[c.sys[0]].color; c._mesh.material.color.set(col); c._mesh.material.emissive.set(col); c._halo.material.color.set(col); }
+const PRESETS={ part:{name:'Neues Bauteil',type:'eigenes Bauteil',sys:['dc12'],shape:'box',y:0},
+  thruhull:{name:'Borddurchlass',type:'Borddurchlass',sys:['bilge'],shape:'disc',y:-0.85},
+  valve:{name:'Seeventil / Hahn',type:'Absperrhahn',sys:['fresh'],shape:'valve',sw:true,on:true,y:-0.5},
+  n2k:{name:'NMEA-Gerät',type:'NMEA 2000',sys:['n2k'],shape:'box',y:0.2} };
+let customN=0;
+function addComponent(kind){ const pr=PRESETS[kind]||PRESETS.part; customN++;
+  const c={id:'custom_'+customN,name:pr.name,type:pr.type,sys:[...pr.sys],shape:pr.shape,pos:[Math.round(target.x*10)/10,pr.y,0],on:true};
+  if(pr.sw) c.sw=true; if(pr.on!==undefined) c.on=pr.on; buildCompVisuals(c); COMPONENTS.push(c); markDirty(); select(c); }
+function deleteComponent(c){ connObjs.slice().forEach(o=>{ if(o.a===c.id||o.b===c.id) removeConnObj(o); });
+  world.remove(c._mesh); c._mesh.geometry.dispose(); world.remove(c._halo); world.remove(c._label);
+  const i=compMeshes.indexOf(c._mesh); if(i>=0) compMeshes.splice(i,1); const j=COMPONENTS.indexOf(c); if(j>=0) COMPONENTS.splice(j,1); delete compById[c.id]; markDirty();
+  if(selected===c) selected=null; if(pending===c) pending=null; refresh(); renderDetail(selected); }
+
+/* ---- Verbindungen ---- */
+const connObjs=[];
+function makeCurve(A,B){ const pa=new THREE.Vector3(...A.pos),pb=new THREE.Vector3(...B.pos); const mid=pa.clone().add(pb).multiplyScalar(0.5); mid.y+=0.16*(1+pa.distanceTo(pb)*0.05); return new THREE.CatmullRomCurve3([pa,mid,pb]); }
+function buildConnObj(a,b,sys){ const A=compById[a],B=compById[b]; if(!A||!B) return null;
+  const col=new THREE.Color(SYSTEMS[sys].color); const curve=makeCurve(A,B);
+  const mesh=new THREE.Mesh(new THREE.TubeGeometry(curve,20,0.028,8,false),new THREE.MeshStandardMaterial({color:col,emissive:col,emissiveIntensity:0.5,metalness:0.3,roughness:0.5,transparent:true,opacity:0.9}));
+  mesh.userData.conn=true; world.add(mesh);
+  const dots=[0,1].map(()=>{ const d=new THREE.Mesh(new THREE.SphereGeometry(0.055,10,10),new THREE.MeshBasicMaterial({color:col})); d.visible=false; world.add(d); return d; });
+  const o={mesh,dots,curve,a,b,sys,col}; connObjs.push(o); return o; }
+function rebuildConnGeom(o){ o.curve=makeCurve(compById[o.a],compById[o.b]); o.mesh.geometry.dispose(); o.mesh.geometry=new THREE.TubeGeometry(o.curve,20,0.028,8,false); }
+function addConnection(a,b,sys){ if(a===b) return; if(CONNECTIONS.some(c=>c[2]===sys&&((c[0]===a&&c[1]===b)||(c[0]===b&&c[1]===a)))) return; CONNECTIONS.push([a,b,sys]); buildConnObj(a,b,sys); markDirty(); refresh(); }
+function removeConnObj(o){ world.remove(o.mesh); o.mesh.geometry.dispose(); o.dots.forEach(d=>world.remove(d));
+  const i=connObjs.indexOf(o); if(i>=0) connObjs.splice(i,1); const j=CONNECTIONS.findIndex(c=>c[0]===o.a&&c[1]===o.b&&c[2]===o.sys); if(j>=0) CONNECTIONS.splice(j,1); markDirty(); refresh(); }
+CONNECTIONS.forEach(([a,b,s])=>buildConnObj(a,b,s));
+
+/* ============================================================ KAMERA ============================================================ */
+const target=new THREE.Vector3(L/2,0.0,0); const cam={theta:2.35,phi:1.02,radius:15}; const DEF={...cam};
+function updateCam(){ cam.phi=Math.max(0.25,Math.min(1.5,cam.phi)); cam.radius=Math.max(6,Math.min(34,cam.radius));
+  camera.position.set(target.x+cam.radius*Math.sin(cam.phi)*Math.sin(cam.theta),target.y+cam.radius*Math.cos(cam.phi),target.z+cam.radius*Math.sin(cam.phi)*Math.cos(cam.theta)); camera.lookAt(target); }
+updateCam();
+
+/* ============================================================ INTERAKTION ============================================================ */
+let mode='view',selected=null,pending=null,currentSys='dc12';
+let dirty=false; function markDirty(){ dirty=true; }
+const activeSys=new Set(Object.keys(SYSTEMS));
+const ray=new THREE.Raycaster(),ndc=new THREE.Vector2(),el=renderer.domElement;
+let camDrag=false,objDrag=null,lx=0,ly=0,moved=0;
+const dragPlane=new THREE.Plane(),hitPt=new THREE.Vector3(),grabOff=new THREE.Vector3();
+function setNdc(e){ const r=el.getBoundingClientRect(); ndc.x=((e.clientX-r.left)/r.width)*2-1; ndc.y=-((e.clientY-r.top)/r.height)*2+1; ray.setFromCamera(ndc,camera); }
+function pickComp(){ const h=ray.intersectObjects(compMeshes.filter(m=>m.visible)); return h.length?h[0].object.userData.comp:null; }
+function pickConn(){ const h=ray.intersectObjects(connObjs.filter(o=>o.mesh.visible).map(o=>o.mesh)); return h.length?connObjs.find(o=>o.mesh===h[0].object):null; }
+el.addEventListener('pointerdown',e=>{ moved=0; lx=e.clientX; ly=e.clientY; el.setPointerCapture(e.pointerId);
+  if(mode==='move'){ setNdc(e); const c=pickComp(); if(c){ objDrag=c; dragPlane.setFromNormalAndCoplanarPoint(new THREE.Vector3(0,1,0),c._mesh.position); ray.ray.intersectPlane(dragPlane,hitPt); grabOff.copy(c._mesh.position).sub(hitPt); return; } }
+  camDrag=true; });
+el.addEventListener('pointermove',e=>{ const dx=e.clientX-lx,dy=e.clientY-ly; lx=e.clientX; ly=e.clientY; moved+=Math.abs(dx)+Math.abs(dy);
+  if(objDrag){ setNdc(e); if(ray.ray.intersectPlane(dragPlane,hitPt)){ const c=objDrag; c._mesh.position.x=hitPt.x+grabOff.x; c._mesh.position.z=hitPt.z+grabOff.z; syncComp(c); } return; }
+  if(camDrag){ cam.theta-=dx*0.006; cam.phi-=dy*0.006; updateCam(); } });
+el.addEventListener('pointerup',e=>{ const wasObj=objDrag; camDrag=false; objDrag=null; if(wasObj){ select(wasObj); return; } if(moved<5) handleClick(e); });
+el.addEventListener('wheel',e=>{ e.preventDefault(); cam.radius*=(1+Math.sign(e.deltaY)*0.08); updateCam(); },{passive:false});
+let pinch=0;
+el.addEventListener('touchmove',e=>{ if(e.touches.length===2){ e.preventDefault(); const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY); if(pinch){ cam.radius*=pinch/d; updateCam(); } pinch=d; } },{passive:false});
+el.addEventListener('touchend',()=>pinch=0);
+function syncComp(c){ markDirty(); c.pos=[c._mesh.position.x,c._mesh.position.y,c._mesh.position.z]; c._halo.position.copy(c._mesh.position); c._label.position.set(c.pos[0],c.pos[1]+0.5,c.pos[2]);
+  connObjs.forEach(o=>{ if(o.a===c.id||o.b===c.id) rebuildConnGeom(o); });
+  if(selected===c){ const hc=document.getElementById('hCoord'); if(hc) hc.textContent=`x ${c.pos[0].toFixed(2)}   y ${c.pos[1].toFixed(2)}   z ${c.pos[2].toFixed(2)}`; } }
+function handleClick(e){ setNdc(e);
+  if(mode==='connect'){ const c=pickComp(); if(c){ if(!pending) pending=c; else if(pending===c) pending=null; else { addConnection(pending.id,c.id,currentSys); pending=null; } refresh(); return; }
+    const o=pickConn(); if(o){ removeConnObj(o); return; } pending=null; refresh(); return; }
+  const c=pickComp(); if(mode==='sim'&&c&&c.sw){ c._on=!c._on; selected=c; markDirty(); refresh(); renderLeft(); renderDetail(c); return; } select(c); }
+
+/* ---- Darstellung ---- */
+function neighbors(id){ const s=new Set(); connObjs.forEach(o=>{ if(o.a===id)s.add(o.b); if(o.b===id)s.add(o.a); }); return s; }
+function sysVisible(c){ return c.sys.some(s=>activeSys.has(s)); }
+function select(c){ selected=c||null; refresh(); renderDetail(selected); }
+function applyNormal(){ const focus=selected,nb=focus?neighbors(focus.id):null;
+  COMPONENTS.forEach(c=>{ const on=sysVisible(c); c._mesh.visible=on; c._label.visible=on; const dim=focus&&on&&c.id!==focus.id&&!(nb&&nb.has(c.id)); const pend=(c===pending);
+    c._mesh.material.color.set(SYSTEMS[c.sys[0]].color); c._mesh.material.emissive.set(pend?0xffffff:SYSTEMS[c.sys[0]].color);
+    c._mesh.material.emissiveIntensity=pend?0.9:(c===focus?0.95:(dim?0.12:0.35)); c._mesh.material.opacity=dim?0.5:1; c._mesh.material.transparent=true;
+    c._mesh.scale.setScalar(c===focus||pend?1.35:1); c._label.material.opacity=dim?0.3:1;
+    c._halo.material.color.set(pend?0xffffff:SYSTEMS[c.sys[0]].color); c._halo.material.opacity=(c===focus||pend)?0.16:0; c._halo.scale.setScalar((c===focus||pend)?1:0.001); });
+  connObjs.forEach(o=>{ const vis=activeSys.has(o.sys)&&compById[o.a]._mesh.visible&&compById[o.b]._mesh.visible; o.mesh.visible=vis;
+    const rel=focus&&(o.a===focus.id||o.b===focus.id); o.mesh.material.color.set(o.col); o.mesh.material.emissive.set(o.col);
+    o.mesh.material.emissiveIntensity=rel?1.1:(focus?0.15:0.5); o.mesh.material.opacity=focus?(rel?1:0.25):0.9; o.dots.forEach(d=>d.visible=false); o._flow=false; }); }
+function simulate(){ const P={}; COMPONENTS.forEach(c=>P[c.id]={}); const isOn=c=>c._on!==false;
+  const op=c=>{ if(!isOn(c)) return false; if(c.needs&&!P[c.id][c.needs]) return false; return true; };
+  let changed=true,guard=0; const set=(id,s)=>{ if(!P[id][s]){ P[id][s]=true; changed=true; } };
+  while(changed&&guard++<60){ changed=false;
+    COMPONENTS.forEach(c=>{ if(!op(c)) return; (c.source||[]).forEach(s=>{ if(activeSys.has(s)) set(c.id,s); }); });
+    COMPONENTS.forEach(c=>{ if(!op(c)||!c.converts) return; if(activeSys.has(c.converts.to)&&P[c.id][c.converts.from]) set(c.id,c.converts.to); });
+    CONNECTIONS.forEach(([a,b,s])=>{ if(!activeSys.has(s)) return; const A=compById[a],B=compById[b]; if(op(A)&&P[a][s]&&isOn(B)) set(b,s); if(op(B)&&P[b][s]&&isOn(A)) set(a,s); }); }
+  return P; }
+let SIM_P={};
+function compActive(c){ if(c._on===false) return false; return c.sys.some(s=>SIM_P[c.id]&&SIM_P[c.id][s]); }
+function applySim(){ SIM_P=simulate(); const grey=new THREE.Color(0x39505d);
+  COMPONENTS.forEach(c=>{ const on=sysVisible(c); c._mesh.visible=on; c._label.visible=on; const act=compActive(c); const col=new THREE.Color(SYSTEMS[c.sys[0]].color);
+    c._mesh.material.color.copy(act?col:grey); c._mesh.material.emissive.copy(act?col:grey); c._mesh.material.emissiveIntensity=act?0.85:0.06; c._mesh.material.opacity=act?1:0.5; c._mesh.material.transparent=true;
+    c._mesh.scale.setScalar(c===selected?1.3:(act?1.05:0.85)); c._label.material.opacity=act?1:0.4;
+    c._halo.material.color.copy(col); c._halo.material.opacity=(c===selected)?0.16:0; c._halo.scale.setScalar(c===selected?1:0.001); });
+  connObjs.forEach(o=>{ const vis=activeSys.has(o.sys)&&compById[o.a]._mesh.visible&&compById[o.b]._mesh.visible; o.mesh.visible=vis;
+    const flow=vis&&SIM_P[o.a]&&SIM_P[o.b]&&SIM_P[o.a][o.sys]&&SIM_P[o.b][o.sys]; o._flow=flow;
+    o.mesh.material.color.copy(flow?o.col:grey); o.mesh.material.emissive.copy(flow?o.col:grey); o.mesh.material.emissiveIntensity=flow?1.0:0.08; o.mesh.material.opacity=flow?1:0.28; o.dots.forEach(d=>d.visible=false); }); }
+function refresh(){ if(mode==='sim') applySim(); else applyNormal(); }
+
+/* ============================================================ PANELS ============================================================ */
+function esc(s){ return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+const detail=document.getElementById('detail');
+function renderDetail(c){ if(!c){ detail.classList.remove('show'); return; } detail.classList.add('show');
+  document.getElementById('dTitle').textContent=c.name; document.getElementById('dType').textContent=c.type; document.getElementById('dDesc').textContent=c.desc||'';
+  document.getElementById('dChips').innerHTML=c.sys.map(s=>`<span class="chip"><span class="dot" style="background:${SYSTEMS[s].color}"></span>${SYSTEMS[s].name}</span>`).join('');
+  const ex=document.getElementById('dExtra'); ex.className='d-extra'; ex.innerHTML='';
+  const p=c.product||{};
+  function prodDisplay(){ let h='';
+    if(c.photo) h+=`<div class="photo"><img src="${c.photo}"></div>`;
+    const tech=[c.amp?fmt(c.amp,1)+' A':'',c.hours?fmt(c.hours,1)+' h/Tag':'',c.ah?fmt(c.ah,0)+' Ah':'',c.liter?fmt(c.liter,0)+' L':''].filter(Boolean).join(' · ');
+    if(p.brand||p.model||p.url||p.note||tech||c.service||c.warranty||c.logNote){ const title=[p.brand,p.model].filter(Boolean).join(' ');
+      h+='<div class="prod">'; if(title) h+=`<div class="prod-name">${esc(title)}</div>`;
+      if(tech) h+=`<div class="prod-note">${esc(tech)}</div>`;
+      if(p.note) h+=`<div class="prod-note">${esc(p.note)}</div>`;
+      if(c.service) h+=`<div class="prod-note">Service: ${esc(c.service)}</div>`;
+      if(c.warranty) h+=`<div class="prod-note">Garantie bis: ${esc(c.warranty)}</div>`;
+      if(c.logNote) h+=`<div class="prod-note">${esc(c.logNote)}</div>`;
+      if(p.url) h+=`<a class="prod-link" href="${esc(p.url)}" target="_blank" rel="noopener">Produktseite ↗</a>`;
+      h+='</div>'; }
+    return h; }
+  if(mode==='move'){ ex.className='d-extra pad';
+    const tog=Object.entries(SYSTEMS).map(([k,s])=>`<span class="stog ${c.sys.includes(k)?'on':''}" data-k="${k}"><span class="dot" style="background:${s.color}"></span>${s.name}</span>`).join('');
+    ex.innerHTML=`<div class="edit-lab">Name</div><input class="txt" id="nmIn" value="${esc(c.name)}">
+      <div class="edit-lab">Systeme (Farbe)</div><div class="systog" id="sysTog">${tog}</div>
+      <div class="edit-lab">Produkt / gewähltes Bauteil</div>
+      <input class="txt" id="pBrand" placeholder="Hersteller" value="${esc(p.brand||'')}">
+      <input class="txt" id="pModel" placeholder="Modell / Typ" value="${esc(p.model||'')}">
+      <input class="txt" id="pUrl" placeholder="Link (https://…)" value="${esc(p.url||'')}">
+      <input class="txt" id="pNote" placeholder="Notiz" value="${esc(p.note||'')}">
+      <div class="edit-lab">Technik</div>
+      <div class="tk-grid">
+        <input class="txt" id="tAmp" placeholder="Strom A" value="${c.amp!=null?c.amp:''}">
+        <input class="txt" id="tHours" placeholder="Std/Tag" value="${c.hours!=null?c.hours:''}">
+        <input class="txt" id="tAh" placeholder="Batterie Ah" value="${c.ah!=null?c.ah:''}">
+        <input class="txt" id="tLit" placeholder="Tank L" value="${c.liter!=null?c.liter:''}">
+      </div>
+      <div class="edit-lab">Foto</div>
+      ${c.photo?`<div class="photo"><img src="${c.photo}"></div>`:''}
+      <div class="photo-edit"><div class="mini-btn" id="foBtn">${c.photo?'Foto ersetzen':'Foto hinzufügen'}</div>${c.photo?'<div class="mini-btn" id="foDel">Entfernen</div>':''}</div>
+      <div class="edit-lab">Wartung</div>
+      <input class="txt" id="wSvc" placeholder="Letzter Service (z. B. 2026-05)" value="${esc(c.service||'')}">
+      <input class="txt" id="wWar" placeholder="Garantie bis" value="${esc(c.warranty||'')}">
+      <input class="txt" id="wLog" placeholder="Logbuch-Notiz" value="${esc(c.logNote||'')}">
+      <div class="swrow" style="padding:10px 0 2px"><span class="lname">In Simulation schaltbar</span><div class="toggle ${c.sw?'on':''}" id="swT"></div></div>
+      <div class="slider-row"><label>Höhe</label><input type="range" id="hSl" min="-2.4" max="1.4" step="0.02" value="${c.pos[1]}"></div>
+      <div class="coord" id="hCoord">x ${c.pos[0].toFixed(2)}   y ${c.pos[1].toFixed(2)}   z ${c.pos[2].toFixed(2)}</div>
+      <div class="row-btns"><div class="mini-btn" id="delBtn">Bauteil löschen</div></div>`;
+    document.getElementById('nmIn').addEventListener('input',ev=>{ c.name=ev.target.value||' '; refreshLabel(c); markDirty(); });
+    const setP=()=>{ c.product={ brand:document.getElementById('pBrand').value, model:document.getElementById('pModel').value, url:document.getElementById('pUrl').value, note:document.getElementById('pNote').value }; markDirty(); };
+    ['pBrand','pModel','pUrl','pNote'].forEach(id=>document.getElementById(id).addEventListener('input',setP));
+    const numOr=v=>{ const n=parseFloat(String(v).replace(',','.')); return isFinite(n)?n:undefined; };
+    document.getElementById('tAmp').addEventListener('input',ev=>{ c.amp=numOr(ev.target.value); markDirty(); });
+    document.getElementById('tHours').addEventListener('input',ev=>{ c.hours=numOr(ev.target.value); markDirty(); });
+    document.getElementById('tAh').addEventListener('input',ev=>{ c.ah=numOr(ev.target.value); markDirty(); });
+    document.getElementById('tLit').addEventListener('input',ev=>{ c.liter=numOr(ev.target.value); markDirty(); });
+    document.getElementById('foBtn').onclick=()=>pickPhoto(c);
+    const foDel=document.getElementById('foDel'); if(foDel) foDel.onclick=()=>{ c.photo=null; markDirty(); renderDetail(c); };
+    document.getElementById('wSvc').addEventListener('input',ev=>{ c.service=ev.target.value; markDirty(); });
+    document.getElementById('wWar').addEventListener('input',ev=>{ c.warranty=ev.target.value; markDirty(); });
+    document.getElementById('wLog').addEventListener('input',ev=>{ c.logNote=ev.target.value; markDirty(); });
+    document.getElementById('hSl').addEventListener('input',ev=>{ c._mesh.position.y=parseFloat(ev.target.value); syncComp(c); });
+    document.getElementById('swT').onclick=()=>{ c.sw=!c.sw; if(c.sw&&c._on===undefined) c._on=true; markDirty(); renderDetail(c); };
+    ex.querySelectorAll('.stog').forEach(t=>t.onclick=()=>{ const k=t.dataset.k; const has=c.sys.includes(k); if(has){ if(c.sys.length>1) c.sys=c.sys.filter(x=>x!==k); } else c.sys=[...c.sys,k];
+      setPrimaryColor(c); refreshLabel(c); markDirty(); refresh(); renderDetail(c); });
+    document.getElementById('delBtn').onclick=()=>deleteComponent(c); }
+  else if(mode==='sim'&&c.sw){ ex.className='d-extra pad'; const act=compActive(c);
+    const isValve=c.type==='Absperrhahn'||c.shape==='valve'; const onTxt=isValve?'Geöffnet':'Eingeschaltet', offTxt=isValve?'Geschlossen':'Ausgeschaltet';
+    ex.innerHTML=`<div class="bigswitch"><span>${c._on?onTxt:offTxt}</span><div class="toggle ${c._on?'on':''}" id="bigT"></div></div>
+      <div class="simstat ${act?'on':'off'}">${act?'● versorgt / durchgängig':'○ ohne Versorgung'}</div>`+prodDisplay();
+    document.getElementById('bigT').onclick=()=>{ c._on=!c._on; markDirty(); refresh(); renderLeft(); renderDetail(c); }; }
+  else if(mode==='sim'){ ex.className='d-extra pad'; const act=compActive(c);
+    ex.innerHTML=`<div class="simstat ${act?'on':'off'}">${act?'● versorgt':'○ ohne Versorgung'}</div><div class="coord">Durchleitendes Bauteil – kein Schalter.</div>`+prodDisplay(); }
+  else { const pd=prodDisplay(); if(pd){ ex.className='d-extra'; ex.innerHTML=pd; } }
+  const seen=new Set(),rows=[];
+  connObjs.forEach(o=>{ const other=o.a===c.id?o.b:(o.b===c.id?o.a:null); if(other&&!seen.has(other+o.sys)){ seen.add(other+o.sys); rows.push(`<div class="conn-item" data-id="${other}"><span class="bar" style="background:${SYSTEMS[o.sys].color}"></span>${compById[other].name}<span class="arrow">→</span></div>`); } });
+  const box=document.getElementById('dConns'); box.innerHTML=rows.join('')||'<div style="padding:6px 8px;color:var(--ink-faint);font-size:12px">Noch keine Verbindungen.</div>';
+  box.querySelectorAll('.conn-item').forEach(it=>it.onclick=()=>select(compById[it.dataset.id])); }
+
+const left=document.getElementById('leftPanel');
+function slider(id,label,min,max,step,val){ return `<div class="ctrl"><label>${label}</label><input type="range" id="${id}" min="${min}" max="${max}" step="${step}" value="${val}"></div>`; }
+function renderLeft(){
+  if(mode==='plan'){ let html=`<div class="panel-head">Referenzplan</div>`;
+    html+=`<div class="big-file" id="loadPlan">${ref.tex?'⤓ Anderes Bild laden':'⤓ Deckplan / Seitenriss laden'}</div>`;
+    if(ref.tex){ html+=`<div class="seg"><div class="sgb ${ref.mode==='top'?'on':''}" data-o="top">Draufsicht</div><div class="sgb ${ref.mode==='side'?'on':''}" data-o="side">Seitenriss</div></div>`;
+      html+=slider('rScale','Größe',0.2,3,0.01,ref.scale)+slider('rOx','Längs (x)',-6,16,0.1,ref.ox);
+      if(ref.mode==='top'){ html+=slider('rOz','Quer (z)',-5,5,0.1,ref.oz)+slider('rOy','Ebenenhöhe',-2.6,2,0.05,ref.oy); } else { html+=slider('rOy','Höhe (y)',-3,3,0.05,ref.oy); }
+      html+=slider('rRot','Drehung',-180,180,1,ref.rot)+slider('rOp','Deckkraft',0.1,1,0.02,ref.opacity);
+      html+=`<div class="swrow" style="padding-top:9px"><span class="lname">Plan anzeigen</span><div class="toggle ${ref.visible?'on':''}" id="tPlan"></div></div>`;
+      html+=`<div class="swrow"><span class="lname">Boot &amp; Innenausbau</span><div class="toggle ${hullGroup.visible?'on':''}" id="tHull"></div></div>`;
+      html+=`<div class="foot"><div class="mini-btn" id="rmPlan">Plan entfernen</div></div>`;
+    } else { html+=`<div class="note">Lade ein Foto oder eine Zeichnung deines Grundrisses (Draufsicht) oder Längsschnitts als PNG/JPG. Richte es dann mit den Reglern über dem Rumpf aus und setze im Modus „Verschieben“ die Bauteile darauf.</div>`; }
+    html+=`<div class="panel-head" style="border-top:1px solid var(--line)">Maßstab</div><div class="ctrl"><label>Bootslänge</label><input type="range" id="rLen" min="4" max="25" step="0.1" value="${boatLengthM}"><span id="rLenV" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-dim);min-width:46px;text-align:right">${boatLengthM.toFixed(1)} m</span></div><div class="note">Reale Bootslänge — legt fest, wie Positionen und Leitungslängen in Metern gerechnet werden.</div>`;
+    left.innerHTML=html; document.getElementById('loadPlan').onclick=()=>document.getElementById('planFile').click();
+    const rl=document.getElementById('rLen'); if(rl) rl.oninput=ev=>{ boatLengthM=parseFloat(ev.target.value); document.getElementById('rLenV').textContent=boatLengthM.toFixed(1)+' m'; markDirty(); };
+    if(ref.tex){ left.querySelectorAll('.sgb').forEach(b=>b.onclick=()=>{ ref.mode=b.dataset.o; if(ref.mode==='side') ref.oz=0; updateRef(); renderLeft(); });
+      const bind=(id,f)=>{ const e=document.getElementById(id); if(e) e.oninput=ev=>{ f(parseFloat(ev.target.value)); updateRef(); }; };
+      bind('rScale',v=>ref.scale=v); bind('rOx',v=>ref.ox=v); bind('rOz',v=>ref.oz=v); bind('rOy',v=>ref.oy=v); bind('rRot',v=>ref.rot=v); bind('rOp',v=>ref.opacity=v);
+      document.getElementById('tPlan').onclick=()=>{ ref.visible=!ref.visible; updateRef(); renderLeft(); };
+      document.getElementById('tHull').onclick=()=>{ hullGroup.visible=!hullGroup.visible; renderLeft(); };
+      document.getElementById('rmPlan').onclick=removePlan; } return; }
+  if(mode==='sim'){ const rows=COMPONENTS.filter(c=>c.sw).map(c=>`<div class="swrow"><span class="ldot" style="background:${SYSTEMS[c.sys[0]].color}"></span><span class="lname">${c.name}</span><div class="toggle ${c._on?'on':''}" data-id="${c.id}"></div></div>`).join('');
+    const scen=SCENARIOS.map((s,i)=>`<div class="scen-row"><span class="snm" data-i="${i}">${esc(s.name)}</span><span class="del" data-i="${i}">×</span></div>`).join('')||'<div class="note" style="padding:2px 15px 8px">Noch keine Szenarien gespeichert.</div>';
+    left.innerHTML=`<div class="panel-head">Szenarien</div>${scen}<div class="add-row" style="padding-bottom:10px"><div class="add-btn" id="scenAdd">＋ Schalter als Szenario</div></div><div class="panel-head" style="border-top:1px solid var(--line)">Schalttafel · Betrieb</div><div class="sw-list">${rows}</div><div class="foot"><div class="mini-btn" id="allSwOn">Alles an</div><div class="mini-btn" id="allSwOff">Alles aus</div></div>`;
+    left.querySelectorAll('.scen-row .snm').forEach(s=>s.onclick=()=>applyScenario(parseInt(s.dataset.i)));
+    left.querySelectorAll('.scen-row .del').forEach(s=>s.onclick=()=>{ SCENARIOS.splice(parseInt(s.dataset.i),1); markDirty(); renderLeft(); });
+    left.querySelector('#scenAdd').onclick=()=>{ const nm=prompt('Name des Szenarios:','Szenario '+(SCENARIOS.length+1)); if(nm){ const states={}; COMPONENTS.forEach(c=>{ if(c.sw) states[c.id]=c._on!==false; }); SCENARIOS.push({name:nm,states:states}); markDirty(); renderLeft(); } };
+    left.querySelectorAll('.toggle').forEach(t=>t.onclick=()=>{ const c=compById[t.dataset.id]; c._on=!c._on; markDirty(); refresh(); renderLeft(); if(selected===c) renderDetail(c); });
+    left.querySelector('#allSwOn').onclick=()=>{ COMPONENTS.forEach(c=>{ if(c.sw)c._on=true; }); markDirty(); refresh(); renderLeft(); };
+    left.querySelector('#allSwOff').onclick=()=>{ COMPONENTS.forEach(c=>{ if(c.sw)c._on=false; }); markDirty(); refresh(); renderLeft(); }; return; }
+  const picking=(mode==='connect');
+  const head=picking?'Leitungsfarbe wählen':'Systeme · antippen zum Filtern';
+  const rows=Object.entries(SYSTEMS).map(([k,s])=>{ const cnt=COMPONENTS.filter(c=>c.sys.includes(k)).length;
+    const cls=picking?`sys-row pick ${currentSys===k?'sel':''}`:`sys-row ${activeSys.has(k)?'':'off'}`;
+    return `<div class="${cls}" data-key="${k}"><span class="dot" style="background:${s.color};color:${s.color}"></span><span class="name">${s.name}</span><span class="count">${cnt}</span></div>`; }).join('');
+  const add=(mode==='move')?`<div class="add-row"><div class="add-btn" data-k="part">＋ Bauteil</div><div class="add-btn" data-k="thruhull">＋ Borddurchlass</div><div class="add-btn" data-k="valve">＋ Seeventil / Hahn</div><div class="add-btn" data-k="n2k">＋ NMEA-Gerät</div></div>`:'';
+  const foot=picking?'':`<div class="foot"><div class="mini-btn" id="allOn">Alle</div><div class="mini-btn" id="allOff">Keine</div></div>`;
+  left.innerHTML=`<div class="panel-head">${head}</div>${add}${rows}${foot}`;
+  if(mode==='move') left.querySelectorAll('.add-btn').forEach(b=>b.onclick=()=>addComponent(b.dataset.k));
+  left.querySelectorAll('.sys-row').forEach(r=>r.onclick=()=>{ const k=r.dataset.key; if(picking){ currentSys=k; renderLeft(); } else { if(activeSys.has(k)) activeSys.delete(k); else activeSys.add(k); refresh(); renderLeft(); } });
+  if(!picking){ left.querySelector('#allOn').onclick=()=>{ Object.keys(SYSTEMS).forEach(k=>activeSys.add(k)); refresh(); renderLeft(); }; left.querySelector('#allOff').onclick=()=>{ Object.keys(SYSTEMS).forEach(k=>activeSys.delete(k)); refresh(); renderLeft(); }; } }
+
+const hint=document.getElementById('hint');
+const HINTS={
+  view:`<b>Ziehen</b> <span class="k">↻</span> drehen · <b>Scrollen</b> zoomen<br><b>Klick</b> auf ein Bauteil für Details`,
+  plan:`<b>Bild laden</b>, dann mit den Reglern über den Rumpf legen<br>Innenausbau lässt sich unten ausblenden`,
+  move:`<b>Bauteil ziehen</b> = Längs/Quer · <b>Höhe</b> per Regler<br>Links neu: Bauteil, <span class="k">Borddurchlass</span>, <span class="k">Hahn</span>, NMEA-Gerät<br>Rechts umbenennen, System & löschen`,
+  connect:`<b>1.</b> Farbe links wählen<br><b>2.</b> zwei Bauteile nacheinander anklicken<br><b>Leitung anklicken</b> löscht sie`,
+  sim:`<b>Schalter</b> links oder Klick aufs Bauteil<br>Hähne <span class="k">zu</span> sperren den Fluss · Punkte zeigen ihn`,
+};
+function setMode(m){ mode=m; pending=null; document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode===m));
+  hint.innerHTML=HINTS[m]; el.style.cursor=m==='move'?'grab':(m==='connect'?'crosshair':'default'); renderLeft(); refresh(); renderDetail(selected); }
+document.querySelectorAll('.mode-btn').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));
+document.getElementById('resetBtn').onclick=()=>{ Object.assign(cam,DEF); updateCam(); select(null); };
+
+/* ---- Speichern / Laden (Datei-Export & -Import) ---- */
+function clearScene(){
+  connObjs.slice().forEach(o=>{ world.remove(o.mesh); o.mesh.geometry.dispose(); o.dots.forEach(d=>world.remove(d)); }); connObjs.length=0;
+  COMPONENTS.forEach(c=>{ world.remove(c._mesh); c._mesh.geometry.dispose(); world.remove(c._halo); if(c._label.material.map) c._label.material.map.dispose(); world.remove(c._label); });
+  COMPONENTS.length=0; compMeshes.length=0; Object.keys(compById).forEach(k=>delete compById[k]); CONNECTIONS.length=0;
+}
+let boatLengthM=10; function mPerU(){ return boatLengthM/L; }
+let SCENARIOS=[];
+let BOATS=[{name:'Mein Boot',state:null}]; let boatIx=0;
+function captureBoat(){ if(BOATS[boatIx]) BOATS[boatIx].state=buildState(); }
+function serializeComp(c){ return { id:c.id,name:c.name,type:c.type,sys:c.sys,shape:c.shape||'box',source:c.source,converts:c.converts,needs:c.needs,sw:!!c.sw,on:c._on!==false,pos:c.pos,desc:c.desc,product:c.product,amp:c.amp,ah:c.ah,liter:c.liter,hours:c.hours,photo:c.photo,service:c.service,warranty:c.warranty,logNote:c.logNote }; }
+function buildState(){ return { components:COMPONENTS.map(serializeComp), connections:CONNECTIONS.map(x=>x.slice()),
+  ref: ref.tex?{ dataURL:ref.dataURL,mode:ref.mode,scale:ref.scale,ox:ref.ox,oy:ref.oy,oz:ref.oz,rot:ref.rot,opacity:ref.opacity,visible:ref.visible,aspect:ref.aspect }:null,
+  activeSys:[...activeSys], camera:{theta:cam.theta,phi:cam.phi,radius:cam.radius}, customN:customN,
+  scenarios:SCENARIOS.map(s=>({name:s.name,states:Object.assign({},s.states)})), boatLengthM:boatLengthM }; }
+function exportState(){ captureBoat();
+  const file={ version:3, activeBoat:boatIx, boats:BOATS.map(b=>({name:b.name,state:b.state})) };
+  const blob=new Blob([JSON.stringify(file)],{type:'application/json'}); const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download='bordsysteme-'+new Date().toISOString().slice(0,10)+'.json';
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),1500); dirty=false;
+}
+function contentBounds(){
+  let minX=-0.3,maxX=L+0.3,minY=-2.95,maxY=1.35,minZ=-2.2,maxZ=2.2;
+  COMPONENTS.forEach(c=>{ if(!c._mesh.visible) return; const p=c.pos;
+    minX=Math.min(minX,p[0]-0.5); maxX=Math.max(maxX,p[0]+0.5);
+    minY=Math.min(minY,p[1]-0.4); maxY=Math.max(maxY,p[1]+0.8);
+    minZ=Math.min(minZ,p[2]-0.4); maxZ=Math.max(maxZ,p[2]+0.4); });
+  return {minX,maxX,minY,maxY,minZ,maxZ};
+}
+function renderOrthoView(view,pxW){
+  const b=contentBounds(), pad=1.05;
+  const wWorld=(b.maxX-b.minX)*pad;
+  const hWorld=((view==='top')?(b.maxZ-b.minZ):(b.maxY-b.minY))*pad;
+  const cx=(b.minX+b.maxX)/2;
+  const oc=new THREE.OrthographicCamera(-wWorld/2,wWorld/2,hWorld/2,-hWorld/2,0.1,600);
+  if(view==='top'){ const cz=(b.minZ+b.maxZ)/2; oc.position.set(cx,200,cz); oc.up.set(0,0,-1); oc.lookAt(cx,0,cz); }
+  else { const cy=(b.minY+b.maxY)/2; oc.position.set(cx,cy,200); oc.up.set(0,1,0); oc.lookAt(cx,cy,0); }
+  const pxH=Math.max(1,Math.round(pxW*hWorld/wWorld));
+  renderer.setSize(pxW,pxH,false); renderer.render(scene,oc);
+  const c=document.createElement('canvas'); c.width=pxW; c.height=pxH; c.getContext('2d').drawImage(renderer.domElement,0,0,pxW,pxH); return c;
+}
+function exportImage(){
+  const savedSel=selected, wv=waterMesh?waterMesh.visible:false;
+  if(waterMesh) waterMesh.visible=false; selected=null; applyNormal();
+  const BW=1500; const topC=renderOrthoView('top',BW); const sideC=renderOrthoView('side',BW);
+  if(waterMesh) waterMesh.visible=wv; selected=savedSel;
+  renderer.setSize(innerWidth,innerHeight,true); camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); refresh(); updateCam();
+  const M=48, gap=26, titleH=32, headH=92;
+  const active=Object.keys(SYSTEMS).filter(k=>activeSys.has(k));
+  const cw=BW+M*2, ch=M+headH+(titleH+topC.height)+gap+(titleH+sideC.height)+M;
+  const cv=document.createElement('canvas'); cv.width=cw; cv.height=ch; const x=cv.getContext('2d');
+  const g=x.createRadialGradient(cw*0.72,-ch*0.06,0,cw*0.5,ch*0.4,Math.max(cw,ch)); g.addColorStop(0,'#10283b'); g.addColorStop(0.5,'#0a1a28'); g.addColorStop(1,'#05101a');
+  x.fillStyle=g; x.fillRect(0,0,cw,ch);
+  x.fillStyle='#e6f2f6'; x.font='700 30px "Space Grotesk", sans-serif'; x.fillText('Bordsysteme · 3D-Übersicht', M, M+30);
+  x.fillStyle='#7f97a3'; x.font='500 15px "IBM Plex Mono", monospace'; x.fillText(new Date().toLocaleDateString('de-DE'), M, M+52);
+  let fs=15; const legW=f=>{ x.font=`500 ${f}px "IBM Plex Mono", monospace`; let w=0; active.forEach(k=>{ w+=24+x.measureText(SYSTEMS[k].name).width+16; }); return w; };
+  while(fs>10 && legW(fs)>cw-M*2) fs--;
+  x.font=`500 ${fs}px "IBM Plex Mono", monospace`; let lx=M, ly=M+80;
+  active.forEach(k=>{ const s=SYSTEMS[k]; x.fillStyle=s.color; x.beginPath(); x.arc(lx+6,ly-5,6,0,7); x.fill();
+    x.fillStyle='#c3d4db'; x.fillText(s.name,lx+18,ly); lx+=24+x.measureText(s.name).width+16; });
+  function panel(px,py,pw,ph){ x.fillStyle='rgba(7,17,27,.55)'; roundRect(x,px,py,pw,ph,10); x.fill(); x.strokeStyle='rgba(120,170,195,.20)'; x.lineWidth=1.5; roundRect(x,px,py,pw,ph,10); x.stroke(); }
+  let y=M+headH;
+  x.fillStyle='#8fb0c0'; x.font='600 15px "IBM Plex Mono", monospace';
+  x.fillText('DRAUFSICHT', M, y+16); y+=titleH; panel(M,y,BW,topC.height); x.drawImage(topC,M,y); y+=topC.height+gap;
+  x.fillStyle='#8fb0c0'; x.fillText('SEITENRISS', M, y+16); y+=titleH; panel(M,y,BW,sideC.height); x.drawImage(sideC,M,y);
+  const a=document.createElement('a'); a.href=cv.toDataURL('image/png'); a.download='bordsysteme-ansichten-'+new Date().toISOString().slice(0,10)+'.png';
+  document.body.appendChild(a); a.click(); a.remove();
+}
+addEventListener('beforeunload',e=>{ if(dirty){ e.preventDefault(); e.returnValue=''; } });
+function importState(file){ const rd=new FileReader(); rd.onload=()=>{ let f; try{ f=JSON.parse(rd.result); }catch(err){ alert('Diese Datei ist keine gültige Bordsysteme-Datei.'); return; }
+    if(f&&Array.isArray(f.boats)){ BOATS=f.boats.map(b=>({name:b.name||'Boot',state:b.state})); boatIx=Math.max(0,Math.min(f.activeBoat||0,BOATS.length-1)); applyBoatState(BOATS[boatIx].state); }
+    else if(f&&f.components){ BOATS=[{name:'Mein Boot',state:f}]; boatIx=0; applyBoatState(f); }
+    else { alert('Diese Datei enthält keinen gespeicherten Stand.'); return; }
+    renderBoatSwitcher(); dirty=false; }; rd.readAsText(file); }
+function applyBoatState(st){ clearScene(); st=st||{};
+  (st.components||[]).forEach(cd=>{ const c={ id:cd.id,name:cd.name,type:cd.type,sys:(cd.sys||['dc12']).slice(),shape:cd.shape,source:cd.source,converts:cd.converts,needs:cd.needs,pos:(cd.pos||[5,0,0]).slice(),desc:cd.desc,product:cd.product,amp:cd.amp,ah:cd.ah,liter:cd.liter,hours:cd.hours,photo:cd.photo,service:cd.service,warranty:cd.warranty,logNote:cd.logNote };
+    if(cd.sw) c.sw=true; c.on=cd.on!==false; buildCompVisuals(c); COMPONENTS.push(c); });
+  (st.connections||[]).forEach(cn=>{ if(compById[cn[0]]&&compById[cn[1]]&&SYSTEMS[cn[2]]){ CONNECTIONS.push([cn[0],cn[1],cn[2]]); buildConnObj(cn[0],cn[1],cn[2]); } });
+  activeSys.clear(); (Array.isArray(st.activeSys)?st.activeSys:Object.keys(SYSTEMS)).forEach(s=>{ if(SYSTEMS[s]) activeSys.add(s); });
+  if(st.camera){ cam.theta=st.camera.theta; cam.phi=st.camera.phi; cam.radius=st.camera.radius; updateCam(); }
+  customN=(typeof st.customN==='number')?st.customN:0;
+  SCENARIOS=Array.isArray(st.scenarios)?st.scenarios.map(s=>({name:s.name,states:Object.assign({},s.states)})):[];
+  boatLengthM=(typeof st.boatLengthM==='number')?st.boatLengthM:10;
+  if(st.ref&&st.ref.dataURL){ ref.mode=st.ref.mode||'top'; ref.scale=st.ref.scale; ref.ox=st.ref.ox; ref.oy=st.ref.oy; ref.oz=st.ref.oz; ref.rot=st.ref.rot; ref.opacity=st.ref.opacity; ref.visible=st.ref.visible!==false; ref.aspect=st.ref.aspect||1; loadPlanFromDataURL(st.ref.dataURL); }
+  else removePlan();
+  selected=null; pending=null; refresh(); renderLeft(); renderDetail(null);
+}
+/* ---- Mehrere Boote ---- */
+function renderBoatSwitcher(){ const sel=document.getElementById('boatSel'); sel.innerHTML=BOATS.map((b,i)=>`<option value="${i}" ${i===boatIx?'selected':''}>${esc(b.name)}</option>`).join(''); }
+function switchBoat(n){ if(n===boatIx||!BOATS[n]) { renderBoatSwitcher(); return; } captureBoat(); boatIx=n; applyBoatState(BOATS[n].state); renderBoatSwitcher(); markDirty(); }
+function newBoat(){ captureBoat(); BOATS.push({name:'Boot '+(BOATS.length+1),state:{components:[],connections:[],activeSys:Object.keys(SYSTEMS),boatLengthM:10}}); boatIx=BOATS.length-1; applyBoatState(BOATS[boatIx].state); renderBoatSwitcher(); markDirty(); }
+function renameBoat(){ const nm=prompt('Name des Boots:',BOATS[boatIx].name); if(nm){ BOATS[boatIx].name=nm; renderBoatSwitcher(); markDirty(); } }
+function delBoat(){ if(BOATS.length<=1){ alert('Es muss mindestens ein Boot bleiben.'); return; } if(!confirm('Dieses Boot löschen?')) return; BOATS.splice(boatIx,1); boatIx=Math.max(0,boatIx-1); applyBoatState(BOATS[boatIx].state); renderBoatSwitcher(); markDirty(); }
+/* ---- Szenarien ---- */
+function applyScenario(i){ const s=SCENARIOS[i]; if(!s) return; COMPONENTS.forEach(c=>{ if(c.sw&&s.states[c.id]!==undefined) c._on=s.states[c.id]; }); markDirty(); refresh(); renderLeft(); if(selected) renderDetail(selected); }
+/* ---- Berechnungen ---- */
+function fmt(n,d){ const p=Math.pow(10,d||0); return (Math.round((n||0)*p)/p).toLocaleString('de-DE'); }
+function powerBalance(){ let totalAh=0,drawA=0,dailyAh=0; const cons=[];
+  COMPONENTS.forEach(c=>{ if(c.ah>0&&c.sys.includes('dc12')) totalAh+=c.ah;
+    if(c.amp>0){ const on=c._on!==false, h=(typeof c.hours==='number'?c.hours:0); cons.push({name:c.name,amp:c.amp,hours:h,on}); if(on) drawA+=c.amp; dailyAh+=c.amp*h; } });
+  const usable=totalAh*0.5; return {totalAh,usable,drawA,dailyAh,runtime:drawA>0?usable/drawA:null,days:dailyAh>0?usable/dailyAh:null,cons}; }
+function tankTotals(){ const t={fresh:0,fuel:0,black:0},list=[];
+  COMPONENTS.forEach(c=>{ if(c.liter>0){ const k=c.sys.includes('fresh')?'fresh':c.sys.includes('fuel')?'fuel':c.sys.includes('black')?'black':null; if(k){ t[k]+=c.liter; list.push({name:c.name,k,liter:c.liter}); } } });
+  return {t,list}; }
+function lineLengths(){ const per={},f=mPerU(); connObjs.forEach(o=>{ per[o.sys]=(per[o.sys]||0)+o.curve.getLength()*f; }); return per; }
+function bomRows(){ return COMPONENTS.filter(c=>{ const p=c.product||{}; return p.brand||p.model||p.url||p.note||c.amp||c.ah||c.liter; })
+  .map(c=>{ const p=c.product||{}; return { name:c.name,type:c.type||'',sys:c.sys.map(s=>SYSTEMS[s].name).join(', '),brand:p.brand||'',model:p.model||'',spec:[c.amp?fmt(c.amp,1)+' A':'',c.ah?fmt(c.ah,0)+' Ah':'',c.liter?fmt(c.liter,0)+' L':''].filter(Boolean).join(' · '),note:p.note||'',url:p.url||'' }; }); }
+function csvBOM(){ const head=['Bauteil','Typ','System','Hersteller','Modell','Technik','Notiz','Link']; const q=v=>'"'+String(v==null?'':v).replace(/"/g,'""')+'"';
+  const lines=[head.map(q).join(',')]; bomRows().forEach(r=>lines.push([r.name,r.type,r.sys,r.brand,r.model,r.spec,r.note,r.url].map(q).join(','))); return '\ufeff'+lines.join('\r\n'); }
+function downloadBlob(content,type,name){ const b=new Blob([content],{type:type+';charset=utf-8'}); const u=URL.createObjectURL(b); const a=document.createElement('a'); a.href=u; a.download=name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(u),1500); }
+/* ---- Auswertungs-Fenster ---- */
+let repTab='strom'; const REPTABS=[['strom','Strombilanz'],['tanks','Tanks'],['leitungen','Leitungen'],['stueck','Stückliste']];
+function openReport(){ document.getElementById('report').classList.add('show'); renderReport(); }
+function closeReport(){ document.getElementById('report').classList.remove('show'); }
+function renderReport(){
+  document.getElementById('repTabs').innerHTML=REPTABS.map(([k,l])=>`<div class="tab ${repTab===k?'on':''}" data-t="${k}">${l}</div>`).join('');
+  document.querySelectorAll('#repTabs .tab').forEach(t=>t.onclick=()=>{ repTab=t.dataset.t; renderReport(); });
+  let h=`<div class="print-only" style="margin-bottom:14px;font-size:16px"><b>Bordsysteme – ${esc(BOATS[boatIx]?BOATS[boatIx].name:'Boot')}</b> · ${new Date().toLocaleDateString('de-DE')}</div>`;
+  if(repTab==='strom'){ const p=powerBalance();
+    h+=`<div class="stat-grid">
+      <div class="stat"><div class="k">Batteriekapazität</div><div class="v">${fmt(p.totalAh,0)} <small>Ah</small></div></div>
+      <div class="stat"><div class="k">Nutzbar (~50 %)</div><div class="v">${fmt(p.usable,0)} <small>Ah</small></div></div>
+      <div class="stat"><div class="k">Last (eingeschaltet)</div><div class="v">${fmt(p.drawA,1)} <small>A</small></div></div>
+      <div class="stat"><div class="k">Laufzeit bei Last</div><div class="v">${p.runtime!=null?fmt(p.runtime,1):'–'} <small>h</small></div></div>
+      <div class="stat"><div class="k">Tagesverbrauch</div><div class="v">${fmt(p.dailyAh,0)} <small>Ah/Tag</small></div></div>
+      <div class="stat"><div class="k">Reichweite</div><div class="v">${p.days!=null?fmt(p.days,1):'–'} <small>Tage</small></div></div></div>
+      <table class="rep"><thead><tr><th>Verbraucher</th><th class="num">Strom</th><th class="num">h/Tag</th><th class="num">Ah/Tag</th><th>Status</th></tr></thead><tbody>`;
+    p.cons.forEach(c=>{ h+=`<tr><td>${esc(c.name)}</td><td class="num">${fmt(c.amp,1)} A</td><td class="num">${fmt(c.hours,1)}</td><td class="num">${fmt(c.amp*c.hours,1)}</td><td>${c.on?'● an':'○ aus'}</td></tr>`; });
+    if(!p.cons.length) h+=`<tr><td colspan="5" style="color:var(--ink-faint)">Noch keine Stromaufnahme hinterlegt — im Modus „Verschieben“ je Verbraucher Ampere und Stunden/Tag eintragen.</td></tr>`;
+    h+=`</tbody></table><div class="rep-note">Laufzeit/Reichweite mit 50 % nutzbarer Kapazität (Blei-Richtwert; bei LiFePO₄ eher 80–90 %). Ladequellen wie Solar oder Lichtmaschine sind hier nicht gegengerechnet.</div>`; }
+  else if(repTab==='tanks'){ const {t,list}=tankTotals();
+    h+=`<div class="stat-grid">
+      <div class="stat"><div class="k">Frischwasser</div><div class="v">${fmt(t.fresh,0)} <small>L</small></div></div>
+      <div class="stat"><div class="k">Diesel</div><div class="v">${fmt(t.fuel,0)} <small>L</small></div></div>
+      <div class="stat"><div class="k">Fäkalien</div><div class="v">${fmt(t.black,0)} <small>L</small></div></div></div>
+      <table class="rep"><thead><tr><th>Tank</th><th>System</th><th class="num">Kapazität</th></tr></thead><tbody>`;
+    list.forEach(r=>{ h+=`<tr><td>${esc(r.name)}</td><td>${SYSTEMS[r.k].name}</td><td class="num">${fmt(r.liter,0)} L</td></tr>`; });
+    if(!list.length) h+=`<tr><td colspan="3" style="color:var(--ink-faint)">Noch keine Tank-Kapazität hinterlegt (Liter je Tank im Modus „Verschieben“).</td></tr>`;
+    h+=`</tbody></table>`; }
+  else if(repTab==='leitungen'){ const per=lineLengths(),keys=Object.keys(per); let total=0; keys.forEach(k=>total+=per[k]);
+    h+=`<div class="stat-grid"><div class="stat"><div class="k">Gesamtlänge (Luftlinie)</div><div class="v">${fmt(total,1)} <small>m</small></div></div>
+      <div class="stat"><div class="k">Maßstab</div><div class="v">${fmt(boatLengthM,1)} <small>m Bootslänge</small></div></div></div>
+      <table class="rep"><thead><tr><th>System</th><th class="num">Länge</th></tr></thead><tbody>`;
+    keys.forEach(k=>{ h+=`<tr><td><span style="display:inline-block;width:9px;height:9px;border-radius:2px;background:${SYSTEMS[k].color};margin-right:7px"></span>${SYSTEMS[k].name}</td><td class="num">${fmt(per[k],1)} m</td></tr>`; });
+    if(!keys.length) h+=`<tr><td colspan="2" style="color:var(--ink-faint)">Keine Leitungen vorhanden.</td></tr>`;
+    h+=`</tbody></table><div class="rep-note">Grobe Luftlinien aus der 3D-Geometrie × Maßstab. Reale Kabel-/Schlauchwege sind länger — plane Zuschlag ein. Maßstab im Plan-Modus über „Bootslänge“ einstellen.</div>`; }
+  else { const rows=bomRows();
+    h+=`<table class="rep"><thead><tr><th>Bauteil</th><th>Hersteller / Modell</th><th>Technik</th><th>Link</th></tr></thead><tbody>`;
+    rows.forEach(r=>{ const hm=[r.brand,r.model].filter(Boolean).join(' '); h+=`<tr><td>${esc(r.name)}<div style="color:var(--ink-faint);font-size:11px">${esc(r.sys)}</div></td><td>${esc(hm)||'–'}</td><td>${esc(r.spec)||'–'}</td><td>${r.url?`<a href="${esc(r.url)}" target="_blank" rel="noopener">öffnen ↗</a>`:'–'}</td></tr>`; });
+    if(!rows.length) h+=`<tr><td colspan="4" style="color:var(--ink-faint)">Noch keine Produkte/Technik hinterlegt.</td></tr>`;
+    h+=`</tbody></table>`; }
+  document.getElementById('repBody').innerHTML=h;
+}
+/* ---- Foto pro Bauteil ---- */
+let photoTarget=null;
+document.getElementById('photoFile').onchange=e=>{ const f=e.target.files[0]; e.target.value=''; if(!f||!photoTarget) return; const c=photoTarget;
+  const rd=new FileReader(); rd.onload=()=>{ const img=new Image(); img.onload=()=>{ const mx=440,sc=Math.min(1,mx/Math.max(img.width,img.height)),cw=Math.round(img.width*sc),chh=Math.round(img.height*sc);
+    const cn=document.createElement('canvas'); cn.width=cw; cn.height=chh; cn.getContext('2d').drawImage(img,0,0,cw,chh); c.photo=cn.toDataURL('image/jpeg',0.82); markDirty(); if(selected===c) renderDetail(c); }; img.src=rd.result; }; rd.readAsDataURL(f); };
+function pickPhoto(c){ photoTarget=c; document.getElementById('photoFile').click(); }
+/* ---- Verdrahtung ---- */
+document.getElementById('saveBtn').onclick=exportState;
+document.getElementById('imgBtn').onclick=exportImage;
+document.getElementById('repBtn').onclick=openReport;
+document.getElementById('repX').onclick=closeReport;
+document.getElementById('report').addEventListener('click',e=>{ if(e.target.id==='report') closeReport(); });
+document.getElementById('repCSV').onclick=()=>downloadBlob(csvBOM(),'text/csv','stueckliste-'+new Date().toISOString().slice(0,10)+'.csv');
+document.getElementById('repPrint').onclick=()=>window.print();
+document.getElementById('loadBtn').onclick=()=>document.getElementById('stateFile').click();
+document.getElementById('stateFile').onchange=e=>{ if(e.target.files[0]) importState(e.target.files[0]); e.target.value=''; };
+document.getElementById('boatSel').onchange=e=>switchBoat(parseInt(e.target.value));
+document.getElementById('boatNew').onclick=newBoat;
+document.getElementById('boatRen').onclick=renameBoat;
+document.getElementById('boatDel').onclick=delBoat;
+
+/* ============================================================ LOOP ============================================================ */
+addEventListener('resize',()=>{ camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth,innerHeight); });
+let t0=performance.now();
+(function loop(now){ requestAnimationFrame(loop); const t=(now-t0)/1000;
+  if(mode==='sim'){ connObjs.forEach(o=>{ if(o._flow){ o.dots.forEach((d,i)=>{ d.visible=true; const u=((t*0.35)+i*0.5)%1; o.curve.getPoint(u,d.position); }); } else o.dots.forEach(d=>d.visible=false); }); }
+  renderer.render(scene,camera); })(t0);
+setMode('view'); select(null); renderBoatSwitcher();
+</script>
+</body>
+</html>
