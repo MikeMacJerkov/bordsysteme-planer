@@ -1,0 +1,8981 @@
+[
+ {
+  "id": "bavaria-cruiser-33",
+  "name": "Bavaria Cruiser 33",
+  "group": "Segelyacht",
+  "maker": "Bavaria",
+  "years": "ca. 2013–2018",
+  "hull": "segel",
+  "loa_m": 9.99,
+  "beam_m": 3.42,
+  "draft_m": 1.95,
+  "volt": 12,
+  "desc": "Kompakter Charter-Klassiker mit Volvo-Penta-Saildrive, je 150 l Diesel und Wasser, Dieselheizung, Warmwasser, Bugstrahlruder und elektrischer Ankerwinsch.",
+  "components": [
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Batterieladegerät 40 A",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 40
+    },
+    "source": "https://boats.iboats.com/research/2015-bavaria-yachts-33-cruiser/1530682.html"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 70
+    }
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank 3× AGM",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "ah": 270
+    },
+    "source": "https://boats.iboats.com/research/2015-bavaria-yachts-33-cruiser/1530682.html"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel / Hauptschalter (Navigationsecke)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Volvo Penta D1-30 (ca. 28 PS) mit Saildrive",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 115
+    },
+    "source": "https://uk.boats.com/sailing-boats/2015-bavaria-cruiser-33-9980710"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank 150 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 150
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/germany/heiligenhafen/bavaria-cruiser-33/s-33674"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank 150 l",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 150
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/germany/heiligenhafen/bavaria-cruiser-33/s-33674"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.3
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Warmwasserboiler (Motorwärmetauscher + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 20
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/germany/heiligenhafen/bavaria-cruiser-33/s-33674"
+   },
+   {
+    "key": "galley_tap",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "head_tap",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Bord-WC manuell",
+    "systems": [
+     "black"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://en.1a-yachtcharter.de/destinations/germany/heiligenhafen/bavaria-cruiser-33/s-33674"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank 50 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.33,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 50
+    }
+   },
+   {
+    "key": "black_seacock",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalienablass",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "black_thru",
+    "kind": "thruhull",
+    "name": "Borddurchlass Fäkalien",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "port",
+    "level": "cockpit"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "Gasherd 2 Flammen mit Backofen",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://en.1a-yachtcharter.de/destinations/germany/heiligenhafen/bavaria-cruiser-33/s-33674"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Diesel-Warmluftheizung",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/germany/heiligenhafen/bavaria-cruiser-33/s-33674"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/germany/heiligenhafen/bavaria-cruiser-33/s-33674"
+   },
+   {
+    "key": "bilge_out",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe (Spiegel)",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.03,
+    "side": "center",
+    "level": "cockpit"
+   },
+   {
+    "key": "thruster",
+    "kind": "consumer",
+    "name": "Bugstrahlruder elektrisch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.9,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 200,
+     "hours": 0.03
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/germany/heiligenhafen/bavaria-cruiser-33/s-33674"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Elektrische Ankerwinsch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 80,
+     "hours": 0.05
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/germany/heiligenhafen/bavaria-cruiser-33/s-33674"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlbox elektrisch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 10
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/germany/heiligenhafen/bavaria-cruiser-33/s-33674"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Beleuchtung LED innen/Navigationslichter",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2.5,
+     "hours": 5
+    }
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone (SeaTalkNG/N2K)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "Farb-Kartenplotter im Cockpit",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.5,
+     "hours": 8
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/germany/heiligenhafen/bavaria-cruiser-33/s-33674"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "Autopilot",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.08,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 3,
+     "hours": 4
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/germany/heiligenhafen/bavaria-cruiser-33/s-33674"
+   },
+   {
+    "key": "instr",
+    "kind": "n2kdev",
+    "name": "Instrumente Lot/Log/Wind",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.18,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.4,
+     "hours": 8
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/germany/heiligenhafen/bavaria-cruiser-33/s-33674"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "UKW-Seefunk",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 0.6,
+     "hours": 8
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/germany/heiligenhafen/bavaria-cruiser-33/s-33674"
+   },
+   {
+    "key": "ais",
+    "kind": "n2kdev",
+    "name": "AIS-Empfänger",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 0.3,
+     "hours": 8
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/germany/heiligenhafen/bavaria-cruiser-33/s-33674"
+   },
+   {
+    "key": "wind",
+    "kind": "sensor",
+    "name": "Windgeber Masttop",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "mast",
+    "source": "https://en.1a-yachtcharter.de/destinations/germany/heiligenhafen/bavaria-cruiser-33/s-33674"
+   },
+   {
+    "key": "depth",
+    "kind": "sensor",
+    "name": "Lot-/Loggeber",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge"
+   }
+  ],
+  "connections": [
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "holding",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "black_seacock",
+    "black_thru",
+    "black"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instr",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "ais",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "wind",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "depth",
+    "n2k"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "thruster",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "heater",
+    "fuel"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "pump",
+    "galley_tap",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "head_tap",
+    "fresh"
+   ],
+   [
+    "bilgepump",
+    "bilge_out",
+    "bilge"
+   ]
+  ],
+  "sources": [
+   "https://en.1a-yachtcharter.de/destinations/germany/heiligenhafen/bavaria-cruiser-33/s-33674",
+   "https://boats.iboats.com/research/2015-bavaria-yachts-33-cruiser/1530682.html",
+   "https://uk.boats.com/sailing-boats/2015-bavaria-cruiser-33-9980710"
+  ],
+  "uncertain": [
+   "LüA 9,99 m laut Charter-/Inseratsangaben (vermutlich Rumpflänge; LüA inkl. Beschlägen etwas größer)",
+   "Motor je nach Baujahr/Ausstattung teils D1-20 statt D1-30",
+   "Lichtmaschine 115 A Typwert Volvo D1",
+   "Batterien: 3 AGM-Verbraucherbatterien und 40-A-Lader aus einem Inserats-Suchauszug (iboats, Seite nicht abrufbar); Ah nicht angegeben, 3×90 Ah Typwert; Starterbatterie 70 Ah Typwert",
+   "Landanschluss nicht in der Charterliste, wegen Ladegerät angenommen",
+   "Fäkalientank 50 l und Boiler 20 l Typwerte; Fäkalientank in einem Inserat 2014 belegt",
+   "Bugstrahlruder hier aus Verbraucherbank gespeist angenommen (eigene Batterie nicht belegt)",
+   "NMEA-2000-Vernetzung der Elektronik nicht belegt",
+   "Lage (x/side/level) aller Bauteile nach typischer Raumaufteilung geschätzt, nicht aus Plänen übernommen",
+   "amp/hours der Verbraucher, Pumpen und Elektronik sind Typwerte der Größenklasse",
+   "Seeventil/Borddurchlass Fäkalien, Lenzöffnung, Druckwasserpumpe, Schalttafel, Beleuchtung und NMEA-2000-Backbone als übliche Ausstattung angenommen"
+  ]
+ },
+ {
+  "id": "bavaria-cruiser-37",
+  "name": "Bavaria Cruiser 37",
+  "group": "Segelyacht",
+  "maker": "Bavaria",
+  "years": "ca. 2014–2021",
+  "hull": "segel",
+  "loa_m": 11.3,
+  "beam_m": 3.67,
+  "draft_m": 1.95,
+  "volt": 12,
+  "desc": "Verbreitete Charter- und Eigneryacht mit Volvo-Penta-Saildrive, 150 l Diesel, Fäkalientank, Landstrom mit Ladegerät, Warmwasser und elektrischer Ankerwinsch.",
+  "components": [
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V mit Kabel",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://en.1a-yachtcharter.de/destinations/sweden/gothenburg/bavaria-cruiser-37/s-12601"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Batterieladegerät",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 40
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/sweden/gothenburg/bavaria-cruiser-37/s-12601"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 70
+    }
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "ah": 280
+    }
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel / Hauptschalter (Navigationsecke)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Volvo Penta D1-30 (ca. 28–30 PS) mit Saildrive",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 115
+    },
+    "source": "https://uk.boats.com/sailing-boats/2017-bavaria-cruiser-37-6147109"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank 150 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 150
+    },
+    "source": "https://pitter-yachting.com/en/news/new-yachts/bavaria-cruiser-37"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank 360 l",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 360
+    },
+    "source": "https://www.boat24.com/en/sailingboats/bavaria/bavaria-cruiser-37/detail/621479/"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.3
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Warmwasserboiler (Motorwärmetauscher + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 25
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/sweden/gothenburg/bavaria-cruiser-37/s-12601"
+   },
+   {
+    "key": "galley_tap",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "head_tap",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Bord-WC manuell",
+    "systems": [
+     "black"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://en.1a-yachtcharter.de/destinations/sweden/gothenburg/bavaria-cruiser-37/s-12601"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank 60 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.33,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 60
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/sweden/gothenburg/bavaria-cruiser-37/s-12601"
+   },
+   {
+    "key": "black_seacock",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalienablass",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "black_thru",
+    "kind": "thruhull",
+    "name": "Borddurchlass Fäkalien",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "port",
+    "level": "cockpit"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "Gasherd mit Backofen",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://en.1a-yachtcharter.de/destinations/sweden/gothenburg/bavaria-cruiser-37/s-12601"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Diesel-Warmluftheizung",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    },
+    "source": "https://www.boat24.com/en/sailingboats/bavaria/bavaria-cruiser-37/detail/621479/"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/sweden/gothenburg/bavaria-cruiser-37/s-12601"
+   },
+   {
+    "key": "bilge_out",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe (Spiegel)",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.03,
+    "side": "center",
+    "level": "cockpit"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Elektrische Ankerwinsch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 90,
+     "hours": 0.05
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/sweden/gothenburg/bavaria-cruiser-37/s-12601"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlschrank/Kühlbox",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 10
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/sweden/gothenburg/bavaria-cruiser-37/s-12601"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Beleuchtung LED innen/Navigationslichter",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2.5,
+     "hours": 5
+    }
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone (SeaTalkNG/N2K)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "GPS-Kartenplotter im Cockpit",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.5,
+     "hours": 8
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/sweden/gothenburg/bavaria-cruiser-37/s-12601"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "Autopilot",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.08,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 3,
+     "hours": 4
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/sweden/gothenburg/bavaria-cruiser-37/s-12601"
+   },
+   {
+    "key": "instr",
+    "kind": "n2kdev",
+    "name": "Instrumente Lot/Log",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.18,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.4,
+     "hours": 8
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/sweden/gothenburg/bavaria-cruiser-37/s-12601"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "UKW-Seefunk",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 0.6,
+     "hours": 8
+    },
+    "source": "https://en.1a-yachtcharter.de/destinations/sweden/gothenburg/bavaria-cruiser-37/s-12601"
+   },
+   {
+    "key": "depth",
+    "kind": "sensor",
+    "name": "Lot-/Loggeber",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge"
+   }
+  ],
+  "connections": [
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "holding",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "black_seacock",
+    "black_thru",
+    "black"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instr",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "depth",
+    "n2k"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "heater",
+    "fuel"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "pump",
+    "galley_tap",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "head_tap",
+    "fresh"
+   ],
+   [
+    "bilgepump",
+    "bilge_out",
+    "bilge"
+   ]
+  ],
+  "sources": [
+   "https://en.1a-yachtcharter.de/destinations/sweden/gothenburg/bavaria-cruiser-37/s-12601",
+   "https://www.boat24.com/en/sailingboats/bavaria/bavaria-cruiser-37/detail/621479/",
+   "https://pitter-yachting.com/en/news/new-yachts/bavaria-cruiser-37",
+   "https://uk.boats.com/sailing-boats/2017-bavaria-cruiser-37-6147109"
+  ],
+  "uncertain": [
+   "Baujahre der aktuellen Cruiser-37-Generation geschätzt",
+   "Wassertank: 210 l (1a-Charter), 350 l (Pitter) bzw. 360 l (boat24) – 360 l gewählt, evtl. 2 Tanks",
+   "Tiefgang 1,95 m; Inserat 2017 nennt 2,02 m",
+   "Motormodell D1-30 aus Inseraten (boats.com, yacht.de-Suchauszüge)",
+   "Lichtmaschine 115 A Typwert",
+   "Batteriegrößen nicht gefunden: 280 Ah Verbraucher (in Anlehnung an Vorgänger Bavaria 37 Cruiser mit 2×140 Ah), 70 Ah Starter und 40-A-Lader als Typwerte",
+   "Fäkalientank vorhanden, Größe 60 l Typwert; Boilergröße Typwert; WC-Typ manuell angenommen",
+   "Bugstrahlruder bei dieser Generation Option – nicht aufgenommen",
+   "Heizungstyp nicht genannt, Diesel-Warmluft angenommen",
+   "NMEA-2000-Vernetzung nicht belegt",
+   "Lage (x/side/level) aller Bauteile nach typischer Raumaufteilung geschätzt, nicht aus Plänen übernommen",
+   "amp/hours der Verbraucher, Pumpen und Elektronik sind Typwerte der Größenklasse",
+   "Seeventil/Borddurchlass Fäkalien, Lenzöffnung, Druckwasserpumpe, Schalttafel, Beleuchtung und NMEA-2000-Backbone als übliche Ausstattung angenommen"
+  ]
+ },
+ {
+  "id": "bavaria-c42",
+  "name": "Bavaria C42",
+  "group": "Segelyacht",
+  "maker": "Bavaria",
+  "years": "seit 2019",
+  "hull": "segel",
+  "loa_m": 12.4,
+  "beam_m": 4.3,
+  "draft_m": 2.1,
+  "volt": 12,
+  "desc": "Moderne 42-Fuß-Yacht mit Yanmar-Saildrive, 210 l Diesel, 460 l Wasser, Bugstrahlruder, Solarpanels, Inverter, Webasto-Heizung, zwei Kühlschränken und B&G-Elektronik am NMEA-2000-Bus.",
+  "components": [
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Ladegerät 40 A, 3 Ausgänge",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 40
+    },
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 80
+    }
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank AGM",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "ah": 360
+    },
+    "source": "https://uk.boats.com/sailing-boats/2020-bavaria-c42-9749914"
+   },
+   {
+    "key": "thruster_bat",
+    "kind": "bat",
+    "name": "Bugstrahlruder-Batterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.85,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 100
+    }
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel / Hauptschalter (Navigationsecke)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "inverter",
+    "kind": "inverter",
+    "name": "Wechselrichter 12 V/230 V",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/"
+   },
+   {
+    "key": "solar",
+    "kind": "solar",
+    "name": "Solarpanels 200 Wp",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.02,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "wp": 200
+    },
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/"
+   },
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Yanmar 4JH57 (57 PS) mit Saildrive",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 125
+    },
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank 210 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 210
+    },
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank 460 l",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 460
+    },
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.3
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Warmwasserboiler (Motorwärmetauscher + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 40
+    },
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/"
+   },
+   {
+    "key": "galley_tap",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "head_tap",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Bord-WC Achterkabine",
+    "systems": [
+     "black"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank 80 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.33,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 80
+    }
+   },
+   {
+    "key": "wc2",
+    "kind": "wc",
+    "name": "Bord-WC Vorschiff",
+    "systems": [
+     "black"
+    ],
+    "x": 0.8,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "holding2",
+    "kind": "holding",
+    "name": "Fäkalientank 60 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.78,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 60
+    }
+   },
+   {
+    "key": "black_seacock",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalienablass",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "black_thru",
+    "kind": "thruhull",
+    "name": "Borddurchlass Fäkalien",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "port",
+    "level": "cockpit"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "Gasherd mit Backofen",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Webasto Diesel-Warmluftheizung",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "amp": 2,
+     "hours": 6
+    },
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    },
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/"
+   },
+   {
+    "key": "bilge_out",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe (Spiegel)",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.03,
+    "side": "center",
+    "level": "cockpit"
+   },
+   {
+    "key": "thruster",
+    "kind": "consumer",
+    "name": "Bugstrahlruder",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.9,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 300,
+     "hours": 0.03
+    },
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Elektrische Ankerwinsch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 100,
+     "hours": 0.05
+    },
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlschrank 110 l",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 10
+    },
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/"
+   },
+   {
+    "key": "fridge2",
+    "kind": "consumer",
+    "name": "Kühlschrank 110 l (zweiter)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 10
+    },
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Beleuchtung LED innen/Navigationslichter",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2.5,
+     "hours": 5
+    }
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone (SeaTalkNG/N2K)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "B&G Zeus3 7\" am Steuerstand",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.5,
+     "hours": 8
+    },
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "Autopilot",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.08,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 3,
+     "hours": 4
+    },
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/"
+   },
+   {
+    "key": "instr",
+    "kind": "n2kdev",
+    "name": "2× B&G Triton Displays (Lot/Log/Wind)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.18,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.5,
+     "hours": 8
+    },
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "Raymarine Ray53 UKW",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 0.6,
+     "hours": 8
+    },
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/"
+   },
+   {
+    "key": "ais",
+    "kind": "n2kdev",
+    "name": "B&G NAIS-500 AIS Klasse B",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 0.4,
+     "hours": 8
+    },
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/"
+   },
+   {
+    "key": "wind",
+    "kind": "sensor",
+    "name": "Windgeber Masttop",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "mast",
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/"
+   },
+   {
+    "key": "depth",
+    "kind": "sensor",
+    "name": "Lot-/Loggeber",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge"
+   }
+  ],
+  "connections": [
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "wc2",
+    "holding2",
+    "black"
+   ],
+   [
+    "holding",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "holding2",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "black_seacock",
+    "black_thru",
+    "black"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instr",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "ais",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "wind",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "depth",
+    "n2k"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "thruster_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "solar",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "inverter",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "thruster_bat",
+    "thruster",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge2",
+    "dc12"
+   ],
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "heater",
+    "fuel"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "pump",
+    "galley_tap",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "head_tap",
+    "fresh"
+   ],
+   [
+    "bilgepump",
+    "bilge_out",
+    "bilge"
+   ]
+  ],
+  "sources": [
+   "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/716013/",
+   "https://uk.boats.com/sailing-boats/2020-bavaria-c42-9749914"
+  ],
+  "uncertain": [
+   "LüA 12,40 m laut Inserat (vermutlich Rumpflänge; Werft-LüA etwas größer)",
+   "Lichtmaschine 125 A Typwert Yanmar 4JH",
+   "Batteriekapazität ab Werk nicht gefunden; 12 V/180 Ah AGM als Zusatzbatterie-Option belegt (Inserat 2020, nur Suchauszug) – Verbraucherbank 2×180 Ah, Starter 80 Ah, Bugstrahlruder-Batterie 100 Ah als Typwerte",
+   "Fäkalientankgrößen Typwerte; WC-Typ (manuell) nicht genannt",
+   "Tankgrößen variieren je Baujahr (neuere Boote laut Suchauszügen: 180 l Diesel, 2×405 l Wasser)",
+   "Bugstrahlruder laut Suchauszügen Serienausstattung",
+   "Lage (x/side/level) aller Bauteile nach typischer Raumaufteilung geschätzt, nicht aus Plänen übernommen",
+   "amp/hours der Verbraucher, Pumpen und Elektronik sind Typwerte der Größenklasse",
+   "Seeventil/Borddurchlass Fäkalien, Lenzöffnung, Druckwasserpumpe, Schalttafel, Beleuchtung und NMEA-2000-Backbone als übliche Ausstattung angenommen"
+  ]
+ },
+ {
+  "id": "bavaria-cruiser-46",
+  "name": "Bavaria Cruiser 46",
+  "group": "Segelyacht",
+  "maker": "Bavaria",
+  "years": "ca. 2014–2021",
+  "hull": "segel",
+  "loa_m": 14.27,
+  "beam_m": 4.35,
+  "draft_m": 2.1,
+  "volt": 12,
+  "desc": "Große Charteryacht mit Volvo-Penta-D2-55-Saildrive, 4×95 Ah AGM, Inverter 1000 W, Solar, 40-l-Boiler, Bugstrahlruder, zwei Kühlschränken, drei Nasszellen und B&G-Elektronik.",
+  "components": [
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V mit Kabel",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://portal.booking-manager.com/wbm2/bmdoc/3861881089304371_ISTANBUL_-_2021_Bavaria_Cruiser_46_-_factsheet.pdf"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Batterieladegerät",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 50
+    }
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 90
+    }
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank 4× 95 Ah AGM",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "ah": 380
+    },
+    "source": "https://portal.booking-manager.com/wbm2/bmdoc/3861881089304371_ISTANBUL_-_2021_Bavaria_Cruiser_46_-_factsheet.pdf"
+   },
+   {
+    "key": "thruster_bat",
+    "kind": "bat",
+    "name": "Bugstrahlruder-Batterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.85,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 100
+    }
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel / Hauptschalter (Navigationsecke)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "inverter",
+    "kind": "inverter",
+    "name": "Wechselrichter 12 V/230 V 1000 W",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://portal.booking-manager.com/wbm2/bmdoc/3861881089304371_ISTANBUL_-_2021_Bavaria_Cruiser_46_-_factsheet.pdf"
+   },
+   {
+    "key": "solar",
+    "kind": "solar",
+    "name": "Solarpanels",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.02,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "wp": 200
+    },
+    "source": "https://portal.booking-manager.com/wbm2/bmdoc/3861881089304371_ISTANBUL_-_2021_Bavaria_Cruiser_46_-_factsheet.pdf"
+   },
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Volvo Penta D2-55 mit Saildrive",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 115
+    },
+    "source": "https://portal.booking-manager.com/wbm2/bmdoc/3861881089304371_ISTANBUL_-_2021_Bavaria_Cruiser_46_-_factsheet.pdf"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank 210 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 210
+    },
+    "source": "https://portal.booking-manager.com/wbm2/bmdoc/3861881089304371_ISTANBUL_-_2021_Bavaria_Cruiser_46_-_factsheet.pdf"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank 360 l",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 360
+    },
+    "source": "https://portal.booking-manager.com/wbm2/bmdoc/3861881089304371_ISTANBUL_-_2021_Bavaria_Cruiser_46_-_factsheet.pdf"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.3
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Boiler 40 l (Motorwärmetauscher + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 40
+    },
+    "source": "https://portal.booking-manager.com/wbm2/bmdoc/3861881089304371_ISTANBUL_-_2021_Bavaria_Cruiser_46_-_factsheet.pdf"
+   },
+   {
+    "key": "galley_tap",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "head_tap",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "stern_shower",
+    "kind": "tap",
+    "name": "Heckdusche",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.02,
+    "side": "center",
+    "level": "cockpit",
+    "source": "https://portal.booking-manager.com/wbm2/bmdoc/3861881089304371_ISTANBUL_-_2021_Bavaria_Cruiser_46_-_factsheet.pdf"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Bord-WC Eignerkabine vorn",
+    "systems": [
+     "black"
+    ],
+    "x": 0.85,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank 60 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.82,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 60
+    }
+   },
+   {
+    "key": "wc2",
+    "kind": "wc",
+    "name": "Bord-WC Achterkabine Bb",
+    "systems": [
+     "black"
+    ],
+    "x": 0.3,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "holding2",
+    "kind": "holding",
+    "name": "Fäkalientank 60 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.28,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 60
+    }
+   },
+   {
+    "key": "wc3",
+    "kind": "wc",
+    "name": "Bord-WC Achterkabine Stb",
+    "systems": [
+     "black"
+    ],
+    "x": 0.3,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "holding3",
+    "kind": "holding",
+    "name": "Fäkalientank 60 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.28,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 60
+    }
+   },
+   {
+    "key": "black_seacock",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalienablass",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "black_thru",
+    "kind": "thruhull",
+    "name": "Borddurchlass Fäkalien",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "2 Gasflaschen im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "port",
+    "level": "cockpit",
+    "source": "https://portal.booking-manager.com/wbm2/bmdoc/3861881089304371_ISTANBUL_-_2021_Bavaria_Cruiser_46_-_factsheet.pdf"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "Gasherd mit Backofen",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://portal.booking-manager.com/wbm2/bmdoc/3861881089304371_ISTANBUL_-_2021_Bavaria_Cruiser_46_-_factsheet.pdf"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    }
+   },
+   {
+    "key": "bilge_out",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe (Spiegel)",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.03,
+    "side": "center",
+    "level": "cockpit"
+   },
+   {
+    "key": "thruster",
+    "kind": "consumer",
+    "name": "Bugstrahlruder 100 kgf",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.9,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 350,
+     "hours": 0.03
+    },
+    "source": "https://portal.booking-manager.com/wbm2/bmdoc/3861881089304371_ISTANBUL_-_2021_Bavaria_Cruiser_46_-_factsheet.pdf"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Elektrische Ankerwinsch mit Fernbedienung",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 120,
+     "hours": 0.05
+    },
+    "source": "https://portal.booking-manager.com/wbm2/bmdoc/3861881089304371_ISTANBUL_-_2021_Bavaria_Cruiser_46_-_factsheet.pdf"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlschrank 147 l",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 5,
+     "hours": 10
+    },
+    "source": "https://portal.booking-manager.com/wbm2/bmdoc/3861881089304371_ISTANBUL_-_2021_Bavaria_Cruiser_46_-_factsheet.pdf"
+   },
+   {
+    "key": "fridge2",
+    "kind": "consumer",
+    "name": "Kühlschrank 110 l",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 10
+    },
+    "source": "https://portal.booking-manager.com/wbm2/bmdoc/3861881089304371_ISTANBUL_-_2021_Bavaria_Cruiser_46_-_factsheet.pdf"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Beleuchtung LED innen/Navigationslichter",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2.5,
+     "hours": 5
+    }
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone (SeaTalkNG/N2K)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "B&G Kartenplotter 9\"",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 2,
+     "hours": 8
+    },
+    "source": "https://portal.booking-manager.com/wbm2/bmdoc/3861881089304371_ISTANBUL_-_2021_Bavaria_Cruiser_46_-_factsheet.pdf"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "B&G Autopilot",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.08,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 4,
+     "hours": 4
+    },
+    "source": "https://portal.booking-manager.com/wbm2/bmdoc/3861881089304371_ISTANBUL_-_2021_Bavaria_Cruiser_46_-_factsheet.pdf"
+   },
+   {
+    "key": "instr",
+    "kind": "n2kdev",
+    "name": "2× B&G Triton (Lot/Log/Wind/Wassertemp.)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.18,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.5,
+     "hours": 8
+    },
+    "source": "https://portal.booking-manager.com/wbm2/bmdoc/3861881089304371_ISTANBUL_-_2021_Bavaria_Cruiser_46_-_factsheet.pdf"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "B&G V60 UKW mit H60 Wireless-Handset",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 0.6,
+     "hours": 8
+    },
+    "source": "https://portal.booking-manager.com/wbm2/bmdoc/3861881089304371_ISTANBUL_-_2021_Bavaria_Cruiser_46_-_factsheet.pdf"
+   },
+   {
+    "key": "wind",
+    "kind": "sensor",
+    "name": "Windgeber Masttop",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "mast",
+    "source": "https://portal.booking-manager.com/wbm2/bmdoc/3861881089304371_ISTANBUL_-_2021_Bavaria_Cruiser_46_-_factsheet.pdf"
+   },
+   {
+    "key": "depth",
+    "kind": "sensor",
+    "name": "Lot-/Loggeber",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge"
+   }
+  ],
+  "connections": [
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "wc2",
+    "holding2",
+    "black"
+   ],
+   [
+    "wc3",
+    "holding3",
+    "black"
+   ],
+   [
+    "holding",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "holding2",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "holding3",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "black_seacock",
+    "black_thru",
+    "black"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instr",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "wind",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "depth",
+    "n2k"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "thruster_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "solar",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "inverter",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "thruster_bat",
+    "thruster",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge2",
+    "dc12"
+   ],
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "pump",
+    "galley_tap",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "head_tap",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "stern_shower",
+    "fresh"
+   ],
+   [
+    "bilgepump",
+    "bilge_out",
+    "bilge"
+   ]
+  ],
+  "sources": [
+   "https://portal.booking-manager.com/wbm2/bmdoc/3861881089304371_ISTANBUL_-_2021_Bavaria_Cruiser_46_-_factsheet.pdf"
+  ],
+  "uncertain": [
+   "Datenblatt eines Charterboots (2021); Motorleistung im Inventar mit 37,5 kW/51 PS, im Datenblatt D2-55 mit 41 kW",
+   "Andere Inserate nennen 360 l oder 510 l Wasser",
+   "Lichtmaschine 115 A Typwert",
+   "Ladegerät nicht ausdrücklich genannt (Landstrom vorhanden), 50 A Typwert; Starterbatterie 90 Ah und eigene Bugstrahlruder-Batterie 100 Ah Typwerte",
+   "Solarleistung nicht angegeben, 200 Wp Typwert",
+   "Drei WC mit je eigenem Fäkalientank angenommen, Größen Typwerte; WC-Typ manuell angenommen",
+   "Elektrische Bilgepumpe angenommen",
+   "Keine Heizung im (Türkei-)Charterinventar – in Nordeuropa häufig Webasto vorhanden",
+   "Lage (x/side/level) aller Bauteile nach typischer Raumaufteilung geschätzt, nicht aus Plänen übernommen",
+   "amp/hours der Verbraucher, Pumpen und Elektronik sind Typwerte der Größenklasse",
+   "Seeventil/Borddurchlass Fäkalien, Lenzöffnung, Druckwasserpumpe, Schalttafel, Beleuchtung und NMEA-2000-Backbone als übliche Ausstattung angenommen"
+  ]
+ },
+ {
+  "id": "jeanneau-sun-odyssey-319",
+  "name": "Jeanneau Sun Odyssey 319",
+  "group": "Segelyacht",
+  "maker": "Jeanneau",
+  "years": "2018–ca. 2023",
+  "hull": "segel",
+  "loa_m": 9.99,
+  "beam_m": 3.46,
+  "draft_m": 1.85,
+  "volt": 12,
+  "desc": "Kleine Familienyacht mit Yanmar 3YM20 und Saildrive, 100 l Diesel, 150 l Wasser, Webasto-Warmluftheizung, 22-l-Boiler, manuellem WC und Raymarine-Elektronik.",
+  "components": [
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Victron Blue Smart IP22 12/30",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 30
+    },
+    "source": "https://batagent.se/wp-content/uploads/2026/03/Equipment-list-Sun-Odyssey-319.pdf"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 75
+    },
+    "source": "https://batagent.se/wp-content/uploads/2026/03/Equipment-list-Sun-Odyssey-319.pdf"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank 2× 105 Ah LiFePO4",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "ah": 210
+    },
+    "source": "https://batagent.se/wp-content/uploads/2026/03/Equipment-list-Sun-Odyssey-319.pdf"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel / Hauptschalter (Navigationsecke)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Yanmar 3YM20 (21 PS) mit Saildrive",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 125
+    },
+    "source": "https://en.wikipedia.org/wiki/Sun_Odyssey_319"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank 100 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 100
+    },
+    "source": "https://boats.iboats.com/research/2019-jeanneau-sailboats-sun-odyssey-319/2118512.html"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank 150 l",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 150
+    },
+    "source": "https://boats.iboats.com/research/2019-jeanneau-sailboats-sun-odyssey-319/2118512.html"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.3
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Boiler 22 l (Motorwärmetauscher + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 22
+    },
+    "source": "https://batagent.se/wp-content/uploads/2026/03/Equipment-list-Sun-Odyssey-319.pdf"
+   },
+   {
+    "key": "galley_tap",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "head_tap",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.75,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "stern_shower",
+    "kind": "tap",
+    "name": "Heckdusche",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.02,
+    "side": "center",
+    "level": "cockpit",
+    "source": "https://batagent.se/wp-content/uploads/2026/03/Equipment-list-Sun-Odyssey-319.pdf"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Jabsco Twist’n’Lock WC manuell",
+    "systems": [
+     "black"
+    ],
+    "x": 0.75,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://batagent.se/wp-content/uploads/2026/03/Equipment-list-Sun-Odyssey-319.pdf"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank 60 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.72,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 60
+    }
+   },
+   {
+    "key": "black_seacock",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalienablass",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "black_thru",
+    "kind": "thruhull",
+    "name": "Borddurchlass Fäkalien",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche 2 kg",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "port",
+    "level": "cockpit",
+    "source": "https://batagent.se/wp-content/uploads/2026/03/Equipment-list-Sun-Odyssey-319.pdf"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "Gasherd Pantry",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://batagent.se/wp-content/uploads/2026/03/Equipment-list-Sun-Odyssey-319.pdf"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Webasto Diesel-Warmluftheizung",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    },
+    "source": "https://batagent.se/wp-content/uploads/2026/03/Equipment-list-Sun-Odyssey-319.pdf"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Rule-Mate 1100 GPH",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    },
+    "source": "https://batagent.se/wp-content/uploads/2026/03/Equipment-list-Sun-Odyssey-319.pdf"
+   },
+   {
+    "key": "bilge_out",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe (Spiegel)",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.03,
+    "side": "center",
+    "level": "cockpit"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlbox elektrisch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 10
+    }
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Beleuchtung LED innen/Navigationslichter",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2.5,
+     "hours": 5
+    }
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone (SeaTalkNG/N2K)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "Raymarine Axiom+ 7\"",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.3,
+     "hours": 8
+    },
+    "source": "https://batagent.se/wp-content/uploads/2026/03/Equipment-list-Sun-Odyssey-319.pdf"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "Raymarine EV200 (EV1, ACU200) mit p70",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.08,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 3,
+     "hours": 4
+    },
+    "source": "https://batagent.se/wp-content/uploads/2026/03/Equipment-list-Sun-Odyssey-319.pdf"
+   },
+   {
+    "key": "instr",
+    "kind": "n2kdev",
+    "name": "Raymarine p70-Display Wind",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.18,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.3,
+     "hours": 8
+    },
+    "source": "https://batagent.se/wp-content/uploads/2026/03/Equipment-list-Sun-Odyssey-319.pdf"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "Raymarine UKW mit DSC",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 0.6,
+     "hours": 8
+    },
+    "source": "https://batagent.se/wp-content/uploads/2026/03/Equipment-list-Sun-Odyssey-319.pdf"
+   },
+   {
+    "key": "wind",
+    "kind": "sensor",
+    "name": "Raymarine Windgeber Masttop",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "mast",
+    "source": "https://batagent.se/wp-content/uploads/2026/03/Equipment-list-Sun-Odyssey-319.pdf"
+   },
+   {
+    "key": "depth",
+    "kind": "sensor",
+    "name": "Lot-/Loggeber",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge"
+   }
+  ],
+  "connections": [
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "holding",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "black_seacock",
+    "black_thru",
+    "black"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instr",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "wind",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "depth",
+    "n2k"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "heater",
+    "fuel"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "pump",
+    "galley_tap",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "head_tap",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "stern_shower",
+    "fresh"
+   ],
+   [
+    "bilgepump",
+    "bilge_out",
+    "bilge"
+   ]
+  ],
+  "sources": [
+   "https://batagent.se/wp-content/uploads/2026/03/Equipment-list-Sun-Odyssey-319.pdf",
+   "https://en.wikipedia.org/wiki/Sun_Odyssey_319",
+   "https://boats.iboats.com/research/2019-jeanneau-sailboats-sun-odyssey-319/2118512.html"
+  ],
+  "uncertain": [
+   "Ausstattung aus einer Eigner-Ausstattungsliste (Baujahr 2019); LiFePO4-Bank und Victron-Lader 2025 nachgerüstet – ab Werk vermutlich kleinere Blei/AGM-Bank",
+   "Baujahrende geschätzt (Wikipedia: Produktion eingestellt)",
+   "Tanks 100 l/150 l aus Inserats-Suchauszügen (iboats), nicht vom Werftdatenblatt gelesen",
+   "Lichtmaschine 125 A Typwert Yanmar 3YM",
+   "Landanschluss nicht genannt, wegen Ladegerät angenommen",
+   "Fäkalientank: Inserate nennen 60 bzw. 80 l – 60 l gewählt; Lage der Nasszelle geschätzt",
+   "Kühlbox nicht explizit genannt – Typausstattung",
+   "EFOY-Brennstoffzelle (Nachrüstung) nicht abgebildet",
+   "Keine elektrische Ankerwinsch und kein Bugstrahlruder belegt",
+   "Lage (x/side/level) aller Bauteile nach typischer Raumaufteilung geschätzt, nicht aus Plänen übernommen",
+   "amp/hours der Verbraucher, Pumpen und Elektronik sind Typwerte der Größenklasse",
+   "Seeventil/Borddurchlass Fäkalien, Lenzöffnung, Druckwasserpumpe, Schalttafel, Beleuchtung und NMEA-2000-Backbone als übliche Ausstattung angenommen"
+  ]
+ },
+ {
+  "id": "jeanneau-sun-odyssey-389",
+  "name": "Jeanneau Sun Odyssey 389",
+  "group": "Segelyacht",
+  "maker": "Jeanneau",
+  "years": "2015–2019",
+  "hull": "segel",
+  "loa_m": 11.73,
+  "beam_m": 3.76,
+  "draft_m": 1.98,
+  "volt": 12,
+  "desc": "Verbreitete 38-Fuß-Yacht mit Yanmar 3YM30 und Saildrive, 130 l Diesel, 200 l Wasser, 4×100 Ah Verbraucherbatterien, 40-A-Lader, 40-l-Boiler, Bugstrahlruder und Raymarine-Elektronik.",
+  "components": [
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V mit Kabel",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Cristec Ladegerät 40 A",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 40
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 100
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank 4× 100 Ah",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "ah": 400
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel / Hauptschalter (Navigationsecke)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Yanmar 3YM30 (29 PS) mit Saildrive",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 125
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank 130 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 130
+    },
+    "source": "https://en.wikipedia.org/wiki/Sun_Odyssey_389"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank 200 l",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 200
+    },
+    "source": "https://en.wikipedia.org/wiki/Sun_Odyssey_389"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.3
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Boiler 40 l (Motorwärmetauscher + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 40
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html"
+   },
+   {
+    "key": "galley_tap",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "head_tap",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Elektrisches WC",
+    "systems": [
+     "black",
+     "dc12"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 15,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank 60 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.33,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 60
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html"
+   },
+   {
+    "key": "black_seacock",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalienablass",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "black_thru",
+    "kind": "thruhull",
+    "name": "Borddurchlass Fäkalien",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche (Calor) im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "port",
+    "level": "cockpit",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "ENO Gasherd 2 Flammen mit Backofen",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Diesel-Warmluftheizung",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html"
+   },
+   {
+    "key": "bilge_out",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe (Spiegel)",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.03,
+    "side": "center",
+    "level": "cockpit"
+   },
+   {
+    "key": "thruster",
+    "kind": "consumer",
+    "name": "Bugstrahlruder elektrisch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.9,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 250,
+     "hours": 0.03
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Quick Ankerwinsch 1000 W",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 85,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlschrank",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 10
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Beleuchtung LED innen/Navigationslichter",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2.5,
+     "hours": 5
+    }
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone (SeaTalkNG/N2K)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "Raymarine Axiom 9\"",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 2,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "Raymarine Autopilot mit p70s",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.08,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 3,
+     "hours": 4
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html"
+   },
+   {
+    "key": "instr",
+    "kind": "n2kdev",
+    "name": "Raymarine i70s (Lot/Log/Wind)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.18,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.4,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "Raymarine Ray53 UKW",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 0.6,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html"
+   },
+   {
+    "key": "ais",
+    "kind": "n2kdev",
+    "name": "AIS",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 0.3,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html"
+   },
+   {
+    "key": "wind",
+    "kind": "sensor",
+    "name": "Windgeber Masttop",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "mast",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html"
+   },
+   {
+    "key": "depth",
+    "kind": "sensor",
+    "name": "Lot-/Loggeber",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge"
+   }
+  ],
+  "connections": [
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "holding",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "black_seacock",
+    "black_thru",
+    "black"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instr",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "ais",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "wind",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "depth",
+    "n2k"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "thruster",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "wc",
+    "dc12"
+   ],
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "heater",
+    "fuel"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "pump",
+    "galley_tap",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "head_tap",
+    "fresh"
+   ],
+   [
+    "bilgepump",
+    "bilge_out",
+    "bilge"
+   ]
+  ],
+  "sources": [
+   "https://www.devalk.nl/en/yachtbrokerage/810907/JEANNEAU-SUN-ODYSSEY-389.html",
+   "https://en.wikipedia.org/wiki/Sun_Odyssey_389",
+   "https://jeanneau.com/boats/sailboat/2-sun-odyssey/38-sun-odyssey-389"
+  ],
+  "uncertain": [
+   "Ausstattung eines Gebrauchtboots (2018), Batteriebestückung nicht zwingend Werksstandard",
+   "Tiefgang Standardkiel 1,98 m (Wikipedia); Inserat nennt 1,95 m",
+   "Werftseite jeanneau.com nur über Suchauszug gesehen (Tanks 130/200 l, Yanmar 29 PS Saildrive)",
+   "Lichtmaschine 125 A Typwert",
+   "Fäkalientank vorhanden, Größe 60 l Typwert",
+   "Heizungstyp nicht genannt, Diesel-Warmluft angenommen",
+   "Bugstrahlruder aus Verbraucherbank gespeist angenommen",
+   "Lage (x/side/level) aller Bauteile nach typischer Raumaufteilung geschätzt, nicht aus Plänen übernommen",
+   "amp/hours der Verbraucher, Pumpen und Elektronik sind Typwerte der Größenklasse",
+   "Seeventil/Borddurchlass Fäkalien, Lenzöffnung, Druckwasserpumpe, Schalttafel, Beleuchtung und NMEA-2000-Backbone als übliche Ausstattung angenommen"
+  ]
+ },
+ {
+  "id": "jeanneau-sun-odyssey-440",
+  "name": "Jeanneau Sun Odyssey 440",
+  "group": "Segelyacht",
+  "maker": "Jeanneau",
+  "years": "seit 2017",
+  "hull": "segel",
+  "loa_m": 13.39,
+  "beam_m": 4.29,
+  "draft_m": 2.2,
+  "volt": 12,
+  "desc": "44-Fuß-Yacht mit Yanmar 4JH57 und Wellenantrieb, 200 l Diesel, 2×265 l Wasser, 2×80 l Fäkalientanks, 4×100 Ah Verbraucherbank, Inverter 2000 W, Jet-Bugstrahlruder mit eigener Batteriebank und Raymarine-Elektronik.",
+  "components": [
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V mit Kabel",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Cristec YPower 12 V/40 A",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 40
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie Varta 74 Ah",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 74
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank 4× Varta 100 Ah",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "ah": 400
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "thruster_bat",
+    "kind": "bat",
+    "name": "Bugstrahlruder-Bank 4× Optima 50 Ah (48 V)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.85,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 200
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel / Hauptschalter (Navigationsecke)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "inverter",
+    "kind": "inverter",
+    "name": "Wechselrichter 2000 W",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Yanmar 4JH57 (45/57 PS) mit Welle, Getriebe KM35P",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 125
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank 200 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 200
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank 265 l (Bb)",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.55,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 265
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "watertank2",
+    "kind": "watertank",
+    "name": "Frischwassertank 265 l (Stb)",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.55,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 265
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.3
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Quick Boiler 40 l (Motorwärmetauscher + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 40
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "galley_tap",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "head_tap",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Jabsco WC manuell (achtern)",
+    "systems": [
+     "black"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank 80 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.33,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 80
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "wc2",
+    "kind": "wc",
+    "name": "Jabsco WC manuell (vorn)",
+    "systems": [
+     "black"
+    ],
+    "x": 0.82,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "holding2",
+    "kind": "holding",
+    "name": "Fäkalientank 80 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.8,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 80
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "black_seacock",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalienablass",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "black_thru",
+    "kind": "thruhull",
+    "name": "Borddurchlass Fäkalien",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche (Calor) im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "port",
+    "level": "cockpit",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "ENO Gasherd 2 Flammen mit Backofen",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Rule-Mate 1100 12 V",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "bilge_out",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe (Spiegel)",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.03,
+    "side": "center",
+    "level": "cockpit"
+   },
+   {
+    "key": "thruster",
+    "kind": "consumer",
+    "name": "Jet Thruster JT70 (48 V)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.9,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 400,
+     "hours": 0.03
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Quick TG50 Ankerwinsch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 120,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Vitrifrigo C130 Kühlschrank",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 10
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "fridge2",
+    "kind": "consumer",
+    "name": "Cockpit-Kühlbox",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 3,
+     "hours": 10
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Beleuchtung LED innen/Navigationslichter",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2.5,
+     "hours": 5
+    }
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone (SeaTalkNG/N2K)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "Raymarine Axiom+ 9 RV",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 2,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "Raymarine Autopilot P70S",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.08,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 4,
+     "hours": 4
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "instr",
+    "kind": "n2kdev",
+    "name": "Raymarine i70S (Multi, Lot/Log, Wind)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.18,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.5,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "Raymarine Ray53 UKW",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 0.6,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "wind",
+    "kind": "sensor",
+    "name": "Windgeber Masttop",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "mast",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html"
+   },
+   {
+    "key": "depth",
+    "kind": "sensor",
+    "name": "Lot-/Loggeber",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge"
+   }
+  ],
+  "connections": [
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "watertank2",
+    "pump",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "wc2",
+    "holding2",
+    "black"
+   ],
+   [
+    "holding",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "holding2",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "black_seacock",
+    "black_thru",
+    "black"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instr",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "wind",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "depth",
+    "n2k"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "thruster_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "inverter",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "thruster_bat",
+    "thruster",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge2",
+    "dc12"
+   ],
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "pump",
+    "galley_tap",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "head_tap",
+    "fresh"
+   ],
+   [
+    "bilgepump",
+    "bilge_out",
+    "bilge"
+   ]
+  ],
+  "sources": [
+   "https://www.devalk.nl/en/yachtbrokerage/810486/JEANNEAU-SUN-ODYSSEY-440.html",
+   "https://en.wikipedia.org/wiki/Sun_Odyssey_440"
+  ],
+  "uncertain": [
+   "Ausstattung eines Gebrauchtboots (2019); andere SO 440 mit Saildrive statt Welle",
+   "Wikipedia nennt 330 l Wasser, Inserate 2×265 l",
+   "Lichtmaschine 125 A Typwert",
+   "Bugstrahlruder-Bank 48 V (4×50 Ah in Reihe) hier als 200 Ah 12-V-Äquivalent angegeben; Ladung über Bordlader vereinfacht (real vermutlich eigener 48-V-Lader)",
+   "amp Bugstrahlruder (400 A, 12-V-Äquivalent) Typwert",
+   "Heizung im Inserat nicht genannt – nicht aufgenommen",
+   "Lage (x/side/level) aller Bauteile nach typischer Raumaufteilung geschätzt, nicht aus Plänen übernommen",
+   "amp/hours der Verbraucher, Pumpen und Elektronik sind Typwerte der Größenklasse",
+   "Seeventil/Borddurchlass Fäkalien, Lenzöffnung, Druckwasserpumpe, Schalttafel, Beleuchtung und NMEA-2000-Backbone als übliche Ausstattung angenommen"
+  ]
+ },
+ {
+  "id": "beneteau-oceanis-30-1",
+  "name": "Beneteau Oceanis 30.1",
+  "group": "Segelyacht",
+  "maker": "Beneteau",
+  "years": "seit 2020",
+  "hull": "segel",
+  "loa_m": 9.53,
+  "beam_m": 2.99,
+  "draft_m": 1.4,
+  "volt": 12,
+  "desc": "Kleinste Oceanis mit Yanmar 3YM20 und Wellenantrieb, 130 l Diesel, 160 l Wasser, 80-l-Fäkalientank, 25-A-Lader, 25-l-Boiler, Diesel-Warmluftheizung, Bugstrahlruder und B&G-Elektronik.",
+  "components": [
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V mit Kabel",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811526/BENETEAU-OCEANIS-30.1.html"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Cristec YPower 12 V/25 A",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 25
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811526/BENETEAU-OCEANIS-30.1.html"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie Exide 50 Ah",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 50
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811526/BENETEAU-OCEANIS-30.1.html"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank 2× Exide AGM 70 Ah",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "ah": 140
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811526/BENETEAU-OCEANIS-30.1.html"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel / Hauptschalter (Navigationsecke)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Yanmar 3YM20 (21 PS) mit Welle",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 125
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811526/BENETEAU-OCEANIS-30.1.html"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank 130 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 130
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811526/BENETEAU-OCEANIS-30.1.html"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank 160 l",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 160
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811526/BENETEAU-OCEANIS-30.1.html"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.3
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Quick Nautic Boiler 25 l (Motorwärmetauscher + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 25
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811526/BENETEAU-OCEANIS-30.1.html"
+   },
+   {
+    "key": "galley_tap",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "head_tap",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Jabsco WC manuell",
+    "systems": [
+     "black"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811526/BENETEAU-OCEANIS-30.1.html"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank 80 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.33,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 80
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811526/BENETEAU-OCEANIS-30.1.html"
+   },
+   {
+    "key": "black_seacock",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalienablass",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "black_thru",
+    "kind": "thruhull",
+    "name": "Borddurchlass Fäkalien",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche (Calor) im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "port",
+    "level": "cockpit",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811526/BENETEAU-OCEANIS-30.1.html"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "Gasherd 2 Flammen mit Backofen",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811526/BENETEAU-OCEANIS-30.1.html"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Diesel-Warmluftheizung",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811526/BENETEAU-OCEANIS-30.1.html"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811526/BENETEAU-OCEANIS-30.1.html"
+   },
+   {
+    "key": "bilge_out",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe (Spiegel)",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.03,
+    "side": "center",
+    "level": "cockpit"
+   },
+   {
+    "key": "thruster",
+    "kind": "consumer",
+    "name": "Side-Power Bugstrahlruder",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.9,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 200,
+     "hours": 0.03
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811526/BENETEAU-OCEANIS-30.1.html"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Lewmar Ankerwinsch elektrisch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 70,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811526/BENETEAU-OCEANIS-30.1.html"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Isotherm Kühlschrank",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 10
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811526/BENETEAU-OCEANIS-30.1.html"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Beleuchtung LED innen/Navigationslichter",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2.5,
+     "hours": 5
+    }
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone (SeaTalkNG/N2K)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "B&G Kartenplotter",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.5,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811526/BENETEAU-OCEANIS-30.1.html"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "B&G Autopilot",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.08,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 3,
+     "hours": 4
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811526/BENETEAU-OCEANIS-30.1.html"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "B&G UKW mit Fernbedienung",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 0.6,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811526/BENETEAU-OCEANIS-30.1.html"
+   },
+   {
+    "key": "depth",
+    "kind": "sensor",
+    "name": "Lot-/Loggeber",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge"
+   }
+  ],
+  "connections": [
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "holding",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "black_seacock",
+    "black_thru",
+    "black"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "depth",
+    "n2k"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "thruster",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "heater",
+    "fuel"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "pump",
+    "galley_tap",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "head_tap",
+    "fresh"
+   ],
+   [
+    "bilgepump",
+    "bilge_out",
+    "bilge"
+   ]
+  ],
+  "sources": [
+   "https://www.devalk.nl/en/yachtbrokerage/811526/BENETEAU-OCEANIS-30.1.html"
+  ],
+  "uncertain": [
+   "Ausstattung eines Gebrauchtboots (2021); LüA 9,53 m und Tiefgang 1,40 m (Flachkiel) laut Inserat – Tiefkiel tiefer",
+   "Lichtmaschine 12 V/125 A in einem Inserats-Suchauszug genannt, nicht eindeutig zuzuordnen",
+   "Instrumente/AIS nicht genannt; nur Lot-Geber angenommen",
+   "Bugstrahlruder aus Verbraucherbank gespeist angenommen",
+   "Lage (x/side/level) aller Bauteile nach typischer Raumaufteilung geschätzt, nicht aus Plänen übernommen",
+   "amp/hours der Verbraucher, Pumpen und Elektronik sind Typwerte der Größenklasse",
+   "Seeventil/Borddurchlass Fäkalien, Lenzöffnung, Druckwasserpumpe, Schalttafel, Beleuchtung und NMEA-2000-Backbone als übliche Ausstattung angenommen"
+  ]
+ },
+ {
+  "id": "beneteau-oceanis-35-1",
+  "name": "Beneteau Oceanis 35.1",
+  "group": "Segelyacht",
+  "maker": "Beneteau",
+  "years": "ca. 2018–2023",
+  "hull": "segel",
+  "loa_m": 10.45,
+  "beam_m": 3.72,
+  "draft_m": 1.94,
+  "volt": 12,
+  "desc": "Verbreitete 35-Fuß-Charteryacht mit Yanmar 3YM30 und Saildrive, 130 l Diesel, Fäkalientank, Landstrom, Solarpanel, Boiler, Heizung, Quick-Ankerwinsch und Raymarine-Elektronik.",
+  "components": [
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V mit Kabel",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://www.yacht.de/it/yachtmarkt/gebrauchtboote/boot/709247/"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Batterieladegerät",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 40
+    },
+    "source": "https://www.yacht.de/it/yachtmarkt/gebrauchtboote/boot/709247/"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 70
+    },
+    "source": "https://www.yacht.de/it/yachtmarkt/gebrauchtboote/boot/709247/"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "ah": 220
+    },
+    "source": "https://www.yacht.de/it/yachtmarkt/gebrauchtboote/boot/709247/"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel / Hauptschalter (Navigationsecke)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "solar",
+    "kind": "solar",
+    "name": "Solarpanel",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.02,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "wp": 100
+    },
+    "source": "https://www.yacht.de/it/yachtmarkt/gebrauchtboote/boot/709247/"
+   },
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Yanmar 3YM30 (30 PS) mit Saildrive",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 125
+    },
+    "source": "https://uk.boats.com/sailing-boats/2019-beneteau-oceanis-35-1-9610490"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank 130 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 130
+    },
+    "source": "https://www.yacht.de/it/yachtmarkt/gebrauchtboote/boot/709247/"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank 330 l",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 330
+    },
+    "source": "https://www.yacht.de/it/yachtmarkt/gebrauchtboote/boot/709247/"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.3
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Warmwasserboiler (Motorwärmetauscher + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 25
+    },
+    "source": "https://www.yacht.de/it/yachtmarkt/gebrauchtboote/boot/709247/"
+   },
+   {
+    "key": "galley_tap",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "head_tap",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Jabsco WC manuell",
+    "systems": [
+     "black"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://www.yacht.de/it/yachtmarkt/gebrauchtboote/boot/709247/"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank 80 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.33,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 80
+    },
+    "source": "https://www.yacht.de/it/yachtmarkt/gebrauchtboote/boot/709247/"
+   },
+   {
+    "key": "black_seacock",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalienablass",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "black_thru",
+    "kind": "thruhull",
+    "name": "Borddurchlass Fäkalien",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "port",
+    "level": "cockpit"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "Gasherd 3 Flammen mit Backofen",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.yacht.de/it/yachtmarkt/gebrauchtboote/boot/709247/"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Diesel-Warmluftheizung",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    },
+    "source": "https://www.yacht.de/it/yachtmarkt/gebrauchtboote/boot/709247/"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    },
+    "source": "https://www.yacht.de/it/yachtmarkt/gebrauchtboote/boot/709247/"
+   },
+   {
+    "key": "bilge_out",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe (Spiegel)",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.03,
+    "side": "center",
+    "level": "cockpit"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Quick Ankerwinsch elektrisch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 80,
+     "hours": 0.05
+    },
+    "source": "https://www.yacht.de/it/yachtmarkt/gebrauchtboote/boot/709247/"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlschrank",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 10
+    },
+    "source": "https://www.yacht.de/it/yachtmarkt/gebrauchtboote/boot/709247/"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Beleuchtung LED innen/Navigationslichter",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2.5,
+     "hours": 5
+    }
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone (SeaTalkNG/N2K)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "Raymarine GPS-Kartenplotter",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.5,
+     "hours": 8
+    },
+    "source": "https://www.yacht.de/it/yachtmarkt/gebrauchtboote/boot/709247/"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "Raymarine Autopilot",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.08,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 3,
+     "hours": 4
+    },
+    "source": "https://www.yacht.de/it/yachtmarkt/gebrauchtboote/boot/709247/"
+   },
+   {
+    "key": "instr",
+    "kind": "n2kdev",
+    "name": "Raymarine Multi-Instrument (Lot/Log)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.18,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.4,
+     "hours": 8
+    },
+    "source": "https://www.yacht.de/it/yachtmarkt/gebrauchtboote/boot/709247/"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "UKW-Seefunk",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 0.6,
+     "hours": 8
+    },
+    "source": "https://www.yacht.de/it/yachtmarkt/gebrauchtboote/boot/709247/"
+   },
+   {
+    "key": "depth",
+    "kind": "sensor",
+    "name": "Lot-/Loggeber",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge"
+   }
+  ],
+  "connections": [
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "holding",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "black_seacock",
+    "black_thru",
+    "black"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instr",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "depth",
+    "n2k"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "solar",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "heater",
+    "fuel"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "pump",
+    "galley_tap",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "head_tap",
+    "fresh"
+   ],
+   [
+    "bilgepump",
+    "bilge_out",
+    "bilge"
+   ]
+  ],
+  "sources": [
+   "https://www.yacht.de/it/yachtmarkt/gebrauchtboote/boot/709247/",
+   "https://uk.boats.com/sailing-boats/2019-beneteau-oceanis-35-1-9610490"
+  ],
+  "uncertain": [
+   "Ausstattung eines Gebrauchtboots (2020); Motormodell 3YM30 und Saildrive aus Inserats-Suchauszügen",
+   "Wasser: 330 l (yacht.de) vs. 130 l (US-Inserate) – 330 l gewählt",
+   "Fäkalientank 80 l laut einem Inserats-Suchauszug; andere nennen 18–20 gal",
+   "Batteriegrößen nicht angegeben: 220 Ah Verbraucher, 70 Ah Starter, 40-A-Lader als Typwerte",
+   "Solarleistung nicht angegeben, 100 Wp Typwert; Boilergröße Typwert",
+   "Heizungstyp nicht genannt, Diesel-Warmluft angenommen",
+   "Kein Bugstrahlruder im Inserat",
+   "Lage (x/side/level) aller Bauteile nach typischer Raumaufteilung geschätzt, nicht aus Plänen übernommen",
+   "amp/hours der Verbraucher, Pumpen und Elektronik sind Typwerte der Größenklasse",
+   "Seeventil/Borddurchlass Fäkalien, Lenzöffnung, Druckwasserpumpe, Schalttafel, Beleuchtung und NMEA-2000-Backbone als übliche Ausstattung angenommen"
+  ]
+ },
+ {
+  "id": "beneteau-oceanis-40-1",
+  "name": "Beneteau Oceanis 40.1",
+  "group": "Segelyacht",
+  "maker": "Beneteau",
+  "years": "seit 2019",
+  "hull": "segel",
+  "loa_m": 12.43,
+  "beam_m": 4.2,
+  "draft_m": 2.19,
+  "volt": 12,
+  "desc": "40-Fuß-Yacht mit Yanmar 4JH45 und Saildrive, 200 l Diesel, 60-A-Lader, AGM-Verbraucherbank, eigener Bugstrahlruder-Batterie, Inverter, Solar und B&G-Elektronik inkl. AIS.",
+  "components": [
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Batterieladegerät 60 A",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 60
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 80
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank 2× 100 Ah AGM",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "ah": 200
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "thruster_bat",
+    "kind": "bat",
+    "name": "Bugstrahlruder-Batterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.85,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 100
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel / Hauptschalter (Navigationsecke)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "inverter",
+    "kind": "inverter",
+    "name": "Wechselrichter 12 V/230 V",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "solar",
+    "kind": "solar",
+    "name": "Solarpanels",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.02,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "wp": 200
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Yanmar 4JH45 (44–45 PS) mit Saildrive",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 125
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank 200 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 200
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank 240 l",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 240
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.3
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Warmwasserboiler (Motorwärmetauscher + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 40
+    }
+   },
+   {
+    "key": "galley_tap",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "head_tap",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Jabsco WC manuell (Eignerkabine)",
+    "systems": [
+     "black"
+    ],
+    "x": 0.8,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank 80 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.78,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 80
+    }
+   },
+   {
+    "key": "wc2",
+    "kind": "wc",
+    "name": "Jabsco WC elektrisch (Gästekabine)",
+    "systems": [
+     "black",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 15,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "holding2",
+    "kind": "holding",
+    "name": "Fäkalientank 50 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.28,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 50
+    }
+   },
+   {
+    "key": "black_seacock",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalienablass",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "black_thru",
+    "kind": "thruhull",
+    "name": "Borddurchlass Fäkalien",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche im Gaskasten mit Gaswarner",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "port",
+    "level": "cockpit",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "Gasherd 2 Flammen mit Backofen",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    }
+   },
+   {
+    "key": "bilge_out",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe (Spiegel)",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.03,
+    "side": "center",
+    "level": "cockpit"
+   },
+   {
+    "key": "thruster",
+    "kind": "consumer",
+    "name": "Sleipner Bugstrahlruder",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.9,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 300,
+     "hours": 0.03
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Ankerwinsch 1000 W",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 85,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Vitrifrigo JN190C Kühlschrank",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 10
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Beleuchtung LED innen/Navigationslichter",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2.5,
+     "hours": 5
+    }
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone (SeaTalkNG/N2K)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "B&G Zeus 7\" MFD",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.5,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "B&G Autopilot (NAC-3)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.08,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 4,
+     "hours": 4
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "instr",
+    "kind": "n2kdev",
+    "name": "B&G Lot/Log/Wind",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.18,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.4,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "B&G V60 UKW",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 0.6,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "ais",
+    "kind": "n2kdev",
+    "name": "AIS-Empfänger (WR10 gelistet)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 0.3,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "wind",
+    "kind": "sensor",
+    "name": "Windgeber Masttop",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "mast",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   },
+   {
+    "key": "depth",
+    "kind": "sensor",
+    "name": "B&G Lot-/Loggeber und Vorausschau-Echolot",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html"
+   }
+  ],
+  "connections": [
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "wc2",
+    "holding2",
+    "black"
+   ],
+   [
+    "holding",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "holding2",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "black_seacock",
+    "black_thru",
+    "black"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instr",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "ais",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "wind",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "depth",
+    "n2k"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "thruster_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "solar",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "inverter",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "thruster_bat",
+    "thruster",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "wc2",
+    "dc12"
+   ],
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "pump",
+    "galley_tap",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "head_tap",
+    "fresh"
+   ],
+   [
+    "bilgepump",
+    "bilge_out",
+    "bilge"
+   ]
+  ],
+  "sources": [
+   "https://www.devalk.nl/en/yachtbrokerage/811426/BENETEAU-OCEANIS-40.1.html",
+   "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/728254/"
+  ],
+  "uncertain": [
+   "Ausstattung eines Gebrauchtboots (2021); yacht.de-Inserat (Suchauszug) nennt Wellenantrieb, de Valk Saildrive",
+   "Wasser: 240 l (de Valk) bzw. 235+330 l in anderen Inseraten",
+   "Fäkalientanks 80 l und 50 l laut Suchauszug eines Inserats; andere nennen 60 l",
+   "Starter 80 Ah und Bugstrahlruder-Batterie 100 Ah Typwerte (Kapazität nicht angegeben)",
+   "Solar: 2×100 W laut einem Inserats-Suchauszug",
+   "Boiler nicht ausdrücklich genannt – Typausstattung",
+   "Gasherd: Brennstoff im Inserat nicht genannt, Gaswarner vorhanden – Gas angenommen",
+   "Elektrische Bilgepumpe angenommen",
+   "Heizung nicht genannt (Boot mit Klimaanlage, nicht abgebildet)",
+   "Lage (x/side/level) aller Bauteile nach typischer Raumaufteilung geschätzt, nicht aus Plänen übernommen",
+   "amp/hours der Verbraucher, Pumpen und Elektronik sind Typwerte der Größenklasse",
+   "Seeventil/Borddurchlass Fäkalien, Lenzöffnung, Druckwasserpumpe, Schalttafel, Beleuchtung und NMEA-2000-Backbone als übliche Ausstattung angenommen"
+  ]
+ },
+ {
+  "id": "beneteau-oceanis-46-1",
+  "name": "Beneteau Oceanis 46.1",
+  "group": "Segelyacht",
+  "maker": "Beneteau",
+  "years": "seit 2018",
+  "hull": "segel",
+  "loa_m": 14.6,
+  "beam_m": 4.5,
+  "draft_m": 2.35,
+  "volt": 12,
+  "desc": "Große Charter- und Eigneryacht mit Yanmar 4JH57, 200 l Diesel, 570 l Wasser, Generator, Solar auf Geräteträger, Quick-Bugstrahlruder, elektrischen WCs und B&G-Elektronik.",
+  "components": [
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V mit Kabel",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Batterieladegerät",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 60
+    },
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 90
+    },
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "ah": 400
+    },
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "thruster_bat",
+    "kind": "bat",
+    "name": "Bugstrahlruder-Batterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.85,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 100
+    }
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel / Hauptschalter (Navigationsecke)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "solar",
+    "kind": "solar",
+    "name": "Solarpanels auf Geräteträger",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.02,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "wp": 300
+    },
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "generator",
+    "kind": "generator",
+    "name": "Diesel-Generator (Typ unbekannt)",
+    "systems": [
+     "ac230",
+     "fuel"
+    ],
+    "x": 0.12,
+    "side": "center",
+    "level": "below_floor",
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Yanmar 4JH57 (57 PS) mit Saildrive",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 125
+    },
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank 200 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 200
+    },
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank 570 l",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 570
+    },
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.3
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Warmwasserboiler (Motorwärmetauscher + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 40
+    },
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "galley_tap",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "head_tap",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Elektrisches WC Eignerkabine",
+    "systems": [
+     "black",
+     "dc12"
+    ],
+    "x": 0.85,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 15,
+     "hours": 0.05
+    },
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank 80 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.82,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 80
+    },
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "wc2",
+    "kind": "wc",
+    "name": "Elektrisches WC achtern Bb",
+    "systems": [
+     "black",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 15,
+     "hours": 0.05
+    },
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "holding2",
+    "kind": "holding",
+    "name": "Fäkalientank 50 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.28,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 50
+    }
+   },
+   {
+    "key": "wc3",
+    "kind": "wc",
+    "name": "Elektrisches WC achtern Stb",
+    "systems": [
+     "black",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 15,
+     "hours": 0.05
+    },
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "holding3",
+    "kind": "holding",
+    "name": "Fäkalientank 50 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.28,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 50
+    }
+   },
+   {
+    "key": "black_seacock",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalienablass",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "black_thru",
+    "kind": "thruhull",
+    "name": "Borddurchlass Fäkalien",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "port",
+    "level": "cockpit"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "Gasherd 2 Flammen mit Backofen",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    },
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "bilge_out",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe (Spiegel)",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.03,
+    "side": "center",
+    "level": "cockpit"
+   },
+   {
+    "key": "thruster",
+    "kind": "consumer",
+    "name": "Quick THC 1022 Bugstrahlruder",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.9,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 350,
+     "hours": 0.03
+    },
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Quick Ankerwinsch mit Fernbedienung",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 120,
+     "hours": 0.05
+    },
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlschrank",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 5,
+     "hours": 10
+    },
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Beleuchtung LED innen/Navigationslichter",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2.5,
+     "hours": 5
+    }
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone (SeaTalkNG/N2K)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "B&G Kartenplotter im Cockpit",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 2,
+     "hours": 8
+    },
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "Autopilot",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.08,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 4,
+     "hours": 4
+    },
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "instr",
+    "kind": "n2kdev",
+    "name": "Multi-Instrument Lot/Log",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.18,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.4,
+     "hours": 8
+    },
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "UKW-Seefunk",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 0.6,
+     "hours": 8
+    },
+    "source": "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+   },
+   {
+    "key": "depth",
+    "kind": "sensor",
+    "name": "Lot-/Loggeber",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge"
+   }
+  ],
+  "connections": [
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "wc2",
+    "holding2",
+    "black"
+   ],
+   [
+    "wc3",
+    "holding3",
+    "black"
+   ],
+   [
+    "holding",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "holding2",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "holding3",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "black_seacock",
+    "black_thru",
+    "black"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instr",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "depth",
+    "n2k"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "generator",
+    "charger",
+    "ac230"
+   ],
+   [
+    "generator",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "fueltank",
+    "generator",
+    "fuel"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "thruster_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "solar",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "thruster_bat",
+    "thruster",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "wc",
+    "dc12"
+   ],
+   [
+    "panel",
+    "wc2",
+    "dc12"
+   ],
+   [
+    "panel",
+    "wc3",
+    "dc12"
+   ],
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "pump",
+    "galley_tap",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "head_tap",
+    "fresh"
+   ],
+   [
+    "bilgepump",
+    "bilge_out",
+    "bilge"
+   ]
+  ],
+  "sources": [
+   "https://www.boat24.com/de/segelboote/beneteau/beneteau-oceanis-461/detail/694070/"
+  ],
+  "uncertain": [
+   "Ausstattung eines Gebrauchtboots (2019); Saildrive laut anderem Inserat (Suchauszug)",
+   "LüA 14,60 m inkl. Bugspriet laut Inserat",
+   "Wasser 570 l (boat24) vs. 330 l (de-Valk-Inserat, Suchauszug)",
+   "Fäkalientanks: de Valk nennt 50 l und 80 l; drei Tanks hier angenommen",
+   "Batterien, Ladegerät, Bugstrahlruder-Batterie, Solarleistung und Generatortyp nicht beziffert – Typwerte",
+   "Kein Heizungseintrag im Inserat",
+   "Generator speist hier Ladegerät und Boiler (AC-Verteilung vereinfacht)",
+   "Lage (x/side/level) aller Bauteile nach typischer Raumaufteilung geschätzt, nicht aus Plänen übernommen",
+   "amp/hours der Verbraucher, Pumpen und Elektronik sind Typwerte der Größenklasse",
+   "Seeventil/Borddurchlass Fäkalien, Lenzöffnung, Druckwasserpumpe, Schalttafel, Beleuchtung und NMEA-2000-Backbone als übliche Ausstattung angenommen"
+  ]
+ },
+ {
+  "id": "dufour-310-grand-large",
+  "name": "Dufour 310 Grand Large",
+  "group": "Segelyacht",
+  "maker": "Dufour",
+  "years": "ca. 2014–2019",
+  "hull": "segel",
+  "loa_m": 9.67,
+  "beam_m": 3.31,
+  "draft_m": 1.6,
+  "volt": 12,
+  "desc": "Kompakte Fahrtenyacht mit Volvo Penta D1-20 und Saildrive, 90 l Diesel, 160 l Wasser, Fäkalientank, Landstrom, Dieselheizung und elektrischer Ankerwinsch.",
+  "components": [
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://www.happycharter.com/en/boat/dufour-310-grand-large-294911?print=1"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Batterieladegerät",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 25
+    },
+    "source": "https://www.happycharter.com/en/boat/dufour-310-grand-large-294911?print=1"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 70
+    }
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "ah": 200
+    }
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel / Hauptschalter (Navigationsecke)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Volvo Penta D1-20 (18–20 PS) mit Saildrive",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 115
+    },
+    "source": "https://www.happycharter.com/en/boat/dufour-310-grand-large-294911?print=1"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank 90 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 90
+    },
+    "source": "https://www.happycharter.com/en/boat/dufour-310-grand-large-294911?print=1"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank 160 l",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.2,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 160
+    },
+    "source": "https://www.happycharter.com/en/boat/dufour-310-grand-large-294911?print=1"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.3
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Warmwasserboiler (Motorwärmetauscher + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 20
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-310-grand-large/detail/729432/"
+   },
+   {
+    "key": "galley_tap",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "head_tap",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Bord-WC manuell",
+    "systems": [
+     "black"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://www.happycharter.com/en/boat/dufour-310-grand-large-294911?print=1"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank 45 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.33,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 45
+    },
+    "source": "https://www.happycharter.com/en/boat/dufour-310-grand-large-294911?print=1"
+   },
+   {
+    "key": "black_seacock",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalienablass",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "black_thru",
+    "kind": "thruhull",
+    "name": "Borddurchlass Fäkalien",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "port",
+    "level": "cockpit"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "Gasherd mit Backofen",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.happycharter.com/en/boat/dufour-310-grand-large-294911?print=1"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Diesel-Warmluftheizung",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    },
+    "source": "https://www.happycharter.com/en/boat/dufour-310-grand-large-294911?print=1"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    }
+   },
+   {
+    "key": "bilge_out",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe (Spiegel)",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.03,
+    "side": "center",
+    "level": "cockpit"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Elektrische Ankerwinsch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 70,
+     "hours": 0.05
+    },
+    "source": "https://www.happycharter.com/en/boat/dufour-310-grand-large-294911?print=1"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlschrank",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 10
+    },
+    "source": "https://www.happycharter.com/en/boat/dufour-310-grand-large-294911?print=1"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Beleuchtung LED innen/Navigationslichter",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2.5,
+     "hours": 5
+    }
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone (SeaTalkNG/N2K)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "Raymarine GPS/Plotter",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.2,
+     "hours": 8
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-310-grand-large/detail/729432/"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "Raymarine Autopilot",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.08,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 3,
+     "hours": 4
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-310-grand-large/detail/729432/"
+   },
+   {
+    "key": "instr",
+    "kind": "n2kdev",
+    "name": "Instrumente Log/Wind",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.18,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.4,
+     "hours": 8
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-310-grand-large/detail/729432/"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "UKW-Seefunk",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 0.6,
+     "hours": 8
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-310-grand-large/detail/729432/"
+   },
+   {
+    "key": "wind",
+    "kind": "sensor",
+    "name": "Windgeber Masttop",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "mast",
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-310-grand-large/detail/729432/"
+   },
+   {
+    "key": "depth",
+    "kind": "sensor",
+    "name": "Lot-/Loggeber",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge"
+   }
+  ],
+  "connections": [
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "holding",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "black_seacock",
+    "black_thru",
+    "black"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instr",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "wind",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "depth",
+    "n2k"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "heater",
+    "fuel"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "pump",
+    "galley_tap",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "head_tap",
+    "fresh"
+   ],
+   [
+    "bilgepump",
+    "bilge_out",
+    "bilge"
+   ]
+  ],
+  "sources": [
+   "https://www.happycharter.com/en/boat/dufour-310-grand-large-294911?print=1",
+   "https://www.boat24.com/en/sailingboats/dufour/dufour-310-grand-large/detail/729432/",
+   "https://au.boats.com/sailing-boats/2014-dufour-310-grand-large-9673617"
+  ],
+  "uncertain": [
+   "LüA 9,67 m (Charter) bzw. 9,36 m (boat24, vermutl. Rumpflänge); Tiefgang 1,60 m laut Charterboot, Tiefkiel/Hubkiel abweichend",
+   "Lage Wassertank unter Bb-Kabine laut Inserats-Suchauszug (boats.com)",
+   "Fäkalientank 45 l laut Inserats-Suchauszug (boats.com 2014)",
+   "Batteriegrößen nicht gefunden: 200 Ah Verbraucher, 70 Ah Starter, 25-A-Lader als Typwerte",
+   "Lichtmaschine 115 A Typwert; Boilergröße Typwert",
+   "Gasherd: Brennstoff nicht genannt, Gas angenommen",
+   "Kein Bugstrahlruder belegt",
+   "Elektrische Bilgepumpe angenommen",
+   "Lage (x/side/level) aller Bauteile nach typischer Raumaufteilung geschätzt, nicht aus Plänen übernommen",
+   "amp/hours der Verbraucher, Pumpen und Elektronik sind Typwerte der Größenklasse",
+   "Seeventil/Borddurchlass Fäkalien, Lenzöffnung, Druckwasserpumpe, Schalttafel, Beleuchtung und NMEA-2000-Backbone als übliche Ausstattung angenommen"
+  ]
+ },
+ {
+  "id": "dufour-390-grand-large",
+  "name": "Dufour 390 Grand Large",
+  "group": "Segelyacht",
+  "maker": "Dufour",
+  "years": "ca. 2018–2022",
+  "hull": "segel",
+  "loa_m": 11.94,
+  "beam_m": 3.99,
+  "draft_m": 1.95,
+  "volt": 12,
+  "desc": "39-Fuß-Fahrtenyacht mit Volvo-Penta-Diesel und Saildrive, 200 l Diesel, 380 l Wasser, drei Nasszellen, Solar 2×185 W, eigener Bugstrahlruder-Bank, Lewmar-Ankerwinsch und Raymarine-Elektronik.",
+  "components": [
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V mit Kabel",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Batterieladegerät",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 40
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie 95 Ah",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 95
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank 3× 85 Ah",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "ah": 255
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "thruster_bat",
+    "kind": "bat",
+    "name": "Bugstrahlruder-Bank 2× 95 Ah",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.85,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 190
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel / Hauptschalter (Navigationsecke)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "inverter",
+    "kind": "inverter",
+    "name": "Wechselrichter 300 W",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "solar",
+    "kind": "solar",
+    "name": "Solarpanels 2× 185 W",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.02,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "wp": 370
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Volvo Penta 40 PS (D2-40) mit Saildrive",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 115
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank 200 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 200
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank 380 l",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 380
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.3
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Warmwasserboiler (Motorwärmetauscher + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 40
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "galley_tap",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "head_tap",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "WC manuell vorn",
+    "systems": [
+     "black"
+    ],
+    "x": 0.82,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank 60 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.8,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 60
+    },
+    "source": "https://au.boats.com/sailing-boats/2022-dufour-390-10194448/"
+   },
+   {
+    "key": "wc2",
+    "kind": "wc",
+    "name": "WC manuell achtern Bb",
+    "systems": [
+     "black"
+    ],
+    "x": 0.3,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "holding2",
+    "kind": "holding",
+    "name": "Fäkalientank 60 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.28,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 60
+    },
+    "source": "https://au.boats.com/sailing-boats/2022-dufour-390-10194448/"
+   },
+   {
+    "key": "wc3",
+    "kind": "wc",
+    "name": "WC manuell achtern Stb",
+    "systems": [
+     "black"
+    ],
+    "x": 0.3,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "holding3",
+    "kind": "holding",
+    "name": "Fäkalientank 60 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.28,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 60
+    }
+   },
+   {
+    "key": "black_seacock",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalienablass",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "black_thru",
+    "kind": "thruhull",
+    "name": "Borddurchlass Fäkalien",
+    "systems": [
+     "black"
+    ],
+    "x": 0.34,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "port",
+    "level": "cockpit"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "Gasherd 2 Flammen mit Backofen",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "bilge_out",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe (Spiegel)",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.03,
+    "side": "center",
+    "level": "cockpit"
+   },
+   {
+    "key": "thruster",
+    "kind": "consumer",
+    "name": "Side-Power SE80 Bugstrahlruder",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.9,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 450,
+     "hours": 0.03
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Lewmar CPX-3 Ankerwinsch 12 V",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 120,
+     "hours": 0.05
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Isotherm DR160 Schubladenkühlschrank",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 10
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Beleuchtung LED innen/Navigationslichter",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2.5,
+     "hours": 5
+    }
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone (SeaTalkNG/N2K)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "Raymarine Axiom 9\"",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 2,
+     "hours": 8
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "Raymarine Evolution mit p70s",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.08,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 3,
+     "hours": 4
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "instr",
+    "kind": "n2kdev",
+    "name": "Raymarine i70s",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.18,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.4,
+     "hours": 8
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "Raymarine Ray53 UKW",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 0.6,
+     "hours": 8
+    },
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "wind",
+    "kind": "sensor",
+    "name": "Windgeber Masttop",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "mast",
+    "source": "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/"
+   },
+   {
+    "key": "depth",
+    "kind": "sensor",
+    "name": "Lot-/Loggeber",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge"
+   }
+  ],
+  "connections": [
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "wc2",
+    "holding2",
+    "black"
+   ],
+   [
+    "wc3",
+    "holding3",
+    "black"
+   ],
+   [
+    "holding",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "holding2",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "holding3",
+    "black_seacock",
+    "black"
+   ],
+   [
+    "black_seacock",
+    "black_thru",
+    "black"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instr",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "wind",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "depth",
+    "n2k"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "thruster_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "solar",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "inverter",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "thruster_bat",
+    "thruster",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "pump",
+    "galley_tap",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "head_tap",
+    "fresh"
+   ],
+   [
+    "bilgepump",
+    "bilge_out",
+    "bilge"
+   ]
+  ],
+  "sources": [
+   "https://www.boat24.com/en/sailingboats/dufour/dufour-390-grand-large/detail/732207/",
+   "https://au.boats.com/sailing-boats/2022-dufour-390-10194448/"
+  ],
+  "uncertain": [
+   "Ausstattung eines Gebrauchtboots (2019, Batterien teils erneuert)",
+   "Motortyp nur als Volvo Penta 40 PS angegeben – D2-40 abgeleitet; andere Inserate nennen D2-50; Saildrive aus Inserat 2022 (Pod Drive) abgeleitet",
+   "Fäkalientanks: 2×60 l laut Inserat 2022 (Suchauszug), boat24 nennt 3 Tanks – dritter Tank 60 l Typwert",
+   "Ladegerät-Stromstärke Typwert; Lichtmaschine 115 A Typwert",
+   "Heizung nicht genannt – nicht aufgenommen",
+   "Lage (x/side/level) aller Bauteile nach typischer Raumaufteilung geschätzt, nicht aus Plänen übernommen",
+   "amp/hours der Verbraucher, Pumpen und Elektronik sind Typwerte der Größenklasse",
+   "Seeventil/Borddurchlass Fäkalien, Lenzöffnung, Druckwasserpumpe, Schalttafel, Beleuchtung und NMEA-2000-Backbone als übliche Ausstattung angenommen"
+  ]
+ }
+]

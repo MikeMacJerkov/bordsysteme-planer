@@ -1,0 +1,4971 @@
+[
+ {
+  "id": "linssen-grand-sturdy-40-9-ac",
+  "name": "Linssen Grand Sturdy 40.9 AC",
+  "group": "Stahl-Motoryacht",
+  "maker": "Linssen Yachts",
+  "years": "ca. 2007–2017",
+  "hull": "motor",
+  "loa_m": 12.85,
+  "beam_m": 4.3,
+  "draft_m": 1.2,
+  "volt": 12,
+  "desc": "Einmotorige Stahl-Achterkajütyacht mit Volvo Penta D3-110 an der Welle, 12/230-V-Bordnetz mit Mastervolt-Lader und 2-kW-Inverter, Bug- und Heckstrahlruder, Eberspächer-Warmluftheizung und zwei WCs.",
+  "components": [
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "deck",
+    "source": "https://jachtmakelaardijkappers.nl/en/sold-yachts/96568/linssen-grand-sturdy-409-ac/"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Mastervolt Batterielader",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.15,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "amp": 100
+    },
+    "source": "https://jachtmakelaardijkappers.nl/en/sold-yachts/96568/linssen-grand-sturdy-409-ac/"
+   },
+   {
+    "key": "inverter",
+    "kind": "inverter",
+    "name": "Mastervolt Inverter 2000 W",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.16,
+    "side": "port",
+    "level": "below_floor",
+    "source": "https://jachtmakelaardijkappers.nl/en/sold-yachts/96568/linssen-grand-sturdy-409-ac/"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbatterien",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.2,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "ah": 540
+    }
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.25,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "ah": 100
+    }
+   },
+   {
+    "key": "thr_bat",
+    "kind": "bat",
+    "name": "Strahlruderbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.85,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 140
+    }
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Hauptschalttafel 12/230 V",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Volvo Penta D3-110 (Welle)",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 115
+    },
+    "source": "https://jachtmakelaardijkappers.nl/en/sold-yachts/96568/linssen-grand-sturdy-409-ac/"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank ca. 820 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.35,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 820
+    },
+    "source": "https://jachtmakelaardijkappers.nl/en/sold-yachts/96568/linssen-grand-sturdy-409-ac/"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Eberspächer Warmluftheizung",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.25,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "amp": 3,
+     "hours": 6
+    },
+    "source": "https://jachtmakelaardijkappers.nl/en/sold-yachts/96568/linssen-grand-sturdy-409-ac/"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank ca. 440 l",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 440
+    },
+    "source": "https://jachtmakelaardijkappers.nl/en/sold-yachts/96568/linssen-grand-sturdy-409-ac/"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.55,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 6,
+     "hours": 0.5
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Boiler (Motor-Wärmetauscher + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.28,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 1
+    },
+    "source": "https://jachtmakelaardijkappers.nl/en/sold-yachts/96568/linssen-grand-sturdy-409-ac/"
+   },
+   {
+    "key": "tap_galley",
+    "kind": "tap",
+    "name": "Pantry-Spüle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.5,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_aft",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Achterkajüte",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_fwd",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Vorschiff",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.75,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "wc_el",
+    "kind": "wc",
+    "name": "Elektrisches WC",
+    "systems": [
+     "black",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 15,
+     "hours": 0.1
+    },
+    "source": "https://jachtmakelaardijkappers.nl/en/sold-yachts/96568/linssen-grand-sturdy-409-ac/"
+   },
+   {
+    "key": "wc_man",
+    "kind": "wc",
+    "name": "Manuelles WC",
+    "systems": [
+     "black"
+    ],
+    "x": 0.75,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://jachtmakelaardijkappers.nl/en/sold-yachts/96568/linssen-grand-sturdy-409-ac/"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank ca. 240 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.65,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 240
+    },
+    "source": "https://jachtmakelaardijkappers.nl/en/sold-yachts/96568/linssen-grand-sturdy-409-ac/"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.05,
+    "side": "port",
+    "level": "deck",
+    "source": "https://jachtmakelaardijkappers.nl/en/sold-yachts/96568/linssen-grand-sturdy-409-ac/"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "ENO 3-Flammen-Herd + Backofen",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.5,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://jachtmakelaardijkappers.nl/en/sold-yachts/96568/linssen-grand-sturdy-409-ac/"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlschrank + Gefrierfach",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 5,
+     "hours": 12
+    },
+    "source": "https://jachtmakelaardijkappers.nl/en/sold-yachts/96568/linssen-grand-sturdy-409-ac/"
+   },
+   {
+    "key": "bowthruster",
+    "kind": "consumer",
+    "name": "Bugstrahlruder",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.92,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 300,
+     "hours": 0.05
+    },
+    "source": "https://jachtmakelaardijkappers.nl/en/sold-yachts/96568/linssen-grand-sturdy-409-ac/"
+   },
+   {
+    "key": "sternthruster",
+    "kind": "consumer",
+    "name": "Heckstrahlruder",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.03,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 250,
+     "hours": 0.05
+    },
+    "source": "https://jachtmakelaardijkappers.nl/en/sold-yachts/96568/linssen-grand-sturdy-409-ac/"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Vetus Ankerwinsch elektrisch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 80,
+     "hours": 0.05
+    },
+    "source": "https://jachtmakelaardijkappers.nl/en/sold-yachts/96568/linssen-grand-sturdy-409-ac/"
+   },
+   {
+    "key": "instruments",
+    "kind": "consumer",
+    "name": "Raymarine ST60 Log/Lot/Ruderlage + UKW",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 2,
+     "hours": 6
+    },
+    "source": "https://jachtmakelaardijkappers.nl/en/sold-yachts/96568/linssen-grand-sturdy-409-ac/"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe Motorraum",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    },
+    "source": "https://jachtmakelaardijkappers.nl/en/sold-yachts/96568/linssen-grand-sturdy-409-ac/"
+   },
+   {
+    "key": "seacock",
+    "kind": "seacock",
+    "name": "Seeventil Bilgeauslass",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.32,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "thruhull",
+    "kind": "thruhull",
+    "name": "Borddurchlass Bilge",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.33,
+    "side": "starboard",
+    "level": "below_floor"
+   }
+  ],
+  "connections": [
+   [
+    "shore",
+    "panel",
+    "ac230"
+   ],
+   [
+    "panel",
+    "charger",
+    "ac230"
+   ],
+   [
+    "panel",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "inverter",
+    "dc12"
+   ],
+   [
+    "inverter",
+    "panel",
+    "ac230"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "start_bat",
+    "engine",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "thr_bat",
+    "dc12"
+   ],
+   [
+    "thr_bat",
+    "bowthruster",
+    "dc12"
+   ],
+   [
+    "thr_bat",
+    "sternthruster",
+    "dc12"
+   ],
+   [
+    "panel",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "panel",
+    "wc_el",
+    "dc12"
+   ],
+   [
+    "panel",
+    "instruments",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "heater",
+    "fuel"
+   ],
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "pump",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_aft",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_fwd",
+    "fresh"
+   ],
+   [
+    "pump",
+    "wc_el",
+    "fresh"
+   ],
+   [
+    "wc_el",
+    "holding",
+    "black"
+   ],
+   [
+    "wc_man",
+    "holding",
+    "black"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "bilgepump",
+    "seacock",
+    "bilge"
+   ],
+   [
+    "seacock",
+    "thruhull",
+    "bilge"
+   ]
+  ],
+  "sources": [
+   "https://jachtmakelaardijkappers.nl/en/sold-yachts/96568/linssen-grand-sturdy-409-ac/",
+   "https://www.boat24.com/en/powerboats/linssen/linssen-grand-sturdy-409-ac/detail/732115/"
+  ],
+  "uncertain": [
+   "Baujahre aus Inseraten (2008–2017) abgeleitet, nicht aus Werftangabe",
+   "Diesel: Dijkappers nennt ca. 820 l, boat24 750 l",
+   "Batteriekapazitäten (540/100/140 Ah) und eigene Strahlruderbatterie sind Typwerte der Klasse, nicht belegt",
+   "Ladestrom 100 A interpretiert aus \"Mastervolt 100Ah\"",
+   "Lichtmaschine 115 A Typwert für Volvo D3",
+   "Ein Generator (WhisperPower) ist nur für ein spätes \"Brilliant Edition\"-Exemplar per Suchtreffer erwähnt, daher nicht aufgenommen",
+   "Plotter/Autopilot/NMEA 2000 nicht belegt (nur Raymarine ST60 = SeaTalk), daher kein n2k-Backbone",
+   "Lage der Bauteile und amp/hours-Werte sind Typwerte",
+   "Heckdusche nicht belegt"
+  ]
+ },
+ {
+  "id": "linssen-grand-sturdy-500-ac-variotop",
+  "name": "Linssen Grand Sturdy 500 AC Variotop",
+  "group": "Stahl-Motoryacht",
+  "maker": "Linssen Yachts",
+  "years": "ca. 2010–2019",
+  "hull": "motor",
+  "loa_m": 14.95,
+  "beam_m": 4.88,
+  "draft_m": 1.29,
+  "volt": 24,
+  "desc": "Zweimotorige 15-m-Stahlyacht mit 2× Volvo Penta D3-150, 24/12-V-Bordnetz, Onan-Generator, Victron-Kombigerät, stufenlosen Bug-/Heckstrahlrudern, Klimaanlage, Waschtrockner und vollelektrischer Pantry.",
+  "components": [
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "deck"
+   },
+   {
+    "key": "generator",
+    "kind": "generator",
+    "name": "Onan Dieselgenerator",
+    "systems": [
+     "fuel",
+     "ac230"
+    ],
+    "x": 0.2,
+    "side": "center",
+    "level": "below_floor",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "ac_panel",
+    "kind": "panel",
+    "name": "230-V-Verteilung",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.5,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Victron Lader/Inverter-Kombigerät",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "amp": 120
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank 24 V",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.25,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "ah": 600
+    }
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterien",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.25,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "ah": 140
+    }
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "DC-Schalttafel 24/12 V",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "engine_p",
+    "kind": "engine",
+    "name": "Volvo Penta D3-150 BB (Welle)",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.28,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 115
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "engine_s",
+    "kind": "engine",
+    "name": "Volvo Penta D3-150 SB (Welle)",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.28,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 115
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "fueltank_p",
+    "kind": "fueltank",
+    "name": "Dieseltank BB 1185 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 1185
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "fueltank_s",
+    "kind": "fueltank",
+    "name": "Dieseltank SB 1185 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.38,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 1185
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Linssen Climate Control (Diesel-Zentralheizung)",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.22,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 4,
+     "hours": 6
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "aircon",
+    "kind": "consumer",
+    "name": "Reverse-Cycle-Klimaanlage",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 8,
+     "hours": 4
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Edelstahl-Frischwassertank 960 l",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 960
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.55,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.5
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Boiler (Motor + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 1
+    }
+   },
+   {
+    "key": "tap_galley",
+    "kind": "tap",
+    "name": "Pantry-Spüle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.55,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_owner",
+    "kind": "tap",
+    "name": "Dusche/Waschbecken Eignerbad",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_guest",
+    "kind": "tap",
+    "name": "Dusche/Waschbecken Gästebad",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.75,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_aft",
+    "kind": "tap",
+    "name": "Heckdusche Badeplattform",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.02,
+    "side": "center",
+    "level": "deck"
+   },
+   {
+    "key": "wc_owner",
+    "kind": "wc",
+    "name": "Elektrisches WC Eignerbad",
+    "systems": [
+     "black",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 10,
+     "hours": 0.1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "wc_guest",
+    "kind": "wc",
+    "name": "Elektrisches WC Gästebad",
+    "systems": [
+     "black",
+     "dc12"
+    ],
+    "x": 0.75,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 10,
+     "hours": 0.1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "holding_1",
+    "kind": "holding",
+    "name": "Fäkalientank 275 l (achtern)",
+    "systems": [
+     "black"
+    ],
+    "x": 0.18,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 275
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "holding_2",
+    "kind": "holding",
+    "name": "Fäkalientank 275 l (vorn)",
+    "systems": [
+     "black"
+    ],
+    "x": 0.7,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 275
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "cooktop",
+    "kind": "consumer",
+    "name": "Siemens Ceran-Kochfeld 4 Platten",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.55,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 15,
+     "hours": 0.5
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "washer",
+    "kind": "consumer",
+    "name": "Waschtrockner",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.2,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 9,
+     "hours": 0.5
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "2× Kühlschrank 110 l + Kühlbox Steuerhaus",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.55,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 12
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "bowthruster",
+    "kind": "consumer",
+    "name": "Bugstrahlruder 7,5 kW stufenlos (400 V)",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.93,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 15,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "sternthruster",
+    "kind": "consumer",
+    "name": "Heckstrahlruder 7,5 kW stufenlos (400 V)",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 15,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Elektrische Ankerwinsch mit Fernbedienung",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 60,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "n2k",
+    "kind": "n2kbus",
+    "name": "NMEA-2000/SeaTalkNG-Backbone",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin"
+   },
+   {
+    "key": "mfd",
+    "kind": "n2kdev",
+    "name": "Raymarine Plotter/Radar, 2× 16\"",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 3,
+     "hours": 6
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "Raymarine Autopilot",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 3,
+     "hours": 4
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "ais",
+    "kind": "n2kdev",
+    "name": "AIS-Transponder",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 0.5,
+     "hours": 12
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "3× elektrische Bilgepumpe (Motorraum)",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.28,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 3,
+     "hours": 0.1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+   },
+   {
+    "key": "seacock",
+    "kind": "seacock",
+    "name": "Seeventil Bilgeauslass",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.3,
+    "side": "port",
+    "level": "bilge"
+   },
+   {
+    "key": "thruhull",
+    "kind": "thruhull",
+    "name": "Borddurchlass Bilge",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.31,
+    "side": "port",
+    "level": "below_floor"
+   }
+  ],
+  "connections": [
+   [
+    "shore",
+    "ac_panel",
+    "ac230"
+   ],
+   [
+    "generator",
+    "ac_panel",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "charger",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "aircon",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "cooktop",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "washer",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "bowthruster",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "sternthruster",
+    "ac230"
+   ],
+   [
+    "charger",
+    "ac_panel",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine_p",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine_s",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "start_bat",
+    "engine_p",
+    "dc12"
+   ],
+   [
+    "start_bat",
+    "engine_s",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "panel",
+    "wc_owner",
+    "dc12"
+   ],
+   [
+    "panel",
+    "wc_guest",
+    "dc12"
+   ],
+   [
+    "panel",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "panel",
+    "mfd",
+    "dc12"
+   ],
+   [
+    "panel",
+    "autopilot",
+    "dc12"
+   ],
+   [
+    "panel",
+    "ais",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "n2k",
+    "mfd",
+    "n2k"
+   ],
+   [
+    "n2k",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2k",
+    "ais",
+    "n2k"
+   ],
+   [
+    "fueltank_p",
+    "engine_p",
+    "fuel"
+   ],
+   [
+    "fueltank_s",
+    "engine_s",
+    "fuel"
+   ],
+   [
+    "fueltank_p",
+    "generator",
+    "fuel"
+   ],
+   [
+    "fueltank_s",
+    "heater",
+    "fuel"
+   ],
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "pump",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "pump",
+    "tap_aft",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_owner",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_guest",
+    "fresh"
+   ],
+   [
+    "pump",
+    "wc_owner",
+    "fresh"
+   ],
+   [
+    "pump",
+    "wc_guest",
+    "fresh"
+   ],
+   [
+    "wc_owner",
+    "holding_1",
+    "black"
+   ],
+   [
+    "wc_guest",
+    "holding_2",
+    "black"
+   ],
+   [
+    "bilgepump",
+    "seacock",
+    "bilge"
+   ],
+   [
+    "seacock",
+    "thruhull",
+    "bilge"
+   ]
+  ],
+  "sources": [
+   "https://www.devalk.nl/en/yachtbrokerage/302109/LINSSEN-GRAND-STURDY-500-AC-VARIOTOP.html"
+  ],
+  "uncertain": [
+   "Daten aus einem einzelnen Gebrauchtinserat (De Valk); Baujahre ca. 2010–2019 geschätzt",
+   "Bordspannung: Inserat nennt 12 und 24 V DC; andere Exemplare laut Suchtreffern mit Victron Quattro 12/3000/120 und 6× 200 Ah Lithium (12 V) – Ausstattung variiert",
+   "Batteriekapazitäten Typwerte (nur \"Standard plus 2 zusätzliche Batterien\" belegt)",
+   "Victron-Gerät als Quattro/MultiPlus angenommen, Ladestrom 120 A Typwert",
+   "Strahlruder laut Inserat 7,5 kW bei 400 V, hier als 230-V-Verbraucher modelliert (benötigen Generator/Landstrom); amp-Wert ist grober Platzhalter",
+   "Linssen Climate Control als Diesel-Zentralheizung + Reverse-Cycle-Klima modelliert – genaue Technik nicht belegt",
+   "Boiler und Heckdusche nicht im Inserat genannt, aber klassentypisch",
+   "amp bei 230-V-Verbrauchern in A bei 230 V; alle amp/hours-Werte Typwerte",
+   "Lichtmaschinen 115 A Typwert"
+  ]
+ },
+ {
+  "id": "pedro-bora-41",
+  "name": "Pedro Bora 41",
+  "group": "Stahl-Motoryacht",
+  "maker": "Pedro Boat",
+  "years": "ca. 1986–1995",
+  "hull": "motor",
+  "loa_m": 12.7,
+  "beam_m": 3.9,
+  "draft_m": 1.15,
+  "volt": 12,
+  "desc": "Zweimotorige Stahl-Achterkajütyacht mit 2× Volvo Penta TMD 41 (oder TMD 31A), Generator, Eberspächer-Zentralheizung, Bugstrahlruder, Klimaanlage und großen Tanks (1200 l Diesel, 800 l Wasser).",
+  "components": [
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "deck",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451295/PEDRO-BORA-41.html"
+   },
+   {
+    "key": "generator",
+    "kind": "generator",
+    "name": "Westerbeke Dieselgenerator",
+    "systems": [
+     "fuel",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "center",
+    "level": "below_floor",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451295/PEDRO-BORA-41.html"
+   },
+   {
+    "key": "ac_panel",
+    "kind": "panel",
+    "name": "230-V-Verteilung",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Batterielader",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.2,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "amp": 50
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451295/PEDRO-BORA-41.html"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbatterien",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "ah": 400
+    }
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.22,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "ah": 120
+    }
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "DC-Schalttafel",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "engine_p",
+    "kind": "engine",
+    "name": "Volvo Penta TMD 41 BB (Welle)",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 60
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451295/PEDRO-BORA-41.html"
+   },
+   {
+    "key": "engine_s",
+    "kind": "engine",
+    "name": "Volvo Penta TMD 41 SB (Welle)",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 60
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451295/PEDRO-BORA-41.html"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank 1200 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.35,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 1200
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451295/PEDRO-BORA-41.html"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Eberspächer Warmwasser-Zentralheizung",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.25,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 4,
+     "hours": 6
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451295/PEDRO-BORA-41.html"
+   },
+   {
+    "key": "aircon",
+    "kind": "consumer",
+    "name": "Klimaanlage",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 6,
+     "hours": 3
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451295/PEDRO-BORA-41.html"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank 800 l",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 800
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451295/PEDRO-BORA-41.html"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.55,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 6,
+     "hours": 0.5
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Boiler (Motor + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.28,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 1
+    }
+   },
+   {
+    "key": "tap_galley",
+    "kind": "tap",
+    "name": "Pantry-Spüle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.5,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_owner",
+    "kind": "tap",
+    "name": "Dusche/Waschbecken Eignerbad",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_guest",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Vorschiff",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.75,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "wc_owner",
+    "kind": "wc",
+    "name": "WC Eignerbad",
+    "systems": [
+     "black"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451295/PEDRO-BORA-41.html"
+   },
+   {
+    "key": "wc_guest",
+    "kind": "wc",
+    "name": "WC Gästebad",
+    "systems": [
+     "black"
+    ],
+    "x": 0.75,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/501042/PEDRO-BORA-41.html"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank",
+    "systems": [
+     "black"
+    ],
+    "x": 0.65,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 400
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/501042/PEDRO-BORA-41.html"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.05,
+    "side": "port",
+    "level": "deck"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "Herd mit Backofen",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.5,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/501042/PEDRO-BORA-41.html"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlschrank",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 5,
+     "hours": 12
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451295/PEDRO-BORA-41.html"
+   },
+   {
+    "key": "bowthruster",
+    "kind": "consumer",
+    "name": "Bugstrahlruder elektrisch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.92,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 300,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/501042/PEDRO-BORA-41.html"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Elektrische Ankerwinsch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 80,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451295/PEDRO-BORA-41.html"
+   },
+   {
+    "key": "plotter",
+    "kind": "consumer",
+    "name": "Raymarine Plotter/GPS/Radar + UKW",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 6
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451295/PEDRO-BORA-41.html"
+   },
+   {
+    "key": "autopilot",
+    "kind": "consumer",
+    "name": "Raymarine Autopilot",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 4,
+     "hours": 4
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451295/PEDRO-BORA-41.html"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/501042/PEDRO-BORA-41.html"
+   },
+   {
+    "key": "seacock",
+    "kind": "seacock",
+    "name": "Seeventil Bilgeauslass",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.32,
+    "side": "port",
+    "level": "bilge"
+   },
+   {
+    "key": "thruhull",
+    "kind": "thruhull",
+    "name": "Borddurchlass Bilge",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.33,
+    "side": "port",
+    "level": "below_floor"
+   }
+  ],
+  "connections": [
+   [
+    "shore",
+    "ac_panel",
+    "ac230"
+   ],
+   [
+    "generator",
+    "ac_panel",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "charger",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "aircon",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine_p",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine_s",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "start_bat",
+    "engine_p",
+    "dc12"
+   ],
+   [
+    "start_bat",
+    "engine_s",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bowthruster",
+    "dc12"
+   ],
+   [
+    "panel",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "panel",
+    "plotter",
+    "dc12"
+   ],
+   [
+    "panel",
+    "autopilot",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "fueltank",
+    "engine_p",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "engine_s",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "generator",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "heater",
+    "fuel"
+   ],
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "pump",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_owner",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_guest",
+    "fresh"
+   ],
+   [
+    "wc_owner",
+    "holding",
+    "black"
+   ],
+   [
+    "wc_guest",
+    "holding",
+    "black"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "bilgepump",
+    "seacock",
+    "bilge"
+   ],
+   [
+    "seacock",
+    "thruhull",
+    "bilge"
+   ]
+  ],
+  "sources": [
+   "https://www.devalk.nl/en/yachtbrokerage/451295/PEDRO-BORA-41.html",
+   "https://www.devalk.nl/en/yachtbrokerage/501042/PEDRO-BORA-41.html"
+  ],
+  "uncertain": [
+   "Gewünschte Bora 47 / Skiron 42 / Long Range nicht recherchierbar – stattdessen Bora 41 (zwei De-Valk-Inserate 1987/1990); die neuere Bora 43 (12,95 m, laut Suchtreffern 1200 l Diesel, 800 l Wasser, 400 l Grauwasser, Yanmar 4JH80) wäre die Alternative",
+   "Bordspannung 12 V angenommen, nicht belegt (24 V möglich)",
+   "Batterien, Ladestrom und Lichtmaschinen sind Typwerte",
+   "Fäkalientank 400 l aus Inserat 1987; das 1990er-Inserat nennt nur 200 l Grauwassertank",
+   "WC-Typ (manuell/elektrisch) und Herd-Brennstoff (Gas angenommen) nicht belegt",
+   "Boiler nicht belegt, klassentypisch",
+   "Plotter/Autopilot sind Altgeräte ohne NMEA 2000, daher als consumer modelliert",
+   "Lage und amp/hours Typwerte; amp bei 230-V-Verbrauchern in A bei 230 V",
+   "Baujahre geschätzt"
+  ]
+ },
+ {
+  "id": "aquanaut-drifter-1500",
+  "name": "Aquanaut Drifter 1500",
+  "group": "Stahl-Motoryacht",
+  "maker": "Aquanaut",
+  "years": "ca. 1998–2010",
+  "hull": "motor",
+  "loa_m": 14.99,
+  "beam_m": 4.55,
+  "draft_m": 1.25,
+  "volt": 24,
+  "desc": "Einmotorige 15-m-Stahlyacht mit kielgekühltem Perkins M225Ti, Victron MultiPlus 3000, Gel-Batteriebank mit Solar, Kabola-Diesel-Warmwasserheizung sowie hydraulischem Bug- und Heckstrahlruder.",
+  "components": [
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "deck",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/813243/AQUANAUT-DRIFTER-1500-PH.html"
+   },
+   {
+    "key": "ac_panel",
+    "kind": "panel",
+    "name": "230-V-Verteilung",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.5,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Victron MultiPlus 3000 (Lader/Inverter)",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "amp": 70
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/813243/AQUANAUT-DRIFTER-1500-PH.html"
+   },
+   {
+    "key": "solar",
+    "kind": "solar",
+    "name": "2× Solarmodul 380 Wp",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "wp": 760
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/813243/AQUANAUT-DRIFTER-1500-PH.html"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "4× Victron Gel 130 Ah",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.25,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "ah": 520
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/813243/AQUANAUT-DRIFTER-1500-PH.html"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.25,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "ah": 140
+    }
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "DC-Schalttafel",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Perkins M225Ti, Kielkühlung (Welle)",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 70
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/813243/AQUANAUT-DRIFTER-1500-PH.html"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank 1200 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.35,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 1200
+    },
+    "source": "https://itboat.com/models/3026-aquanaut-drifter-cs-1500-ak"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Kabola Diesel-Warmwasserheizung",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.22,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 3,
+     "hours": 6
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/813243/AQUANAUT-DRIFTER-1500-PH.html"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank 800 l",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 800
+    },
+    "source": "https://itboat.com/models/3026-aquanaut-drifter-cs-1500-ak"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.55,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 4,
+     "hours": 0.5
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Boiler (Kabola/Motor + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.25,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 1
+    }
+   },
+   {
+    "key": "tap_galley",
+    "kind": "tap",
+    "name": "Pantry-Spüle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.5,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_owner",
+    "kind": "tap",
+    "name": "Dusche Eignerbad",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_guest",
+    "kind": "tap",
+    "name": "Dusche Gästebad",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.75,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "wc_owner",
+    "kind": "wc",
+    "name": "WC Eignerbad",
+    "systems": [
+     "black",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 10,
+     "hours": 0.1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/813243/AQUANAUT-DRIFTER-1500-PH.html"
+   },
+   {
+    "key": "wc_guest",
+    "kind": "wc",
+    "name": "WC Gästebad",
+    "systems": [
+     "black",
+     "dc12"
+    ],
+    "x": 0.75,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 10,
+     "hours": 0.1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/813243/AQUANAUT-DRIFTER-1500-PH.html"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank",
+    "systems": [
+     "black"
+    ],
+    "x": 0.65,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 300
+    }
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.05,
+    "side": "port",
+    "level": "deck"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "2-Flammen-Gaskochfeld",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.5,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/813243/AQUANAUT-DRIFTER-1500-PH.html"
+   },
+   {
+    "key": "cooktop",
+    "kind": "consumer",
+    "name": "2-Platten-Elektrokochfeld",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.5,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 8,
+     "hours": 0.5
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/813243/AQUANAUT-DRIFTER-1500-PH.html"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "2 Kühlschränke inkl. Gefrierer",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 12
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/813243/AQUANAUT-DRIFTER-1500-PH.html"
+   },
+   {
+    "key": "bowthruster",
+    "kind": "consumer",
+    "name": "Bugstrahlruder hydraulisch (Steuerung)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.92,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 2,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/813243/AQUANAUT-DRIFTER-1500-PH.html"
+   },
+   {
+    "key": "sternthruster",
+    "kind": "consumer",
+    "name": "Heckstrahlruder hydraulisch (Steuerung)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.03,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 2,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/813243/AQUANAUT-DRIFTER-1500-PH.html"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Elektrische Ankerwinsch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 60,
+     "hours": 0.05
+    }
+   },
+   {
+    "key": "n2k",
+    "kind": "n2kbus",
+    "name": "NMEA-2000/SeaTalkNG-Backbone",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin"
+   },
+   {
+    "key": "mfd",
+    "kind": "n2kdev",
+    "name": "Raymarine Kartenplotter + Radar",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 2,
+     "hours": 6
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/813243/AQUANAUT-DRIFTER-1500-PH.html"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "Raymarine UKW mit AIS",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 1,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/813243/AQUANAUT-DRIFTER-1500-PH.html"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "Garmin Autopilot",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 3,
+     "hours": 4
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/813243/AQUANAUT-DRIFTER-1500-PH.html"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "3× elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 3,
+     "hours": 0.1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/813243/AQUANAUT-DRIFTER-1500-PH.html"
+   },
+   {
+    "key": "seacock",
+    "kind": "seacock",
+    "name": "Seeventil Bilgeauslass",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.32,
+    "side": "port",
+    "level": "bilge"
+   },
+   {
+    "key": "thruhull",
+    "kind": "thruhull",
+    "name": "Borddurchlass Bilge",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.33,
+    "side": "port",
+    "level": "below_floor"
+   }
+  ],
+  "connections": [
+   [
+    "shore",
+    "ac_panel",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "charger",
+    "ac230"
+   ],
+   [
+    "charger",
+    "ac_panel",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "cooktop",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "solar",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "start_bat",
+    "engine",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "panel",
+    "wc_owner",
+    "dc12"
+   ],
+   [
+    "panel",
+    "wc_guest",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bowthruster",
+    "dc12"
+   ],
+   [
+    "panel",
+    "sternthruster",
+    "dc12"
+   ],
+   [
+    "panel",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "panel",
+    "mfd",
+    "dc12"
+   ],
+   [
+    "panel",
+    "vhf",
+    "dc12"
+   ],
+   [
+    "panel",
+    "autopilot",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "n2k",
+    "mfd",
+    "n2k"
+   ],
+   [
+    "n2k",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2k",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "heater",
+    "fuel"
+   ],
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "pump",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_owner",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_guest",
+    "fresh"
+   ],
+   [
+    "pump",
+    "wc_owner",
+    "fresh"
+   ],
+   [
+    "pump",
+    "wc_guest",
+    "fresh"
+   ],
+   [
+    "wc_owner",
+    "holding",
+    "black"
+   ],
+   [
+    "wc_guest",
+    "holding",
+    "black"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "bilgepump",
+    "seacock",
+    "bilge"
+   ],
+   [
+    "seacock",
+    "thruhull",
+    "bilge"
+   ]
+  ],
+  "sources": [
+   "https://www.devalk.nl/en/yachtbrokerage/813243/AQUANAUT-DRIFTER-1500-PH.html",
+   "https://itboat.com/models/3026-aquanaut-drifter-cs-1500-ak"
+  ],
+  "uncertain": [
+   "Aquanaut \"Unique 1500\" nicht auffindbar – stattdessen Drifter 1500 (PH, Bj. 2003, De Valk); Tanks aus itboat-Daten der Drifter CS 1500 AK (Seite blockiert, nur per Suchtreffer gelesen)",
+   "Bordspannung 24 V angenommen, nicht belegt",
+   "Kein Generator im Inserat – bei dieser Größe häufig nachgerüstet",
+   "Fäkalientank 300 l, Starterbatterie, Ladestrom 70 A, Lichtmaschine 70 A sind Typwerte",
+   "WC-Typ (elektrisch) und Ankerwinsch nicht belegt",
+   "Hydraulische Strahlruder werden vom Motor angetrieben; hier nur als kleiner DC-Steuerverbraucher modelliert",
+   "Boiler nicht belegt, klassentypisch",
+   "Lage und amp/hours Typwerte; amp bei 230-V-Verbrauchern in A bei 230 V",
+   "Baujahre geschätzt"
+  ]
+ },
+ {
+  "id": "super-van-craft-1440",
+  "name": "Super Van Craft 14.40",
+  "group": "Stahl-Motoryacht",
+  "maker": "Super Van Craft",
+  "years": "ca. 1995–2005",
+  "hull": "motor",
+  "loa_m": 14.4,
+  "beam_m": 4.25,
+  "draft_m": 1.3,
+  "volt": 24,
+  "desc": "Zweimotorige Stahlyacht mit 2× Nanni 6.60, reinem 24-V-Bordnetz, Victron-Kombigerät 24/5000/120, Onan-Generator 8,5 kW, Kabola-Zentralheizung, Klima, Waschmaschine und vollelektrischer Pantry.",
+  "components": [
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "deck",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "generator",
+    "kind": "generator",
+    "name": "Onan 8,5 kW, Nassauspuff",
+    "systems": [
+     "fuel",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "center",
+    "level": "below_floor",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "ac_panel",
+    "kind": "panel",
+    "name": "230-V-Verteilung",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.5,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Victron 24/5000/120 Lader/Inverter",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.24,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "amp": 120
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "inverter",
+    "kind": "inverter",
+    "name": "Victron Inverter 24/3000",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.24,
+    "side": "port",
+    "level": "below_floor",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank 2-V-Zellen (24 V)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.26,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "ah": 800
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.26,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "ah": 140
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "gen_bat",
+    "kind": "bat",
+    "name": "Generator-Starterbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.22,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 70
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "DC-Schalttafel 24 V mit Batteriemonitor",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "engine_p",
+    "kind": "engine",
+    "name": "Nanni 6.60 (MAN) 142 PS BB",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 55
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "engine_s",
+    "kind": "engine",
+    "name": "Nanni 6.60 (MAN) 142 PS SB",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 55
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Stahl-Dieseltank 1500 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.36,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 1500
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Kabola HR400 Diesel-Zentralheizung (auch Warmwasser)",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.22,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 3,
+     "hours": 6
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "aircon",
+    "kind": "consumer",
+    "name": "Reverse-Cycle-Klimaanlage",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 8,
+     "hours": 4
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Edelstahl-Frischwassertank 1100 l",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 1100
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.55,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 4,
+     "hours": 0.5
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Warmwasserspeicher (Kabola + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.24,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "tap_galley",
+    "kind": "tap",
+    "name": "Pantry-Spüle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.5,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_owner",
+    "kind": "tap",
+    "name": "Dusche Eignerbad",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_guest",
+    "kind": "tap",
+    "name": "Dusche Gästebad",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.75,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "wc_owner",
+    "kind": "wc",
+    "name": "Elektrisches WC Eignerkabine",
+    "systems": [
+     "black",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 10,
+     "hours": 0.1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "wc_guest",
+    "kind": "wc",
+    "name": "Elektrisches WC Gästekabine",
+    "systems": [
+     "black",
+     "dc12"
+    ],
+    "x": 0.75,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 10,
+     "hours": 0.1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank 350 l",
+    "systems": [
+     "black"
+    ],
+    "x": 0.65,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 350
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "cooktop",
+    "kind": "consumer",
+    "name": "Siemens Induktionskochfeld + Miele Heißluftofen",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.5,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 15,
+     "hours": 0.5
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "washer",
+    "kind": "consumer",
+    "name": "Miele Waschmaschine + Trockner",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.2,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 9,
+     "hours": 0.5
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlschränke 110 l + 65 l",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 3,
+     "hours": 12
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "bowthruster",
+    "kind": "consumer",
+    "name": "Bugstrahlruder hydraulisch (Steuerung)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.92,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 2,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "sternthruster",
+    "kind": "consumer",
+    "name": "Heckstrahlruder elektrisch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.03,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 150,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Elektrische Ankerwinsch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 50,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "nav",
+    "kind": "consumer",
+    "name": "Plotter (BIS), Koden-Radar, Shipmate-UKW, Simrad Log/Lot/Wind",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 6
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "autopilot",
+    "kind": "consumer",
+    "name": "Simrad Autopilot",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 3,
+     "hours": 4
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 3,
+     "hours": 0.1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html"
+   },
+   {
+    "key": "seacock",
+    "kind": "seacock",
+    "name": "Seeventil Bilgeauslass",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.32,
+    "side": "port",
+    "level": "bilge"
+   },
+   {
+    "key": "thruhull",
+    "kind": "thruhull",
+    "name": "Borddurchlass Bilge",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.33,
+    "side": "port",
+    "level": "below_floor"
+   }
+  ],
+  "connections": [
+   [
+    "shore",
+    "ac_panel",
+    "ac230"
+   ],
+   [
+    "generator",
+    "ac_panel",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "charger",
+    "ac230"
+   ],
+   [
+    "charger",
+    "ac_panel",
+    "ac230"
+   ],
+   [
+    "inverter",
+    "ac_panel",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "aircon",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "cooktop",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "washer",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "gen_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "inverter",
+    "dc12"
+   ],
+   [
+    "gen_bat",
+    "generator",
+    "dc12"
+   ],
+   [
+    "engine_p",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine_s",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "start_bat",
+    "engine_p",
+    "dc12"
+   ],
+   [
+    "start_bat",
+    "engine_s",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "panel",
+    "wc_owner",
+    "dc12"
+   ],
+   [
+    "panel",
+    "wc_guest",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bowthruster",
+    "dc12"
+   ],
+   [
+    "panel",
+    "sternthruster",
+    "dc12"
+   ],
+   [
+    "panel",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "panel",
+    "nav",
+    "dc12"
+   ],
+   [
+    "panel",
+    "autopilot",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "fueltank",
+    "engine_p",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "engine_s",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "generator",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "heater",
+    "fuel"
+   ],
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "pump",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_owner",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_guest",
+    "fresh"
+   ],
+   [
+    "pump",
+    "wc_owner",
+    "fresh"
+   ],
+   [
+    "pump",
+    "wc_guest",
+    "fresh"
+   ],
+   [
+    "wc_owner",
+    "holding",
+    "black"
+   ],
+   [
+    "wc_guest",
+    "holding",
+    "black"
+   ],
+   [
+    "bilgepump",
+    "seacock",
+    "bilge"
+   ],
+   [
+    "seacock",
+    "thruhull",
+    "bilge"
+   ]
+  ],
+  "sources": [
+   "https://www.devalk.nl/en/yachtbrokerage/451440/SUPER-VAN-CRAFT.html",
+   "https://www.boats.com/power-boats/2001-super-van-craft-14-95-5479547"
+  ],
+  "uncertain": [
+   "Kein Inserat mit Typbezeichnung \"1500\"/\"1700\" gefunden – Daten aus 14,40-m-Exemplar (Bj. 1999, De Valk); 14,95-m-Exemplar (Bj. 2001, boats.com, Seite blockiert, nur Suchtreffer) hat ca. 2000 l Diesel, 1500 l Wasser, 600 l Fäkalien, hydraulisches Bug- und Heckstrahlruder, 12+24+230 V",
+   "Batteriekapazitäten Typwerte (Bank aus 2-V-Zellen belegt, Ah nicht)",
+   "Lichtmaschinen 55 A Typwert",
+   "Lage und amp/hours Typwerte; amp bei 230-V-Verbrauchern in A bei 230 V",
+   "Baujahre geschätzt"
+  ]
+ },
+ {
+  "id": "sk-kotter-1350-ok",
+  "name": "SK Kotter 1350 OK",
+  "group": "Stahl-Motoryacht",
+  "maker": "SK Jachtbouw Sneek",
+  "years": "ca. 1995–2010",
+  "hull": "motor",
+  "loa_m": 14,
+  "beam_m": 4.43,
+  "draft_m": 1.1,
+  "volt": 24,
+  "desc": "Stahl-Kotter mit offener Kuip, Vetus-Deutz DT64 170 PS an der Welle, 24/12/230-V-Bordnetz mit acht Batterien, Allpa-Generator 6 kVA, Solar, Eberspächer-Warmluft, starken elektrischen Bug-/Heckstrahlrudern und Induktionsherd.",
+  "components": [
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "deck",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "generator",
+    "kind": "generator",
+    "name": "Allpa Marine Generator 6 kVA",
+    "systems": [
+     "fuel",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "center",
+    "level": "below_floor",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "ac_panel",
+    "kind": "panel",
+    "name": "230-V-Verteilung",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.5,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Victron Lader 24 V",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.24,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "amp": 50
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "solar",
+    "kind": "solar",
+    "name": "Solarmodul (Aqua Solar)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "wp": 200
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank 24 V",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.26,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "ah": 440
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.26,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "ah": 140
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "gen_bat",
+    "kind": "bat",
+    "name": "Generator-Starterbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.22,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 70
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "thr_bat",
+    "kind": "bat",
+    "name": "Strahlruderbatterien",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.85,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 200
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "DC-Schalttafel 24/12 V mit Batteriemonitor",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Vetus Deutz DT64 170 PS (Welle)",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 110
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Stahl-Dieseltank 500 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.35,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 500
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "fueltank_2",
+    "kind": "fueltank",
+    "name": "Stahl-Dieseltank 200 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 200
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Eberspächer Diesel-Warmluftheizung",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.25,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "amp": 2,
+     "hours": 6
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Edelstahl-Frischwassertank 600 l",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.65,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 600
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 4,
+     "hours": 0.5
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Boiler (Motor-Wärmetauscher + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.28,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "tap_galley",
+    "kind": "tap",
+    "name": "Pantry-Spüle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.55,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_bath",
+    "kind": "tap",
+    "name": "Dusche/Waschbecken",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.7,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Elektrisches WC",
+    "systems": [
+     "black",
+     "dc12"
+    ],
+    "x": 0.7,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 10,
+     "hours": 0.1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Stahl-Fäkalientank",
+    "systems": [
+     "black"
+    ],
+    "x": 0.72,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 250
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "cooktop",
+    "kind": "consumer",
+    "name": "Induktionskochfeld 4 Zonen",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.55,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 15,
+     "hours": 0.5
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "washer",
+    "kind": "consumer",
+    "name": "Waschmaschine Candy Aquamatic",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.65,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 9,
+     "hours": 0.5
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlschrank",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.55,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 3,
+     "hours": 12
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "bowthruster",
+    "kind": "consumer",
+    "name": "Bugstrahlruder elektrisch (extra stark)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.92,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 300,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "sternthruster",
+    "kind": "consumer",
+    "name": "Heckstrahlruder elektrisch (extra stark)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.03,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 250,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "nav",
+    "kind": "consumer",
+    "name": "Raymarine C90 Plotter, ST40 Bidata, Simrad RS81 UKW",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 3,
+     "hours": 6
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 3,
+     "hours": 0.1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+   },
+   {
+    "key": "seacock",
+    "kind": "seacock",
+    "name": "Seeventil Bilgeauslass",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.32,
+    "side": "port",
+    "level": "bilge"
+   },
+   {
+    "key": "thruhull",
+    "kind": "thruhull",
+    "name": "Borddurchlass Bilge",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.33,
+    "side": "port",
+    "level": "below_floor"
+   }
+  ],
+  "connections": [
+   [
+    "shore",
+    "ac_panel",
+    "ac230"
+   ],
+   [
+    "generator",
+    "ac_panel",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "charger",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "cooktop",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "washer",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "thr_bat",
+    "dc12"
+   ],
+   [
+    "solar",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "gen_bat",
+    "generator",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "thr_bat",
+    "dc12"
+   ],
+   [
+    "start_bat",
+    "engine",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "thr_bat",
+    "bowthruster",
+    "dc12"
+   ],
+   [
+    "thr_bat",
+    "sternthruster",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "panel",
+    "wc",
+    "dc12"
+   ],
+   [
+    "panel",
+    "nav",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "generator",
+    "fuel"
+   ],
+   [
+    "fueltank_2",
+    "heater",
+    "fuel"
+   ],
+   [
+    "fueltank_2",
+    "fueltank",
+    "fuel"
+   ],
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "pump",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_bath",
+    "fresh"
+   ],
+   [
+    "pump",
+    "wc",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "bilgepump",
+    "seacock",
+    "bilge"
+   ],
+   [
+    "seacock",
+    "thruhull",
+    "bilge"
+   ]
+  ],
+  "sources": [
+   "https://www.devalk.nl/en/yachtbrokerage/801461/SK-KOTTER-1350-OK.html"
+  ],
+  "uncertain": [
+   "Nur ein Inserat (Bj. 2002, De Valk); Maklertext nennt \"13.50 OK\", Spezifikation 14,00 m LüA",
+   "Succes-, Bege- und Valk-Kotter nicht gesondert recherchiert; SK Kotter als Vertreter der Kotter-Typen",
+   "8 Batterien belegt (Start, Verbraucher, Generator, Strahlruder), Aufteilung der Ah sind Typwerte",
+   "Victron-Typangabe \"24/500/12\" im Inserat unklar, Ladestrom 50 A Typwert",
+   "Solarleistung 200 Wp, Fäkalientank 250 l, Lichtmaschine 110 A (\"extra Dynamo\") sind Typwerte",
+   "Ankerwinsch laut Inserat manuell – daher weggelassen",
+   "Zuordnung der zwei Dieseltanks zu Motor/Heizung angenommen",
+   "Lage und amp/hours Typwerte; amp bei 230-V-Verbrauchern in A bei 230 V",
+   "Baujahre geschätzt"
+  ]
+ },
+ {
+  "id": "doggersbank-1400-my",
+  "name": "Doggersbank 1400 MY (Vripack)",
+  "group": "Stahl-Motoryacht",
+  "maker": "Doggersbank Jachtbouw / Vripack",
+  "years": "ca. 1980–1995",
+  "hull": "motor",
+  "loa_m": 14.95,
+  "beam_m": 4.4,
+  "draft_m": 1.3,
+  "volt": 24,
+  "desc": "Von Vripack gezeichnete Stahl-Motoryacht mit Volvo Penta MD70C, 24-V-Bordnetz mit Mastervolt Mass Combi 24/3500, 7,5-kW-Generator, Kabola-Zentralheizung, hydraulischem Bugstrahlruder, 2400-l-Dieseltank und Simrad-NMEA-2000-Elektronik.",
+  "components": [
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V mit Trenntrafo",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "deck",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "generator",
+    "kind": "generator",
+    "name": "Nanni GMS 7,5 kW",
+    "systems": [
+     "fuel",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "center",
+    "level": "below_floor",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "ac_panel",
+    "kind": "panel",
+    "name": "230-V-Verteilung",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.5,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Mastervolt Mass Combi Ultra 24/3500-100",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.24,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "amp": 100
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "gen_charger",
+    "kind": "charger",
+    "name": "12-V-Lader Generatorbatterie",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 10
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "4× 230 Ah Verbraucherbank",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.26,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "ah": 460
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "2× 230 Ah Starterbatterien",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.26,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "ah": 230
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "gen_bat",
+    "kind": "bat",
+    "name": "Generator-Starterbatterie 12 V",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.22,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 70
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "DC-Schalttafel 24/12 V",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Volvo Penta MD70C 145 PS (Welle)",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 60
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "engine_aux",
+    "kind": "engine",
+    "name": "Volvo Penta D2-40 Notantrieb",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.28,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 115
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Stahl-Dieseltank 2400 l",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.36,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 2400
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Kabola Diesel-Zentralheizung",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.22,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 3,
+     "hours": 6
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Edelstahl-Frischwassertank 1000 l",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 1000
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.55,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 4,
+     "hours": 0.5
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Boiler (Kabola/Motor + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.24,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 1
+    }
+   },
+   {
+    "key": "tap_galley",
+    "kind": "tap",
+    "name": "Pantry-Spüle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.5,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_owner",
+    "kind": "tap",
+    "name": "Dusche Eignerbad",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_guest",
+    "kind": "tap",
+    "name": "Dusche Gästebad",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.75,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "wc_owner",
+    "kind": "wc",
+    "name": "Elektrisches WC Eignerkabine",
+    "systems": [
+     "black",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 10,
+     "hours": 0.1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "wc_guest",
+    "kind": "wc",
+    "name": "Elektrisches WC Gästekabine",
+    "systems": [
+     "black",
+     "dc12"
+    ],
+    "x": 0.75,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 10,
+     "hours": 0.1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "PE-Fäkalientank",
+    "systems": [
+     "black"
+    ],
+    "x": 0.65,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 300
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.05,
+    "side": "port",
+    "level": "deck"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "Zanussi Gasherd",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.5,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "2 Kühlschränke",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 3,
+     "hours": 12
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "bowthruster",
+    "kind": "consumer",
+    "name": "Bugstrahlruder hydraulisch (Steuerung)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.92,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 2,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Elektrische Ankerwinsch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 50,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "n2k",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin"
+   },
+   {
+    "key": "mfd",
+    "kind": "n2kdev",
+    "name": "Simrad NSS evo3 7\" + 9\" mit HALO24-Radar",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 3,
+     "hours": 6
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "Simrad HS90 UKW",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 1,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "ais",
+    "kind": "n2kdev",
+    "name": "Simrad NAIS-500 AIS",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 0.5,
+     "hours": 12
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "Simrad AP44 Autopilot",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 3,
+     "hours": 4
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "3× elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 3,
+     "hours": 0.1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+   },
+   {
+    "key": "seacock",
+    "kind": "seacock",
+    "name": "Seeventil Bilgeauslass",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.32,
+    "side": "port",
+    "level": "bilge"
+   },
+   {
+    "key": "thruhull",
+    "kind": "thruhull",
+    "name": "Borddurchlass Bilge",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.33,
+    "side": "port",
+    "level": "below_floor"
+   }
+  ],
+  "connections": [
+   [
+    "shore",
+    "ac_panel",
+    "ac230"
+   ],
+   [
+    "generator",
+    "ac_panel",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "charger",
+    "ac230"
+   ],
+   [
+    "charger",
+    "ac_panel",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "gen_charger",
+    "ac230"
+   ],
+   [
+    "ac_panel",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "gen_charger",
+    "gen_bat",
+    "dc12"
+   ],
+   [
+    "gen_bat",
+    "generator",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "engine_aux",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "start_bat",
+    "engine",
+    "dc12"
+   ],
+   [
+    "start_bat",
+    "engine_aux",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "panel",
+    "wc_owner",
+    "dc12"
+   ],
+   [
+    "panel",
+    "wc_guest",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bowthruster",
+    "dc12"
+   ],
+   [
+    "panel",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "panel",
+    "mfd",
+    "dc12"
+   ],
+   [
+    "panel",
+    "vhf",
+    "dc12"
+   ],
+   [
+    "panel",
+    "ais",
+    "dc12"
+   ],
+   [
+    "panel",
+    "autopilot",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "n2k",
+    "mfd",
+    "n2k"
+   ],
+   [
+    "n2k",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2k",
+    "ais",
+    "n2k"
+   ],
+   [
+    "n2k",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "engine_aux",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "generator",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "heater",
+    "fuel"
+   ],
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "pump",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_owner",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_guest",
+    "fresh"
+   ],
+   [
+    "pump",
+    "wc_owner",
+    "fresh"
+   ],
+   [
+    "pump",
+    "wc_guest",
+    "fresh"
+   ],
+   [
+    "wc_owner",
+    "holding",
+    "black"
+   ],
+   [
+    "wc_guest",
+    "holding",
+    "black"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "bilgepump",
+    "seacock",
+    "bilge"
+   ],
+   [
+    "seacock",
+    "thruhull",
+    "bilge"
+   ]
+  ],
+  "sources": [
+   "https://www.devalk.nl/en/yachtbrokerage/804431/DOGGERSBANK-1400-MY.html"
+  ],
+  "uncertain": [
+   "Nur ein Inserat (Bj. 1986, De Valk); Notmotor D2-40 und Simrad-Elektronik sind Nachrüstungen dieses Exemplars",
+   "24 V aus Mass Combi 24/3500 abgeleitet; Inserat nennt 12/24/230 V",
+   "Bank 4× 230 Ah bei 24 V als 460 Ah gerechnet (2 in Reihe × 2 parallel), Start 2× 230 Ah als 230 Ah bei 24 V – Verschaltung angenommen",
+   "Fäkalientankgröße (300 l), Generatorbatterie, Lichtmaschinen sind Typwerte",
+   "Boiler nicht belegt (Kabola liefert ggf. Warmwasser), klassentypisch",
+   "Hydraulisches Bugstrahlruder nur als kleiner Steuerverbraucher modelliert",
+   "Lage und amp/hours Typwerte; amp bei 230-V-Verbrauchern in A bei 230 V",
+   "Baujahre geschätzt"
+  ]
+ }
+]

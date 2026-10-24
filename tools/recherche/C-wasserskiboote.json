@@ -1,0 +1,447 @@
+[
+  {
+    "id": "correct-craft-ski-nautique-1970er",
+    "name": "Correct Craft Ski Nautique (18 ft, 1970er)",
+    "group": "Wasserskiboot",
+    "maker": "Correct Craft",
+    "years": "ca. 1972–1980",
+    "hull": "ski",
+    "bow": "closed",
+    "loa_m": 5.49, "beam_m": 1.93, "draft_m": 0.6,
+    "volt": 12,
+    "desc": "Klassisches Turnier-Wasserskiboot mit geschlossenem Vorschiff, Ford/PCM 351 Windsor V8 mittschiffs im Motorkasten mit Direktantrieb 1:1, Benzintank im Heck, einer Starterbatterie und schlichter Instrumentierung.",
+    "components": [
+      {"key":"engine","kind":"engine","name":"Ford/PCM 351 Windsor V8 (ca. 235–255 PS), Direktantrieb 1:1","systems":["fuel","dc12"],"x":0.47,"side":"center","level":"below_floor","values":{"alternator_a":40},"source":"https://www.jdpower.com/boats/1975/correct-craft-inc/ski-nautique-18/10048061/specs"},
+      {"key":"fueltank","kind":"fueltank","name":"Benzintank (Aluminium) im Heck hinter der Rückbank","systems":["fuel"],"x":0.1,"side":"center","level":"below_floor","values":{"liter":76},"source":"https://www.correctcraftfan.com/forsale/details.asp?ID=7733"},
+      {"key":"fuelfill","kind":"thruhull","name":"Tankeinfüllstutzen im Heckdeck","systems":["fuel"],"x":0.08,"side":"port","level":"deck","values":{}},
+      {"key":"fuelvent","kind":"thruhull","name":"Tankentlüftung im Rumpf","systems":["fuel"],"x":0.1,"side":"port","level":"cockpit","values":{}},
+      {"key":"start_bat","kind":"bat","name":"Starterbatterie 12 V","systems":["dc12"],"x":0.35,"side":"starboard","level":"below_floor","values":{"ah":70},"source":"https://www.correctcraftfan.com/forsale/details.asp?ID=7733"},
+      {"key":"mainswitch","kind":"panel","name":"Batterie-Hauptschalter","systems":["dc12"],"x":0.35,"side":"starboard","level":"cockpit","values":{}},
+      {"key":"panel","kind":"panel","name":"Schalttafel/Sicherungen am Armaturenbrett","systems":["dc12"],"x":0.62,"side":"starboard","level":"cockpit","values":{}},
+      {"key":"gauges","kind":"consumer","name":"Instrumente: Drehzahlmesser, Tacho (Pitot), Öldruck, Temperatur, Voltmeter (beleuchtet)","systems":["dc12"],"x":0.63,"side":"starboard","level":"cockpit","values":{"amp":0.5,"hours":3}},
+      {"key":"navlight_bow","kind":"consumer","name":"Navigationslicht Bug (rot/grün)","systems":["dc12"],"x":0.97,"side":"center","level":"deck","values":{"amp":0.8,"hours":0.5}},
+      {"key":"navlight_stern","kind":"consumer","name":"Rundumlicht weiß (Steckmast achtern)","systems":["dc12"],"x":0.05,"side":"center","level":"deck","values":{"amp":0.8,"hours":0.5}},
+      {"key":"blower","kind":"consumer","name":"Motorraumgebläse (Bilge Blower)","systems":["dc12"],"x":0.45,"side":"port","level":"bilge","values":{"amp":3,"hours":0.3}},
+      {"key":"bilgepump","kind":"bilgepump","name":"Elektrische Bilgepumpe mit Schwimmerschalter (oft nachgerüstet)","systems":["bilge","dc12"],"x":0.4,"side":"center","level":"bilge","values":{"amp":3,"hours":0.1},"source":"https://www.correctcraftfan.com/forsale/details.asp?ID=7733"},
+      {"key":"bilge_out","kind":"thruhull","name":"Bilge-Lenzauslass in der Bordwand","systems":["bilge"],"x":0.4,"side":"starboard","level":"cockpit","values":{}}
+    ],
+    "connections": [
+      ["fuelfill","fueltank","fuel"],["fueltank","fuelvent","fuel"],["fueltank","engine","fuel"],
+      ["engine","start_bat","dc12"],["start_bat","mainswitch","dc12"],["mainswitch","panel","dc12"],
+      ["panel","gauges","dc12"],["panel","navlight_bow","dc12"],["panel","navlight_stern","dc12"],["panel","blower","dc12"],
+      ["start_bat","bilgepump","dc12"],["bilgepump","bilge_out","bilge"]
+    ],
+    "sources": [
+      "https://www.jdpower.com/boats/1975/correct-craft-inc/ski-nautique-18/10048061/specs",
+      "https://www.jdpower.com/boats/1976/correct-craft-inc/comp-ski-nautique/10048041/specs",
+      "http://boatspecs.iboats.com/Correct_Craft__18_Ski_Nautique__1974/bp/66b23230",
+      "https://www.correctcraftfan.com/forsale/details.asp?ID=7733",
+      "https://en.wikipedia.org/wiki/Ski_Nautique"
+    ],
+    "uncertain": [
+      "Maße aus JD Power (1975/76: 18 ft, Breite 6'4\", 2100 lb, 235–255 PS) und iBoats (1974: 17,75 ft, 76\") – nur über Suchergebnis-Auszüge gelesen, JD-Power-Seiten blockten den Direktabruf",
+      "Tiefgang 0,6 m ist Typwert",
+      "Tankvolumen nicht gefunden: 76 l (20 gal) nach Forenangabe für Ski Nautique 1980; ein Inserat (1976) nennt einen 12-gal-Tank anekdotisch",
+      "Lage des Tanks im Heck hinter der Rückbank übertragen von späteren Ski Nautiques (Forenangabe 1994)",
+      "Velvet-Drive-1:1-Getriebe für die 1970er angenommen (belegt für 1981)",
+      "Lichtmaschine 40 A, Batterie 70 Ah, Batteriehauptschalter und Bilge Blower sind Typwerte/Annahmen; Bilgepumpe war im Inserat von 1976 vom Eigner nachgerüstet",
+      "Stromaufnahmen/Nutzungsstunden aller Verbraucher sind Typwerte",
+      "Stereo und Speedcontrol (Perfect Pass) bei diesem Baujahr nicht serienmäßig – bei Bedarf als Nachrüstung ergänzen"
+    ]
+  },
+  {
+    "id": "correct-craft-ski-nautique-2001",
+    "name": "Correct Craft Ski Nautique 2001",
+    "group": "Wasserskiboot",
+    "maker": "Correct Craft",
+    "years": "1981–ca. 1996",
+    "hull": "ski",
+    "bow": "closed",
+    "loa_m": 5.94, "beam_m": 2.31, "draft_m": 0.6,
+    "volt": 12,
+    "desc": "Turnier-Wasserskiboot mit geschlossenem Bug, PCM-351-Windsor-V8 (Ford) mittschiffs mit Velvet-Drive-Direktgetriebe 1:1, ca. 100-l-Benzintank hinter der Rücksitzbank, eine Batterie, Speedcontrol und meist ein einfaches Radio.",
+    "components": [
+      {"key":"engine","kind":"engine","name":"PCM 351 Windsor V8 (Ford-Basis, ca. 240–285 PS), Velvet Drive 1:1","systems":["fuel","dc12"],"x":0.47,"side":"center","level":"below_floor","values":{"alternator_a":55},"source":"https://boats-from-usa.com/correct-craft/correct-craft-ski-nautique-231930"},
+      {"key":"fueltank","kind":"fueltank","name":"Benzintank hinter der Rücksitzbank (Zugang über Rückwand)","systems":["fuel"],"x":0.1,"side":"center","level":"below_floor","values":{"liter":102},"source":"https://planetnautique.com/vb5/forum/nautique-topics/maintenance-technical-discussion/2790-gas-tank-size"},
+      {"key":"fuelfill","kind":"thruhull","name":"Tankeinfüllstutzen im Heckdeck","systems":["fuel"],"x":0.08,"side":"port","level":"deck","values":{}},
+      {"key":"fuelvent","kind":"thruhull","name":"Tankentlüftung im Rumpf","systems":["fuel"],"x":0.1,"side":"port","level":"cockpit","values":{}},
+      {"key":"start_bat","kind":"bat","name":"Batterie 12 V (Start und Verbraucher)","systems":["dc12"],"x":0.3,"side":"starboard","level":"below_floor","values":{"ah":75}},
+      {"key":"mainswitch","kind":"panel","name":"Batterie-Hauptschalter","systems":["dc12"],"x":0.3,"side":"starboard","level":"cockpit","values":{}},
+      {"key":"panel","kind":"panel","name":"Schaltpaneel mit Sicherungen am Armaturenbrett","systems":["dc12"],"x":0.62,"side":"starboard","level":"cockpit","values":{}},
+      {"key":"gauges","kind":"consumer","name":"Instrumente: Drehzahlmesser, Tacho, Öldruck, Temperatur, Voltmeter, Tankanzeige","systems":["dc12"],"x":0.63,"side":"starboard","level":"cockpit","values":{"amp":0.6,"hours":3}},
+      {"key":"speedctl","kind":"consumer","name":"Speedcontrol (z. B. Perfect Pass)","systems":["dc12"],"x":0.63,"side":"starboard","level":"cockpit","values":{"amp":0.5,"hours":2}},
+      {"key":"stereo","kind":"consumer","name":"Radio/Stereo mit Lautsprechern","systems":["dc12"],"x":0.6,"side":"port","level":"cockpit","values":{"amp":3,"hours":2}},
+      {"key":"navlight_bow","kind":"consumer","name":"Navigationslicht Bug (rot/grün)","systems":["dc12"],"x":0.97,"side":"center","level":"deck","values":{"amp":0.8,"hours":0.5}},
+      {"key":"navlight_stern","kind":"consumer","name":"Rundumlicht weiß (Steckmast achtern)","systems":["dc12"],"x":0.05,"side":"center","level":"deck","values":{"amp":0.8,"hours":0.5}},
+      {"key":"blower","kind":"consumer","name":"Motorraumgebläse (Bilge Blower)","systems":["dc12"],"x":0.45,"side":"port","level":"bilge","values":{"amp":3,"hours":0.3}},
+      {"key":"bilgepump","kind":"bilgepump","name":"Elektrische Bilgepumpe (automatisch/manuell)","systems":["bilge","dc12"],"x":0.4,"side":"center","level":"bilge","values":{"amp":3,"hours":0.1}},
+      {"key":"bilge_out","kind":"thruhull","name":"Bilge-Lenzauslass in der Bordwand","systems":["bilge"],"x":0.4,"side":"starboard","level":"cockpit","values":{}}
+    ],
+    "connections": [
+      ["fuelfill","fueltank","fuel"],["fueltank","fuelvent","fuel"],["fueltank","engine","fuel"],
+      ["engine","start_bat","dc12"],["start_bat","mainswitch","dc12"],["mainswitch","panel","dc12"],
+      ["panel","gauges","dc12"],["panel","speedctl","dc12"],["panel","stereo","dc12"],["panel","navlight_bow","dc12"],["panel","navlight_stern","dc12"],["panel","blower","dc12"],
+      ["start_bat","bilgepump","dc12"],["bilgepump","bilge_out","bilge"]
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Nautique_Boats",
+      "https://en.wikipedia.org/wiki/Ski_Nautique",
+      "https://boats-from-usa.com/correct-craft/correct-craft-ski-nautique-231930",
+      "https://www.jdpower.com/boats/1991/correct-craft-inc/ski-nautique/10047876/specs",
+      "https://www.boat24.com/en/powerboats/correct-craft/correct-craft-ski-nautique-cb-uit-1992-op-lpg-nieuwe/detail/662254/",
+      "https://planetnautique.com/vb5/forum/nautique-topics/maintenance-technical-discussion/2790-gas-tank-size"
+    ],
+    "uncertain": [
+      "Maße variieren je Baujahr: 5,94 × 2,31 m (Inserat 1992, JD Power 1991: 19 ft / 7'7\"); ein Inserat von 1984 nennt LüA 18'9\" und Breite 7'0\" – frühe 2001er evtl. schmaler",
+      "Tank: Forenschätzung 26–27 gal für 1994, Inserat 1984 nennt 30 gal; Lage hinter der Rücksitzbank aus Forum (1994)",
+      "Planetnautique- und JD-Power-Seiten nur über Suchergebnis-Auszüge gelesen (Direktabruf blockiert)",
+      "Velvet Drive 1:1 belegt für ein Boot von 1981; PS-Angaben schwanken je Jahr",
+      "Lichtmaschine 55 A, Batterie 75 Ah, Hauptschalter sind Typwerte",
+      "Perfect Pass und Stereo sind typische Ausstattung/Nachrüstung, nicht als Serie belegt",
+      "Stromaufnahmen/Nutzungsstunden aller Verbraucher sind Typwerte"
+    ]
+  },
+  {
+    "id": "correct-craft-sport-nautique",
+    "name": "Correct Craft Sport Nautique (Open Bow)",
+    "group": "Wasserskiboot",
+    "maker": "Correct Craft",
+    "years": "1989–ca. 1997",
+    "hull": "ski",
+    "bow": "open",
+    "loa_m": 6.1, "beam_m": 2.26, "draft_m": 0.6,
+    "volt": 12,
+    "desc": "Familien-Wasserskiboot mit Sitzplätzen im Bug auf Basis der Ski-Nautique-Linie, PCM-351-V8 (Ford) mittschiffs mit Direktantrieb, Benzintank achtern, eine Batterie, Speedcontrol, Stereo mit Bug-Lautsprechern und Fatsac-Anschluss.",
+    "components": [
+      {"key":"engine","kind":"engine","name":"PCM 351 Windsor V8 (Ford-Basis, ca. 240–310 PS), Direktantrieb 1:1","systems":["fuel","dc12"],"x":0.47,"side":"center","level":"below_floor","values":{"alternator_a":55},"source":"https://onlyinboards.com/wake-boats-for-sale/sport-nautique/"},
+      {"key":"fueltank","kind":"fueltank","name":"Benzintank achtern unter der Rücksitzbank","systems":["fuel"],"x":0.1,"side":"center","level":"below_floor","values":{"liter":110}},
+      {"key":"fuelfill","kind":"thruhull","name":"Tankeinfüllstutzen im Heckdeck","systems":["fuel"],"x":0.08,"side":"port","level":"deck","values":{}},
+      {"key":"fuelvent","kind":"thruhull","name":"Tankentlüftung im Rumpf","systems":["fuel"],"x":0.1,"side":"port","level":"cockpit","values":{}},
+      {"key":"start_bat","kind":"bat","name":"Batterie 12 V (Start und Verbraucher)","systems":["dc12"],"x":0.3,"side":"starboard","level":"below_floor","values":{"ah":75}},
+      {"key":"mainswitch","kind":"panel","name":"Batterie-Hauptschalter","systems":["dc12"],"x":0.3,"side":"starboard","level":"cockpit","values":{}},
+      {"key":"panel","kind":"panel","name":"Schaltpaneel mit Sicherungen am Armaturenbrett","systems":["dc12"],"x":0.6,"side":"starboard","level":"cockpit","values":{}},
+      {"key":"gauges","kind":"consumer","name":"Instrumente: Drehzahlmesser, Tacho, Öldruck, Temperatur, Voltmeter, Tankanzeige","systems":["dc12"],"x":0.61,"side":"starboard","level":"cockpit","values":{"amp":0.6,"hours":3}},
+      {"key":"speedctl","kind":"consumer","name":"Speedcontrol (z. B. Perfect Pass)","systems":["dc12"],"x":0.61,"side":"starboard","level":"cockpit","values":{"amp":0.5,"hours":2}},
+      {"key":"stereo","kind":"consumer","name":"Stereo mit Lautsprechern im Cockpit und Bug","systems":["dc12"],"x":0.58,"side":"port","level":"cockpit","values":{"amp":4,"hours":3}},
+      {"key":"navlight_bow","kind":"consumer","name":"Navigationslicht Bug (rot/grün)","systems":["dc12"],"x":0.97,"side":"center","level":"deck","values":{"amp":0.8,"hours":0.5}},
+      {"key":"navlight_stern","kind":"consumer","name":"Rundumlicht weiß (Steckmast achtern)","systems":["dc12"],"x":0.05,"side":"center","level":"deck","values":{"amp":0.8,"hours":0.5}},
+      {"key":"blower","kind":"consumer","name":"Motorraumgebläse (Bilge Blower)","systems":["dc12"],"x":0.45,"side":"port","level":"bilge","values":{"amp":3,"hours":0.3}},
+      {"key":"bilgepump","kind":"bilgepump","name":"Elektrische Bilgepumpe (automatisch/manuell)","systems":["bilge","dc12"],"x":0.4,"side":"center","level":"bilge","values":{"amp":3,"hours":0.1}},
+      {"key":"bilge_out","kind":"thruhull","name":"Bilge-Lenzauslass in der Bordwand","systems":["bilge"],"x":0.4,"side":"starboard","level":"cockpit","values":{}},
+      {"key":"ballastpump","kind":"consumer","name":"Fatsac-/Ballastpumpe (Füllen/Leeren)","systems":["dc12"],"x":0.15,"side":"port","level":"below_floor","values":{"amp":8,"hours":0.3}}
+    ],
+    "connections": [
+      ["fuelfill","fueltank","fuel"],["fueltank","fuelvent","fuel"],["fueltank","engine","fuel"],
+      ["engine","start_bat","dc12"],["start_bat","mainswitch","dc12"],["mainswitch","panel","dc12"],
+      ["panel","gauges","dc12"],["panel","speedctl","dc12"],["panel","stereo","dc12"],["panel","navlight_bow","dc12"],["panel","navlight_stern","dc12"],["panel","blower","dc12"],["panel","ballastpump","dc12"],
+      ["start_bat","bilgepump","dc12"],["bilgepump","bilge_out","bilge"]
+    ],
+    "sources": [
+      "https://www.jdpower.com/boats/1990/correct-craft-inc/sport-nautique/10047882/specs",
+      "https://www.jdpower.com/boats/1992/correct-craft-inc/sport-nautique/10047875/specs",
+      "https://www.jdpower.com/boats/1994/correct-craft-inc/sport-nautique_/10047863/specs",
+      "https://onlyinboards.com/wake-boats-for-sale/sport-nautique/"
+    ],
+    "uncertain": [
+      "Maße aus JD Power (1990/92: 20 ft, Breite 7'5\", 2525 lb; 1993/94: 21 ft, 7'7\") – nur über Suchergebnis-Auszüge, Direktabruf blockiert",
+      "Erstes Modelljahr 1989 laut Forenangabe",
+      "Tankvolumen und -lage nicht gefunden: 110 l achtern ist Typwert in Anlehnung an Ski Nautique",
+      "Batterie 75 Ah, Lichtmaschine 55 A, Hauptschalter sind Typwerte",
+      "Perfect Pass, Bug-Lautsprecher und Fatsac-Pumpe typische (Nach-)Ausstattung, nicht als Serie belegt",
+      "Stromaufnahmen/Nutzungsstunden aller Verbraucher sind Typwerte"
+    ]
+  },
+  {
+    "id": "mastercraft-stars-and-stripes-190",
+    "name": "MasterCraft Stars & Stripes 190",
+    "group": "Wasserskiboot",
+    "maker": "MasterCraft",
+    "years": "ca. 1976–1983",
+    "hull": "ski",
+    "bow": "closed",
+    "loa_m": 5.79, "beam_m": 2.08, "draft_m": 0.6,
+    "volt": 12,
+    "desc": "Klassisches MasterCraft-Wasserskiboot mit geschlossenem Vorschiff, Ford 351 Windsor V8 mittschiffs mit Direktantrieb, ca. 95-l-Benzintank, einer Batterie und analoger Instrumentierung.",
+    "components": [
+      {"key":"engine","kind":"engine","name":"Ford 351 Windsor V8 (Marine-Umbau, ca. 240 PS), Direktantrieb 1:1","systems":["fuel","dc12"],"x":0.47,"side":"center","level":"below_floor","values":{"alternator_a":40},"source":"https://boats-from-usa.com/mastercraft/mastercraft-stars-and-stripes-190-9928"},
+      {"key":"fueltank","kind":"fueltank","name":"Benzintank achtern","systems":["fuel"],"x":0.12,"side":"center","level":"below_floor","values":{"liter":95},"source":"https://teamtalk.mastercraft.com/forum/general-mastercraft-topics/general-discussion/28871-mastercraft-skier-prostar-prostar-190-a-history-1968-2009"},
+      {"key":"fuelfill","kind":"thruhull","name":"Tankeinfüllstutzen im Heckdeck","systems":["fuel"],"x":0.08,"side":"port","level":"deck","values":{}},
+      {"key":"fuelvent","kind":"thruhull","name":"Tankentlüftung im Rumpf","systems":["fuel"],"x":0.12,"side":"port","level":"cockpit","values":{}},
+      {"key":"start_bat","kind":"bat","name":"Batterie 12 V (Start und Verbraucher)","systems":["dc12"],"x":0.3,"side":"starboard","level":"below_floor","values":{"ah":70},"source":"https://boats-from-usa.com/mastercraft/mastercraft-stars-and-stripes-190-9928"},
+      {"key":"mainswitch","kind":"panel","name":"Batterie-Hauptschalter","systems":["dc12"],"x":0.3,"side":"starboard","level":"cockpit","values":{}},
+      {"key":"panel","kind":"panel","name":"Schalttafel/Sicherungen am Armaturenbrett","systems":["dc12"],"x":0.62,"side":"starboard","level":"cockpit","values":{}},
+      {"key":"gauges","kind":"consumer","name":"Instrumente: Drehzahlmesser, Tacho, Öldruck, Temperatur, Voltmeter, Tankanzeige","systems":["dc12"],"x":0.63,"side":"starboard","level":"cockpit","values":{"amp":0.5,"hours":3}},
+      {"key":"navlight_bow","kind":"consumer","name":"Navigationslicht Bug (rot/grün)","systems":["dc12"],"x":0.97,"side":"center","level":"deck","values":{"amp":0.8,"hours":0.5}},
+      {"key":"navlight_stern","kind":"consumer","name":"Rundumlicht weiß (Steckmast achtern)","systems":["dc12"],"x":0.05,"side":"center","level":"deck","values":{"amp":0.8,"hours":0.5}},
+      {"key":"blower","kind":"consumer","name":"Motorraumgebläse (Bilge Blower)","systems":["dc12"],"x":0.45,"side":"port","level":"bilge","values":{"amp":3,"hours":0.3}},
+      {"key":"bilgepump","kind":"bilgepump","name":"Elektrische Bilgepumpe","systems":["bilge","dc12"],"x":0.4,"side":"center","level":"bilge","values":{"amp":3,"hours":0.1}},
+      {"key":"bilge_out","kind":"thruhull","name":"Bilge-Lenzauslass in der Bordwand","systems":["bilge"],"x":0.4,"side":"starboard","level":"cockpit","values":{}}
+    ],
+    "connections": [
+      ["fuelfill","fueltank","fuel"],["fueltank","fuelvent","fuel"],["fueltank","engine","fuel"],
+      ["engine","start_bat","dc12"],["start_bat","mainswitch","dc12"],["mainswitch","panel","dc12"],
+      ["panel","gauges","dc12"],["panel","navlight_bow","dc12"],["panel","navlight_stern","dc12"],["panel","blower","dc12"],
+      ["start_bat","bilgepump","dc12"],["bilgepump","bilge_out","bilge"]
+    ],
+    "sources": [
+      "https://boats-from-usa.com/mastercraft/mastercraft-stars-and-stripes-190-9928",
+      "https://teamtalk.mastercraft.com/forum/general-mastercraft-topics/general-discussion/28871-mastercraft-skier-prostar-prostar-190-a-history-1968-2009",
+      "https://teamtalk.mastercraft.com/forum/maintenance-tips-how-tos-and-refurbishing-topics/engine-drive-train/75583-fuel-capacity?t=77716"
+    ],
+    "uncertain": [
+      "Kein offizielles Datenblatt gefunden; Länge 19 ft aus Inserat (1979) mit Ford 351 Windsor",
+      "Breite 82\" und 25-gal-Tank (Serie 1983) aus der TeamTalk-Modellgeschichte, nur über Suchergebnis-Auszug gelesen (Direktabruf blockiert); Breite gilt dort für den 'Skier' 1980–85",
+      "Bauzeitraum ca. 1976–1983 geschätzt",
+      "Tanklage achtern, Batterie 70 Ah, Lichtmaschine 40 A, Hauptschalter, Bilgepumpe und Blower sind Annahmen/Typwerte",
+      "Stromaufnahmen/Nutzungsstunden aller Verbraucher sind Typwerte"
+    ]
+  },
+  {
+    "id": "mastercraft-prostar-190-1990er",
+    "name": "MasterCraft ProStar 190 (1990er)",
+    "group": "Wasserskiboot",
+    "maker": "MasterCraft",
+    "years": "ca. 1990–1999",
+    "hull": "ski",
+    "bow": "closed",
+    "loa_m": 5.92, "beam_m": 2.16, "draft_m": 0.55,
+    "volt": 12,
+    "desc": "Turnier-Wasserskiboot mit geschlossenem Bug, Indmar-5,7-l-V8 (GM 350) mittschiffs mit Velvet-Drive-Direktantrieb, ca. 118-l-Benzintank, einer Batterie, Instrumenten, Speedcontrol und CD-Radio.",
+    "components": [
+      {"key":"engine","kind":"engine","name":"Indmar 5,7 l V8 (GM 350, 265–320 PS, z. B. 285 EFI), Velvet Drive 1:1","systems":["fuel","dc12"],"x":0.47,"side":"center","level":"below_floor","values":{"alternator_a":65},"source":"https://apexmarine.net.au/1994-mastercraft-pro-star-190/"},
+      {"key":"fueltank","kind":"fueltank","name":"Benzintank achtern","systems":["fuel"],"x":0.12,"side":"center","level":"below_floor","values":{"liter":118},"source":"https://apexmarine.net.au/1994-mastercraft-pro-star-190/"},
+      {"key":"fuelfill","kind":"thruhull","name":"Tankeinfüllstutzen im Heckdeck","systems":["fuel"],"x":0.08,"side":"port","level":"deck","values":{}},
+      {"key":"fuelvent","kind":"thruhull","name":"Tankentlüftung im Rumpf","systems":["fuel"],"x":0.12,"side":"port","level":"cockpit","values":{}},
+      {"key":"start_bat","kind":"bat","name":"Batterie 12 V (Start und Verbraucher)","systems":["dc12"],"x":0.15,"side":"starboard","level":"below_floor","values":{"ah":74}},
+      {"key":"mainswitch","kind":"panel","name":"Batterie-Hauptschalter","systems":["dc12"],"x":0.15,"side":"starboard","level":"cockpit","values":{}},
+      {"key":"panel","kind":"panel","name":"Schaltpaneel und Sicherungen unter dem Armaturenbrett","systems":["dc12"],"x":0.62,"side":"starboard","level":"cockpit","values":{}},
+      {"key":"gauges","kind":"consumer","name":"Instrumente: Drehzahlmesser, Tacho, Öldruck, Temperatur, Voltmeter, Tankanzeige","systems":["dc12"],"x":0.63,"side":"starboard","level":"cockpit","values":{"amp":0.6,"hours":3}},
+      {"key":"speedctl","kind":"consumer","name":"Speedcontrol (Perfect Pass)","systems":["dc12"],"x":0.63,"side":"starboard","level":"cockpit","values":{"amp":0.5,"hours":2}},
+      {"key":"stereo","kind":"consumer","name":"AM/FM/CD-Radio mit Lautsprechern","systems":["dc12"],"x":0.6,"side":"port","level":"cockpit","values":{"amp":3,"hours":3},"source":"https://www.gulfstreamboatsales.com/boats/1997-mastercraft-prostar-190/"},
+      {"key":"navlight_bow","kind":"consumer","name":"Navigationslicht Bug (rot/grün)","systems":["dc12"],"x":0.97,"side":"center","level":"deck","values":{"amp":0.8,"hours":0.5}},
+      {"key":"navlight_stern","kind":"consumer","name":"Rundumlicht weiß (Steckmast achtern)","systems":["dc12"],"x":0.05,"side":"center","level":"deck","values":{"amp":0.8,"hours":0.5}},
+      {"key":"blower","kind":"consumer","name":"Motorraumgebläse (Bilge Blower, vor Start mind. 4 min)","systems":["dc12"],"x":0.45,"side":"port","level":"bilge","values":{"amp":3,"hours":0.3},"source":"https://bakesonline.com/cdn/shop/files/Mastercraft_2005manual.pdf"},
+      {"key":"bilgepump","kind":"bilgepump","name":"Elektrische Bilgepumpe (automatisch/manuell)","systems":["bilge","dc12"],"x":0.4,"side":"center","level":"bilge","values":{"amp":3,"hours":0.1}},
+      {"key":"bilge_out","kind":"thruhull","name":"Bilge-Lenzauslass in der Bordwand","systems":["bilge"],"x":0.4,"side":"starboard","level":"cockpit","values":{}}
+    ],
+    "connections": [
+      ["fuelfill","fueltank","fuel"],["fueltank","fuelvent","fuel"],["fueltank","engine","fuel"],
+      ["engine","start_bat","dc12"],["start_bat","mainswitch","dc12"],["mainswitch","panel","dc12"],
+      ["panel","gauges","dc12"],["panel","speedctl","dc12"],["panel","stereo","dc12"],["panel","navlight_bow","dc12"],["panel","navlight_stern","dc12"],["panel","blower","dc12"],
+      ["start_bat","bilgepump","dc12"],["bilgepump","bilge_out","bilge"]
+    ],
+    "sources": [
+      "https://apexmarine.net.au/1994-mastercraft-pro-star-190/",
+      "https://www.gulfstreamboatsales.com/boats/1997-mastercraft-prostar-190/",
+      "https://www.jdpower.com/boats/1995/mastercraft-boat-co/190/10115885/specs",
+      "https://bakesonline.com/cdn/shop/files/Mastercraft_2005manual.pdf"
+    ],
+    "uncertain": [
+      "Maße/Tank aus Inserat 1994 (19'5\", 7'1\", 118 l, Indmar 5,7 EFI 285 PS, Velvet Drive) und 1997 (Tiefgang 0,55 m, 320 PS Vortec); andere Quellen nennen 30–31 gal",
+      "Batterie 74 Ah aus einem Gebrauchtinserat (1993, nur Suchergebnis-Auszug); Lage achtern übertragen aus späterer MasterCraft-Anleitung (2014 ProStar: Batterie hinten unter Stauraumklappe)",
+      "Tanklage achtern angenommen",
+      "Blower-Hinweis aus MasterCraft-Anleitung 2005 (gleiche Bauart), nicht aus 1990er-Handbuch",
+      "Lichtmaschine 65 A, Hauptschalter, Perfect Pass sind Typwerte/übliche Ausstattung",
+      "Stromaufnahmen/Nutzungsstunden aller Verbraucher sind Typwerte"
+    ]
+  },
+  {
+    "id": "mastercraft-prostar-205",
+    "name": "MasterCraft ProStar 205 (Open Bow)",
+    "group": "Wasserskiboot",
+    "maker": "MasterCraft",
+    "years": "ca. 1990–2001",
+    "hull": "ski",
+    "bow": "open",
+    "loa_m": 6.1, "beam_m": 2.21, "draft_m": 0.55,
+    "volt": 12,
+    "desc": "Open-Bow-Variante der ProStar-Linie mit Sitzplätzen im Bug für bis zu 10 Personen, Indmar-5,7-l-V8 mittschiffs mit Direktantrieb, Benzintank achtern, einer Batterie, Speedcontrol, Stereo mit Bug-Lautsprechern.",
+    "components": [
+      {"key":"engine","kind":"engine","name":"Indmar 5,7 l V8 (GM 350, ca. 275–330 PS), Direktantrieb 1:1","systems":["fuel","dc12"],"x":0.47,"side":"center","level":"below_floor","values":{"alternator_a":65},"source":"https://www.jdpower.com/boats/1995/mastercraft-boat-co/205/10115886/specs"},
+      {"key":"fueltank","kind":"fueltank","name":"Benzintank achtern","systems":["fuel"],"x":0.12,"side":"center","level":"below_floor","values":{"liter":110}},
+      {"key":"fuelfill","kind":"thruhull","name":"Tankeinfüllstutzen im Heckdeck","systems":["fuel"],"x":0.08,"side":"port","level":"deck","values":{}},
+      {"key":"fuelvent","kind":"thruhull","name":"Tankentlüftung im Rumpf","systems":["fuel"],"x":0.12,"side":"port","level":"cockpit","values":{}},
+      {"key":"start_bat","kind":"bat","name":"Batterie 12 V (Start und Verbraucher)","systems":["dc12"],"x":0.15,"side":"starboard","level":"below_floor","values":{"ah":75}},
+      {"key":"mainswitch","kind":"panel","name":"Batterie-Hauptschalter","systems":["dc12"],"x":0.15,"side":"starboard","level":"cockpit","values":{}},
+      {"key":"panel","kind":"panel","name":"Schaltpaneel und Sicherungen unter dem Armaturenbrett","systems":["dc12"],"x":0.6,"side":"starboard","level":"cockpit","values":{}},
+      {"key":"gauges","kind":"consumer","name":"Instrumente: Drehzahlmesser, Tacho, Öldruck, Temperatur, Voltmeter, Tankanzeige","systems":["dc12"],"x":0.61,"side":"starboard","level":"cockpit","values":{"amp":0.6,"hours":3}},
+      {"key":"speedctl","kind":"consumer","name":"Speedcontrol (Perfect Pass)","systems":["dc12"],"x":0.61,"side":"starboard","level":"cockpit","values":{"amp":0.5,"hours":2}},
+      {"key":"stereo","kind":"consumer","name":"Stereo mit Lautsprechern im Cockpit und Bug","systems":["dc12"],"x":0.58,"side":"port","level":"cockpit","values":{"amp":4,"hours":3}},
+      {"key":"navlight_bow","kind":"consumer","name":"Navigationslicht Bug (rot/grün)","systems":["dc12"],"x":0.97,"side":"center","level":"deck","values":{"amp":0.8,"hours":0.5}},
+      {"key":"navlight_stern","kind":"consumer","name":"Rundumlicht weiß (Steckmast achtern)","systems":["dc12"],"x":0.05,"side":"center","level":"deck","values":{"amp":0.8,"hours":0.5}},
+      {"key":"blower","kind":"consumer","name":"Motorraumgebläse (Bilge Blower)","systems":["dc12"],"x":0.45,"side":"port","level":"bilge","values":{"amp":3,"hours":0.3}},
+      {"key":"bilgepump","kind":"bilgepump","name":"Elektrische Bilgepumpe (automatisch/manuell)","systems":["bilge","dc12"],"x":0.4,"side":"center","level":"bilge","values":{"amp":3,"hours":0.1}},
+      {"key":"bilge_out","kind":"thruhull","name":"Bilge-Lenzauslass in der Bordwand","systems":["bilge"],"x":0.4,"side":"starboard","level":"cockpit","values":{}}
+    ],
+    "connections": [
+      ["fuelfill","fueltank","fuel"],["fueltank","fuelvent","fuel"],["fueltank","engine","fuel"],
+      ["engine","start_bat","dc12"],["start_bat","mainswitch","dc12"],["mainswitch","panel","dc12"],
+      ["panel","gauges","dc12"],["panel","speedctl","dc12"],["panel","stereo","dc12"],["panel","navlight_bow","dc12"],["panel","navlight_stern","dc12"],["panel","blower","dc12"],
+      ["start_bat","bilgepump","dc12"],["bilgepump","bilge_out","bilge"]
+    ],
+    "sources": [
+      "https://www.jdpower.com/boats/1993/mastercraft-boat-co/205__/10115902/specs",
+      "https://www.jdpower.com/boats/1995/mastercraft-boat-co/205/10115886/specs",
+      "https://www.jdpower.com/boats/1999/mastercraft-boat-co/205___/10115837/specs",
+      "https://www.rightboat.com/boats-for-sale/mastercraft/prostar-205/rb104490"
+    ],
+    "uncertain": [
+      "Hinweis: Der ProStar 205 ist ein Open Bow (Sitzplätze im Bug), nicht geschlossener Bug",
+      "Maße aus JD Power (1993–96: 20 ft, Breite 7'1\"–7'8\", 2550–2700 lb, 275–285 PS; 1998/99: 21 ft, 7'3\"–7'5\", 308–330 PS) – nur über Suchergebnis-Auszüge gelesen; hier 20 ft / 7'3\" gewählt",
+      "Tankvolumen nicht belegt: ein Inserat (1994) nennt 'Tankage 98.42' ohne Einheit; 110 l ist Typwert",
+      "Tiefgang, Tanklage, Batterie 75 Ah, Lichtmaschine 65 A, Hauptschalter, Perfect Pass und Bug-Lautsprecher sind Typwerte/Annahmen",
+      "Stromaufnahmen/Nutzungsstunden aller Verbraucher sind Typwerte"
+    ]
+  },
+  {
+    "id": "mastercraft-maristar-200-vrs",
+    "name": "MasterCraft MariStar 200 VRS",
+    "group": "Wasserskiboot",
+    "maker": "MasterCraft",
+    "years": "ca. 1994–1998",
+    "hull": "ski",
+    "bow": "open",
+    "loa_m": 6.1, "beam_m": 2.39, "draft_m": 0.6,
+    "volt": 12,
+    "desc": "Open-Bow-Familienboot mit V-Drive: GM-5,7-l-V8 achtern unter der Heckbank, großer Benzintank, oft zwei Batterien mit Umschalter, Stereo mit Bug-Lautsprechern und Fatsac-Pumpe.",
+    "components": [
+      {"key":"engine","kind":"engine","name":"GM 5,7 l V8 (Indmar, ca. 275–310 PS), V-Drive","systems":["fuel","dc12"],"x":0.15,"side":"center","level":"below_floor","values":{"alternator_a":65},"source":"https://www.jdpower.com/boats/1995/mastercraft-boat-co/200-vrs/10115882/specs"},
+      {"key":"fueltank","kind":"fueltank","name":"Benzintank unter dem Cockpitboden","systems":["fuel"],"x":0.4,"side":"center","level":"below_floor","values":{"liter":160},"source":"https://boats-from-usa.com/mastercraft/mastercraft-maristar-200-vrs-57620"},
+      {"key":"fuelfill","kind":"thruhull","name":"Tankeinfüllstutzen im Seitendeck","systems":["fuel"],"x":0.4,"side":"port","level":"deck","values":{}},
+      {"key":"fuelvent","kind":"thruhull","name":"Tankentlüftung im Rumpf","systems":["fuel"],"x":0.4,"side":"port","level":"cockpit","values":{}},
+      {"key":"start_bat","kind":"bat","name":"Starterbatterie 12 V","systems":["dc12"],"x":0.25,"side":"starboard","level":"below_floor","values":{"ah":75},"source":"https://boats-from-usa.com/mastercraft/mastercraft-maristar-200-vrs-57620"},
+      {"key":"house_bat","kind":"bat","name":"Zweitbatterie 12 V (Verbraucher/Stereo)","systems":["dc12"],"x":0.25,"side":"port","level":"below_floor","values":{"ah":75},"source":"https://boats-from-usa.com/mastercraft/mastercraft-maristar-200-vrs-57620"},
+      {"key":"batswitch","kind":"panel","name":"Batterieumschalter (Perko 1/2/Both/Off)","systems":["dc12"],"x":0.25,"side":"center","level":"cockpit","values":{},"source":"https://boats-from-usa.com/mastercraft/mastercraft-maristar-200-vrs-57620"},
+      {"key":"panel","kind":"panel","name":"Schaltpaneel und Sicherungen unter dem Armaturenbrett","systems":["dc12"],"x":0.6,"side":"starboard","level":"cockpit","values":{}},
+      {"key":"gauges","kind":"consumer","name":"Instrumente: Drehzahlmesser, Tacho, Öldruck, Temperatur, Voltmeter, Tankanzeige","systems":["dc12"],"x":0.61,"side":"starboard","level":"cockpit","values":{"amp":0.6,"hours":3}},
+      {"key":"speedctl","kind":"consumer","name":"Speedcontrol (Perfect Pass)","systems":["dc12"],"x":0.61,"side":"starboard","level":"cockpit","values":{"amp":0.5,"hours":2}},
+      {"key":"stereo","kind":"consumer","name":"Stereo mit Verstärker, Lautsprechern im Cockpit, Bug und Tower","systems":["dc12"],"x":0.58,"side":"port","level":"cockpit","values":{"amp":8,"hours":3},"source":"https://boats-from-usa.com/mastercraft/mastercraft-maristar-200-vrs-57620"},
+      {"key":"navlight_bow","kind":"consumer","name":"Navigationslicht Bug (rot/grün)","systems":["dc12"],"x":0.97,"side":"center","level":"deck","values":{"amp":0.8,"hours":0.5}},
+      {"key":"navlight_stern","kind":"consumer","name":"Rundumlicht weiß","systems":["dc12"],"x":0.05,"side":"center","level":"deck","values":{"amp":0.8,"hours":0.5}},
+      {"key":"courtesy","kind":"consumer","name":"Innen-/Fußraumbeleuchtung","systems":["dc12"],"x":0.6,"side":"center","level":"cockpit","values":{"amp":1,"hours":1}},
+      {"key":"blower","kind":"consumer","name":"Motorraumgebläse (Bilge Blower)","systems":["dc12"],"x":0.15,"side":"port","level":"bilge","values":{"amp":3,"hours":0.3}},
+      {"key":"bilgepump","kind":"bilgepump","name":"Elektrische Bilgepumpe (automatisch/manuell) im Motorraum","systems":["bilge","dc12"],"x":0.12,"side":"center","level":"bilge","values":{"amp":3,"hours":0.1}},
+      {"key":"bilge_out","kind":"thruhull","name":"Bilge-Lenzauslass in der Bordwand","systems":["bilge"],"x":0.12,"side":"starboard","level":"cockpit","values":{}},
+      {"key":"ballastpump","kind":"consumer","name":"Fatsac-/Ballastpumpe (Füllen/Leeren)","systems":["dc12"],"x":0.2,"side":"port","level":"below_floor","values":{"amp":8,"hours":0.3},"source":"https://boats-from-usa.com/mastercraft/mastercraft-maristar-200-vrs-57620"}
+    ],
+    "connections": [
+      ["fuelfill","fueltank","fuel"],["fueltank","fuelvent","fuel"],["fueltank","engine","fuel"],
+      ["engine","start_bat","dc12"],["engine","house_bat","dc12"],["start_bat","batswitch","dc12"],["house_bat","batswitch","dc12"],["batswitch","panel","dc12"],
+      ["panel","gauges","dc12"],["panel","speedctl","dc12"],["panel","stereo","dc12"],["panel","navlight_bow","dc12"],["panel","navlight_stern","dc12"],["panel","courtesy","dc12"],["panel","blower","dc12"],["panel","ballastpump","dc12"],
+      ["start_bat","bilgepump","dc12"],["bilgepump","bilge_out","bilge"]
+    ],
+    "sources": [
+      "https://www.jdpower.com/boats/1995/mastercraft-boat-co/200-vrs/10115882/specs",
+      "https://www.jdpower.com/boats/1996/mastercraft-boat-co/200-vrs/10115867/specs",
+      "https://boats-from-usa.com/mastercraft/mastercraft-maristar-200-vrs-57620"
+    ],
+    "uncertain": [
+      "Maße aus JD Power (1995/96: 20 ft, Breite 7'10\", 2700 lb, 275 PS) – nur über Suchergebnis-Auszüge; Inserate nennen 20'6\" bzw. 8 ft Breite",
+      "Tank: Inserat nennt Kategorie 41–50 gal; 160 l gewählt. Lage mittschiffs unter dem Boden bei V-Drive angenommen",
+      "Zwei Batterien mit Perko-Schalter, Fatsac-Anschluss und Tower-Stereo stammen aus einem Inserat (evtl. Nachrüstung)",
+      "MariStar 205/210 VRS als Nachfolger/Varianten nicht separat recherchiert",
+      "Tiefgang, Batteriegrößen 75 Ah, Lichtmaschine 65 A, Perfect Pass sind Typwerte",
+      "Stromaufnahmen/Nutzungsstunden aller Verbraucher sind Typwerte"
+    ]
+  },
+  {
+    "id": "mastercraft-prostar-197",
+    "name": "MasterCraft ProStar 197 (Open Bow)",
+    "group": "Wasserskiboot",
+    "maker": "MasterCraft",
+    "years": "ca. 2002–2013",
+    "hull": "ski",
+    "bow": "open",
+    "loa_m": 5.99, "beam_m": 2.31, "draft_m": 0.56,
+    "volt": 12,
+    "desc": "Turnierhülle des ProStar 190 mit offenem Bug, Indmar-/Ilmor-V8 mittschiffs mit Direktantrieb, 106-l-Benzintank, Speedcontrol (MasterCraft Cruise/Zero Off), Stereo, optional Ballast, Heizung und Heckdusche.",
+    "components": [
+      {"key":"engine","kind":"engine","name":"Indmar/Ilmor 5,7 l V8 (ca. 310–350 PS), Direktantrieb 1:1","systems":["fuel","dc12"],"x":0.47,"side":"center","level":"below_floor","values":{"alternator_a":70},"source":"https://boattest.com/boats/mastercraft/prostar-190-2011"},
+      {"key":"fueltank","kind":"fueltank","name":"Benzintank 28 gal","systems":["fuel"],"x":0.12,"side":"center","level":"below_floor","values":{"liter":106},"source":"https://www.manualslib.com/manual/768646/Mastercraft-Prostar-190.html?page=55"},
+      {"key":"fuelfill","kind":"thruhull","name":"Tankeinfüllstutzen im Heckdeck","systems":["fuel"],"x":0.08,"side":"port","level":"deck","values":{}},
+      {"key":"fuelvent","kind":"thruhull","name":"Tankentlüftung im Rumpf","systems":["fuel"],"x":0.12,"side":"port","level":"cockpit","values":{}},
+      {"key":"start_bat","kind":"bat","name":"Batterie 12 V (Start und Verbraucher) achtern unter Stauraumklappe","systems":["dc12"],"x":0.12,"side":"starboard","level":"below_floor","values":{"ah":75}},
+      {"key":"mainswitch","kind":"panel","name":"Batterie-Hauptschalter","systems":["dc12"],"x":0.12,"side":"starboard","level":"cockpit","values":{}},
+      {"key":"panel","kind":"panel","name":"Hauptsicherungstafel unter dem Armaturenbrett, Schalter am Dash","systems":["dc12"],"x":0.62,"side":"starboard","level":"cockpit","values":{},"source":"https://www.manualslib.com/manual/768646/Mastercraft-Prostar-190.html?page=58"},
+      {"key":"gauges","kind":"consumer","name":"Instrumente: Drehzahlmesser, Tacho, Öldruck, Temperatur, Voltmeter, Tankanzeige, Niederspannungsalarm","systems":["dc12"],"x":0.63,"side":"starboard","level":"cockpit","values":{"amp":0.8,"hours":3}},
+      {"key":"speedctl","kind":"consumer","name":"Speedcontrol (MasterCraft Cruise / Zero Off)","systems":["dc12"],"x":0.63,"side":"starboard","level":"cockpit","values":{"amp":0.5,"hours":2},"source":"https://boattest.com/boats/mastercraft/prostar-190-2011"},
+      {"key":"stereo","kind":"consumer","name":"AM/FM/CD-Stereo mit iPod/MP3-Anschluss, Lautsprecher (optional Tower)","systems":["dc12"],"x":0.58,"side":"port","level":"cockpit","values":{"amp":6,"hours":3},"source":"https://www.manualslib.com/manual/768646/Mastercraft-Prostar-190.html"},
+      {"key":"navlight_bow","kind":"consumer","name":"Navigationslicht Bug (rot/grün)","systems":["dc12"],"x":0.97,"side":"center","level":"deck","values":{"amp":0.8,"hours":0.5}},
+      {"key":"navlight_stern","kind":"consumer","name":"Rundum-/Ankerlicht weiß","systems":["dc12"],"x":0.05,"side":"center","level":"deck","values":{"amp":0.8,"hours":0.5}},
+      {"key":"courtesy","kind":"consumer","name":"Innen-/Fußraumbeleuchtung","systems":["dc12"],"x":0.6,"side":"center","level":"cockpit","values":{"amp":1,"hours":1}},
+      {"key":"blower","kind":"consumer","name":"Motorraumgebläse (Bilge Blower, vor Start mind. 4 min)","systems":["dc12"],"x":0.45,"side":"port","level":"bilge","values":{"amp":3,"hours":0.3},"source":"https://bakesonline.com/cdn/shop/files/Mastercraft_2005manual.pdf"},
+      {"key":"bilgepump","kind":"bilgepump","name":"Elektrische Bilgepumpe (Schalter automatisch/manuell)","systems":["bilge","dc12"],"x":0.4,"side":"center","level":"bilge","values":{"amp":3,"hours":0.1},"source":"https://www.manualslib.com/manual/768646/Mastercraft-Prostar-190.html"},
+      {"key":"bilge_out","kind":"thruhull","name":"Bilge-Lenzauslass in der Bordwand","systems":["bilge"],"x":0.4,"side":"starboard","level":"cockpit","values":{}},
+      {"key":"ballastpump","kind":"consumer","name":"Ballastpumpe(n) Füllen/Leeren (Option)","systems":["dc12"],"x":0.2,"side":"port","level":"below_floor","values":{"amp":8,"hours":0.3},"source":"https://www.manualslib.com/manual/768646/Mastercraft-Prostar-190.html"},
+      {"key":"heaterfan","kind":"consumer","name":"Heizung (Option): Heizkasten mit Gebläse, Ausströmer im Boden","systems":["dc12"],"x":0.55,"side":"center","level":"below_floor","values":{"amp":6,"hours":0.5},"source":"https://www.manualslib.com/manual/768646/Mastercraft-Prostar-190.html?page=98"}
+    ],
+    "connections": [
+      ["fuelfill","fueltank","fuel"],["fueltank","fuelvent","fuel"],["fueltank","engine","fuel"],
+      ["engine","start_bat","dc12"],["start_bat","mainswitch","dc12"],["mainswitch","panel","dc12"],
+      ["panel","gauges","dc12"],["panel","speedctl","dc12"],["panel","stereo","dc12"],["panel","navlight_bow","dc12"],["panel","navlight_stern","dc12"],["panel","courtesy","dc12"],["panel","blower","dc12"],["panel","ballastpump","dc12"],["panel","heaterfan","dc12"],
+      ["start_bat","bilgepump","dc12"],["bilgepump","bilge_out","bilge"]
+    ],
+    "sources": [
+      "https://www.manualslib.com/manual/768646/Mastercraft-Prostar-190.html?page=55",
+      "https://www.manualslib.com/manual/768646/Mastercraft-Prostar-190.html",
+      "https://www.manualslib.com/manual/768646/Mastercraft-Prostar-190.html?page=98",
+      "https://boattest.com/boats/mastercraft/prostar-190-2011",
+      "https://bakesonline.com/cdn/shop/files/Mastercraft_2005manual.pdf"
+    ],
+    "uncertain": [
+      "Maße/Tank aus MasterCraft-Handbuch 2012 (ProStar 197: 19'8\", Breite 91\", 2800–3070 lb, 28 gal); Tiefgang 0,56 m aus Inseraten",
+      "Motorvarianten je Baujahr unterschiedlich (Indmar bis ca. 2008, danach Ilmor); Lichtmaschine 70 A Typwert",
+      "Batterielage achtern unter Stauraumklappe aus Suchergebnis zu ProStar-Supplement 2014; Dual-Batterie-Schalter laut Handbuch 2012 nur bei V-Modellen, daher hier eine Batterie",
+      "Heizung: Handbuch beschreibt elektrisch belüfteten Heizkasten; Wärmequelle vermutlich Motorkühlwasser (nicht belegt)",
+      "Heckdusche (Option) mangels Frischwassertank nicht modelliert",
+      "Ballast, Heizung und Tower-Lautsprecher sind Optionen",
+      "Stromaufnahmen/Nutzungsstunden aller Verbraucher sind Typwerte"
+    ]
+  },
+  {
+    "id": "malibu-response-lxi",
+    "name": "Malibu Response LXi",
+    "group": "Wasserskiboot",
+    "maker": "Malibu",
+    "years": "ca. 2003–2012",
+    "hull": "ski",
+    "bow": "closed",
+    "loa_m": 6.25, "beam_m": 2.31, "draft_m": 0.56,
+    "volt": 12,
+    "desc": "Malibu-Turnierskiboot mit geschlossenem Bug als Vergleich: Malibu-Vortec- bzw. Indmar-V8 mittschiffs mit Direktantrieb 1:1, 155-l-Benzintank, Speedcontrol, Stereo, keine Wasseranlage.",
+    "components": [
+      {"key":"engine","kind":"engine","name":"Malibu Vortec 310 PS (Serie) bzw. Corvette LS1 375 PS / Indmar, Direktantrieb 1:1","systems":["fuel","dc12"],"x":0.47,"side":"center","level":"below_floor","values":{"alternator_a":70},"source":"https://boattest.com/boats/malibu/response-lxi"},
+      {"key":"fueltank","kind":"fueltank","name":"Benzintank 41 gal","systems":["fuel"],"x":0.15,"side":"center","level":"below_floor","values":{"liter":155},"source":"https://boattest.com/boats/malibu/response-lxi"},
+      {"key":"fuelfill","kind":"thruhull","name":"Tankeinfüllstutzen im Deck","systems":["fuel"],"x":0.12,"side":"port","level":"deck","values":{}},
+      {"key":"fuelvent","kind":"thruhull","name":"Tankentlüftung im Rumpf","systems":["fuel"],"x":0.15,"side":"port","level":"cockpit","values":{}},
+      {"key":"start_bat","kind":"bat","name":"Batterie 12 V (Start und Verbraucher)","systems":["dc12"],"x":0.15,"side":"starboard","level":"below_floor","values":{"ah":75}},
+      {"key":"mainswitch","kind":"panel","name":"Batterie-Hauptschalter","systems":["dc12"],"x":0.15,"side":"starboard","level":"cockpit","values":{}},
+      {"key":"panel","kind":"panel","name":"Schaltpaneel und Sicherungen am Armaturenbrett","systems":["dc12"],"x":0.62,"side":"starboard","level":"cockpit","values":{}},
+      {"key":"gauges","kind":"consumer","name":"Instrumente: Drehzahlmesser, Tacho, Öldruck, Temperatur, Voltmeter, Tankanzeige","systems":["dc12"],"x":0.63,"side":"starboard","level":"cockpit","values":{"amp":0.8,"hours":3}},
+      {"key":"speedctl","kind":"consumer","name":"Speedcontrol (Perfect Pass)","systems":["dc12"],"x":0.63,"side":"starboard","level":"cockpit","values":{"amp":0.5,"hours":2}},
+      {"key":"stereo","kind":"consumer","name":"Stereo mit Lautsprechern","systems":["dc12"],"x":0.58,"side":"port","level":"cockpit","values":{"amp":5,"hours":3}},
+      {"key":"navlight_bow","kind":"consumer","name":"Navigationslicht Bug (rot/grün)","systems":["dc12"],"x":0.97,"side":"center","level":"deck","values":{"amp":0.8,"hours":0.5}},
+      {"key":"navlight_stern","kind":"consumer","name":"Rundumlicht weiß","systems":["dc12"],"x":0.05,"side":"center","level":"deck","values":{"amp":0.8,"hours":0.5}},
+      {"key":"blower","kind":"consumer","name":"Motorraumgebläse (Bilge Blower)","systems":["dc12"],"x":0.45,"side":"port","level":"bilge","values":{"amp":3,"hours":0.3}},
+      {"key":"bilgepump","kind":"bilgepump","name":"Elektrische Bilgepumpe (automatisch/manuell)","systems":["bilge","dc12"],"x":0.4,"side":"center","level":"bilge","values":{"amp":3,"hours":0.1}},
+      {"key":"bilge_out","kind":"thruhull","name":"Bilge-Lenzauslass in der Bordwand","systems":["bilge"],"x":0.4,"side":"starboard","level":"cockpit","values":{}}
+    ],
+    "connections": [
+      ["fuelfill","fueltank","fuel"],["fueltank","fuelvent","fuel"],["fueltank","engine","fuel"],
+      ["engine","start_bat","dc12"],["start_bat","mainswitch","dc12"],["mainswitch","panel","dc12"],
+      ["panel","gauges","dc12"],["panel","speedctl","dc12"],["panel","stereo","dc12"],["panel","navlight_bow","dc12"],["panel","navlight_stern","dc12"],["panel","blower","dc12"],
+      ["start_bat","bilgepump","dc12"],["bilgepump","bilge_out","bilge"]
+    ],
+    "sources": [
+      "https://boattest.com/boats/malibu/response-lxi",
+      "https://boattest.com/boats/malibu/response-lxi-2009"
+    ],
+    "uncertain": [
+      "Maße/Tank/Motor aus BoatTEST (20'6\", 7'7\", 41 gal, 2800 lb, Wasser: keine); Tiefgang dort widersprüchlich (1'4\" bzw. 22\"), 0,56 m gewählt",
+      "Bauzeitraum geschätzt; Seite für 2009+ nennt Indmar 383 (400 PS) bzw. Malibu 320 LCR",
+      "Tanklage, Batterie 75 Ah, Lichtmaschine 70 A, Hauptschalter sind Typwerte",
+      "Speedcontrol-Typ (Perfect Pass) und Stereo nicht aus Quelle belegt",
+      "Stromaufnahmen/Nutzungsstunden aller Verbraucher sind Typwerte"
+    ]
+  }
+]

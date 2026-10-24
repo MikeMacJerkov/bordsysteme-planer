@@ -1,0 +1,8207 @@
+[
+ {
+  "id": "hanse-315",
+  "name": "Hanse 315",
+  "group": "Segelyacht",
+  "maker": "Hanse",
+  "years": "2015–ca. 2023",
+  "hull": "segel",
+  "loa_m": 9.6,
+  "beam_m": 3.35,
+  "draft_m": 1.85,
+  "volt": 12,
+  "desc": "Kompakte Hanse mit Volvo-Saildrive, zwei AGM-Batterien, Landstrom-Ladegerät, Boiler (Motor + 230 V), Gasherd mit Backofen und manuellem WC mit kleinem Fäkalientank.",
+  "components": [
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Volvo Penta D1-20 (ca. 18–21 PS), Saildrive",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.28,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 110
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812282/HANSE-315.html"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank PE",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.2,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 100
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812282/HANSE-315.html"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie AGM",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 90
+    },
+    "source": "https://au.boats.com/sailing-boats/2018-hanse-315-9293709"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbatterie AGM",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "ah": 90
+    },
+    "source": "https://au.boats.com/sailing-boats/2018-hanse-315-9293709"
+   },
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://au.boats.com/sailing-boats/2018-hanse-315-9293709"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Batterieladegerät",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 35
+    },
+    "source": "https://au.boats.com/sailing-boats/2018-hanse-315-9293709"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel 12 V / 230 V mit Hauptschaltern",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank PE",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.75,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 210
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812282/HANSE-315.html"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.5
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Warmwasserbereiter (Motor-Wärmetauscher + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "liter": 20
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812282/HANSE-315.html"
+   },
+   {
+    "key": "tap_galley",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_head",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_cockpit",
+    "kind": "tap",
+    "name": "Heckdusche",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.02,
+    "side": "center",
+    "level": "cockpit"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Bordtoilette manuell",
+    "systems": [
+     "black"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812282/HANSE-315.html"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank PE",
+    "systems": [
+     "black"
+    ],
+    "x": 0.36,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 20
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812282/HANSE-315.html"
+   },
+   {
+    "key": "seacock_wc",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalienabsaugung/-auslass",
+    "systems": [
+     "black"
+    ],
+    "x": 0.36,
+    "side": "port",
+    "level": "bilge"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "Gasherd mit Backofen",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812282/HANSE-315.html"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlbox 12 V",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 10
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812282/HANSE-315.html"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Innen- und Navigationsbeleuchtung LED",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2,
+     "hours": 4
+    }
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812282/HANSE-315.html"
+   },
+   {
+    "key": "thruhull_bilge",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.05,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "B&G Vulcan 7 Plotter",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.1,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.2,
+     "hours": 6
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812282/HANSE-315.html"
+   },
+   {
+    "key": "instruments",
+    "kind": "n2kdev",
+    "name": "B&G Triton Instrumente (Log/Lot/Wind)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.25,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.3,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812282/HANSE-315.html"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "B&G UKW-Funkgerät",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 0.5,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812282/HANSE-315.html"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "Pinnenpilot Simrad TP32",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.05,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 2,
+     "hours": 3
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812282/HANSE-315.html"
+   },
+   {
+    "key": "sensor_depth",
+    "kind": "sensor",
+    "name": "Geber Log/Lot",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Elektrische Ankerwinsch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 70,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812282/HANSE-315.html"
+   }
+  ],
+  "sources": [
+   "https://www.devalk.nl/en/yachtbrokerage/812282/HANSE-315.html",
+   "https://au.boats.com/sailing-boats/2018-hanse-315-9293709",
+   "https://en.wikipedia.org/wiki/Hanse_(yacht_brand)"
+  ],
+  "uncertain": [
+   "Motorleistung in Inseraten uneinheitlich (13–21 PS); Lichtmaschine 110 A als Typwert analog Volvo D1-20 im Dehler-34-Datenblatt",
+   "Batterien 1×90 + 1×90 Ah AGM laut 2018er Inserat; andere Boote 90 + 160 Ah (Option)",
+   "Ladegerät 35 A stammt aus einem Ausstattungspaket, Standard ggf. kleiner",
+   "Fäkalientank: Inserate nennen 20 l bzw. 35 l",
+   "Bauende ca. 2023 nicht verifiziert",
+   "Elektronik, Pinnenpilot und Ankerwinsch sind Ausstattung eines Inseratsbootes, kein Werftstandard",
+   "Boiler-Volumen und Gaslage Typannahmen; Verbraucher-amp/hours sind Typwerte",
+   "Lage (x/side/level) aller Bauteile ist aus typischer Bauweise der Größenklasse abgeleitet, nicht aus Werftplänen verifiziert"
+  ],
+  "connections": [
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "start_bat",
+    "engine",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_head",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_cockpit",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "holding",
+    "seacock_wc",
+    "black"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "bilgepump",
+    "thruhull_bilge",
+    "bilge"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "sensor_depth",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instruments",
+    "n2k"
+   ]
+  ]
+ },
+ {
+  "id": "hanse-388",
+  "name": "Hanse 388",
+  "group": "Segelyacht",
+  "maker": "Hanse",
+  "years": "2017–heute",
+  "hull": "segel",
+  "loa_m": 11.4,
+  "beam_m": 3.9,
+  "draft_m": 2.06,
+  "volt": 12,
+  "desc": "Moderne Fahrtenyacht mit Yanmar-Saildrive, AGM-Bank 2×160 Ah, separater Bugstrahlbatterie, Mastervolt-Lader, Eberspächer-Warmluftheizung, Boiler und B&G-Elektronik am NMEA-2000-Bus.",
+  "components": [
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Yanmar 3JH40 (39 PS), Saildrive SD60",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.28,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 125
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.2,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 160
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie AGM",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 90
+    },
+    "source": "https://www.boats.com/sailing-boats/2022-hanse-388-9728944"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank AGM 2×160 Ah",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "ah": 320
+    },
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/725921/"
+   },
+   {
+    "key": "bt_bat",
+    "kind": "bat",
+    "name": "Bugstrahlruder-Batterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.85,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 90
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html"
+   },
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Mastervolt ChargeMaster Plus 12/50-3",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 50
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel 12 V / 230 V mit Hauptschaltern",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.75,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 295
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.5
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html"
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Quick-Boiler (230 V, Motor-Wärmetauscher)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "liter": 22
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html"
+   },
+   {
+    "key": "tap_galley",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_head",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.38,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_cockpit",
+    "kind": "tap",
+    "name": "Heckdusche",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.02,
+    "side": "center",
+    "level": "cockpit"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Jabsco Handpump-WC",
+    "systems": [
+     "black"
+    ],
+    "x": 0.38,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank mit Füllstandsanzeige",
+    "systems": [
+     "black"
+    ],
+    "x": 0.36,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 35
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html"
+   },
+   {
+    "key": "seacock_wc",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalientank",
+    "systems": [
+     "black"
+    ],
+    "x": 0.36,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "port",
+    "level": "cockpit"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "ENO 2-Flammen-Herd mit Backofen",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Eberspächer Diesel-Warmluftheizung",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlschrank mit Gefrierfach 12 V",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 10
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Innen- und Navigationsbeleuchtung LED",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2,
+     "hours": 4
+    }
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html"
+   },
+   {
+    "key": "thruhull_bilge",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.05,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "B&G Zeus3S 9\"",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html"
+   },
+   {
+    "key": "instruments",
+    "kind": "n2kdev",
+    "name": "B&G Triton2 (Log/Lot/Wind)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.25,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.3,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "B&G V60 UKW mit H60",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 0.5,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "B&G Autopilot",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.1,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 3,
+     "hours": 3
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html"
+   },
+   {
+    "key": "sensor_depth",
+    "kind": "sensor",
+    "name": "Triton2-Geber Log/Lot",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Quick Genius Ankerwinsch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 80,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html"
+   },
+   {
+    "key": "bowthruster",
+    "kind": "consumer",
+    "name": "Quick Bugstrahlruder, einziehbar",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.88,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 250,
+     "hours": 0.05
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html"
+   }
+  ],
+  "sources": [
+   "https://www.devalk.nl/en/yachtbrokerage/810815/HANSE-388.html",
+   "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/725921/",
+   "https://www.boats.com/sailing-boats/2022-hanse-388-9728944",
+   "https://en.wikipedia.org/wiki/Hanse_(yacht_brand)"
+  ],
+  "uncertain": [
+   "Motor: Inseratsboot mit Yanmar 3JH40 (39 PS); andere Inserate Yanmar ca. 29 PS, US-Boote Volvo D2-40",
+   "Lichtmaschine 125 A ist Typwert für Yanmar 3JH40, nicht im Inserat",
+   "Ladegerät: 50 A beim Inseratsboot, andere Boote 35 A oder Kombigerät 60 A",
+   "Bugstrahl-Batterie Ah nicht genannt (Typwert 90 Ah); Heckdusche und Gaslage angenommen",
+   "Boiler-Volumen 22 l Typwert; Grauwassertank vorhanden, aber kein Bauteiltyp dafür",
+   "Bugstrahlruder-Stromaufnahme Typwert; Verbraucher-amp/hours sind Typwerte",
+   "Lage (x/side/level) aller Bauteile ist aus typischer Bauweise der Größenklasse abgeleitet, nicht aus Werftplänen verifiziert"
+  ],
+  "connections": [
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "heater",
+    "fuel"
+   ],
+   [
+    "start_bat",
+    "engine",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "bt_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "bt_bat",
+    "bowthruster",
+    "dc12"
+   ],
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_head",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_cockpit",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "holding",
+    "seacock_wc",
+    "black"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "bilgepump",
+    "thruhull_bilge",
+    "bilge"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "sensor_depth",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instruments",
+    "n2k"
+   ]
+  ]
+ },
+ {
+  "id": "hanse-418",
+  "name": "Hanse 418",
+  "group": "Segelyacht",
+  "maker": "Hanse",
+  "years": "2017–ca. 2023",
+  "hull": "segel",
+  "loa_m": 12.4,
+  "beam_m": 4.17,
+  "draft_m": 2.07,
+  "volt": 12,
+  "desc": "Große Fahrtenyacht mit zwei Frischwassertanks (475 l), 2×160-Ah-AGM-Bank, oft Mastervolt-Kombigerät, separater Bugstrahlbatterie, Heizung, 20-l-Boiler und B&G-Elektronik inkl. AIS.",
+  "components": [
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Yanmar 3JH40 (39 PS, Standard; Option 4JH57)",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.28,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 125
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.2,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 160
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie AGM",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 90
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank AGM 2×160 Ah",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "ah": 320
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "bt_bat",
+    "kind": "bat",
+    "name": "Bugstrahlruder-Batterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.85,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 90
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Mastervolt Combimaster 12/2000/60 (Lader+Inverter)",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 60
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Hauptschalttafeln 12 V / 230 V",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank 1",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.75,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 295
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "watertank2",
+    "kind": "watertank",
+    "name": "Frischwassertank 2",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 180
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.5
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Warmwasserbereiter (Motor + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "liter": 20
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "tap_galley",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_head",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.38,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_cockpit",
+    "kind": "tap",
+    "name": "Cockpitdusche warm/kalt",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.02,
+    "side": "center",
+    "level": "cockpit",
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Bordtoilette manuell",
+    "systems": [
+     "black"
+    ],
+    "x": 0.38,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank",
+    "systems": [
+     "black"
+    ],
+    "x": 0.36,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 55
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "seacock_wc",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalientank",
+    "systems": [
+     "black"
+    ],
+    "x": 0.36,
+    "side": "starboard",
+    "level": "bilge",
+    "source": "https://www.boats.com/sailing-boats/2021-hanse-418-9673923"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "port",
+    "level": "cockpit",
+    "source": "https://www.boats.com/sailing-boats/2021-hanse-418-9673923"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "Gasherd 2-flammig mit Backofen (Option 3-flammig)",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Diesel-Warmluftheizung (Option)",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "starboard",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlschrank 12 V",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 10
+    }
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Innen- und Navigationsbeleuchtung LED (SLS-Lichtsystem)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2,
+     "hours": 4
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    }
+   },
+   {
+    "key": "thruhull_bilge",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.05,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "B&G Zeus3 (Standard 9\", Inseratsboot 12\")",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "instruments",
+    "kind": "n2kdev",
+    "name": "B&G Triton2 (Wind/Log/Lot/Temp.)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.25,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.3,
+     "hours": 8
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "B&G V60 UKW",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 0.5,
+     "hours": 8
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "ais",
+    "kind": "n2kdev",
+    "name": "B&G NAIS-500 AIS-Transponder (Option)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 0.3,
+     "hours": 8
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "B&G Autopilot",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.1,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 3,
+     "hours": 3
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "sensor_depth",
+    "kind": "sensor",
+    "name": "Geber Log/Lot",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Elektrische Ankerwinsch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 80,
+     "hours": 0.05
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   },
+   {
+    "key": "bowthruster",
+    "kind": "consumer",
+    "name": "Bugstrahlruder, einziehbar (Option)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.88,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 250,
+     "hours": 0.05
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf"
+   }
+  ],
+  "sources": [
+   "https://batagent.se/wp-content/uploads/2023/07/Hanse-418-Equipment-List-3.pdf",
+   "https://www.boats.com/sailing-boats/2021-hanse-418-9673923",
+   "https://itboat.com/models/7951-418"
+  ],
+  "uncertain": [
+   "Hauptquelle ist eine vom Eigner gelieferte Ausstattungsliste (2021er Boot); Kombigerät, AIS, Bugstrahl, Heizung als Upgrade gekennzeichnet",
+   "Standard-Ladegerät laut anderem Inserat 35 A",
+   "Saildrive angenommen (Hanse-typisch), nicht ausdrücklich genannt",
+   "Lichtmaschine 125 A und Bugstrahl-Batterie 90 Ah sind Typwerte",
+   "Heizungsfabrikat nicht genannt; WC-Typ angenommen",
+   "Bauende ca. 2023 nicht verifiziert",
+   "Verbraucher-amp/hours sind Typwerte",
+   "Lage (x/side/level) aller Bauteile ist aus typischer Bauweise der Größenklasse abgeleitet, nicht aus Werftplänen verifiziert"
+  ],
+  "connections": [
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "heater",
+    "fuel"
+   ],
+   [
+    "start_bat",
+    "engine",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "bt_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "bt_bat",
+    "bowthruster",
+    "dc12"
+   ],
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "watertank2",
+    "pump",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_head",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_cockpit",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "holding",
+    "seacock_wc",
+    "black"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "bilgepump",
+    "thruhull_bilge",
+    "bilge"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "ais",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "sensor_depth",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instruments",
+    "n2k"
+   ]
+  ]
+ },
+ {
+  "id": "hanse-400",
+  "name": "Hanse 400",
+  "group": "Segelyacht",
+  "maker": "Hanse",
+  "years": "ca. 2005–2011",
+  "hull": "segel",
+  "loa_m": 11.99,
+  "beam_m": 4.04,
+  "draft_m": 1.98,
+  "volt": 12,
+  "desc": "Ältere, gebraucht häufige Hanse mit Yanmar-Saildrive, kleiner Werft-Batterieausstattung (80 + 110 Ah, Lader 20 A), Boiler, 130-l-Kühlschrank, Edelstahl-Fäkalientank und Gaskasten im Cockpit.",
+  "components": [
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Yanmar 3JH4 (40 PS), Saildrive, Frischwasserkühlung",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.28,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 80
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank Edelstahl",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.2,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 140
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie 12 V",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 80
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbatterie 12 V",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "ah": 110
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V mit FI-Schalter",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Batterieladegerät 12 V / 20 A",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 20
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel 12 V (Volt-, Tankanzeigen) und 230 V",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.7,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 300
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.5
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Warmwasserbereiter (Motor + Heizstab 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "liter": 22
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "tap_galley",
+    "kind": "tap",
+    "name": "Doppelspüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "tap_head",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "tap_cockpit",
+    "kind": "tap",
+    "name": "Heckdusche",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.02,
+    "side": "center",
+    "level": "cockpit",
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "sumppump",
+    "kind": "consumer",
+    "name": "Duschlenzpumpe Nasszelle",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "amp": 3,
+     "hours": 0.1
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Bordtoilette manuell",
+    "systems": [
+     "black"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank Edelstahl (See- und Deckabsaugung)",
+    "systems": [
+     "black"
+    ],
+    "x": 0.36,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 60
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "seacock_wc",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalientank",
+    "systems": [
+     "black"
+    ],
+    "x": 0.36,
+    "side": "port",
+    "level": "bilge",
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche in selbstlenzendem Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "2-Flammen-Gasherd mit Backofen, kardanisch",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlschrank 12 V ca. 130 l (Top- und Frontlader)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 5,
+     "hours": 10
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Innen- und Navigationsbeleuchtung",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 3,
+     "hours": 4
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "instruments",
+    "kind": "consumer",
+    "name": "Lot und Log (Werft-Standard)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.25,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.3,
+     "hours": 8
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf"
+   },
+   {
+    "key": "thruhull_bilge",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.05,
+    "side": "starboard",
+    "level": "cockpit"
+   }
+  ],
+  "sources": [
+   "https://batagent.se/wp-content/uploads/2023/06/import/hanse_400_spec_sheet.pdf",
+   "https://www.boats.com/sailing-boats/2011-hanse-400-9973989"
+  ],
+  "uncertain": [
+   "Bauzeitraum ca. 2005–2011 aus Inseraten abgeleitet (Datenblatt gilt ab Modelljahr 2006/07)",
+   "Lichtmaschine 80 A Typwert für Yanmar 3JH4",
+   "Fäkalientank-Volumen nicht im Datenblatt (Typwert 60 l), Boiler-Volumen Typwert",
+   "Gebrauchtboote haben oft Volvo D2-40F statt Yanmar sowie nachgerüstete Plotter/Autopilot/Heizung – nicht modelliert",
+   "Instrumente im Werftstandard vermutlich kein NMEA 2000, daher als Verbraucher modelliert",
+   "Verbraucher-amp/hours sind Typwerte",
+   "Lage (x/side/level) aller Bauteile ist aus typischer Bauweise der Größenklasse abgeleitet, nicht aus Werftplänen verifiziert"
+  ],
+  "connections": [
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "start_bat",
+    "engine",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "sumppump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "instruments",
+    "dc12"
+   ],
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_head",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_cockpit",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "holding",
+    "seacock_wc",
+    "black"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "bilgepump",
+    "thruhull_bilge",
+    "bilge"
+   ]
+  ]
+ },
+ {
+  "id": "dehler-30-od",
+  "name": "Dehler 30 OD",
+  "group": "Segelyacht",
+  "maker": "Dehler",
+  "years": "2019–heute",
+  "hull": "segel",
+  "loa_m": 10.3,
+  "beam_m": 3.28,
+  "draft_m": 2.2,
+  "volt": 12,
+  "desc": "Leichter Regatta-Einheitsklasser mit einziehbarem Nanni-Stealth-Drive, einer Lithium-Batterie für Start und Bordnetz, elektrischer Wasserballastpumpe und B&G-Elektronik; kaum Komfortsysteme.",
+  "components": [
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Nanni N2.10 (10 PS), Stealth Drive (einziehbare Welle)",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.35,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 70
+    },
+    "source": "https://resources.boattrader.com/boat/2024-dehler-30-7610711"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 25
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812428/DEHLER-30-OD.html"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Lithium-Batterie (Start + Bordnetz)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 90
+    },
+    "source": "https://resources.boattrader.com/boat/2024-dehler-30-7610711"
+   },
+   {
+    "key": "solar",
+    "kind": "solar",
+    "name": "Solarmodul auf beweglichem Halter (Option)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.1,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "wp": 100
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812428/DEHLER-30-OD.html"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "12-V-Hauptschalttafel mit USB",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://resources.boattrader.com/boat/2024-dehler-30-7610711"
+   },
+   {
+    "key": "waterballast",
+    "kind": "consumer",
+    "name": "Elektrische Wasserballastpumpe mit Ventilen (2×200 l)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 15,
+     "hours": 0.2
+    },
+    "source": "https://resources.boattrader.com/boat/2024-dehler-30-7610711"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.7,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 40
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812428/DEHLER-30-OD.html"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Wasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 4,
+     "hours": 0.2
+    }
+   },
+   {
+    "key": "tap_galley",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.5,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Bordtoilette",
+    "systems": [
+     "black"
+    ],
+    "x": 0.8,
+    "side": "center",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812428/DEHLER-30-OD.html"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank",
+    "systems": [
+     "black"
+    ],
+    "x": 0.78,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 30
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812428/DEHLER-30-OD.html"
+   },
+   {
+    "key": "seacock_wc",
+    "kind": "seacock",
+    "name": "Seeventil WC",
+    "systems": [
+     "black"
+    ],
+    "x": 0.78,
+    "side": "center",
+    "level": "bilge"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gaskartusche/Flasche",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.48,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "Gaskocher",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.5,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812428/DEHLER-30-OD.html"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Navigations- und Innenbeleuchtung LED",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 1,
+     "hours": 4
+    }
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    }
+   },
+   {
+    "key": "thruhull_bilge",
+    "kind": "thruhull",
+    "name": "Lenzöffnung",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.05,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "B&G Plotter",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.2,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.2,
+     "hours": 6
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812428/DEHLER-30-OD.html"
+   },
+   {
+    "key": "instruments",
+    "kind": "n2kdev",
+    "name": "B&G Instrumente (Log, Lot, 2 Windgeber)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 0.4,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812428/DEHLER-30-OD.html"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "UKW-Funkgerät",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 0.5,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812428/DEHLER-30-OD.html"
+   },
+   {
+    "key": "ais",
+    "kind": "n2kdev",
+    "name": "AIS-Transponder",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 0.3,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812428/DEHLER-30-OD.html"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "B&G Autopilot",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.1,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2.5,
+     "hours": 2
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/812428/DEHLER-30-OD.html"
+   },
+   {
+    "key": "sensor_depth",
+    "kind": "sensor",
+    "name": "Geber Log/Lot",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge"
+   }
+  ],
+  "sources": [
+   "https://www.devalk.nl/en/yachtbrokerage/812428/DEHLER-30-OD.html",
+   "https://resources.boattrader.com/boat/2024-dehler-30-7610711",
+   "https://seahorsemagazine.com/article/october-2019/beastie-boy"
+  ],
+  "uncertain": [
+   "Standard laut Werftliste (Kopie bei boattrader, nur über Suchauszug gesehen): 1×90 Ah Li für Start und Service, 70-A-Lichtmaschine; Inseratsboot hat 2×90 Ah Li plus EFOY-Brennstoffzelle (nicht modelliert)",
+   "Landstrom/Ladegerät in keiner Quelle genannt – weggelassen",
+   "WC-Typ, Wasserpumpe, Bilgepumpe, Lage Gasflasche nicht genannt (Typannahmen)",
+   "Elektronik (B&G, AIS, Autopilot) vom Inseratsboot, Klassenregeln können abweichen",
+   "Ballastpumpe Stromaufnahme Typwert; Verbraucher-amp/hours sind Typwerte",
+   "Lage (x/side/level) aller Bauteile ist aus typischer Bauweise der Größenklasse abgeleitet, nicht aus Werftplänen verifiziert"
+  ],
+  "connections": [
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "solar",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "waterballast",
+    "dc12"
+   ],
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "pump",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "holding",
+    "seacock_wc",
+    "black"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "bilgepump",
+    "thruhull_bilge",
+    "bilge"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "ais",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "sensor_depth",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instruments",
+    "n2k"
+   ]
+  ]
+ },
+ {
+  "id": "dehler-34",
+  "name": "Dehler 34",
+  "group": "Segelyacht",
+  "maker": "Dehler",
+  "years": "ca. 2014–2020",
+  "hull": "segel",
+  "loa_m": 10.7,
+  "beam_m": 3.6,
+  "draft_m": 1.95,
+  "volt": 12,
+  "desc": "Sportliche Fahrtenyacht mit Volvo D1-20 am Saildrive (110-A-Lichtmaschine), AGM 160 + 90 Ah, 30-A-Landstromlader, 20-l-Boiler, 130-l-Kühlschrank und Fäkalientank mit Deckabsaugung.",
+  "components": [
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Volvo Penta D1-20 (18 PS), Saildrive; Option D1-30",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.28,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 110
+    },
+    "source": "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank mit Anzeige",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.2,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 160
+    },
+    "source": "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie AGM",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 90
+    },
+    "source": "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbatterie AGM",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "ah": 160
+    },
+    "source": "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf"
+   },
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Batterieladegerät 30 A",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 30
+    },
+    "source": "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "DC-Tafel mit Sicherungsautomaten, AC-Tafel, Hauptschalter",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank mit Füllstand",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.55,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 230
+    },
+    "source": "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Elektrische Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.5
+    },
+    "source": "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf"
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Warmwasserbereiter 20 l (Motor + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "liter": 20
+    },
+    "source": "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf"
+   },
+   {
+    "key": "tap_galley",
+    "kind": "tap",
+    "name": "Doppelspüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf"
+   },
+   {
+    "key": "tap_head",
+    "kind": "tap",
+    "name": "Waschbecken und Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.33,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf"
+   },
+   {
+    "key": "tap_cockpit",
+    "kind": "tap",
+    "name": "Cockpitdusche warm/kalt",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.02,
+    "side": "center",
+    "level": "cockpit",
+    "source": "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf"
+   },
+   {
+    "key": "sumppump",
+    "kind": "consumer",
+    "name": "Duschlenzpumpe",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.33,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "amp": 3,
+     "hours": 0.1
+    },
+    "source": "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Bordtoilette (Pump-WC)",
+    "systems": [
+     "black"
+    ],
+    "x": 0.33,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank mit Deckabsaugung",
+    "systems": [
+     "black"
+    ],
+    "x": 0.32,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 40
+    },
+    "source": "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf"
+   },
+   {
+    "key": "seacock_wc",
+    "kind": "seacock",
+    "name": "Separates Seeventil Fäkalientank",
+    "systems": [
+     "black"
+    ],
+    "x": 0.32,
+    "side": "port",
+    "level": "bilge",
+    "source": "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "2-Flammen-Herd mit Backofen, kardanisch",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlschrank ca. 130 l (Top- und Frontlader)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 5,
+     "hours": 10
+    },
+    "source": "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "LED-Innenbeleuchtung (SLS) und Navigationslichter",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2,
+     "hours": 4
+    },
+    "source": "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe 12 V",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    },
+    "source": "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf"
+   },
+   {
+    "key": "thruhull_bilge",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.05,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "Kartenplotter",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.1,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.2,
+     "hours": 6
+    }
+   },
+   {
+    "key": "instruments",
+    "kind": "n2kdev",
+    "name": "Instrumente Log/Lot/Wind",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.25,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.3,
+     "hours": 8
+    }
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "UKW-Funkgerät",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 0.5,
+     "hours": 8
+    }
+   },
+   {
+    "key": "sensor_depth",
+    "kind": "sensor",
+    "name": "Geber Log/Lot",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge"
+   }
+  ],
+  "sources": [
+   "https://cognac.hisse-et-oh.com/store/medias/sailing/5dd/20f/673/original/5dd20f6739819f3668dff4ad.pdf",
+   "https://itboat.com/models/7104-dehler-34"
+  ],
+  "uncertain": [
+   "Bauzeitraum ca. 2014–2020 nicht verifiziert (Datenblatt gültig ab 1.4.2016)",
+   "Fäkalientank-Volumen nicht im Datenblatt (Typwert 40 l)",
+   "Werftstandard enthält keine Navigationselektronik außer Kompass – Plotter, Instrumente, UKW und NMEA-Bus sind typische Zusatzausstattung",
+   "Gasflaschenlage und Bilge-Lenzöffnung angenommen",
+   "Verbraucher-amp/hours sind Typwerte",
+   "Lage (x/side/level) aller Bauteile ist aus typischer Bauweise der Größenklasse abgeleitet, nicht aus Werftplänen verifiziert"
+  ],
+  "connections": [
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "start_bat",
+    "engine",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "sumppump",
+    "dc12"
+   ],
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_head",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_cockpit",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "holding",
+    "seacock_wc",
+    "black"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "bilgepump",
+    "thruhull_bilge",
+    "bilge"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "sensor_depth",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instruments",
+    "n2k"
+   ]
+  ]
+ },
+ {
+  "id": "dehler-38",
+  "name": "Dehler 38",
+  "group": "Segelyacht",
+  "maker": "Dehler",
+  "years": "2013–ca. 2019",
+  "hull": "segel",
+  "loa_m": 11.3,
+  "beam_m": 3.75,
+  "draft_m": 2,
+  "volt": 12,
+  "desc": "Performance-Cruiser mit Volvo D1-30 am Saildrive, AGM 165 + 90 Ah, 30-A-Lader, 20-l-Boiler, 130-l-Kühlschrank, Doppelradsteuerung und Fäkalientank mit separatem Seeventil.",
+  "components": [
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Volvo Penta D1-30 (28 PS), Saildrive (später auch D2-40)",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.28,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 110
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank mit Anzeige",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.2,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 160
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie AGM",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 90
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbatterie AGM",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "ah": 165
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf"
+   },
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Batterieladegerät 30 A",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 30
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "DC-Tafel mit Sicherungsautomaten, AC-Tafel, Hauptschalter",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank mit Füllstand",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.55,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 300
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Elektrische Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.5
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf"
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Warmwasserbereiter 20 l (Motor + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "liter": 20
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf"
+   },
+   {
+    "key": "tap_galley",
+    "kind": "tap",
+    "name": "Doppelspüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf"
+   },
+   {
+    "key": "tap_head",
+    "kind": "tap",
+    "name": "Waschbecken und Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.33,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf"
+   },
+   {
+    "key": "tap_cockpit",
+    "kind": "tap",
+    "name": "Cockpitdusche warm/kalt",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.02,
+    "side": "center",
+    "level": "cockpit",
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf"
+   },
+   {
+    "key": "sumppump",
+    "kind": "consumer",
+    "name": "Duschlenzpumpe",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.33,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "amp": 3,
+     "hours": 0.1
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Pump-WC",
+    "systems": [
+     "black"
+    ],
+    "x": 0.33,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank mit Deckabsaugung",
+    "systems": [
+     "black"
+    ],
+    "x": 0.32,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 45
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf"
+   },
+   {
+    "key": "seacock_wc",
+    "kind": "seacock",
+    "name": "Separates Seeventil Fäkalientank",
+    "systems": [
+     "black"
+    ],
+    "x": 0.32,
+    "side": "port",
+    "level": "bilge",
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "2-Flammen-Herd mit Backofen, halbkardanisch",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlschrank ca. 130 l (Top- und Frontlader)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 5,
+     "hours": 10
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "LED-Innenbeleuchtung (SLS) und Navigationslichter",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2,
+     "hours": 4
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe 12 V",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf"
+   },
+   {
+    "key": "thruhull_bilge",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.05,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "Kartenplotter",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.1,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    }
+   },
+   {
+    "key": "instruments",
+    "kind": "n2kdev",
+    "name": "Instrumente Log/Lot/Wind",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.25,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.3,
+     "hours": 8
+    }
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "UKW-Funkgerät",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 0.5,
+     "hours": 8
+    }
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "Autopilot (Radantrieb)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.1,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 3,
+     "hours": 3
+    }
+   },
+   {
+    "key": "sensor_depth",
+    "kind": "sensor",
+    "name": "Geber Log/Lot",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge"
+   }
+  ],
+  "sources": [
+   "https://batagent.se/wp-content/uploads/2023/06/import/dehler38_specifications_0813.pdf",
+   "https://www.devalk.nl/en/brochure_full/801539/DEHLER-38.html",
+   "https://www.yachtall.com/en/boat/dehler-38-s218135?print=1"
+  ],
+  "uncertain": [
+   "Bauende ca. 2019 nicht verifiziert",
+   "Frischwasser: Datenblatt 300 l, Inserate 295–315 l",
+   "Fäkalientank-Volumen nicht im Datenblatt (Typwert 45 l)",
+   "Werftstandard ohne Navigationselektronik – Plotter, Instrumente, UKW, Autopilot, NMEA-Bus typische Zusatzausstattung",
+   "Gasflaschenlage angenommen; Verbraucher-amp/hours sind Typwerte",
+   "Lage (x/side/level) aller Bauteile ist aus typischer Bauweise der Größenklasse abgeleitet, nicht aus Werftplänen verifiziert"
+  ],
+  "connections": [
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "start_bat",
+    "engine",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "sumppump",
+    "dc12"
+   ],
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_head",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_cockpit",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "holding",
+    "seacock_wc",
+    "black"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "bilgepump",
+    "thruhull_bilge",
+    "bilge"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "sensor_depth",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instruments",
+    "n2k"
+   ]
+  ]
+ },
+ {
+  "id": "hallberg-rassy-310",
+  "name": "Hallberg-Rassy 310",
+  "group": "Segelyacht",
+  "maker": "Hallberg-Rassy",
+  "years": "2016–ca. 2023",
+  "hull": "segel",
+  "loa_m": 9.42,
+  "beam_m": 3.18,
+  "draft_m": 1.55,
+  "volt": 12,
+  "desc": "Kleine Frers-HR mit Volvo D1-20 am Saildrive, Edelstahl-Fäkalientank, 30-l-Boiler, häufig Webasto-Heizung, elektrischem WC, Bugstrahlruder, Ankerwinsch und Raymarine-Elektronik.",
+  "components": [
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Volvo Penta D1-20 (19 PS), Saildrive",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 115
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.22,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 100
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie 12 V",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.32,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 90
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank 12 V (Flat-Plate)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "ah": 240
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf"
+   },
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Mastervolt ChargeMaster 12/50",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 50
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel 12 V / 230 V",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.7,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 200
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.5
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Warmwasserbereiter (Motor + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.25,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "liter": 30
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf"
+   },
+   {
+    "key": "tap_galley",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_head",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.4,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_cockpit",
+    "kind": "tap",
+    "name": "Dusche an Badeplattform",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.02,
+    "side": "center",
+    "level": "cockpit",
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Elektrisches WC (Frisch-/Seewasser)",
+    "systems": [
+     "black",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 15,
+     "hours": 0.05
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank Edelstahl mit Gobius-Füllstand",
+    "systems": [
+     "black"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 50
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf"
+   },
+   {
+    "key": "seacock_wc",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalientank",
+    "systems": [
+     "black"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "bilge"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "Gasherd mit Backofen",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Webasto Air Top Evo 40 Diesel-Warmluft",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.18,
+    "side": "starboard",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlschrank 12 V",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 10
+    }
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "LED-Navigations-, Anker- und Innenbeleuchtung",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2,
+     "hours": 4
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    }
+   },
+   {
+    "key": "thruhull_bilge",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.05,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-/SeaTalkNG-Backbone",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "Raymarine Axiom 9+",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.12,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf"
+   },
+   {
+    "key": "instruments",
+    "kind": "n2kdev",
+    "name": "Raymarine i70s (Log, Lot, Wind)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.25,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.3,
+     "hours": 8
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "Raymarine Ray91 UKW mit AIS-Empfänger",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 0.5,
+     "hours": 8
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf"
+   },
+   {
+    "key": "ais",
+    "kind": "n2kdev",
+    "name": "Raymarine AIS700 Klasse B",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 0.3,
+     "hours": 8
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "Raymarine p70 mit Type-I-Antrieb",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.1,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 3,
+     "hours": 3
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf"
+   },
+   {
+    "key": "sensor_depth",
+    "kind": "sensor",
+    "name": "Geber Log/Lot",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Lewmar Project Ankerwinsch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 70,
+     "hours": 0.05
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf"
+   },
+   {
+    "key": "bowthruster",
+    "kind": "consumer",
+    "name": "Side-Power Bugstrahlruder, einziehbar",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.88,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 200,
+     "hours": 0.05
+    },
+    "source": "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf"
+   }
+  ],
+  "sources": [
+   "https://batagent.se/wp-content/uploads/2023/06/import/hallberg-rassy-310-equipment-list.pdf",
+   "https://www.devalk.nl/en/yachtbrokerage/811709/HALLBERG-RASSY-310.html"
+  ],
+  "uncertain": [
+   "Hauptquelle ist Eigner-Ausstattungsliste eines voll ausgestatteten 2022er Bootes; Bugstrahl, Winsch, Heizung, E-WC und Elektronik sind wahrscheinlich Optionen",
+   "Verbraucherbank: Liste nennt \"3 service batteries 12V 240 Ah\" – als 240 Ah gesamt interpretiert",
+   "Lichtmaschine 115 A Typwert (Volvo D1); keine separate Bugstrahlbatterie genannt",
+   "Bauende ca. 2023 nicht verifiziert",
+   "Gasflaschenlage, Boilerheizung über Motor angenommen; Verbraucher-amp/hours sind Typwerte",
+   "Lage (x/side/level) aller Bauteile ist aus typischer Bauweise der Größenklasse abgeleitet, nicht aus Werftplänen verifiziert"
+  ],
+  "connections": [
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "heater",
+    "fuel"
+   ],
+   [
+    "start_bat",
+    "engine",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "panel",
+    "wc",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "bowthruster",
+    "dc12"
+   ],
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_head",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_cockpit",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "holding",
+    "seacock_wc",
+    "black"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "bilgepump",
+    "thruhull_bilge",
+    "bilge"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "ais",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "sensor_depth",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instruments",
+    "n2k"
+   ]
+  ]
+ },
+ {
+  "id": "hallberg-rassy-340",
+  "name": "Hallberg-Rassy 340",
+  "group": "Segelyacht",
+  "maker": "Hallberg-Rassy",
+  "years": "2014–heute",
+  "hull": "segel",
+  "loa_m": 10.36,
+  "beam_m": 3.47,
+  "draft_m": 1.9,
+  "volt": 12,
+  "desc": "Solide Fahrtenyacht mit Volvo D1-30 am Saildrive, großem Fäkalientank (85 l) mit Deckabsaugung, Boiler, Webasto-Heizung, häufig Mass-Kombigerät, Bugstrahlruder und Raymarine-Elektronik.",
+  "components": [
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Volvo Penta D1-30 (29 PS), Saildrive",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 115
+    },
+    "source": "https://www.hallberg-rassy.com/yachts/hallberg-rassy-340/"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.22,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 188
+    },
+    "source": "https://www.hallberg-rassy.com/yachts/hallberg-rassy-340/"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.32,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 75
+    }
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "ah": 235
+    },
+    "source": "https://www.boat24.com/en/sailingboats/hallberg-rassy/hallberg-rassy-340/detail/655356/"
+   },
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://www.boat24.com/en/sailingboats/hallberg-rassy/hallberg-rassy-340/detail/655356/"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Mass Combi Ultra 12/3000-150 (Lader+Inverter)",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 150
+    },
+    "source": "https://www.boat24.com/en/sailingboats/hallberg-rassy/hallberg-rassy-340/detail/655356/"
+   },
+   {
+    "key": "solar",
+    "kind": "solar",
+    "name": "Solarmodul",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.1,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "wp": 55
+    },
+    "source": "https://www.boat24.com/en/sailingboats/hallberg-rassy/hallberg-rassy-340/detail/655356/"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel 12 V / 230 V mit Gobius-Tankanzeige",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.boat24.com/en/sailingboats/hallberg-rassy/hallberg-rassy-340/detail/655356/"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 277
+    },
+    "source": "https://www.hallberg-rassy.com/yachts/hallberg-rassy-340/"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.5
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Warmwasserbereiter (Motor + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.25,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "liter": 22
+    },
+    "source": "https://www.boat24.com/en/sailingboats/hallberg-rassy/hallberg-rassy-340/detail/655356/"
+   },
+   {
+    "key": "tap_galley",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_head",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.4,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_cockpit",
+    "kind": "tap",
+    "name": "Heckdusche",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.02,
+    "side": "center",
+    "level": "cockpit"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Elektrisches WC",
+    "systems": [
+     "black",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 15,
+     "hours": 0.05
+    },
+    "source": "https://www.boat24.com/en/sailingboats/hallberg-rassy/hallberg-rassy-340/detail/655356/"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank (über Bord oder Deckabsaugung)",
+    "systems": [
+     "black"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 85
+    },
+    "source": "https://www.hallberg-rassy.com/yachts/hallberg-rassy-340/"
+   },
+   {
+    "key": "seacock_wc",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalientank",
+    "systems": [
+     "black"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "bilge",
+    "source": "https://www.hallberg-rassy.com/yachts/hallberg-rassy-340/"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche mit elektrischem Fernabsperrventil",
+    "systems": [
+     "gas",
+     "dc12"
+    ],
+    "x": 0.08,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://www.boat24.com/en/sailingboats/hallberg-rassy/hallberg-rassy-340/detail/655356/"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "Gasherd mit Backofen",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Webasto Air Top Evo 40 Diesel-Warmluft",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.18,
+    "side": "starboard",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    },
+    "source": "https://www.boat24.com/en/sailingboats/hallberg-rassy/hallberg-rassy-340/detail/655356/"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlschrank mit wassergekühltem Kompressor",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 3.5,
+     "hours": 10
+    },
+    "source": "https://www.boat24.com/en/sailingboats/hallberg-rassy/hallberg-rassy-340/detail/655356/"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Innen- und Navigationsbeleuchtung LED",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2,
+     "hours": 4
+    }
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    }
+   },
+   {
+    "key": "thruhull_bilge",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.05,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-/SeaTalkNG-Backbone",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "Raymarine Axiom Pro 9 (Steuersäule)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.12,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    },
+    "source": "https://www.boat24.com/en/sailingboats/hallberg-rassy/hallberg-rassy-340/detail/655356/"
+   },
+   {
+    "key": "instruments",
+    "kind": "n2kdev",
+    "name": "Raymarine i70s (Log, Lot, Wind)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.25,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.3,
+     "hours": 8
+    },
+    "source": "https://www.boat24.com/en/sailingboats/hallberg-rassy/hallberg-rassy-340/detail/655356/"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "Raymarine Ray63 UKW",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 0.5,
+     "hours": 8
+    },
+    "source": "https://www.boat24.com/en/sailingboats/hallberg-rassy/hallberg-rassy-340/detail/655356/"
+   },
+   {
+    "key": "ais",
+    "kind": "n2kdev",
+    "name": "Raymarine AIS700",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 0.3,
+     "hours": 8
+    },
+    "source": "https://www.boat24.com/en/sailingboats/hallberg-rassy/hallberg-rassy-340/detail/655356/"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "Raymarine p70 Autopilot",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.1,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 3,
+     "hours": 3
+    },
+    "source": "https://www.boat24.com/en/sailingboats/hallberg-rassy/hallberg-rassy-340/detail/655356/"
+   },
+   {
+    "key": "sensor_depth",
+    "kind": "sensor",
+    "name": "Geber Log/Lot",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Lewmar Ankerwinsch (unter Deck)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.96,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 70,
+     "hours": 0.05
+    },
+    "source": "https://www.boat24.com/en/sailingboats/hallberg-rassy/hallberg-rassy-340/detail/655356/"
+   },
+   {
+    "key": "bowthruster",
+    "kind": "consumer",
+    "name": "Bugstrahlruder 4 PS",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.88,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 250,
+     "hours": 0.05
+    },
+    "source": "https://www.boat24.com/en/sailingboats/hallberg-rassy/hallberg-rassy-340/detail/655356/"
+   }
+  ],
+  "sources": [
+   "https://www.hallberg-rassy.com/yachts/hallberg-rassy-340/",
+   "https://www.boat24.com/en/sailingboats/hallberg-rassy/hallberg-rassy-340/detail/655356/",
+   "https://www.ngyachting.com/sailingyacht-sales/2023-hallberg-rassy-340-east-coast-for-sale/172242"
+  ],
+  "uncertain": [
+   "Rumpflänge 10,36 m (mit Bugspriet 10,95 m) als loa_m verwendet",
+   "Batterien: Inserat nennt nur \"extra batteries 235 Ah\" – Gesamtbank und Starterbatterie (Typwert 75 Ah) nicht gesichert; keine separate Bugstrahlbatterie belegt",
+   "Lichtmaschine 115 A Typwert; Kombigerät 150 A und Solar sind Ausstattung eines Inseratsbootes",
+   "Tiefgang Standard 1,90 m, Inseratsboot 1,72 m (Flachkiel-Option)",
+   "Boiler-Volumen, Herd und Gaslage nicht explizit – Typannahmen",
+   "Verbraucher-amp/hours sind Typwerte",
+   "Lage (x/side/level) aller Bauteile ist aus typischer Bauweise der Größenklasse abgeleitet, nicht aus Werftplänen verifiziert"
+  ],
+  "connections": [
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "heater",
+    "fuel"
+   ],
+   [
+    "start_bat",
+    "engine",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "solar",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "panel",
+    "wc",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "bowthruster",
+    "dc12"
+   ],
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_head",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_cockpit",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "holding",
+    "seacock_wc",
+    "black"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "bilgepump",
+    "thruhull_bilge",
+    "bilge"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "ais",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "sensor_depth",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instruments",
+    "n2k"
+   ],
+   [
+    "panel",
+    "gas",
+    "dc12"
+   ]
+  ]
+ },
+ {
+  "id": "hallberg-rassy-372",
+  "name": "Hallberg-Rassy 372",
+  "group": "Segelyacht",
+  "maker": "Hallberg-Rassy",
+  "years": "2008–2024",
+  "hull": "segel",
+  "loa_m": 11.35,
+  "beam_m": 3.6,
+  "draft_m": 1.99,
+  "volt": 12,
+  "desc": "Hochseetaugliche Frers-HR mit Volvo D2-55/D2-60 am Saildrive (115 A), großen Tanks (471 l Wasser, 270 l Diesel), großer Verbraucherbank, Webasto-Heizung und Tunnel-Bugstrahlruder.",
+  "components": [
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Volvo Penta D2-60 (60 PS; früh D2-55), Saildrive 130S",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 115
+    },
+    "source": "https://www.hallberg-rassy.com/yachts/hallberg-rassy-372/"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank Edelstahl",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.22,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 270
+    },
+    "source": "https://www.hallberg-rassy.com/yachts/hallberg-rassy-372/"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie AGM",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.32,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 75
+    },
+    "source": "https://itboat.com/offers/7403-hallberg-rassy-372"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank (4 Batterien)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 390
+    },
+    "source": "https://itboat.com/offers/7403-hallberg-rassy-372"
+   },
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Batterieladegerät",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 50
+    }
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel 12 V / 230 V",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank Edelstahl",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 471
+    },
+    "source": "https://www.hallberg-rassy.com/yachts/hallberg-rassy-372/"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.5
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Warmwasserbereiter (Motor + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.25,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "liter": 30
+    }
+   },
+   {
+    "key": "tap_galley",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_head",
+    "kind": "tap",
+    "name": "Waschbecken und separate Dusche",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.4,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.hallberg-rassy.com/yachts/hallberg-rassy-372/"
+   },
+   {
+    "key": "tap_cockpit",
+    "kind": "tap",
+    "name": "Heckdusche",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.02,
+    "side": "center",
+    "level": "cockpit"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Bordtoilette manuell",
+    "systems": [
+     "black"
+    ],
+    "x": 0.4,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank",
+    "systems": [
+     "black"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 80
+    }
+   },
+   {
+    "key": "seacock_wc",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalientank",
+    "systems": [
+     "black"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "bilge"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "Gasherd mit Backofen",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Webasto Air Top Evo 40 Diesel-Warmluft",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.18,
+    "side": "starboard",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    },
+    "source": "https://www.theyachtmarket.com/nl/boten-te-koop/hallberg-rassy/372/id3266694/"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlschrank 12 V",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 10
+    }
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Innen- und Navigationsbeleuchtung",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2,
+     "hours": 4
+    }
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    }
+   },
+   {
+    "key": "thruhull_bilge",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.05,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "Kartenplotter",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.12,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    }
+   },
+   {
+    "key": "instruments",
+    "kind": "n2kdev",
+    "name": "Instrumente Log/Lot/Wind",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.25,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.3,
+     "hours": 8
+    }
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "UKW-Funkgerät",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 0.5,
+     "hours": 8
+    }
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "Autopilot",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.1,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 3,
+     "hours": 3
+    }
+   },
+   {
+    "key": "sensor_depth",
+    "kind": "sensor",
+    "name": "Geber Log/Lot",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Elektrische Ankerwinsch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 80,
+     "hours": 0.05
+    }
+   },
+   {
+    "key": "bowthruster",
+    "kind": "consumer",
+    "name": "Side-Power Bugstrahlruder im Tunnel",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.88,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 250,
+     "hours": 0.05
+    },
+    "source": "https://itboat.com/offers/7403-hallberg-rassy-372"
+   }
+  ],
+  "sources": [
+   "https://www.hallberg-rassy.com/yachts/hallberg-rassy-372/",
+   "https://itboat.com/offers/7403-hallberg-rassy-372",
+   "https://www.theyachtmarket.com/nl/boten-te-koop/hallberg-rassy/372/id3266694/",
+   "https://www.boats.com/sailing-boats/2016-hallberg-rassy-372-9836050"
+  ],
+  "uncertain": [
+   "Werftseite liefert Maße, Motor, Lichtmaschine, Tanks; Elektrik-/Komfortdetails nur aus Inseraten (Seiten nicht abrufbar, Angaben aus Suchauszügen)",
+   "Verbraucherbank: Inserat 2010 nennt 4× Trojan T125 \"195 Ah\" – Verschaltung unklar, 390 Ah als Annahme (2 Paare 6 V)",
+   "Ladegerät 50 A, Fäkalientank 80 l, Boiler 30 l, WC-Typ, Gaslage sind Typwerte",
+   "Elektronik und Ankerwinsch ohne Modellangaben – typische Ausstattung",
+   "Verbraucher-amp/hours sind Typwerte",
+   "Lage (x/side/level) aller Bauteile ist aus typischer Bauweise der Größenklasse abgeleitet, nicht aus Werftplänen verifiziert"
+  ],
+  "connections": [
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "heater",
+    "fuel"
+   ],
+   [
+    "start_bat",
+    "engine",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "bowthruster",
+    "dc12"
+   ],
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_head",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_cockpit",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "holding",
+    "seacock_wc",
+    "black"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "bilgepump",
+    "thruhull_bilge",
+    "bilge"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "sensor_depth",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instruments",
+    "n2k"
+   ]
+  ]
+ },
+ {
+  "id": "elan-impression-40",
+  "name": "Elan Impression 40",
+  "group": "Segelyacht",
+  "maker": "Elan",
+  "years": "2015–2019",
+  "hull": "segel",
+  "loa_m": 11.9,
+  "beam_m": 3.91,
+  "draft_m": 1.8,
+  "volt": 12,
+  "desc": "Komfort-Fahrtenyacht (oft Charter) mit Volvo D2-40 am Saildrive, 500 l Frischwasser, Ladegerät und Inverter, Heizung, zwei Nasszellen, Bugstrahlruder mit eigenen Batterien und Ankerwinsch.",
+  "components": [
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Volvo Penta D2-40 (40 PS), Saildrive",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.28,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 115
+    },
+    "source": "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.2,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 170
+    },
+    "source": "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 90
+    }
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank (2 Batterien)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "ah": 280
+    }
+   },
+   {
+    "key": "windlass_bat",
+    "kind": "bat",
+    "name": "Ankerwinsch-Batterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.9,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 90
+    }
+   },
+   {
+    "key": "bt_bat",
+    "kind": "bat",
+    "name": "Bugstrahlruder-Batterien (2 Stück)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.86,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 180
+    }
+   },
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Batterieladegerät",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 40
+    },
+    "source": "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/"
+   },
+   {
+    "key": "inverter",
+    "kind": "inverter",
+    "name": "Wechselrichter 12/230 V",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.32,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 80,
+     "hours": 0.3
+    },
+    "source": "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel 12 V / 230 V",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 500
+    },
+    "source": "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.6
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Warmwasserbereiter (Motor + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.25,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "liter": 22
+    },
+    "source": "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/"
+   },
+   {
+    "key": "tap_galley",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/"
+   },
+   {
+    "key": "tap_head",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle achtern",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_head2",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle vorn",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.75,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_cockpit",
+    "kind": "tap",
+    "name": "Heckdusche",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.02,
+    "side": "center",
+    "level": "cockpit",
+    "source": "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Bordtoilette achtern (manuell)",
+    "systems": [
+     "black"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "wc2",
+    "kind": "wc",
+    "name": "Bordtoilette vorn (manuell)",
+    "systems": [
+     "black"
+    ],
+    "x": 0.75,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank",
+    "systems": [
+     "black"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 60
+    },
+    "source": "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/"
+   },
+   {
+    "key": "seacock_wc",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalientank",
+    "systems": [
+     "black"
+    ],
+    "x": 0.35,
+    "side": "starboard",
+    "level": "bilge"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "Gasherd mit Backofen",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Diesel-Warmluftheizung",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.18,
+    "side": "starboard",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    },
+    "source": "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlschrank und Gefrierfach 12 V",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 6,
+     "hours": 10
+    },
+    "source": "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Innen- und Navigationsbeleuchtung LED",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2,
+     "hours": 4
+    }
+   },
+   {
+    "key": "radio",
+    "kind": "consumer",
+    "name": "Fusion Radio mit Außenlautsprechern",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 2,
+     "hours": 3
+    },
+    "source": "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    },
+    "source": "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/"
+   },
+   {
+    "key": "thruhull_bilge",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.05,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-Backbone",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "Kartenplotter im Cockpit",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.12,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    },
+    "source": "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/"
+   },
+   {
+    "key": "instruments",
+    "kind": "n2kdev",
+    "name": "Instrumente Log/Lot/Wind",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.25,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.3,
+     "hours": 8
+    },
+    "source": "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "UKW-Funkgerät",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 0.5,
+     "hours": 8
+    },
+    "source": "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "Autopilot",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.1,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 3,
+     "hours": 3
+    },
+    "source": "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/"
+   },
+   {
+    "key": "sensor_depth",
+    "kind": "sensor",
+    "name": "Geber Log/Lot",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Elektrische Ankerwinsch",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 80,
+     "hours": 0.05
+    },
+    "source": "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/"
+   },
+   {
+    "key": "bowthruster",
+    "kind": "consumer",
+    "name": "Bugstrahlruder",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.88,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 300,
+     "hours": 0.05
+    },
+    "source": "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/"
+   }
+  ],
+  "sources": [
+   "https://www.boat24.com/uk/sailingboats/elan/elan-impression-40/detail/654054/",
+   "https://www.yachtall.com/en/boat/elan-impression-40-s316608",
+   "https://uk.boats.com/sailing-boats/2019-elan-impression-40-9826011"
+  ],
+  "uncertain": [
+   "Batterieanzahl (1 Start, 2 Verbraucher, 1 Winsch, 2 Bugstrahl) aus einem Inserat (nur Suchauszug); alle Ah-Werte sind Typwerte",
+   "Ladegerät-/Inverter-Leistung nicht genannt (Typwerte)",
+   "Fäkalientank: 60 l stammt vom Vorgänger Impression 384; zweites WC vereinfacht auf denselben Tank geführt",
+   "Zweite Nasszelle aus \"2 toilets, 2 showers\" des Inseratsbootes (3-Kabinen-Version)",
+   "Heizungsfabrikat, Boiler-Volumen, Gaslage nicht genannt; Lichtmaschine 115 A Typwert",
+   "Verbraucher-amp/hours sind Typwerte",
+   "Lage (x/side/level) aller Bauteile ist aus typischer Bauweise der Größenklasse abgeleitet, nicht aus Werftplänen verifiziert"
+  ],
+  "connections": [
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "heater",
+    "fuel"
+   ],
+   [
+    "start_bat",
+    "engine",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "bt_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "windlass_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "panel",
+    "radio",
+    "dc12"
+   ],
+   [
+    "windlass_bat",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "bt_bat",
+    "bowthruster",
+    "dc12"
+   ],
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_head",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_head2",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_cockpit",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "wc2",
+    "holding",
+    "black"
+   ],
+   [
+    "holding",
+    "seacock_wc",
+    "black"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "bilgepump",
+    "thruhull_bilge",
+    "bilge"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "sensor_depth",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instruments",
+    "n2k"
+   ],
+   [
+    "house_bat",
+    "inverter",
+    "dc12"
+   ]
+  ]
+ },
+ {
+  "id": "x-yachts-xc-38",
+  "name": "X-Yachts Xc 38",
+  "group": "Segelyacht",
+  "maker": "X-Yachts",
+  "years": "2010–2018",
+  "hull": "segel",
+  "loa_m": 11.58,
+  "beam_m": 3.81,
+  "draft_m": 1.98,
+  "volt": 12,
+  "desc": "Hochwertiger Fahrtenkreuzer mit Volvo D2-40 am Saildrive, Tanks und Batterien tief um den Stahlrahmen, 40-l-Boiler, Eberspächer-Heizung, elektrischem WC, Mastervolt-Lader und Raymarine-/B&G-Elektronik.",
+  "components": [
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Volvo Penta D2-40 (Option D2-55), Saildrive",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 115
+    },
+    "source": "https://www.yachtingmonthly.com/reviews/yacht-reviews/x-yachts-xc38-used-boat-review-great-value-fast-cruiser"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank (tief mittschiffs)",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "liter": 200
+    },
+    "source": "https://www.yachtingmonthly.com/reviews/yacht-reviews/x-yachts-xc38-used-boat-review-great-value-fast-cruiser"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.32,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 90
+    },
+    "source": "https://www.x-yachts.com/en/brokerage/xc-38-82375/"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank 3×130 Ah (um den Stahlrahmen)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.48,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 390
+    },
+    "source": "https://www.x-yachts.com/en/brokerage/xc-38-82375/"
+   },
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V (Steckdose im Ankerkasten)",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.95,
+    "side": "center",
+    "level": "deck",
+    "source": "https://www.x-yachts.com/en/brokerage/xc-38-82375/"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Mastervolt-Ladegerät 60 A",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 60
+    },
+    "source": "https://www.x-yachts.com/en/brokerage/xc-38-82375/"
+   },
+   {
+    "key": "solar",
+    "kind": "solar",
+    "name": "Solarmodul Salonlüfter",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.55,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "wp": 5
+    },
+    "source": "https://www.x-yachts.com/en/brokerage/xc-38-82375/"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel 12 V / 230 V",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank (tief mittschiffs)",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.52,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "liter": 375
+    },
+    "source": "https://www.x-yachts.com/en/brokerage/xc-38-82375/"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.5
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Warmwasserbereiter 40 l (Motor + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.25,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "liter": 40
+    },
+    "source": "https://www.x-yachts.com/en/brokerage/xc-38-82375/"
+   },
+   {
+    "key": "tap_galley",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_head",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.38,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_cockpit",
+    "kind": "tap",
+    "name": "Heckdusche",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.02,
+    "side": "center",
+    "level": "cockpit"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Elektrisches WC Jabsco Quiet Flush",
+    "systems": [
+     "black",
+     "dc12"
+    ],
+    "x": 0.38,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 15,
+     "hours": 0.05
+    },
+    "source": "https://www.x-yachts.com/en/brokerage/xc-38-82375/"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank",
+    "systems": [
+     "black"
+    ],
+    "x": 0.36,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 50
+    }
+   },
+   {
+    "key": "seacock_wc",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalientank (bündig)",
+    "systems": [
+     "black"
+    ],
+    "x": 0.36,
+    "side": "starboard",
+    "level": "bilge",
+    "source": "https://www.yachtingmonthly.com/reviews/yacht-reviews/x-yachts-xc38-used-boat-review-great-value-fast-cruiser"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche mit elektrischem Gasventil",
+    "systems": [
+     "gas",
+     "dc12"
+    ],
+    "x": 0.08,
+    "side": "port",
+    "level": "cockpit",
+    "source": "https://www.x-yachts.com/en/brokerage/xc-38-82375/"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "ENO-Herd mit Backofen und Grill",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.x-yachts.com/en/brokerage/xc-38-67305"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Eberspächer D5 Dieselheizung",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.2,
+    "side": "starboard",
+    "level": "cockpit",
+    "values": {
+     "amp": 2,
+     "hours": 6
+    },
+    "source": "https://www.x-yachts.com/en/brokerage/xc-38-82375/"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Toplader-Kühlschrank wassergekühlt + Frontlader",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 6,
+     "hours": 10
+    },
+    "source": "https://www.x-yachts.com/en/brokerage/xc-38-82375/"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Innen- und Navigationsbeleuchtung LED",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 2,
+     "hours": 4
+    }
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    }
+   },
+   {
+    "key": "thruhull_bilge",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.05,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "NMEA-2000-/SeaTalkNG-Backbone",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "plotter",
+    "kind": "n2kdev",
+    "name": "Raymarine C90W am Cockpittisch",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.2,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    },
+    "source": "https://www.x-yachts.com/en/brokerage/xc-38-82375/"
+   },
+   {
+    "key": "instruments",
+    "kind": "n2kdev",
+    "name": "Raymarine ST70+ (2 Grafikdisplays)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.25,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.4,
+     "hours": 8
+    },
+    "source": "https://www.x-yachts.com/en/brokerage/xc-38-82375/"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "Raymarine Ray240 UKW mit Cockpit-Hörer",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 0.5,
+     "hours": 8
+    },
+    "source": "https://www.x-yachts.com/en/brokerage/xc-38-82375/"
+   },
+   {
+    "key": "ais",
+    "kind": "n2kdev",
+    "name": "AIS-Transceiver",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 0.3,
+     "hours": 8
+    },
+    "source": "https://www.x-yachts.com/en/brokerage/xc-38-82375/"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "Raymarine SPX10 Autopilot",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.1,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 3,
+     "hours": 3
+    },
+    "source": "https://www.x-yachts.com/en/brokerage/xc-38-82375/"
+   },
+   {
+    "key": "sensor_depth",
+    "kind": "sensor",
+    "name": "Kombigeber Speed/Depth",
+    "systems": [
+     "n2k"
+    ],
+    "x": 0.6,
+    "side": "center",
+    "level": "bilge",
+    "source": "https://www.x-yachts.com/en/brokerage/xc-38-82375/"
+   },
+   {
+    "key": "windlass",
+    "kind": "consumer",
+    "name": "Elektrische Ankerwinsch 1000 W",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.97,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "amp": 85,
+     "hours": 0.05
+    },
+    "source": "https://www.x-yachts.com/en/brokerage/xc-38-82375/"
+   },
+   {
+    "key": "bowthruster",
+    "kind": "consumer",
+    "name": "Bugstrahlruder, einziehbar",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.88,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 250,
+     "hours": 0.05
+    },
+    "source": "https://www.x-yachts.com/en/brokerage/xc-38-82375/"
+   }
+  ],
+  "sources": [
+   "https://www.x-yachts.com/en/brokerage/xc-38-82375/",
+   "https://www.x-yachts.com/en/brokerage/xc-38-67305",
+   "https://www.yachtingmonthly.com/reviews/yacht-reviews/x-yachts-xc38-used-boat-review-great-value-fast-cruiser",
+   "https://itboat.com/models/715-x-yachts-xc-38"
+  ],
+  "uncertain": [
+   "Ausstattung aus zwei X-Yachts-Brokerage-Booten (2011 und 2017) kombiniert – Bugstrahl, Winsch, Heizung, E-WC, AIS sind Optionen; 2011er Boot mit D2-55 (50 PS)",
+   "Spätere Boote mit Lithium-Batterien (Yachting Monthly), Kapazität unbekannt; Starterbatterie Ah Typwert",
+   "Fäkalientank-Volumen nicht gefunden (Typwert 50 l); Lichtmaschine 115 A Typwert",
+   "Tanks und Batterien \"tief mittschiffs um den Stahlrahmen\" laut Yachting Monthly – x-Werte daraus abgeleitet",
+   "Verbraucher-amp/hours sind Typwerte",
+   "Lage (x/side/level) aller Bauteile ist aus typischer Bauweise der Größenklasse abgeleitet, nicht aus Werftplänen verifiziert"
+  ],
+  "connections": [
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "heater",
+    "fuel"
+   ],
+   [
+    "start_bat",
+    "engine",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "solar",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "panel",
+    "wc",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "windlass",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "bowthruster",
+    "dc12"
+   ],
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_head",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_cockpit",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "holding",
+    "seacock_wc",
+    "black"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "bilgepump",
+    "thruhull_bilge",
+    "bilge"
+   ],
+   [
+    "n2kbus",
+    "plotter",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "ais",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "sensor_depth",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "instruments",
+    "n2k"
+   ],
+   [
+    "panel",
+    "gas",
+    "dc12"
+   ]
+  ]
+ },
+ {
+  "id": "bavaria-30-cruiser",
+  "name": "Bavaria 30 Cruiser",
+  "group": "Segelyacht",
+  "maker": "Bavaria",
+  "years": "ca. 2005–2009",
+  "hull": "segel",
+  "loa_m": 9.45,
+  "beam_m": 3.29,
+  "draft_m": 1.85,
+  "volt": 12,
+  "desc": "Verbreiteter älterer Küsten- und Binnenkreuzer mit Volvo D1-20 am Saildrive, Start- plus Verbraucherbatterie, Landstromlader, manuellem WC mit Fäkalientank und Gasherd; Heizung oft nachgerüstet.",
+  "components": [
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Volvo Penta D1-20 (19 PS), Saildrive",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.28,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "alternator_a": 115
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811884/BAVARIA-30-CRUISER.html"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Dieseltank PE",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.2,
+    "side": "starboard",
+    "level": "below_floor",
+    "values": {
+     "liter": 90
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811884/BAVARIA-30-CRUISER.html"
+   },
+   {
+    "key": "start_bat",
+    "kind": "bat",
+    "name": "Starterbatterie",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "ah": 50
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811884/BAVARIA-30-CRUISER.html"
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Verbraucherbank 2×110 Ah",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "ah": 220
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811884/BAVARIA-30-CRUISER.html"
+   },
+   {
+    "key": "shore",
+    "kind": "shore",
+    "name": "Landanschluss 230 V",
+    "systems": [
+     "ac230"
+    ],
+    "x": 0.03,
+    "side": "starboard",
+    "level": "cockpit",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811884/BAVARIA-30-CRUISER.html"
+   },
+   {
+    "key": "charger",
+    "kind": "charger",
+    "name": "Quick SBC 251 Ladegerät 25 A",
+    "systems": [
+     "ac230",
+     "dc12"
+    ],
+    "x": 0.3,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 25
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811884/BAVARIA-30-CRUISER.html"
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Schalttafel 12 V / 230 V",
+    "systems": [
+     "dc12",
+     "ac230"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Frischwassertank PE",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.75,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "liter": 150
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811884/BAVARIA-30-CRUISER.html"
+   },
+   {
+    "key": "pump",
+    "kind": "pump",
+    "name": "Druckwasserpumpe",
+    "systems": [
+     "fresh",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "below_floor",
+    "values": {
+     "amp": 5,
+     "hours": 0.4
+    }
+   },
+   {
+    "key": "boiler",
+    "kind": "boiler",
+    "name": "Warmwasserbereiter (Motor + 230 V)",
+    "systems": [
+     "fresh",
+     "ac230"
+    ],
+    "x": 0.22,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "liter": 20
+    }
+   },
+   {
+    "key": "tap_galley",
+    "kind": "tap",
+    "name": "Spüle Pantry",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_head",
+    "kind": "tap",
+    "name": "Waschbecken/Dusche Nasszelle",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "tap_cockpit",
+    "kind": "tap",
+    "name": "Heckdusche",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.02,
+    "side": "center",
+    "level": "cockpit"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Jabsco Handpump-WC",
+    "systems": [
+     "black"
+    ],
+    "x": 0.38,
+    "side": "port",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811884/BAVARIA-30-CRUISER.html"
+   },
+   {
+    "key": "holding",
+    "kind": "holding",
+    "name": "Fäkalientank PE mit Deckabsaugung",
+    "systems": [
+     "black"
+    ],
+    "x": 0.36,
+    "side": "port",
+    "level": "below_floor",
+    "values": {
+     "liter": 60
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811884/BAVARIA-30-CRUISER.html"
+   },
+   {
+    "key": "seacock_wc",
+    "kind": "seacock",
+    "name": "Seeventil Fäkalientank",
+    "systems": [
+     "black"
+    ],
+    "x": 0.36,
+    "side": "port",
+    "level": "bilge"
+   },
+   {
+    "key": "gas",
+    "kind": "gas",
+    "name": "Gasflasche im Gaskasten",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.08,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "stove",
+    "kind": "stove",
+    "name": "2-Flammen-Gasherd mit Backofen",
+    "systems": [
+     "gas"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811884/BAVARIA-30-CRUISER.html"
+   },
+   {
+    "key": "heater",
+    "kind": "heater",
+    "name": "Webasto Air Top Diesel-Warmluft (nachgerüstet)",
+    "systems": [
+     "fuel",
+     "dc12"
+    ],
+    "x": 0.18,
+    "side": "starboard",
+    "level": "cockpit",
+    "values": {
+     "amp": 1.5,
+     "hours": 6
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811884/BAVARIA-30-CRUISER.html"
+   },
+   {
+    "key": "fridge",
+    "kind": "consumer",
+    "name": "Kühlbox 12 V",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.47,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "amp": 4,
+     "hours": 10
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811884/BAVARIA-30-CRUISER.html"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Innen- und Navigationsbeleuchtung",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 3,
+     "hours": 4
+    }
+   },
+   {
+    "key": "instruments",
+    "kind": "consumer",
+    "name": "Raymarine ST60+ Tridata/Lot/Wind (SeaTalk)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.25,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.3,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811884/BAVARIA-30-CRUISER.html"
+   },
+   {
+    "key": "bilgepump",
+    "kind": "bilgepump",
+    "name": "Elektrische Bilgepumpe",
+    "systems": [
+     "bilge",
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "bilge",
+    "values": {
+     "amp": 4,
+     "hours": 0.1
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811884/BAVARIA-30-CRUISER.html"
+   },
+   {
+    "key": "thruhull_bilge",
+    "kind": "thruhull",
+    "name": "Lenzöffnung Bilgepumpe",
+    "systems": [
+     "bilge"
+    ],
+    "x": 0.05,
+    "side": "starboard",
+    "level": "cockpit"
+   },
+   {
+    "key": "n2kbus",
+    "kind": "n2kbus",
+    "name": "SeaTalkNG/NMEA-2000-Backbone (Nachrüstung)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "vhf",
+    "kind": "n2kdev",
+    "name": "UKW-Funkgerät",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.42,
+    "side": "port",
+    "level": "cabin",
+    "values": {
+     "amp": 0.5,
+     "hours": 8
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811884/BAVARIA-30-CRUISER.html"
+   },
+   {
+    "key": "autopilot",
+    "kind": "n2kdev",
+    "name": "Raymarine EV-100 mit p70s (Nachrüstung)",
+    "systems": [
+     "n2k",
+     "dc12"
+    ],
+    "x": 0.1,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 3,
+     "hours": 3
+    },
+    "source": "https://www.devalk.nl/en/yachtbrokerage/811884/BAVARIA-30-CRUISER.html"
+   }
+  ],
+  "sources": [
+   "https://www.devalk.nl/en/yachtbrokerage/811884/BAVARIA-30-CRUISER.html",
+   "https://www.devalk.nl/en/yachtbrokerage/806959/BAVARIA-30-CRUISER.html",
+   "https://www.boat24.com/uk/sailingboats/bavaria/bavaria-30-cruiser/detail/725943/"
+  ],
+  "uncertain": [
+   "Bauzeitraum ca. 2005–2009 nicht verifiziert",
+   "Batterien/Lader/Heizung/Autopilot vom Inseratsboot (2006, teils 2025 erneuert); Werftstandard vermutlich 1 Start + 1 Verbraucherbatterie",
+   "Boiler in Quelle nicht genannt – Typannahme",
+   "Lichtmaschine 115 A Typwert (Volvo D1); Tiefgang Flachkiel 1,40 m",
+   "UKW Silva S10 hat vermutlich kein NMEA 2000 – vereinfachend am Bus",
+   "Verbraucher-amp/hours sind Typwerte",
+   "Lage (x/side/level) aller Bauteile ist aus typischer Bauweise der Größenklasse abgeleitet, nicht aus Werftplänen verifiziert"
+  ],
+  "connections": [
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "fueltank",
+    "heater",
+    "fuel"
+   ],
+   [
+    "start_bat",
+    "engine",
+    "dc12"
+   ],
+   [
+    "engine",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "engine",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "shore",
+    "charger",
+    "ac230"
+   ],
+   [
+    "shore",
+    "boiler",
+    "ac230"
+   ],
+   [
+    "charger",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "charger",
+    "start_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "panel",
+    "pump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "fridge",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "bilgepump",
+    "dc12"
+   ],
+   [
+    "panel",
+    "n2kbus",
+    "dc12"
+   ],
+   [
+    "panel",
+    "heater",
+    "dc12"
+   ],
+   [
+    "panel",
+    "instruments",
+    "dc12"
+   ],
+   [
+    "watertank",
+    "pump",
+    "fresh"
+   ],
+   [
+    "pump",
+    "boiler",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_galley",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_head",
+    "fresh"
+   ],
+   [
+    "boiler",
+    "tap_cockpit",
+    "fresh"
+   ],
+   [
+    "wc",
+    "holding",
+    "black"
+   ],
+   [
+    "holding",
+    "seacock_wc",
+    "black"
+   ],
+   [
+    "gas",
+    "stove",
+    "gas"
+   ],
+   [
+    "bilgepump",
+    "thruhull_bilge",
+    "bilge"
+   ],
+   [
+    "n2kbus",
+    "autopilot",
+    "n2k"
+   ],
+   [
+    "n2kbus",
+    "vhf",
+    "n2k"
+   ]
+  ]
+ },
+ {
+  "id": "dehler-varianta-65",
+  "name": "Dehler Varianta 65",
+  "group": "Segelyacht",
+  "maker": "Dehler",
+  "years": "ca. 1974–1982",
+  "hull": "segel",
+  "loa_m": 6.5,
+  "beam_m": 2.1,
+  "draft_m": 0.7,
+  "volt": 12,
+  "desc": "Klassischer Binnen-Kleinkreuzer mit Kielschwert und Außenborder im Heckhalter; Bordelektrik meist nur eine nachgerüstete Batterie für Lichter, dazu Wasserkanister mit Spüle und Chemie-WC.",
+  "components": [
+   {
+    "key": "engine",
+    "kind": "engine",
+    "name": "Außenborder ca. 4–6 PS Benzin (z. B. Yamaha 6 PS 2-Takt) im Heckhalter",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0,
+    "side": "center",
+    "level": "cockpit",
+    "source": "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/718754/"
+   },
+   {
+    "key": "fueltank",
+    "kind": "fueltank",
+    "name": "Tragbarer Benzintank",
+    "systems": [
+     "fuel"
+    ],
+    "x": 0.05,
+    "side": "port",
+    "level": "cockpit",
+    "values": {
+     "liter": 12
+    }
+   },
+   {
+    "key": "house_bat",
+    "kind": "bat",
+    "name": "Bordbatterie (Nachrüstung)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "ah": 60
+    }
+   },
+   {
+    "key": "solar",
+    "kind": "solar",
+    "name": "Kleines Solarmodul (Nachrüstung)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.45,
+    "side": "center",
+    "level": "deck",
+    "values": {
+     "wp": 30
+    }
+   },
+   {
+    "key": "panel",
+    "kind": "panel",
+    "name": "Sicherungs-/Schalterleiste 12 V",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.4,
+    "side": "port",
+    "level": "cabin"
+   },
+   {
+    "key": "lights",
+    "kind": "consumer",
+    "name": "Navigationslichter und Kajütlicht",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.5,
+    "side": "center",
+    "level": "cabin",
+    "values": {
+     "amp": 1.5,
+     "hours": 3
+    }
+   },
+   {
+    "key": "instruments",
+    "kind": "consumer",
+    "name": "Echolot (Nachrüstung)",
+    "systems": [
+     "dc12"
+    ],
+    "x": 0.15,
+    "side": "center",
+    "level": "cockpit",
+    "values": {
+     "amp": 0.2,
+     "hours": 6
+    }
+   },
+   {
+    "key": "watertank",
+    "kind": "watertank",
+    "name": "Wasserkanister",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "values": {
+     "liter": 10
+    }
+   },
+   {
+    "key": "tap_galley",
+    "kind": "tap",
+    "name": "Spüle mit Wasserhahn (Hand-/Fußpumpe)",
+    "systems": [
+     "fresh"
+    ],
+    "x": 0.45,
+    "side": "starboard",
+    "level": "cabin",
+    "source": "https://www.yacht.de/yachtmarkt/kaufberatung/gebrauchtbootkauf-kleinkreuzer-unter-sieben-metern-fuer-kleines-geld-am-markt/"
+   },
+   {
+    "key": "wc",
+    "kind": "wc",
+    "name": "Chemie-WC (Porta Potti)",
+    "systems": [
+     "black"
+    ],
+    "x": 0.75,
+    "side": "center",
+    "level": "cabin"
+   }
+  ],
+  "sources": [
+   "https://www.yacht.de/yachtmarkt/kaufberatung/gebrauchtbootkauf-kleinkreuzer-unter-sieben-metern-fuer-kleines-geld-am-markt/",
+   "https://www.boat24.com/en/sailingboats/dehler/dehler-variant-65/detail/734568/",
+   "https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/718754/"
+  ],
+  "uncertain": [
+   "Kaum Systemdaten in Quellen: Maße, Kielschwert (Tiefgang 0,70–1,40 m), Bauzeit bis 1982 und ca. 4.500 Exemplare belegt; draft_m = Schwert oben",
+   "Außenborder je Boot verschieden (Inserat: Yamaha 6 PS 2-Takt Benzin; anderes Boot: Elektro-Außenborder Zebco Rhino VX54) – ohne Lichtmaschine modelliert",
+   "Batterie, Solar, Echolot, Beleuchtung, Chemie-WC, Wasserkanister sind typische Nachrüstungen der Klasse (Typwerte); Spüle mit Wasserhahn laut Inserat (nur Suchauszug)",
+   "Originaler Spirituskocher hat kein erlaubtes System und ist weggelassen; Lenzen nur manuell",
+   "Nur 10 Bauteile, weil das Boot real kaum Systeme hat",
+   "Verbraucher-amp/hours sind Typwerte",
+   "Lage (x/side/level) aller Bauteile ist aus typischer Bauweise der Größenklasse abgeleitet, nicht aus Werftplänen verifiziert"
+  ],
+  "connections": [
+   [
+    "fueltank",
+    "engine",
+    "fuel"
+   ],
+   [
+    "solar",
+    "house_bat",
+    "dc12"
+   ],
+   [
+    "house_bat",
+    "panel",
+    "dc12"
+   ],
+   [
+    "panel",
+    "lights",
+    "dc12"
+   ],
+   [
+    "panel",
+    "instruments",
+    "dc12"
+   ],
+   [
+    "watertank",
+    "tap_galley",
+    "fresh"
+   ]
+  ]
+ }
+]

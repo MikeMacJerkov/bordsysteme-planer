@@ -373,10 +373,23 @@ const INTERIOR_SPORT = [
   {name:"Sitzbank achtern", cx:1.2, cy:0.25, cz:0.0,  sx:0.7, sy:0.4, sz:2.4, kind:'seat'},
   {name:"Motorwanne",       cx:0.3, cy:0.15, cz:0.0,  sx:0.5, sy:0.5, sz:1.2, kind:'zone'},
 ];
+/* Wasserskiboot (z. B. MasterCraft ProStar, Ski Nautique): Einbaumotor mittschiffs unter dem Motorkasten, Direktantrieb */
+const INTERIOR_SKI_BASE = [
+  {name:"Fahrersitz",       cx:6.0, cy:0.35, cz:0.75, sx:0.7, sy:0.5, sz:0.7, kind:'seat'},
+  {name:"Beifahrersitz",    cx:6.0, cy:0.35, cz:-0.75,sx:0.7, sy:0.5, sz:0.7, kind:'seat', nolabel:true},
+  {name:"Motorkasten",      cx:4.8, cy:0.25, cz:0.0,  sx:1.6, sy:0.7, sz:1.0, kind:'engine'},
+  {name:"Cockpit",          cx:4.3, cy:-0.05,cz:0.0,  sx:4.0, sy:0.05,sz:2.8, kind:'floor', nolabel:true},
+  {name:"Rückbank",         cx:2.0, cy:0.3,  cz:0.0,  sx:0.8, sy:0.5, sz:3.0, kind:'seat'},
+  {name:"Badeplattform",    cx:-0.3,cy:0.45, cz:0.0,  sx:0.6, sy:0.05,sz:2.6, kind:'floor'},
+];
+const INTERIOR_SKI = [...INTERIOR_SKI_BASE, {name:"Bugstauraum", cx:8.3, cy:0.1, cz:0.0, sx:2.2, sy:0.4, sz:1.6, kind:'zone'}];
+const INTERIOR_SKIOPEN = [...INTERIOR_SKI_BASE, {name:"Bugsitze", cx:8.0, cy:0.3, cz:0.0, sx:1.8, sy:0.45, sz:1.8, kind:'seat'}];
 const HULLS={
   segel:{name:'Segelyacht', short:'Segel', beam:3.4, draft:1.05, fb0:0.72, fbRise:0.36, bow:0.74, bowPow:0.62, stern:0.16, sternMin:0.52, bowDraft:0.25, section:'round', interior:INTERIOR},
   motor:{name:'Motorboot (Verdränger)', short:'Motor', beam:3.7, draft:0.8, fb0:1.05, fbRise:0.3, bow:0.78, bowPow:0.5, stern:0.08, sternMin:0.82, bowDraft:0.35, section:'flat', interior:INTERIOR_MOTOR},
   sport:{name:'Sportboot (Gleiter)', short:'Sport', beam:3.0, draft:0.55, fb0:0.85, fbRise:0.3, bow:0.62, bowPow:0.75, stern:0.04, sternMin:0.92, bowDraft:0.15, section:'vee', interior:INTERIOR_SPORT},
+  ski:{name:'Wasserskiboot (geschlossener Bug)', short:'Ski', beam:3.8, draft:0.6, fb0:0.85, fbRise:0.25, bow:0.66, bowPow:0.65, stern:0.05, sternMin:0.95, bowDraft:0.2, section:'vee', interior:INTERIOR_SKI},
+  skiopen:{name:'Wasserskiboot (offener Bug)', short:'Ski offen', beam:3.8, draft:0.6, fb0:0.85, fbRise:0.25, bow:0.66, bowPow:0.65, stern:0.05, sternMin:0.95, bowDraft:0.2, section:'vee', interior:INTERIOR_SKIOPEN},
 };
 let hullType='segel', HULL=HULLS.segel;
 function halfBeamAt(s){ const m=HULL.beam/2;
@@ -428,6 +441,16 @@ function hullExtras(){
     outline(3.8,0.95,2.9,4.9,1.6,0);                                                                  // Steuerhaus
     outline(3.7,0.3,2.8,4.9,1.85,0);                                                                  // Fensterband
     outline(1.4,0.35,2.0,7.4,1.22,0); }                                                               // Vorschiffsaufbau
+  else if(hullType==='ski'||hullType==='skiopen'){
+    solid(new THREE.CylinderGeometry(0.05,0.05,1.6,10),4.4,-0.55,0).rotation.z=Math.PI/2-0.12;        // Welle (Direktantrieb)
+    solid(new THREE.CylinderGeometry(0.2,0.2,0.08,14),3.5,-0.72,0).rotation.z=Math.PI/2;             // Propeller
+    solid(new THREE.BoxGeometry(0.3,0.45,0.06),3.0,-0.75,0);                                          // Ruder
+    solid(new THREE.BoxGeometry(0.5,0.25,0.05),5.6,-0.68,0);                                          // Finne
+    const pyl=new THREE.MeshStandardMaterial({color:0x9fb6c2,metalness:0.6,roughness:0.4,transparent:true,opacity:0.6});
+    solid(new THREE.CylinderGeometry(0.05,0.06,1.3,10),4.6,1.15,0,pyl);                              // Skipylon
+    const ws=outline(0.05,0.45,hullType==='skiopen'?1.2:2.9,6.7,1.2,hullType==='skiopen'?0.9:0); ws.rotation.z=-0.6;   // Windschutzscheibe
+    if(hullType==='skiopen'){ const ws2=outline(0.05,0.45,1.2,6.7,1.2,-0.9); ws2.rotation.z=-0.6; }  // mit Durchgang zum Bug
+    else outline(2.9,0.08,2.6,8.2,1.02,0); }                                                          // geschlossenes Vorschiff
   else {
     solid(new THREE.BoxGeometry(0.32,1.1,0.32),-0.25,0.2,0);                                          // Außenborder
     solid(new THREE.BoxGeometry(0.5,0.35,0.42),-0.3,0.85,0);                                          // Motorhaube
@@ -878,6 +901,7 @@ const KINDS={
   shore:{type:'Einspeisung',sys:['ac230'],source:['ac230'],sw:true},
   charger:{type:'Wandler',sys:['ac230','dc12'],converts:{from:'ac230',to:'dc12'},sw:true},
   inverter:{type:'Wandler',sys:['dc12','ac230'],converts:{from:'dc12',to:'ac230'},sw:true,on:false},
+  generator:{type:'Generator',sys:['ac230','fuel'],source:['ac230'],needs:'fuel',sw:true,on:false},
   solar:{type:'Erzeuger',sys:['dc12'],source:['dc12'],sw:true},
   panel:{type:'Verteilung',sys:['dc12','ac230']},
   engine:{type:'Antrieb',sys:['fuel','dc12'],source:['dc12'],needs:'fuel',sw:true,on:false},
@@ -899,14 +923,15 @@ const KINDS={
   n2kdev:{type:'Elektronik',sys:['n2k','dc12'],sw:true},
   sensor:{type:'Sensor',sys:['n2k']},
 };
-const LEVEL_Y={ segel:{below_floor:-0.5,cabin:0.15,cockpit:0.5,mast:2.6}, motor:{below_floor:-0.35,cabin:0.3,cockpit:1.15,mast:2.2}, sport:{below_floor:-0.15,cabin:0.25,cockpit:0.3,mast:1.5} };
+const LEVEL_Y={ segel:{below_floor:-0.5,cabin:0.15,cockpit:0.5,mast:2.6}, ski:{below_floor:-0.25,cabin:0.2,cockpit:0.2,mast:1.6}, skiopen:{below_floor:-0.25,cabin:0.2,cockpit:0.2,mast:1.6}, motor:{below_floor:-0.35,cabin:0.3,cockpit:1.15,mast:2.2}, sport:{below_floor:-0.15,cabin:0.25,cockpit:0.3,mast:1.5} };
 function tplPos(c,hull){ const keep=HULL; HULL=HULLS[hull]||HULLS.segel;
   const s=Math.max(0.03,Math.min(0.97,c.x)), hb=halfBeamAt(s), lv=LEVEL_Y[HULLS[hull]?hull:'segel'];
   const y=c.level==='bilge'?-0.8*draftAt(s):(c.level==='deck'?freeboardAt(s)+0.1:(lv[c.level]!=null?lv[c.level]:lv.cabin));
   const z=c.side==='port'?-0.55*hb:(c.side==='starboard'?0.55*hb:0);
   HULL=keep; return [s*L,y,z]; }
 function tplState(t){ const comps=[];
-  t.comps.forEach(tc=>{ const kd=KINDS[tc.k]||KINDS.consumer, pos=tplPos(tc,t.hull);
+  const hull=tplHull(t);
+  t.comps.forEach(tc=>{ const kd=KINDS[tc.k]||KINDS.consumer, pos=tplPos(tc,hull);
     for(let n=0;n<8&&comps.some(o=>Math.hypot(o.pos[0]-pos[0],o.pos[1]-pos[1],o.pos[2]-pos[2])<0.38);n++) pos[2]+=(n%2?-1:1)*0.4*(n+1)/2;   // nicht übereinander
     const c=Object.assign({},JSON.parse(JSON.stringify(kd)),{ id:tc.key, name:tc.name, pos:pos.map(v=>Math.round(v*100)/100),
       desc:[tc.note,`Vorlage „${t.name}“ – typische Ausstattung, am eigenen Boot prüfen.`].filter(Boolean).join(' ') });
@@ -916,18 +941,29 @@ function tplState(t){ const comps=[];
     if(c.on===undefined) c.on=true; comps.push(c); });
   const ids=new Set(comps.map(c=>c.id));
   return { components:comps, connections:t.conns.filter(x=>ids.has(x[0])&&ids.has(x[1])&&SYSTEMS[x[2]]).map(x=>x.slice()),
-    activeSys:Object.keys(SYSTEMS), customN:0, scenarios:[], boatLengthM:t.lengthM||10, hull:t.hull, elec:Object.assign({},ELEC_DEF,{volt:t.volt||12}) }; }
+    activeSys:Object.keys(SYSTEMS), customN:0, scenarios:[], boatLengthM:t.lengthM||10, hull, elec:Object.assign({},ELEC_DEF,{volt:t.volt||12}) }; }
 const tplModal=document.getElementById('tplModal');
-function openTemplates(){ const all=[{id:'leer',name:'Leeres Boot',group:'Allgemein',desc:'Ohne Bauteile – Rumpfform und Länge im Modus „Plan“ einstellen.'},
+const TPL_GROUPS=['Allgemein','Segelyacht','Binnen-Motorboot','Stahl-Motoryacht','Sportboot','Wasserskiboot'];
+let tplQuery='';
+async function openTemplates(){ tplQuery=''; tplModal.classList.add('show');
+  if(!TEMPLATES.length){ document.getElementById('tplBody').innerHTML='<div class="note">Vorlagen werden geladen…</div>'; try{ await loadTemplates(); }catch(e){ console.error(e); } }
+  renderTemplates(); setTimeout(()=>{ const q=document.getElementById('tplQ'); if(q) q.focus(); },50); }
+function renderTemplates(){ const all=[{id:'leer',name:'Leeres Boot',group:'Allgemein',desc:'Ohne Bauteile – Rumpfform und Länge im Modus „Plan“ einstellen.'},
     {id:'beispiel',name:'Beispiel (10-m-Yacht)',group:'Allgemein',hull:'segel',lengthM:10,volt:12,desc:'Ausführliches Vorführboot mit allen Systemen.'},...TEMPLATES];
-  const groups=new Map(); all.forEach(t=>{ if(!groups.has(t.group)) groups.set(t.group,[]); groups.get(t.group).push(t); });
-  document.getElementById('tplBody').innerHTML=[...groups].map(([g,list])=>`<div class="d-conn-head" style="padding-left:0;border-top:none">${esc(g)}</div>
-    <div class="tpl-grid">${list.map(t=>`<div class="tpl" data-t="${esc(t.id)}"><div class="tpl-n">${esc(t.name)}</div>
-      <div class="tpl-m">${[t.years,t.lengthM?fmt(t.lengthM,2)+' m':'',t.volt?t.volt+' V':'',t.hull?HULLS[t.hull].name:'',t.comps?t.comps.length+' Bauteile':''].filter(Boolean).map(esc).join(' · ')}</div>
-      <div class="tpl-d">${esc(t.desc||'')}</div>${t.sources&&t.sources.length?`<div class="tpl-s">Quellen: ${t.sources.map((u,i)=>`<a href="${esc(u)}" target="_blank" rel="noopener">${i+1}</a>`).join(' ')}</div>`:''}</div>`).join('')}</div>`).join('')
-    +`<div class="rep-note">Vorlagen zeigen eine typische Ausstattung dieser Bootstypen, zusammengestellt aus Herstellerangaben, Handbüchern und Charter-Datenblättern – keine Original-Schaltpläne. Ströme, Kapazitäten und Lage sind Richtwerte und am eigenen Boot zu prüfen.</div>`;
+  const q=tplQuery.trim().toLowerCase(), list=all.filter(t=>!q||[t.name,t.maker,t.group,t.desc,t.years].join(' ').toLowerCase().includes(q));
+  const groups=new Map(); TPL_GROUPS.forEach(g=>groups.set(g,[])); list.forEach(t=>{ if(!groups.has(t.group)) groups.set(t.group,[]); groups.get(t.group).push(t); });
+  groups.forEach(l=>l.sort((a,b)=>(a.maker||'').localeCompare(b.maker||'','de')||(a.lengthM||0)-(b.lengthM||0)));
+  const card=t=>`<div class="tpl" data-t="${esc(t.id)}"><div class="tpl-n">${esc(t.name)}</div>
+      <div class="tpl-m">${[t.years,t.lengthM?fmt(t.lengthM,2)+' m':'',t.volt?t.volt+' V':'',t.hull?HULLS[tplHull(t)].name:'',t.comps?t.comps.length+' Bauteile':''].filter(Boolean).map(esc).join(' · ')}</div>
+      <div class="tpl-d">${esc(t.desc||'')}</div>${t.sources&&t.sources.length?`<div class="tpl-s">Quellen: ${t.sources.map((u,i)=>`<a href="${esc(u)}" target="_blank" rel="noopener">${i+1}</a>`).join(' ')}</div>`:''}</div>`;
+  document.getElementById('tplBody').innerHTML=`<div class="rep-set"><input class="tin" id="tplQ" style="width:260px;text-align:left" placeholder="Suchen: Hersteller, Modell, Typ…" value="${esc(tplQuery)}"><span>${list.length} von ${all.length}</span></div>`
+    +[...groups].filter(([,l])=>l.length).map(([g,l])=>`<div class="d-conn-head" style="padding-left:0;border-top:none">${esc(g)} <span style="color:var(--ink-faint)">(${l.length})</span></div><div class="tpl-grid">${l.map(card).join('')}</div>`).join('')
+    +(list.length?'':'<div class="note">Keine Vorlage gefunden.</div>')
+    +`<div class="rep-note">Vorlagen zeigen eine typische Ausstattung dieser Bootstypen, zusammengestellt aus Herstellerangaben, Handbüchern, Charter-Datenblättern und Inseraten – keine Original-Schaltpläne. Ströme, Kapazitäten und Lage sind Richtwerte und am eigenen Boot zu prüfen.</div>`;
   document.querySelectorAll('#tplBody .tpl').forEach(el=>el.onclick=e=>{ if(e.target.tagName!=='A') chooseTemplate(el.dataset.t); });
-  tplModal.classList.add('show'); }
+  const inp=document.getElementById('tplQ'); inp.oninput=()=>{ tplQuery=inp.value; const pos=inp.selectionStart; renderTemplates(); const n=document.getElementById('tplQ'); n.focus(); n.setSelectionRange(pos,pos); }; }
+/* Skiboote: Vorlage nennt hull "ski" + bow "open"/"closed" → eigene Rumpfvariante */
+function tplHull(t){ return t.hull==='ski'&&t.bow==='open'?'skiopen':(HULLS[t.hull]?t.hull:'segel'); }
 async function chooseTemplate(id){ let name, state;
   if(id==='leer'){ name='Boot '+(BOATS.length+1); state={components:[],connections:[],activeSys:Object.keys(SYSTEMS),boatLengthM:10,hull:hullType}; }
   else if(id==='beispiel'){ name='Beispiel (10-m-Yacht)'; state=JSON.parse(JSON.stringify(DEMO_STATE)); }
@@ -973,7 +1009,7 @@ function chargeAhDay(c){ const h=(typeof c.hours==='number'?c.hours:0); return c
 function powerBalance(){ let totalAh=0,drawA=0,dailyAh=0,chargeDay=0,chargeNow=0; const cons=[],chg=[];
   COMPONENTS.forEach(c=>{ if(c.status==="ausgebaut") return; if(isBattery(c)){ totalAh+=c.ah; return; } const on=c._on!==false, h=(typeof c.hours==='number'?c.hours:0);
     if(isCharger(c)){ if(c.amp>0||c.wp>0){ const a=chargeA(c),d=chargeAhDay(c); chg.push({name:c.name,amp:a,wp:c.wp,hours:h,ah:d,on}); chargeDay+=d; if(on) chargeNow+=a; } return; }
-    if(c.amp>0){ cons.push({name:c.name,amp:c.amp,hours:h,on}); if(on) drawA+=c.amp; dailyAh+=c.amp*h; } });
+    if(c.amp>0&&c.sys.includes("dc12")){ cons.push({name:c.name,amp:c.amp,hours:h,on}); if(on) drawA+=c.amp; dailyAh+=c.amp*h; } });   // reine 230-V-Verbraucher: Strom bei 230 V, nicht aus der Batterie
   const use=(BAT_TYPES[ELEC.bat]||BAT_TYPES.agm).use, usable=totalAh*use, net=dailyAh-chargeDay;
   return {totalAh,use,usable,drawA,dailyAh,chargeDay,chargeNow,net,runtime:drawA>0?usable/drawA:null,days:net>0?usable/net:null,cons,chg}; }
 /* ---- Kabelauslegung Gleichstrom: Kupfer κ = 56 m/(Ω·mm²), Hin- + Rückleiter (2 × L) ----
@@ -1012,7 +1048,7 @@ const STATUS={ verbaut:{name:'verbaut'}, geplant:{name:'geplant'}, bestellt:{nam
 function partStatus(c){ return STATUS[c.status]?c.status:'verbaut'; }
 /* Einbauort aus der Lage: über Deck → Deck/Heck/Bugdeck/Mast, sonst nächster Raum des Innenausbaus (≤ 0,6 m), sonst Bereich */
 function autoLoc(c){ const [x,y,z]=c.pos;
-  if(y>1.6) return hullType==='segel'?'Mast':'Dach / Mast';
+  if(y>1.6) return hullType==='segel'?'Mast':(hullType.startsWith('ski')?'Pylon':'Dach');
   if(y>freeboardAt(Math.max(0,Math.min(1,x/L)))-0.05) return x<1.2?'Heck (außen)':(x>8.3?'Bugdeck':(x<3.4&&Math.abs(z)<1.2&&y<0.9?'Cockpit':'Deck'));
   let best=null,bd=1e9;
   HULL.interior.forEach(r=>{ const dx=Math.max(0,Math.abs(x-r.cx)-r.sx/2), dy=Math.max(0,Math.abs(y-r.cy)-r.sy/2), dz=Math.max(0,Math.abs(z-r.cz)-r.sz/2), d=dx*dx+dz*dz+0.25*dy*dy; if(d<bd){ bd=d; best=r; } });
@@ -1231,276 +1267,10 @@ document.getElementById('boatRen').onclick=renameBoat;
 document.getElementById('boatDel').onclick=delBoat;
 
 /* ============================================================ VORLAGEN ============================================================ */
-/* Typische Ausstattung bekannter Serien- und Binnenboote, recherchiert 2026-10-25 aus öffentlichen Quellen (Werft- und Charterseiten, Makler-Inserate).
-   Nur Fakten, keine Original-Schaltpläne. Lage (x/side/level) und Verbraucherströme sind Schätzungen bzw. Typwerte – siehe uncertain. */
-const TEMPLATES=[
- {"id":"bavaria-cruiser-34","name":"Bavaria Cruiser 34","group":"Segelyacht","years":"2014–2021","hull":"segel","lengthM":9.99,"volt":12,"desc":"Großserien-Fahrtenyacht mit Volvo-Penta-Saildrive (D1-20, optional D1-30), 150 l Diesel, 150 l Wasser, Fäkalientank, Landstrom mit Ladegerät, Boiler (Motor + 230 V) und häufig Diesel-Warmluftheizung.","sources":["https://www.devalk.nl/en/yachtbrokerage/809421/BAVARIA-CRUISER-34.html","https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/712756/","https://www.yachtall.com/en/boat/bavaria-cruiser-34-s261815"],"uncertain":["Batteriekapazitäten (Start ~70 Ah, Verbraucher ~200 Ah) sind Klassen-Typwerte; keine Werftangabe gefunden.","Lichtmaschine 115 A ist Volvo-D1-Standardwert, nicht modellspezifisch belegt.","Ladegerät 25 A, Boiler 20 l, Gaskasten-Position und alle Verbraucher-amp/hours sind Typwerte.","Diesel-Heizung ist Option (im Inserat 'Planar'), nicht Serie.","Wassertank: 150 l laut 2021er Inserat; ältere Bavaria 34 Cruiser (2008) 210 l. NMEA 2000 bei B&G-Elektronik angenommen.","Positionen (x/side/level) sind grobe Schätzungen nach typischem Layout, nicht aus Plänen."],
-  comps:[
-   {"key":"engine","k":"engine","name":"Volvo Penta D1-20 (opt. D1-30), Saildrive","sys":["fuel","dc12","bilge"],"x":0.3,"side":"center","level":"below_floor","amp":115,"hours":1,"note":"Lichtmaschine 115 A (Typwert), Motorlaufzeit 1 h/Tag angenommen – anpassen. Quelle: devalk.nl","model":"Volvo Penta D1-20 (opt. D1-30), Saildrive"},
-   {"key":"fueltank","k":"fueltank","name":"Dieseltank 150 l (PE)","sys":["fuel"],"x":0.18,"side":"starboard","level":"below_floor","liter":150,"note":"Quelle: devalk.nl"},
-   {"key":"start_bat","k":"bat","name":"Starterbatterie","sys":["dc12"],"x":0.25,"side":"center","level":"below_floor","ah":70,"note":"Quelle: devalk.nl"},
-   {"key":"house_bat","k":"bat","name":"Verbraucherbatterien (2× ~100 Ah)","sys":["dc12"],"x":0.4,"side":"port","level":"below_floor","ah":200,"note":"Quelle: devalk.nl"},
-   {"key":"shore","k":"shore","name":"Landanschluss 230 V","sys":["ac230"],"x":0.03,"side":"starboard","level":"cockpit","note":"Quelle: devalk.nl"},
-   {"key":"charger","k":"charger","name":"Batterieladegerät","sys":["ac230","dc12"],"x":0.22,"side":"starboard","level":"cabin","amp":25,"note":"Quelle: devalk.nl"},
-   {"key":"panel","k":"panel","name":"Schalttafel am Navitisch","sys":["dc12","ac230"],"x":0.42,"side":"starboard","level":"cabin"},
-   {"key":"watertank","k":"watertank","name":"Frischwassertank 150 l","sys":["fresh"],"x":0.55,"side":"center","level":"below_floor","liter":150,"note":"Quelle: devalk.nl"},
-   {"key":"waterpump","k":"pump","name":"Druckwasserpumpe","sys":["fresh","dc12"],"x":0.4,"side":"center","level":"below_floor","amp":5,"hours":0.5,"note":"Quelle: devalk.nl"},
-   {"key":"boiler","k":"boiler","name":"Boiler (Motorwärmetauscher + 230 V)","sys":["fresh","ac230"],"x":0.2,"side":"port","level":"below_floor","liter":20,"note":"Quelle: devalk.nl"},
-   {"key":"galley_sink","k":"tap","name":"Pantry-Spüle","sys":["fresh","bilge"],"x":0.38,"side":"port","level":"cabin"},
-   {"key":"head_sink","k":"tap","name":"Waschbecken/Dusche Nasszelle","sys":["fresh","bilge"],"x":0.35,"side":"starboard","level":"cabin"},
-   {"key":"deck_shower","k":"tap","name":"Heckdusche","sys":["fresh"],"x":0.02,"side":"center","level":"deck"},
-   {"key":"wc","k":"wc","name":"Bord-WC manuell (Jabsco)","sys":["black","bilge"],"x":0.33,"side":"starboard","level":"cabin","note":"Quelle: devalk.nl"},
-   {"key":"holding","k":"holding","name":"Fäkalientank 65 l (Decksabsaugung)","sys":["black"],"x":0.33,"side":"starboard","level":"below_floor","liter":65,"note":"Quelle: devalk.nl"},
-   {"key":"gas_bottle","k":"gas","name":"Gasflasche im Gaskasten (Cockpit)","sys":["gas"],"x":0.08,"side":"port","level":"cockpit"},
-   {"key":"stove","k":"stove","name":"2-flammiger Gasherd mit Backofen","sys":["gas"],"x":0.38,"side":"port","level":"cabin","note":"Quelle: devalk.nl"},
-   {"key":"heater","k":"heater","name":"Diesel-Warmluftheizung (z. B. Planar/Webasto)","sys":["fuel","dc12"],"x":0.15,"side":"port","level":"below_floor","amp":2,"hours":6,"note":"Quelle: devalk.nl"},
-   {"key":"fridge","k":"consumer","name":"Kompressor-Kühlbox 12 V (Isotherm)","sys":["dc12"],"x":0.38,"side":"port","level":"cabin","amp":4,"hours":10,"note":"Quelle: devalk.nl"},
-   {"key":"bilge_el","k":"bilgepump","name":"Elektrische Bilgepumpe","sys":["bilge","dc12"],"x":0.45,"side":"center","level":"bilge","amp":4,"hours":0.05},
-   {"key":"bilge_man","k":"consumer","name":"Handbilgepumpe (Cockpit)","sys":["bilge"],"x":0.12,"side":"starboard","level":"cockpit"},
-   {"key":"thruhull","k":"seacock","name":"Seeventile / Borddurchlässe","sys":["bilge"],"x":0.33,"side":"center","level":"bilge"},
-   {"key":"n2k","k":"n2kbus","name":"NMEA-2000-Backbone","sys":["n2k","dc12"],"x":0.3,"side":"center","level":"cabin"},
-   {"key":"plotter","k":"n2kdev","name":"Kartenplotter 9\" (B&G) am Steuerstand","sys":["n2k","dc12"],"x":0.08,"side":"center","level":"cockpit","amp":1.5,"hours":6,"note":"Quelle: devalk.nl"},
-   {"key":"instruments","k":"n2kdev","name":"Log/Lot/Wind (B&G)","sys":["n2k","dc12"],"x":0.1,"side":"center","level":"cockpit","amp":0.5,"hours":8,"note":"Quelle: devalk.nl"},
-   {"key":"autopilot","k":"n2kdev","name":"Radpilot/Autopilot","sys":["n2k","dc12"],"x":0.06,"side":"center","level":"cockpit","amp":3,"hours":3,"note":"Quelle: devalk.nl"},
-   {"key":"vhf","k":"n2kdev","name":"UKW-Funk","sys":["dc12","n2k"],"x":0.42,"side":"starboard","level":"cabin","amp":0.5,"hours":8,"note":"Quelle: devalk.nl"},
-   {"key":"lights","k":"consumer","name":"LED-Innen- und Navigationsbeleuchtung","sys":["dc12"],"x":0.5,"side":"center","level":"cabin","amp":2,"hours":4}],
-  conns:[["fueltank","engine","fuel"],["fueltank","heater","fuel"],["engine","start_bat","dc12"],["engine","house_bat","dc12"],["shore","charger","ac230"],["shore","boiler","ac230"],["charger","house_bat","dc12"],["charger","start_bat","dc12"],["start_bat","engine","dc12"],["house_bat","panel","dc12"],["panel","fridge","dc12"],["panel","waterpump","dc12"],["panel","heater","dc12"],["panel","bilge_el","dc12"],["panel","lights","dc12"],["panel","vhf","dc12"],["panel","n2k","dc12"],["panel","autopilot","dc12"],["watertank","waterpump","fresh"],["waterpump","boiler","fresh"],["waterpump","galley_sink","fresh"],["waterpump","head_sink","fresh"],["boiler","galley_sink","fresh"],["boiler","head_sink","fresh"],["boiler","deck_shower","fresh"],["wc","holding","black"],["holding","thruhull","black"],["gas_bottle","stove","gas"],["bilge_el","thruhull","bilge"],["bilge_man","thruhull","bilge"],["galley_sink","thruhull","bilge"],["head_sink","thruhull","bilge"],["n2k","plotter","n2k"],["n2k","instruments","n2k"],["n2k","autopilot","n2k"],["n2k","vhf","n2k"]]},
- {"id":"jeanneau-sun-odyssey-349","name":"Jeanneau Sun Odyssey 349","group":"Segelyacht","years":"2014–2021","hull":"segel","lengthM":10.34,"volt":12,"desc":"Weit verbreitete Charter- und Eigneryacht mit Yanmar 3YM20 (21 PS, Saildrive), 130 l Diesel, ca. 200 l Wasser, 2 Verbraucher- plus 1 Starterbatterie, Landstrom/Ladegerät und Ankerwinsch.","sources":["https://en.wikipedia.org/wiki/Sun_Odyssey_349","https://www.devalk.nl/en/yachtbrokerage/813356/JEANNEAU-SUN-ODYSSEY-349.html","https://www.boat-specs.com/sailing/sailboats/jeanneau/sun-odyssey-349-performance"],"uncertain":["Batteriekapazitäten (Verbraucher ~230 Ah, Start ~70 Ah) sind Typwerte; Inserate nennen nur die Anzahl (2+1, teils zusätzlich Bugstrahlruder-Batterie, teils Lithium).","Lichtmaschine 60 A ist Yanmar-3YM-Standardwert, nicht modellspezifisch belegt.","Fäkalientank 80–90 l je nach Inserat. Wasser 200–206 l je nach Quelle.","Inverter, Ladegerät-Stromstärke, Gaskasten-Position, NMEA 2000 und alle Verbraucher-amp/hours sind Typ-/Annahmewerte.","Einige Boote haben laut Inseraten Wellenantrieb statt Saildrive bzw. Hubkiel (Tiefgang 1,24–2,54 m); Standard hier: Kurzkiel 1,98 m.","Positionen sind Schätzungen nach typischem Layout."],
-  comps:[
-   {"key":"engine","k":"engine","name":"Yanmar 3YM20 (21 PS), Saildrive","sys":["fuel","dc12","bilge"],"x":0.3,"side":"center","level":"below_floor","amp":60,"hours":1,"note":"Lichtmaschine 60 A (Typwert), Motorlaufzeit 1 h/Tag angenommen – anpassen. Quelle: en.wikipedia.org","model":"Yanmar 3YM20 (21 PS), Saildrive"},
-   {"key":"fueltank","k":"fueltank","name":"Dieseltank 130 l","sys":["fuel"],"x":0.18,"side":"port","level":"below_floor","liter":130,"note":"Quelle: devalk.nl"},
-   {"key":"start_bat","k":"bat","name":"Starterbatterie","sys":["dc12"],"x":0.25,"side":"center","level":"below_floor","ah":70,"note":"Quelle: devalk.nl"},
-   {"key":"house_bat","k":"bat","name":"2 Verbraucherbatterien","sys":["dc12"],"x":0.22,"side":"starboard","level":"below_floor","ah":230,"note":"Quelle: devalk.nl"},
-   {"key":"battery_monitor","k":"consumer","name":"Batteriemonitor","sys":["dc12"],"x":0.42,"side":"starboard","level":"cabin","amp":0.05,"hours":24,"note":"Quelle: devalk.nl"},
-   {"key":"shore","k":"shore","name":"Landanschluss 230 V","sys":["ac230"],"x":0.03,"side":"port","level":"cockpit","note":"Quelle: devalk.nl"},
-   {"key":"charger","k":"charger","name":"Batterieladegerät","sys":["ac230","dc12"],"x":0.22,"side":"starboard","level":"cabin","amp":40,"note":"Quelle: devalk.nl"},
-   {"key":"inverter","k":"inverter","name":"Wechselrichter (Option)","sys":["dc12","ac230"],"x":0.24,"side":"starboard","level":"cabin","amp":10,"hours":0.5,"note":"Quelle: devalk.nl"},
-   {"key":"panel","k":"panel","name":"Schalttafel Navitisch","sys":["dc12","ac230"],"x":0.42,"side":"starboard","level":"cabin"},
-   {"key":"watertank","k":"watertank","name":"Frischwassertank ~200 l","sys":["fresh"],"x":0.55,"side":"center","level":"below_floor","liter":200,"note":"Quelle: en.wikipedia.org"},
-   {"key":"waterpump","k":"pump","name":"Druckwasserpumpe","sys":["fresh","dc12"],"x":0.4,"side":"center","level":"below_floor","amp":5,"hours":0.5,"note":"Quelle: devalk.nl"},
-   {"key":"boiler","k":"boiler","name":"Boiler (Motor + 230 V)","sys":["fresh","ac230"],"x":0.2,"side":"port","level":"below_floor","liter":20,"note":"Quelle: devalk.nl"},
-   {"key":"galley_sink","k":"tap","name":"Pantry-Spüle","sys":["fresh","bilge"],"x":0.4,"side":"port","level":"cabin"},
-   {"key":"head_sink","k":"tap","name":"Waschbecken/Dusche Nasszelle","sys":["fresh","bilge"],"x":0.35,"side":"starboard","level":"cabin"},
-   {"key":"deck_shower","k":"tap","name":"Heckdusche","sys":["fresh"],"x":0.02,"side":"center","level":"deck"},
-   {"key":"wc","k":"wc","name":"Bord-WC manuell","sys":["black","bilge"],"x":0.33,"side":"starboard","level":"cabin","note":"Quelle: devalk.nl"},
-   {"key":"holding","k":"holding","name":"Fäkalientank ~80 l","sys":["black"],"x":0.33,"side":"starboard","level":"below_floor","liter":80,"note":"Quelle: devalk.nl"},
-   {"key":"gas_bottle","k":"gas","name":"Gasflasche im Gaskasten (Cockpit/Heck)","sys":["gas"],"x":0.08,"side":"starboard","level":"cockpit"},
-   {"key":"stove","k":"stove","name":"Gasherd mit Backofen","sys":["gas"],"x":0.4,"side":"port","level":"cabin","note":"Quelle: devalk.nl"},
-   {"key":"fridge","k":"consumer","name":"Kompressor-Kühlschrank mit Gefrierfach 12 V","sys":["dc12"],"x":0.4,"side":"port","level":"cabin","amp":4.5,"hours":10,"note":"Quelle: devalk.nl"},
-   {"key":"windlass","k":"consumer","name":"Elektrische Ankerwinsch","sys":["dc12"],"x":0.97,"side":"center","level":"deck","amp":80,"hours":0.1,"note":"Quelle: devalk.nl"},
-   {"key":"bilge_el","k":"bilgepump","name":"Elektrische Bilgepumpe","sys":["bilge","dc12"],"x":0.45,"side":"center","level":"bilge","amp":4,"hours":0.05,"note":"Quelle: devalk.nl"},
-   {"key":"bilge_man","k":"consumer","name":"Handbilgepumpe","sys":["bilge"],"x":0.12,"side":"port","level":"cockpit"},
-   {"key":"thruhull","k":"seacock","name":"Seeventile / Borddurchlässe","sys":["bilge"],"x":0.33,"side":"center","level":"bilge"},
-   {"key":"n2k","k":"n2kbus","name":"NMEA-2000-Backbone","sys":["n2k","dc12"],"x":0.3,"side":"center","level":"cabin"},
-   {"key":"plotter","k":"n2kdev","name":"Kartenplotter/GPS","sys":["n2k","dc12"],"x":0.08,"side":"center","level":"cockpit","amp":1.5,"hours":6,"note":"Quelle: devalk.nl"},
-   {"key":"instruments","k":"n2kdev","name":"Lot/Wind-Instrumente","sys":["n2k","dc12"],"x":0.1,"side":"center","level":"cockpit","amp":0.5,"hours":8,"note":"Quelle: devalk.nl"},
-   {"key":"autopilot","k":"n2kdev","name":"Autopilot","sys":["n2k","dc12"],"x":0.05,"side":"center","level":"cockpit","amp":3,"hours":3,"note":"Quelle: devalk.nl"},
-   {"key":"vhf","k":"n2kdev","name":"UKW-Funk","sys":["dc12","n2k"],"x":0.42,"side":"starboard","level":"cabin","amp":0.5,"hours":8,"note":"Quelle: devalk.nl"},
-   {"key":"lights","k":"consumer","name":"LED-Beleuchtung","sys":["dc12"],"x":0.5,"side":"center","level":"cabin","amp":2,"hours":4}],
-  conns:[["fueltank","engine","fuel"],["engine","start_bat","dc12"],["engine","house_bat","dc12"],["shore","charger","ac230"],["shore","boiler","ac230"],["charger","house_bat","dc12"],["charger","start_bat","dc12"],["house_bat","battery_monitor","dc12"],["house_bat","panel","dc12"],["house_bat","inverter","dc12"],["house_bat","windlass","dc12"],["panel","fridge","dc12"],["panel","waterpump","dc12"],["panel","bilge_el","dc12"],["panel","lights","dc12"],["panel","vhf","dc12"],["panel","n2k","dc12"],["panel","autopilot","dc12"],["watertank","waterpump","fresh"],["waterpump","boiler","fresh"],["waterpump","galley_sink","fresh"],["waterpump","head_sink","fresh"],["boiler","galley_sink","fresh"],["boiler","head_sink","fresh"],["boiler","deck_shower","fresh"],["wc","holding","black"],["holding","thruhull","black"],["gas_bottle","stove","gas"],["bilge_el","thruhull","bilge"],["bilge_man","thruhull","bilge"],["galley_sink","thruhull","bilge"],["head_sink","thruhull","bilge"],["n2k","plotter","n2k"],["n2k","instruments","n2k"],["n2k","autopilot","n2k"],["n2k","vhf","n2k"]]},
- {"id":"beneteau-oceanis-38-1","name":"Beneteau Oceanis 38.1","group":"Segelyacht","years":"2017–2023","hull":"segel","lengthM":11.5,"volt":12,"desc":"Moderne Fahrtenyacht mit Yanmar-Saildrive (3YM30, später 40 PS), 130 l Diesel, bis 330 l Wasser, häufig mit Bugstrahlruder samt eigener Batterie, elektrischer Ankerwinsch, Landstrom und Boiler.","sources":["https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/649859/","https://www.boats.com/sailing-boats/2019-beneteau-oceanis-38-1-9673168","https://en.yachtingaddress.com/pdf-bateaux_complete-20125-28DUCX-beneteau-oceanis-38-1.pdf"],"uncertain":["Lichtmaschine 125 A und '3 Batteriebänke' stammen aus einem Händlerinserat in den Suchergebnissen, nicht direkt geprüft.","Batterie-Ah (Service ~230, Start ~70, Bugstrahlruder ~100) sind Typwerte.","Wasser 330 l ist laut US-Händler die optionale Großtank-Variante; Fäkalientank-Volumen (80 l) und Boilergröße (40 l) angenommen.","Bugstrahlruder, Inverter, Solar und Klimaanlage im yacht.de-Inserat sind teils Nachrüstungen (2026) – für die Vorlage Bugstrahlruder als häufige Option belassen.","Gaskasten-Position, NMEA 2000 und Verbraucherwerte sind Annahmen; Positionen geschätzt."],
-  comps:[
-   {"key":"engine","k":"engine","name":"Yanmar 3YM30 (29 PS) Saildrive; später 3JH5E/3JH40 (40 PS)","sys":["fuel","dc12","bilge"],"x":0.3,"side":"center","level":"below_floor","amp":125,"hours":1,"note":"Lichtmaschine 125 A (Typwert), Motorlaufzeit 1 h/Tag angenommen – anpassen. Quelle: yacht.de","model":"Yanmar 3YM30 (29 PS) Saildrive; später 3JH5E/3JH40 (40 PS)"},
-   {"key":"fueltank","k":"fueltank","name":"Dieseltank 130 l (rotomoulded)","sys":["fuel"],"x":0.18,"side":"port","level":"below_floor","liter":130,"note":"Quelle: yacht.de"},
-   {"key":"start_bat","k":"bat","name":"Starterbatterie","sys":["dc12"],"x":0.25,"side":"center","level":"below_floor","ah":70,"note":"Quelle: yacht.de"},
-   {"key":"house_bat","k":"bat","name":"Servicebatterien (2×)","sys":["dc12"],"x":0.25,"side":"starboard","level":"below_floor","ah":230,"note":"Quelle: yacht.de"},
-   {"key":"bt_bat","k":"bat","name":"Bugstrahlruder-Batterie","sys":["dc12"],"x":0.88,"side":"center","level":"below_floor","ah":100},
-   {"key":"shore","k":"shore","name":"Landanschluss 230 V","sys":["ac230"],"x":0.02,"side":"starboard","level":"cockpit","note":"Quelle: yacht.de"},
-   {"key":"charger","k":"charger","name":"Batterieladegerät","sys":["ac230","dc12"],"x":0.22,"side":"starboard","level":"cabin","amp":40,"note":"Quelle: yacht.de"},
-   {"key":"inverter","k":"inverter","name":"Wechselrichter","sys":["dc12","ac230"],"x":0.24,"side":"starboard","level":"cabin","amp":10,"hours":0.5,"note":"Quelle: yacht.de"},
-   {"key":"panel","k":"panel","name":"Schalttafel Navitisch","sys":["dc12","ac230"],"x":0.45,"side":"starboard","level":"cabin"},
-   {"key":"watertank","k":"watertank","name":"Frischwassertank(s) 330 l","sys":["fresh"],"x":0.55,"side":"center","level":"below_floor","liter":330,"note":"Quelle: yacht.de"},
-   {"key":"waterpump","k":"pump","name":"Druckwasserpumpe","sys":["fresh","dc12"],"x":0.4,"side":"center","level":"below_floor","amp":5,"hours":0.5},
-   {"key":"boiler","k":"boiler","name":"Boiler (Motor + 230 V)","sys":["fresh","ac230"],"x":0.2,"side":"port","level":"below_floor","liter":40,"note":"Quelle: yacht.de"},
-   {"key":"galley_sink","k":"tap","name":"Pantry-Spüle","sys":["fresh","bilge"],"x":0.4,"side":"port","level":"cabin"},
-   {"key":"head_sink","k":"tap","name":"Waschbecken/Dusche (2 Nasszellen)","sys":["fresh","bilge"],"x":0.35,"side":"starboard","level":"cabin"},
-   {"key":"deck_shower","k":"tap","name":"Heckdusche","sys":["fresh"],"x":0.01,"side":"center","level":"deck"},
-   {"key":"wc","k":"wc","name":"2× Bord-WC manuell (Jabsco)","sys":["black","bilge"],"x":0.35,"side":"starboard","level":"cabin","note":"Quelle: yacht.de"},
-   {"key":"holding","k":"holding","name":"Fäkalientank","sys":["black"],"x":0.35,"side":"starboard","level":"below_floor","liter":80,"note":"Quelle: yacht.de"},
-   {"key":"gas_bottle","k":"gas","name":"Gasflasche im Gaskasten (Cockpit)","sys":["gas"],"x":0.08,"side":"port","level":"cockpit"},
-   {"key":"stove","k":"stove","name":"2-flammiger Gasherd mit Backofen","sys":["gas"],"x":0.4,"side":"port","level":"cabin","note":"Quelle: yacht.de"},
-   {"key":"fridge","k":"consumer","name":"Kompressor-Kühlschrank 12 V","sys":["dc12"],"x":0.4,"side":"port","level":"cabin","amp":4.5,"hours":10,"note":"Quelle: yacht.de"},
-   {"key":"bowthruster","k":"consumer","name":"Bugstrahlruder 12 V","sys":["dc12"],"x":0.9,"side":"center","level":"bilge","amp":300,"hours":0.05,"note":"Quelle: yacht.de"},
-   {"key":"windlass","k":"consumer","name":"Elektrische Ankerwinsch mit Fernbedienung","sys":["dc12"],"x":0.97,"side":"center","level":"deck","amp":90,"hours":0.1,"note":"Quelle: yacht.de"},
-   {"key":"bilge_el","k":"bilgepump","name":"Elektrische Bilgepumpe","sys":["bilge","dc12"],"x":0.45,"side":"center","level":"bilge","amp":4,"hours":0.05,"note":"Quelle: yacht.de"},
-   {"key":"bilge_man","k":"consumer","name":"Handbilgepumpe","sys":["bilge"],"x":0.12,"side":"port","level":"cockpit","note":"Quelle: yacht.de"},
-   {"key":"thruhull","k":"seacock","name":"Seeventile / Borddurchlässe","sys":["bilge"],"x":0.35,"side":"center","level":"bilge"},
-   {"key":"n2k","k":"n2kbus","name":"NMEA-2000-Backbone","sys":["n2k","dc12"],"x":0.3,"side":"center","level":"cabin"},
-   {"key":"plotter","k":"n2kdev","name":"B&G Plotter","sys":["n2k","dc12"],"x":0.06,"side":"center","level":"cockpit","amp":1.5,"hours":6,"note":"Quelle: yacht.de"},
-   {"key":"instruments","k":"n2kdev","name":"B&G Multiinstrument","sys":["n2k","dc12"],"x":0.08,"side":"center","level":"cockpit","amp":0.5,"hours":8,"note":"Quelle: yacht.de"},
-   {"key":"autopilot","k":"n2kdev","name":"Autopilot","sys":["n2k","dc12"],"x":0.04,"side":"center","level":"cockpit","amp":3,"hours":3,"note":"Quelle: yacht.de"},
-   {"key":"vhf","k":"n2kdev","name":"UKW-Funk","sys":["dc12","n2k"],"x":0.45,"side":"starboard","level":"cabin","amp":0.5,"hours":8,"note":"Quelle: yacht.de"}],
-  conns:[["fueltank","engine","fuel"],["engine","start_bat","dc12"],["engine","house_bat","dc12"],["engine","bt_bat","dc12"],["shore","charger","ac230"],["shore","boiler","ac230"],["charger","house_bat","dc12"],["charger","start_bat","dc12"],["charger","bt_bat","dc12"],["bt_bat","bowthruster","dc12"],["house_bat","windlass","dc12"],["house_bat","panel","dc12"],["house_bat","inverter","dc12"],["panel","fridge","dc12"],["panel","waterpump","dc12"],["panel","bilge_el","dc12"],["panel","vhf","dc12"],["panel","n2k","dc12"],["panel","autopilot","dc12"],["watertank","waterpump","fresh"],["waterpump","boiler","fresh"],["waterpump","galley_sink","fresh"],["waterpump","head_sink","fresh"],["boiler","galley_sink","fresh"],["boiler","head_sink","fresh"],["boiler","deck_shower","fresh"],["wc","holding","black"],["holding","thruhull","black"],["gas_bottle","stove","gas"],["bilge_el","thruhull","bilge"],["bilge_man","thruhull","bilge"],["galley_sink","thruhull","bilge"],["head_sink","thruhull","bilge"],["n2k","plotter","n2k"],["n2k","instruments","n2k"],["n2k","autopilot","n2k"],["n2k","vhf","n2k"]]},
- {"id":"hanse-348","name":"Hanse 348","group":"Segelyacht","years":"2018–heute","hull":"segel","lengthM":10.4,"volt":12,"desc":"Deutsche Großserienyacht (Greifswald) mit Yanmar 3YM20/3YM30 Saildrive, 160 l Diesel, 210 l Wasser, kleinem Fäkalientank, AGM-Batterien (90 Ah Start + 160 Ah Verbraucher) und 35-A-Ladegerät.","sources":["https://www.seattleyachts.com/used-yachts-for-sale/hanse-348-2020-hanse-348/2771361_1","https://www.yachtall.com/de/boot/hanse-348-s62553?print=1","https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/751420/"],"uncertain":["Batterien 90 Ah + 160 Ah AGM aus einem Inserat; ein anderes nennt 2×140 Ah Verbraucher + 90 Ah Start.","Lichtmaschine 60 A ist Yanmar-Typwert. Boiler, Elektronik (Plotter/Instrumente/AIS) und NMEA 2000 sind typische Optionen, nicht belegt.","Fäkalientank ~35 l laut Inserat auffällig klein – bitte prüfen. Wasser 210 l (2024er Boote teils 230 l).","Gasfach-Position (Cockpit/Heck) angenommen; Verbraucher-amp/hours sind Typwerte; Positionen geschätzt."],
-  comps:[
-   {"key":"engine","k":"engine","name":"Yanmar 3YM20 (21 PS) / opt. 3YM30 (29 PS), Saildrive","sys":["fuel","dc12","bilge"],"x":0.3,"side":"center","level":"below_floor","amp":60,"hours":1,"note":"Lichtmaschine 60 A (Typwert), Motorlaufzeit 1 h/Tag angenommen – anpassen. Quelle: seattleyachts.com","model":"Yanmar 3YM20 (21 PS) / opt. 3YM30 (29 PS), Saildrive"},
-   {"key":"fueltank","k":"fueltank","name":"Dieseltank ~160 l","sys":["fuel"],"x":0.18,"side":"port","level":"below_floor","liter":160,"note":"Quelle: seattleyachts.com"},
-   {"key":"start_bat","k":"bat","name":"Starterbatterie AGM 90 Ah","sys":["dc12"],"x":0.25,"side":"center","level":"below_floor","ah":90,"note":"Quelle: seattleyachts.com"},
-   {"key":"house_bat","k":"bat","name":"Verbraucherbatterie AGM 160 Ah","sys":["dc12"],"x":0.4,"side":"port","level":"below_floor","ah":160,"note":"Quelle: seattleyachts.com"},
-   {"key":"shore","k":"shore","name":"Landanschluss 230 V mit Steckdosen","sys":["ac230"],"x":0.02,"side":"port","level":"cockpit","note":"Quelle: seattleyachts.com"},
-   {"key":"charger","k":"charger","name":"Ladegerät 35 A","sys":["ac230","dc12"],"x":0.22,"side":"port","level":"cabin","amp":35,"note":"Quelle: seattleyachts.com"},
-   {"key":"panel","k":"panel","name":"12-V/230-V-Hauptschalttafel","sys":["dc12","ac230"],"x":0.42,"side":"port","level":"cabin","note":"Quelle: seattleyachts.com"},
-   {"key":"watertank","k":"watertank","name":"Frischwassertank ~210 l","sys":["fresh"],"x":0.55,"side":"center","level":"below_floor","liter":210,"note":"Quelle: seattleyachts.com"},
-   {"key":"waterpump","k":"pump","name":"Druckwasserpumpe","sys":["fresh","dc12"],"x":0.4,"side":"center","level":"below_floor","amp":5,"hours":0.5,"note":"Quelle: seattleyachts.com"},
-   {"key":"boiler","k":"boiler","name":"Boiler (Motor + 230 V)","sys":["fresh","ac230"],"x":0.2,"side":"starboard","level":"below_floor","liter":20},
-   {"key":"galley_sink","k":"tap","name":"Pantry-Spüle","sys":["fresh","bilge"],"x":0.4,"side":"port","level":"cabin"},
-   {"key":"head_sink","k":"tap","name":"Waschbecken/Dusche Nasszelle","sys":["fresh","bilge"],"x":0.35,"side":"starboard","level":"cabin"},
-   {"key":"deck_shower","k":"tap","name":"Heckdusche","sys":["fresh"],"x":0.01,"side":"center","level":"deck"},
-   {"key":"wc","k":"wc","name":"Bord-WC manuell, Seewasserspülung","sys":["black","bilge"],"x":0.33,"side":"starboard","level":"cabin","note":"Quelle: seattleyachts.com"},
-   {"key":"holding","k":"holding","name":"Fäkalientank ~35 l (Decksabsaugung + Seeventil)","sys":["black","bilge"],"x":0.33,"side":"starboard","level":"below_floor","liter":35,"note":"Quelle: seattleyachts.com"},
-   {"key":"gas_bottle","k":"gas","name":"Gasflasche (1 Flasche) im Gasfach","sys":["gas"],"x":0.08,"side":"port","level":"cockpit","note":"Quelle: seattleyachts.com"},
-   {"key":"stove","k":"stove","name":"2-flammiger Gasherd","sys":["gas"],"x":0.4,"side":"port","level":"cabin","note":"Quelle: seattleyachts.com"},
-   {"key":"fridge","k":"consumer","name":"Kühlschrank 12 V ~130 l","sys":["dc12"],"x":0.4,"side":"port","level":"cabin","amp":5,"hours":10,"note":"Quelle: seattleyachts.com"},
-   {"key":"bilge_el","k":"bilgepump","name":"Elektrische Bilgepumpe","sys":["bilge","dc12"],"x":0.45,"side":"center","level":"bilge","amp":4,"hours":0.05,"note":"Quelle: seattleyachts.com"},
-   {"key":"bilge_man","k":"consumer","name":"Handbilgepumpe","sys":["bilge"],"x":0.12,"side":"starboard","level":"cockpit","note":"Quelle: seattleyachts.com"},
-   {"key":"thruhull","k":"seacock","name":"Seeventile / Borddurchlässe","sys":["bilge"],"x":0.33,"side":"center","level":"bilge"},
-   {"key":"n2k","k":"n2kbus","name":"NMEA-2000-Backbone","sys":["n2k","dc12"],"x":0.3,"side":"center","level":"cabin"},
-   {"key":"plotter","k":"n2kdev","name":"Kartenplotter (Option)","sys":["n2k","dc12"],"x":0.06,"side":"center","level":"cockpit","amp":1.5,"hours":6},
-   {"key":"instruments","k":"n2kdev","name":"Log/Lot/Wind (Option)","sys":["n2k","dc12"],"x":0.08,"side":"center","level":"cockpit","amp":0.5,"hours":8},
-   {"key":"vhf","k":"n2kdev","name":"UKW-Funk mit AIS (Option)","sys":["dc12","n2k"],"x":0.42,"side":"port","level":"cabin","amp":0.6,"hours":8},
-   {"key":"lights","k":"consumer","name":"LED-Innen- und Navigationsbeleuchtung","sys":["dc12"],"x":0.5,"side":"center","level":"cabin","amp":2,"hours":4,"note":"Quelle: seattleyachts.com"}],
-  conns:[["fueltank","engine","fuel"],["engine","start_bat","dc12"],["engine","house_bat","dc12"],["shore","charger","ac230"],["shore","boiler","ac230"],["charger","house_bat","dc12"],["charger","start_bat","dc12"],["house_bat","panel","dc12"],["panel","fridge","dc12"],["panel","waterpump","dc12"],["panel","bilge_el","dc12"],["panel","lights","dc12"],["panel","vhf","dc12"],["panel","n2k","dc12"],["watertank","waterpump","fresh"],["waterpump","boiler","fresh"],["waterpump","galley_sink","fresh"],["waterpump","head_sink","fresh"],["boiler","galley_sink","fresh"],["boiler","head_sink","fresh"],["boiler","deck_shower","fresh"],["wc","holding","black"],["holding","thruhull","black"],["gas_bottle","stove","gas"],["bilge_el","thruhull","bilge"],["bilge_man","thruhull","bilge"],["galley_sink","thruhull","bilge"],["head_sink","thruhull","bilge"],["n2k","plotter","n2k"],["n2k","instruments","n2k"],["n2k","vhf","n2k"]]},
- {"id":"etap-26i","name":"Etap 26i (Kajütsegler mit Einbaudiesel)","group":"Segelyacht","years":"ca. 2001–2008","hull":"segel","lengthM":7.85,"volt":12,"desc":"Unsinkbarer, binnen- und küstentauglicher 8-m-Kajütsegler mit Volvo Penta MD2010 (10 PS) Saildrive, ca. 50 l Diesel, 50–80 l Wasser, einfacher 12-V-Anlage mit Ladegerät und Druckwasser.","sources":["https://www.boat24.com/en/sailingboats/etap/etap-26i/detail/675371/","https://www.yacht.de/yachtmarkt/gebrauchtboote/boot/675371/","https://boatauction.com/en/boat-selling/3031/sailboat/etap/26"],"uncertain":["Kerndaten (7,85 × 2,78 × 0,95 m, MD2010 Saildrive, 50 l Diesel/50 l Wasser, Ladegerät, Druckwasser) stammen aus einem Boat24/yacht.de-Inserat, das inzwischen offline ist (nur über Suchergebnis gesehen). boats.com nennt 49 l Diesel / 80 l Wasser.","Boatauction-Quelle betrifft die ältere Etap 26 (1986, 60 l Wasser, Kühlschrank, Pinnenpilot).","Batterien (60 Ah Start + 90 Ah Verbraucher), Lichtmaschine 14 A (MD20xx-Typwert), Landstrom, WC/Fäkalientank, Gasanlage und Positionen sind Annahmen für die Klasse.","Für eine Variante 'Jollenkreuzer/Kajütsegler mit Außenborder' Motor/Dieseltank durch Außenborder + Kanister ersetzen und Landstrom weglassen."],
-  comps:[
-   {"key":"engine","k":"engine","name":"Volvo Penta MD2010 (10 PS), Saildrive","sys":["fuel","dc12","bilge"],"x":0.3,"side":"center","level":"below_floor","amp":14,"hours":1,"note":"Lichtmaschine 14 A (Typwert), Motorlaufzeit 1 h/Tag angenommen – anpassen. Quelle: boat24.com","model":"Volvo Penta MD2010 (10 PS), Saildrive"},
-   {"key":"fueltank","k":"fueltank","name":"Dieseltank ~50 l","sys":["fuel"],"x":0.15,"side":"starboard","level":"below_floor","liter":50,"note":"Quelle: boat24.com"},
-   {"key":"start_bat","k":"bat","name":"Starterbatterie","sys":["dc12"],"x":0.25,"side":"center","level":"below_floor","ah":60},
-   {"key":"house_bat","k":"bat","name":"Verbraucherbatterie","sys":["dc12"],"x":0.3,"side":"port","level":"below_floor","ah":90},
-   {"key":"shore","k":"shore","name":"Landanschluss 230 V","sys":["ac230"],"x":0.03,"side":"port","level":"cockpit"},
-   {"key":"charger","k":"charger","name":"Batterieladegerät","sys":["ac230","dc12"],"x":0.25,"side":"port","level":"cabin","amp":10,"note":"Quelle: boat24.com"},
-   {"key":"panel","k":"panel","name":"12-V-Schalttafel","sys":["dc12"],"x":0.4,"side":"starboard","level":"cabin"},
-   {"key":"watertank","k":"watertank","name":"Frischwassertank 50–80 l","sys":["fresh"],"x":0.7,"side":"center","level":"below_floor","liter":60,"note":"Quelle: boatauction.com"},
-   {"key":"waterpump","k":"pump","name":"Druckwasserpumpe","sys":["fresh","dc12"],"x":0.45,"side":"center","level":"below_floor","amp":4,"hours":0.3,"note":"Quelle: boat24.com"},
-   {"key":"galley_sink","k":"tap","name":"Pantry-Spüle","sys":["fresh","bilge"],"x":0.4,"side":"port","level":"cabin"},
-   {"key":"wc","k":"wc","name":"Bord-WC manuell","sys":["black","bilge"],"x":0.6,"side":"starboard","level":"cabin"},
-   {"key":"holding","k":"holding","name":"Fäkalientank (nachgerüstet/Binnenpflicht)","sys":["black"],"x":0.6,"side":"starboard","level":"below_floor","liter":40},
-   {"key":"gas_bottle","k":"gas","name":"Gasflasche im Cockpit-Gaskasten","sys":["gas"],"x":0.1,"side":"starboard","level":"cockpit"},
-   {"key":"stove","k":"stove","name":"2-flammiger Gaskocher","sys":["gas"],"x":0.4,"side":"port","level":"cabin"},
-   {"key":"fridge","k":"consumer","name":"Kühlbox 12 V (Option)","sys":["dc12"],"x":0.4,"side":"port","level":"cabin","amp":3,"hours":8,"note":"Quelle: boatauction.com"},
-   {"key":"bilge_el","k":"bilgepump","name":"Elektrische Bilgepumpe","sys":["bilge","dc12"],"x":0.45,"side":"center","level":"bilge","amp":3,"hours":0.05},
-   {"key":"bilge_man","k":"consumer","name":"Handbilgepumpe (Cockpit)","sys":["bilge"],"x":0.15,"side":"port","level":"cockpit"},
-   {"key":"thruhull","k":"seacock","name":"Seeventile / Borddurchlässe","sys":["bilge"],"x":0.4,"side":"center","level":"bilge"},
-   {"key":"instruments","k":"consumer","name":"Log/Lot","sys":["dc12"],"x":0.08,"side":"center","level":"cockpit","amp":0.3,"hours":6,"note":"Quelle: boatauction.com"},
-   {"key":"autopilot","k":"consumer","name":"Pinnenpilot","sys":["dc12"],"x":0.05,"side":"center","level":"cockpit","amp":1.5,"hours":3,"note":"Quelle: boatauction.com"},
-   {"key":"vhf","k":"consumer","name":"UKW-Funk (Option)","sys":["dc12"],"x":0.4,"side":"starboard","level":"cabin","amp":0.5,"hours":6},
-   {"key":"lights","k":"consumer","name":"Innen- und Navigationsbeleuchtung","sys":["dc12"],"x":0.5,"side":"center","level":"cabin","amp":1.5,"hours":4}],
-  conns:[["fueltank","engine","fuel"],["engine","start_bat","dc12"],["engine","house_bat","dc12"],["shore","charger","ac230"],["charger","house_bat","dc12"],["charger","start_bat","dc12"],["house_bat","panel","dc12"],["panel","waterpump","dc12"],["panel","fridge","dc12"],["panel","bilge_el","dc12"],["panel","instruments","dc12"],["panel","autopilot","dc12"],["panel","vhf","dc12"],["panel","lights","dc12"],["watertank","waterpump","fresh"],["waterpump","galley_sink","fresh"],["wc","holding","black"],["holding","thruhull","black"],["gas_bottle","stove","gas"],["bilge_el","thruhull","bilge"],["bilge_man","thruhull","bilge"],["galley_sink","thruhull","bilge"]]},
- {"id":"linssen-grand-sturdy-35-ac","name":"Linssen Grand Sturdy 35.0 AC","group":"Binnen-Motorboot","years":"2014–heute","hull":"motor","lengthM":10.7,"volt":12,"desc":"Stahl-Verdränger mit Achterkajüte, Volvo Penta D2-75 an Welle, 240 l Diesel/220 l Wasser/240 l Fäkalien, 332 Ah GEL-Verbraucherbank, Victron-MultiPlus-Lader/Wechselrichter, Bug- und Heckstrahlruder, Warmluftheizung und elektrischer Ankerwinde.","sources":["https://www.linssenyachts.com/en/latest-news/new-for-sale-grand-sturdy-35-0-ac-3910.html","https://au.boats.com/power-boats/2022-linssen-grand-sturdy-35-0-ac-intero-9689135"],"uncertain":["Werftseite nennt im Kopf D2-50 (51 PS), in der Standardspezifikation D2-75 – Vorlage nutzt D2-75.","Bug- und Heckstrahlruder laut Werftangebot direkt am 12-V-Netz; ob sie eine eigene Batterie haben, ist nicht angegeben (hier an Verbraucherbank).","Heizungs-Brennstoff (Diesel) und Hersteller nicht genannt, aber für 5-kW-Warmluftheizung üblich.","Positionen geschätzt (Achterkajüte hinten, Motor mittschiffs unter Salonboden). UKW und NMEA 2000 angenommen (Axiom/i70S sind N2K/SeaTalkNG).","Verbraucher-amp/hours sind Typwerte."],
-  comps:[
-   {"key":"engine","k":"engine","name":"Volvo Penta D2-75 (55 kW), ZF 25-H, Welle","sys":["fuel","dc12","bilge"],"x":0.42,"side":"center","level":"below_floor","amp":115,"hours":1,"note":"Lichtmaschine 115 A (Typwert), Motorlaufzeit 1 h/Tag angenommen – anpassen. Quelle: linssenyachts.com","model":"Volvo Penta D2-75 (55 kW), ZF 25-H, Welle"},
-   {"key":"fueltank","k":"fueltank","name":"Dieseltank ~240 l","sys":["fuel"],"x":0.4,"side":"port","level":"below_floor","liter":240,"note":"Quelle: linssenyachts.com"},
-   {"key":"start_bat","k":"bat","name":"Starterbatterie AGM 170 Ah","sys":["dc12"],"x":0.45,"side":"starboard","level":"below_floor","ah":170,"note":"Quelle: linssenyachts.com"},
-   {"key":"house_bat","k":"bat","name":"Verbraucherbatterien 2× 166 Ah GEL","sys":["dc12"],"x":0.45,"side":"port","level":"below_floor","ah":332,"note":"Quelle: linssenyachts.com"},
-   {"key":"shore","k":"shore","name":"Landanschluss 230 V/16 A (25 m Kabel)","sys":["ac230"],"x":0.05,"side":"starboard","level":"deck","note":"Quelle: linssenyachts.com"},
-   {"key":"charger","k":"charger","name":"Victron MultiPlus Compact 12/1600/70 (Lader 70 A + Wechselrichter 1600 W)","sys":["ac230","dc12"],"x":0.45,"side":"center","level":"below_floor","amp":70,"note":"Quelle: linssenyachts.com"},
-   {"key":"panel","k":"panel","name":"Linssen ICCESS Schalttafeln (Salon + Steuerstand)","sys":["dc12","ac230"],"x":0.55,"side":"starboard","level":"cabin","note":"Quelle: linssenyachts.com"},
-   {"key":"watertank","k":"watertank","name":"Frischwassertank ~220 l","sys":["fresh"],"x":0.75,"side":"center","level":"below_floor","liter":220,"note":"Quelle: linssenyachts.com"},
-   {"key":"waterpump","k":"pump","name":"Druckwasserpumpe (elektronisch geregelt)","sys":["fresh","dc12"],"x":0.5,"side":"center","level":"below_floor","amp":6,"hours":0.5,"note":"Quelle: linssenyachts.com"},
-   {"key":"boiler","k":"boiler","name":"Boiler 24 l (Motor + 230 V/500 W)","sys":["fresh","ac230"],"x":0.4,"side":"starboard","level":"below_floor","liter":24,"note":"Quelle: linssenyachts.com"},
-   {"key":"galley_sink","k":"tap","name":"Pantry-Spüle (Edelstahl)","sys":["fresh","bilge"],"x":0.55,"side":"port","level":"cabin","note":"Quelle: linssenyachts.com"},
-   {"key":"shower","k":"tap","name":"Dusche vorn (mit Lenzpumpe)","sys":["fresh","bilge","dc12"],"x":0.78,"side":"starboard","level":"cabin","amp":3,"hours":0.1,"note":"Quelle: linssenyachts.com"},
-   {"key":"deck_shower","k":"tap","name":"Badeplattform-Dusche","sys":["fresh"],"x":0.01,"side":"center","level":"deck"},
-   {"key":"wc","k":"wc","name":"Elektrisches WC mit Frischwasserspülung (Vorschiff)","sys":["black","dc12"],"x":0.78,"side":"starboard","level":"cabin","amp":15,"hours":0.05,"note":"Quelle: linssenyachts.com"},
-   {"key":"holding","k":"holding","name":"Fäkalientank ~240 l (Absaugstutzen + Füllstand)","sys":["black"],"x":0.7,"side":"center","level":"below_floor","liter":240,"note":"Quelle: linssenyachts.com"},
-   {"key":"gas_bottle","k":"gas","name":"Campingaz-Flasche 3 kg im Kasten auf der Badeplattform","sys":["gas"],"x":0.02,"side":"center","level":"deck","note":"Quelle: linssenyachts.com"},
-   {"key":"stove","k":"stove","name":"3-flammiges Gaskochfeld","sys":["gas"],"x":0.55,"side":"port","level":"cabin","note":"Quelle: linssenyachts.com"},
-   {"key":"heater","k":"heater","name":"Warmluftheizung 5 kW (Salon, Kabinen, Nasszellen)","sys":["fuel","dc12"],"x":0.4,"side":"port","level":"below_floor","amp":2.5,"hours":6,"note":"Quelle: linssenyachts.com"},
-   {"key":"fridge","k":"consumer","name":"Kühlschrank 80 l mit Gefrierfach","sys":["dc12"],"x":0.55,"side":"port","level":"cabin","amp":4,"hours":10,"note":"Quelle: linssenyachts.com"},
-   {"key":"bowthruster","k":"consumer","name":"Bugstrahlruder 12 V, 55 kgf (3 kW)","sys":["dc12"],"x":0.92,"side":"center","level":"bilge","amp":300,"hours":0.05,"note":"Quelle: linssenyachts.com"},
-   {"key":"sternthruster","k":"consumer","name":"Heckstrahlruder 12 V, 55 kgf (3 kW)","sys":["dc12"],"x":0.08,"side":"center","level":"bilge","amp":300,"hours":0.05,"note":"Quelle: linssenyachts.com"},
-   {"key":"windlass","k":"consumer","name":"Elektrische Ankerwinde 1200 W","sys":["dc12"],"x":0.97,"side":"center","level":"deck","amp":100,"hours":0.1,"note":"Quelle: linssenyachts.com"},
-   {"key":"bilge_el","k":"bilgepump","name":"Bilgepumpe Motorraum 61 l/min mit Alarm","sys":["bilge","dc12"],"x":0.42,"side":"center","level":"bilge","amp":4,"hours":0.05,"note":"Quelle: linssenyachts.com"},
-   {"key":"thruhull","k":"seacock","name":"Seeventile / Borddurchlässe (Grauwasser direkt außenbords)","sys":["bilge"],"x":0.5,"side":"center","level":"bilge","note":"Quelle: linssenyachts.com"},
-   {"key":"n2k","k":"n2kbus","name":"NMEA-2000-Backbone","sys":["n2k","dc12"],"x":0.55,"side":"center","level":"cabin"},
-   {"key":"plotter","k":"n2kdev","name":"Raymarine Axiom+ 7 MFD","sys":["n2k","dc12"],"x":0.58,"side":"starboard","level":"cabin","amp":1.5,"hours":6,"note":"Quelle: linssenyachts.com"},
-   {"key":"instruments","k":"n2kdev","name":"Raymarine i70S (Tiefe, Log, Wassertemp.)","sys":["n2k","dc12"],"x":0.58,"side":"starboard","level":"cabin","amp":0.3,"hours":6,"note":"Quelle: linssenyachts.com"},
-   {"key":"vhf","k":"n2kdev","name":"UKW-/Binnenfunk (ATIS)","sys":["dc12","n2k"],"x":0.58,"side":"starboard","level":"cabin","amp":0.5,"hours":6},
-   {"key":"stereo","k":"consumer","name":"Fusion RA70N Radio + 24\"-TV","sys":["dc12","ac230"],"x":0.55,"side":"port","level":"cabin","amp":3,"hours":3,"note":"Quelle: linssenyachts.com"}],
-  conns:[["fueltank","engine","fuel"],["fueltank","heater","fuel"],["engine","start_bat","dc12"],["engine","house_bat","dc12"],["engine","boiler","fresh"],["shore","charger","ac230"],["shore","boiler","ac230"],["charger","house_bat","dc12"],["charger","start_bat","dc12"],["charger","stereo","ac230"],["start_bat","engine","dc12"],["house_bat","bowthruster","dc12"],["house_bat","sternthruster","dc12"],["house_bat","windlass","dc12"],["house_bat","panel","dc12"],["panel","fridge","dc12"],["panel","waterpump","dc12"],["panel","heater","dc12"],["panel","wc","dc12"],["panel","shower","dc12"],["panel","bilge_el","dc12"],["panel","n2k","dc12"],["panel","vhf","dc12"],["panel","stereo","dc12"],["watertank","waterpump","fresh"],["waterpump","boiler","fresh"],["waterpump","galley_sink","fresh"],["waterpump","shower","fresh"],["waterpump","wc","fresh"],["boiler","galley_sink","fresh"],["boiler","shower","fresh"],["boiler","deck_shower","fresh"],["wc","holding","black"],["gas_bottle","stove","gas"],["bilge_el","thruhull","bilge"],["galley_sink","thruhull","bilge"],["shower","thruhull","bilge"],["n2k","plotter","n2k"],["n2k","instruments","n2k"],["n2k","vhf","n2k"]]},
- {"id":"pedro-skiron-35","name":"Pedro Skiron 35","group":"Binnen-Motorboot","years":"ca. 1998–2010","hull":"motor","lengthM":10.6,"volt":12,"desc":"Typischer niederländischer Stahl-Verdränger (Knickspant) mit Perkins M92 an Welle, 300–350 l Diesel, 250 l Wasser, Fäkalientank, Webasto-Warmluftheizung, 40-l-Boiler, Inverter 1500 W und 24-V-Bugstrahlruder mit eigener Batteriebank.","sources":["https://doevemakelaar.nl/en/ship/1208","https://www.doevemakelaar.nl/en/ship/683/pedro-skiron-35"],"uncertain":["Daten von zwei Booten BJ 2001 (Inserate); andere Skirons haben Volvo-Penta-Motoren (bis 110 PS) und 400 l Tanks.","Lichtmaschine 70 A, Solar-Wp, NMEA 2000 (hier nicht vorhanden/älteres Boot) sind Annahmen.","Ein Inserat: 1× 350 l Diesel und 150 l Fäkalien; das andere 300 l / 250 l.","Bugstrahlruder 24 V aus zwei 12-V-Batterien in Serie – in der 12-V-Logik der App als eigene Bank modelliert; Strom ~150 A bei 24 V entspricht ~300 A bei 12 V.","Gasflaschenkasten-Position und alle übrigen Positionen geschätzt; Verbraucherwerte typisch."],
-  comps:[
-   {"key":"engine","k":"engine","name":"Perkins M92 (67 kW), ZF Hurth, Welle","sys":["fuel","dc12","bilge"],"x":0.4,"side":"center","level":"below_floor","amp":70,"hours":1,"note":"Lichtmaschine 70 A (Typwert), Motorlaufzeit 1 h/Tag angenommen – anpassen. Quelle: doevemakelaar.nl","model":"Perkins M92 (67 kW), ZF Hurth, Welle"},
-   {"key":"fueltank","k":"fueltank","name":"Dieseltank 300–350 l (Edelstahl) mit Wasserabscheider","sys":["fuel"],"x":0.35,"side":"port","level":"below_floor","liter":300,"note":"Quelle: doevemakelaar.nl"},
-   {"key":"start_bat","k":"bat","name":"Starterbatterien 2× 55 Ah (Optima)","sys":["dc12"],"x":0.42,"side":"starboard","level":"below_floor","ah":55,"note":"Quelle: doevemakelaar.nl"},
-   {"key":"house_bat","k":"bat","name":"Verbraucherbatterie 130 Ah","sys":["dc12"],"x":0.42,"side":"port","level":"below_floor","ah":130,"note":"Quelle: doevemakelaar.nl"},
-   {"key":"bt_bat","k":"bat","name":"Bugstrahlruder-Batterien 2× 180 Ah (24 V in Serie)","sys":["dc12"],"x":0.85,"side":"center","level":"below_floor","ah":180,"note":"Quelle: doevemakelaar.nl"},
-   {"key":"isolator","k":"panel","name":"Trenndiode / Multi-Battery-Isolator","sys":["dc12"],"x":0.42,"side":"center","level":"below_floor","note":"Quelle: doevemakelaar.nl"},
-   {"key":"shore","k":"shore","name":"Landanschluss 230 V mit FI","sys":["ac230"],"x":0.05,"side":"starboard","level":"deck","note":"Quelle: doevemakelaar.nl"},
-   {"key":"charger","k":"charger","name":"Ladegerät Mobitronic 12/25","sys":["ac230","dc12"],"x":0.45,"side":"starboard","level":"cabin","amp":25,"note":"Quelle: doevemakelaar.nl"},
-   {"key":"inverter","k":"inverter","name":"Wechselrichter Skytronic 12/1500","sys":["dc12","ac230"],"x":0.45,"side":"port","level":"cabin","amp":15,"hours":0.5,"note":"Quelle: doevemakelaar.nl"},
-   {"key":"solar","k":"solar","name":"Solarmodule (nachgerüstet)","sys":["dc12"],"x":0.5,"side":"center","level":"deck","wp":200,"note":"Quelle: doevemakelaar.nl"},
-   {"key":"panel","k":"panel","name":"Schalttafel am Innensteuerstand","sys":["dc12","ac230"],"x":0.55,"side":"starboard","level":"cabin"},
-   {"key":"watertank","k":"watertank","name":"Frischwassertank 250 l (Edelstahl)","sys":["fresh"],"x":0.75,"side":"center","level":"below_floor","liter":250,"note":"Quelle: doevemakelaar.nl"},
-   {"key":"waterpump","k":"pump","name":"Hydrophor-Druckwasserpumpe","sys":["fresh","dc12"],"x":0.5,"side":"center","level":"below_floor","amp":5,"hours":0.5,"note":"Quelle: doevemakelaar.nl"},
-   {"key":"boiler","k":"boiler","name":"Boiler 40 l (Motor + 230 V)","sys":["fresh","ac230"],"x":0.38,"side":"starboard","level":"below_floor","liter":40,"note":"Quelle: doevemakelaar.nl"},
-   {"key":"galley_sink","k":"tap","name":"Pantry-Spüle (Edelstahl)","sys":["fresh","bilge"],"x":0.55,"side":"port","level":"cabin","note":"Quelle: doevemakelaar.nl"},
-   {"key":"head_sink","k":"tap","name":"Nasszelle: Waschbecken + Handdusche","sys":["fresh","bilge"],"x":0.7,"side":"starboard","level":"cabin","note":"Quelle: doevemakelaar.nl"},
-   {"key":"wc","k":"wc","name":"Bord-WC manuell (Handpumpe)","sys":["black","bilge"],"x":0.7,"side":"starboard","level":"cabin","note":"Quelle: doevemakelaar.nl"},
-   {"key":"holding","k":"holding","name":"Fäkalientank 150–250 l (Stahl)","sys":["black"],"x":0.68,"side":"center","level":"below_floor","liter":250,"note":"Quelle: doevemakelaar.nl"},
-   {"key":"gas_bottle","k":"gas","name":"Gasflaschen im Flaschenkasten (achtern)","sys":["gas"],"x":0.05,"side":"port","level":"deck","note":"Quelle: doevemakelaar.nl"},
-   {"key":"stove","k":"stove","name":"4-flammiges Gaskochfeld (+ E-Backofen 230 V)","sys":["gas","ac230"],"x":0.55,"side":"port","level":"cabin","note":"Quelle: doevemakelaar.nl"},
-   {"key":"heater","k":"heater","name":"Webasto Diesel-Warmluftheizung","sys":["fuel","dc12"],"x":0.35,"side":"starboard","level":"below_floor","amp":2.5,"hours":6,"note":"Quelle: doevemakelaar.nl"},
-   {"key":"fridge","k":"consumer","name":"Kühlschrank 12 V mit Eisfach","sys":["dc12"],"x":0.55,"side":"port","level":"cabin","amp":4,"hours":10,"note":"Quelle: doevemakelaar.nl"},
-   {"key":"bowthruster","k":"consumer","name":"Bugstrahlruder Cupa 24 V","sys":["dc12"],"x":0.9,"side":"center","level":"bilge","amp":150,"hours":0.05,"note":"Quelle: doevemakelaar.nl"},
-   {"key":"bilge_el","k":"bilgepump","name":"Elektrische Bilgepumpe","sys":["bilge","dc12"],"x":0.4,"side":"center","level":"bilge","amp":4,"hours":0.05,"note":"Quelle: doevemakelaar.nl"},
-   {"key":"thruhull","k":"seacock","name":"Seeventile / Borddurchlässe","sys":["bilge"],"x":0.45,"side":"center","level":"bilge"},
-   {"key":"plotter","k":"consumer","name":"Echolot (Raytheon) / opt. Plotter","sys":["dc12"],"x":0.58,"side":"starboard","level":"cabin","amp":1,"hours":6,"note":"Quelle: doevemakelaar.nl"},
-   {"key":"vhf","k":"consumer","name":"UKW-Funk Navman 7100 DSC","sys":["dc12"],"x":0.58,"side":"starboard","level":"cabin","amp":0.5,"hours":6,"note":"Quelle: doevemakelaar.nl"},
-   {"key":"lights","k":"consumer","name":"Beleuchtung, Scheibenwischer, Radio","sys":["dc12"],"x":0.55,"side":"center","level":"cabin","amp":3,"hours":4,"note":"Quelle: doevemakelaar.nl"}],
-  conns:[["fueltank","engine","fuel"],["fueltank","heater","fuel"],["engine","isolator","dc12"],["isolator","start_bat","dc12"],["isolator","house_bat","dc12"],["isolator","bt_bat","dc12"],["engine","boiler","fresh"],["shore","charger","ac230"],["shore","boiler","ac230"],["shore","stove","ac230"],["charger","house_bat","dc12"],["charger","start_bat","dc12"],["solar","house_bat","dc12"],["start_bat","engine","dc12"],["bt_bat","bowthruster","dc12"],["house_bat","inverter","dc12"],["house_bat","panel","dc12"],["panel","fridge","dc12"],["panel","waterpump","dc12"],["panel","heater","dc12"],["panel","bilge_el","dc12"],["panel","plotter","dc12"],["panel","vhf","dc12"],["panel","lights","dc12"],["watertank","waterpump","fresh"],["waterpump","boiler","fresh"],["waterpump","galley_sink","fresh"],["waterpump","head_sink","fresh"],["boiler","galley_sink","fresh"],["boiler","head_sink","fresh"],["wc","holding","black"],["holding","thruhull","black"],["gas_bottle","stove","gas"],["bilge_el","thruhull","bilge"],["galley_sink","thruhull","bilge"],["head_sink","thruhull","bilge"]]},
- {"id":"kuhnle-kormoran-1140","name":"Kuhnle Kormoran 1140","group":"Binnen-Motorboot","years":"ca. 2000–2010","hull":"motor","lengthM":11.4,"volt":12,"desc":"Stahl-Charterboot der Kuhnle-Werft (Müritz/Mecklenburg) mit Nanni-Diesel, 530 l Diesel, 1000 l Trinkwasser, landstromunabhängiger Warmwasser-Dieselheizung mit 180-l-Speicher, Bugstrahlruder, Gasherd mit Backofen und Nasszelle pro Kabine.","sources":["https://www.kuhnle-tours.de/boote/kormoran-1140/","https://www.filovent.com/uk/canal-boat/kormoran-1140/143422.html","https://www.yachtall.com/de/boot/kormoran-1140-aland-s283589"],"uncertain":["Kuhnle nennt 'Wasser-Schmutzwasser-Tank 1000–1200 l' und separat 'Trinkwassertank 1000 l'; Schmutzwassertank-Volumen auf der Seite leer – 500 l ist Annahme. Laut Händlerinserat gehen Grau- und Schwarzwasser in den Sammeltank (daher Spülen → holding).","Motor: Nanni Diesel, Leistung je nach Boot 62 PS (46 kW) bis 85 PS (63 kW) laut Verkaufsinseraten (nur über Suchergebnisse gesehen).","Batterien, Ladegerät, Bugstrahlruder-Batterie, Lichtmaschine, Druckpumpe, Bilgepumpe sind nicht veröffentlicht – Typwerte für 11-m-Stahlverdränger.","Heizung als Diesel-Warmwasserheizung interpretiert ('landstromunabhängige Warmwasserheizung mit Heizkörpern bzw. Fußbodenheizung'); Hersteller (Webasto/Eberspächer) unbekannt.","WC-Typ (manuell/elektrisch) für 1140 nicht angegeben; Nachfolger 1150 hat elektrische Toiletten. Gaskasten-Position und alle Positionen geschätzt."],
-  comps:[
-   {"key":"engine","k":"engine","name":"Nanni Diesel (46–63 kW), Welle","sys":["fuel","dc12","bilge"],"x":0.35,"side":"center","level":"below_floor","amp":90,"hours":1,"note":"Lichtmaschine 90 A (Typwert), Motorlaufzeit 1 h/Tag angenommen – anpassen. Quelle: yachtall.com","model":"Nanni Diesel (46–63 kW), Welle"},
-   {"key":"fueltank","k":"fueltank","name":"Treibstofftank 530 l","sys":["fuel"],"x":0.3,"side":"center","level":"below_floor","liter":530,"note":"Quelle: kuhnle-tours.de"},
-   {"key":"start_bat","k":"bat","name":"Starterbatterie","sys":["dc12"],"x":0.38,"side":"starboard","level":"below_floor","ah":100},
-   {"key":"house_bat","k":"bat","name":"Verbraucherbatterien","sys":["dc12"],"x":0.38,"side":"port","level":"below_floor","ah":400},
-   {"key":"bt_bat","k":"bat","name":"Bugstrahlruder-Batterie","sys":["dc12"],"x":0.88,"side":"center","level":"below_floor","ah":120},
-   {"key":"shore","k":"shore","name":"Landstromanschluss 230 V","sys":["ac230"],"x":0.05,"side":"starboard","level":"deck","note":"Quelle: kuhnle-tours.de"},
-   {"key":"charger","k":"charger","name":"Batterieladegerät","sys":["ac230","dc12"],"x":0.4,"side":"center","level":"below_floor","amp":40},
-   {"key":"panel","k":"panel","name":"Schalttafel (12-V-Kfz-Steckdosen, 230-V-Rasiersteckdose)","sys":["dc12","ac230"],"x":0.55,"side":"starboard","level":"cabin","note":"Quelle: kuhnle-tours.de"},
-   {"key":"watertank","k":"watertank","name":"Trinkwassertank 1000 l","sys":["fresh"],"x":0.7,"side":"center","level":"below_floor","liter":1000,"note":"Quelle: kuhnle-tours.de"},
-   {"key":"waterpump","k":"pump","name":"Druckwasserpumpe","sys":["fresh","dc12"],"x":0.5,"side":"center","level":"below_floor","amp":6,"hours":1},
-   {"key":"heater","k":"heater","name":"Diesel-Warmwasserheizung mit Heizkörpern/Fußbodenheizung (landstromunabhängig)","sys":["fuel","dc12","fresh"],"x":0.32,"side":"port","level":"below_floor","amp":4,"hours":8,"note":"Quelle: kuhnle-tours.de"},
-   {"key":"boiler","k":"boiler","name":"Wärmetauscher/Warmwasserspeicher 180 l","sys":["fresh"],"x":0.4,"side":"starboard","level":"below_floor","liter":180,"note":"Quelle: kuhnle-tours.de"},
-   {"key":"galley_sink","k":"tap","name":"Spülbecken mit Warmwasser","sys":["fresh","bilge"],"x":0.55,"side":"port","level":"cabin","note":"Quelle: kuhnle-tours.de"},
-   {"key":"head_sink","k":"tap","name":"Nasszellen (je Kabine): Dusche + Waschbecken, warm/kalt","sys":["fresh","bilge"],"x":0.75,"side":"starboard","level":"cabin","note":"Quelle: kuhnle-tours.de"},
-   {"key":"deck_shower","k":"tap","name":"Außendusche Badeplattform (warm/kalt)","sys":["fresh"],"x":0.01,"side":"center","level":"deck","note":"Quelle: kuhnle-tours.de"},
-   {"key":"wc","k":"wc","name":"Bord-WC (2×)","sys":["black"],"x":0.75,"side":"port","level":"cabin","note":"Quelle: kuhnle-tours.de"},
-   {"key":"holding","k":"holding","name":"Schmutz-/Fäkalientank (Grau- und Schwarzwasser)","sys":["black"],"x":0.6,"side":"center","level":"below_floor","liter":500,"note":"Quelle: kuhnle-tours.de"},
-   {"key":"gas_bottle","k":"gas","name":"Gasflaschen im Gaskasten (Achterdeck)","sys":["gas"],"x":0.08,"side":"port","level":"deck"},
-   {"key":"stove","k":"stove","name":"3/4-flammiger Gasherd mit Gasbackofen","sys":["gas"],"x":0.55,"side":"port","level":"cabin","note":"Quelle: kuhnle-tours.de"},
-   {"key":"fridge","k":"consumer","name":"Kleiner Kühlschrank (< 100 l) 12 V","sys":["dc12"],"x":0.55,"side":"port","level":"cabin","amp":4,"hours":10,"note":"Quelle: kuhnle-tours.de"},
-   {"key":"bowthruster","k":"consumer","name":"Bugstrahlruder","sys":["dc12"],"x":0.92,"side":"center","level":"bilge","amp":300,"hours":0.05,"note":"Quelle: kuhnle-tours.de"},
-   {"key":"bilge_el","k":"bilgepump","name":"Elektrische Bilgepumpe","sys":["bilge","dc12"],"x":0.35,"side":"center","level":"bilge","amp":4,"hours":0.05},
-   {"key":"thruhull","k":"seacock","name":"Seeventile / Borddurchlässe","sys":["bilge"],"x":0.4,"side":"center","level":"bilge"},
-   {"key":"helm_inside","k":"consumer","name":"Innensteuerstand (Motorinstrumente, Echolot)","sys":["dc12"],"x":0.58,"side":"starboard","level":"cabin","amp":1,"hours":6,"note":"Quelle: kuhnle-tours.de"},
-   {"key":"helm_outside","k":"consumer","name":"Außensteuerstand (Flybridge)","sys":["dc12"],"x":0.5,"side":"center","level":"deck","amp":0.5,"hours":6,"note":"Quelle: kuhnle-tours.de"},
-   {"key":"audio","k":"consumer","name":"Audiosystem","sys":["dc12"],"x":0.55,"side":"port","level":"cabin","amp":2,"hours":3,"note":"Quelle: kuhnle-tours.de"},
-   {"key":"lights","k":"consumer","name":"Elektrisches Licht (LED)","sys":["dc12"],"x":0.55,"side":"center","level":"cabin","amp":3,"hours":5,"note":"Quelle: kuhnle-tours.de"}],
-  conns:[["fueltank","engine","fuel"],["fueltank","heater","fuel"],["engine","start_bat","dc12"],["engine","house_bat","dc12"],["engine","bt_bat","dc12"],["engine","boiler","fresh"],["shore","charger","ac230"],["shore","panel","ac230"],["charger","house_bat","dc12"],["charger","start_bat","dc12"],["charger","bt_bat","dc12"],["start_bat","engine","dc12"],["bt_bat","bowthruster","dc12"],["house_bat","panel","dc12"],["panel","fridge","dc12"],["panel","waterpump","dc12"],["panel","heater","dc12"],["panel","bilge_el","dc12"],["panel","helm_inside","dc12"],["panel","helm_outside","dc12"],["panel","audio","dc12"],["panel","lights","dc12"],["heater","boiler","fresh"],["watertank","waterpump","fresh"],["waterpump","boiler","fresh"],["waterpump","galley_sink","fresh"],["waterpump","head_sink","fresh"],["waterpump","wc","fresh"],["boiler","galley_sink","fresh"],["boiler","head_sink","fresh"],["boiler","deck_shower","fresh"],["wc","holding","black"],["galley_sink","holding","black"],["head_sink","holding","black"],["gas_bottle","stove","gas"],["bilge_el","thruhull","bilge"]]},
- {"id":"quicksilver-activ-605-cruiser","name":"Quicksilver Activ 605 Cruiser","group":"Sportboot","years":"2020–heute","hull":"sport","lengthM":6.02,"volt":12,"desc":"Trailerbares Kajütboot mit Mercury-Außenborder (meist F115, max. 150 PS), 160 l Benzintank, kleinem Frischwassertank, einer 12-V-Batterie, elektrischer Bilgepumpe und optional Plotter/Chemie-WC – ohne Landstrom.","sources":["https://en.yachtingaddress.com/quicksilver-activ-605-cruiser","https://www.boat-and-yacht.com/en/quicksilver-activ-605-cruiser-s233601"],"uncertain":["Belegt sind nur Maße, 160 l Kraftstoff, Wassertank (32 l bzw. 45 l je nach Quelle), max. 150 PS und F115 in deutschen Händlerangeboten.","Batterie(n), Bilgepumpe, Spüle, Chemie-WC, Kühlbox, Plotter, UKW und NMEA 2000/SmartCraft sind typische Ausstattung/Optionen dieser Klasse, nicht modellspezifisch belegt.","Lichtmaschine ~35 A ist Typwert für Mercury F115; keine Gasanlage, kein Landstrom, keine Heizung angenommen.","WC ohne Fäkalientank (Chemie-WC) – daher keine 'black'-Verbindung. Positionen geschätzt."],
-  comps:[
-   {"key":"engine","k":"engine","name":"Mercury F115 EFI Außenborder (max. 150 PS)","sys":["fuel","dc12"],"x":0,"side":"center","level":"deck","amp":35,"hours":1,"note":"Lichtmaschine 35 A (Typwert), Motorlaufzeit 1 h/Tag angenommen – anpassen. Quelle: boat-and-yacht.com","model":"Mercury F115 EFI Außenborder (max. 150 PS)"},
-   {"key":"fueltank","k":"fueltank","name":"Benzintank 160 l (eingebaut)","sys":["fuel"],"x":0.25,"side":"center","level":"below_floor","liter":160,"note":"Quelle: en.yachtingaddress.com"},
-   {"key":"start_bat","k":"bat","name":"Starter-/Bordbatterie","sys":["dc12"],"x":0.1,"side":"starboard","level":"cockpit","ah":90},
-   {"key":"house_bat","k":"bat","name":"Zweitbatterie (Option)","sys":["dc12"],"x":0.1,"side":"port","level":"cockpit","ah":75},
-   {"key":"battery_switch","k":"panel","name":"Batteriehauptschalter / Trennrelais","sys":["dc12"],"x":0.12,"side":"center","level":"cockpit"},
-   {"key":"panel","k":"panel","name":"Schalterpaneel am Steuerstand","sys":["dc12"],"x":0.45,"side":"starboard","level":"cockpit"},
-   {"key":"watertank","k":"watertank","name":"Frischwassertank 32–45 l","sys":["fresh"],"x":0.3,"side":"center","level":"below_floor","liter":32,"note":"Quelle: en.yachtingaddress.com"},
-   {"key":"waterpump","k":"pump","name":"Wasserpumpe 12 V","sys":["fresh","dc12"],"x":0.3,"side":"center","level":"below_floor","amp":4,"hours":0.2},
-   {"key":"deck_shower","k":"tap","name":"Heckdusche","sys":["fresh"],"x":0.02,"side":"port","level":"cockpit"},
-   {"key":"galley_sink","k":"tap","name":"Spüle im Cockpit (Option)","sys":["fresh","bilge"],"x":0.35,"side":"port","level":"cockpit"},
-   {"key":"wc","k":"wc","name":"Chemie-WC (Option, Kajüte)","sys":["black"],"x":0.7,"side":"center","level":"cabin"},
-   {"key":"fridge","k":"consumer","name":"Kühlbox 12 V (Option)","sys":["dc12"],"x":0.35,"side":"port","level":"cockpit","amp":3,"hours":6},
-   {"key":"bilge_el","k":"bilgepump","name":"Elektrische Bilgepumpe (automatisch)","sys":["bilge","dc12"],"x":0.05,"side":"center","level":"bilge","amp":3,"hours":0.05},
-   {"key":"thruhull","k":"seacock","name":"Lenzöffnung Spiegel / Selbstlenzer","sys":["bilge"],"x":0,"side":"center","level":"bilge"},
-   {"key":"n2k","k":"n2kbus","name":"NMEA 2000 / Mercury SmartCraft","sys":["n2k","dc12"],"x":0.4,"side":"starboard","level":"cockpit"},
-   {"key":"plotter","k":"n2kdev","name":"Plotter/Echolot (Option, z. B. Simrad)","sys":["n2k","dc12"],"x":0.45,"side":"starboard","level":"cockpit","amp":1.2,"hours":4},
-   {"key":"engine_gauge","k":"n2kdev","name":"Motoranzeige (SmartCraft/VesselView)","sys":["n2k","dc12"],"x":0.45,"side":"starboard","level":"cockpit","amp":0.3,"hours":4},
-   {"key":"vhf","k":"consumer","name":"UKW-Funk (Option)","sys":["dc12"],"x":0.45,"side":"starboard","level":"cockpit","amp":0.5,"hours":4},
-   {"key":"nav_lights","k":"consumer","name":"Navigationslichter + Kajütlicht","sys":["dc12"],"x":0.5,"side":"center","level":"deck","amp":1,"hours":2},
-   {"key":"stereo","k":"consumer","name":"Radio/Bluetooth-Audio (Option)","sys":["dc12"],"x":0.4,"side":"starboard","level":"cockpit","amp":2,"hours":3}],
-  conns:[["fueltank","engine","fuel"],["engine","start_bat","dc12"],["engine","battery_switch","dc12"],["battery_switch","house_bat","dc12"],["start_bat","engine","dc12"],["start_bat","battery_switch","dc12"],["battery_switch","panel","dc12"],["start_bat","bilge_el","dc12"],["panel","waterpump","dc12"],["panel","fridge","dc12"],["panel","plotter","dc12"],["panel","vhf","dc12"],["panel","nav_lights","dc12"],["panel","stereo","dc12"],["panel","n2k","dc12"],["watertank","waterpump","fresh"],["waterpump","deck_shower","fresh"],["waterpump","galley_sink","fresh"],["galley_sink","thruhull","bilge"],["bilge_el","thruhull","bilge"],["n2k","plotter","n2k"],["n2k","engine_gauge","n2k"],["engine","n2k","n2k"]]}];
+/* Vorlagen-Daten liegen in vorlagen.js (≈ 360 KB) und werden erst beim Öffnen der Auswahl geladen */
+let TEMPLATES=[], tplLoad=null;
+function loadTemplates(){ return tplLoad||(tplLoad=new Promise((ok,err)=>{ const s=document.createElement('script'); s.src='vorlagen.js?v=20261025b';
+  s.onload=()=>{ TEMPLATES=window.TEMPLATES_DATA||[]; ok(); }; s.onerror=()=>{ tplLoad=null; s.remove(); err(new Error('Vorlagen konnten nicht geladen werden')); }; document.head.appendChild(s); })); }
 
 /* ============================================================ SPEICHERUNG AUF DEM HEIMSERVER ============================================================
    Dienst bordsysteme-api auf CT 210 (über Caddy unter /api/*). Ganzer Stand = Backup-Format (version 3, alle Boote mit fester id).
