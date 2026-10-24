@@ -113,6 +113,10 @@
   .rep-set .seg{ padding:0; } .rep-set .sgb{ flex:none; padding:5px 10px; }
   .warn{ color:#ffb36b; } .bad{ color:#ff9a9a; } .ok{ color:var(--accent); }
   table.rep h4{ font-size:12px; }
+  .pstat{ display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:10px; padding:2px 7px; border-radius:5px; border:1px solid var(--line-strong); color:var(--ink-dim); }
+  .pstat.verbaut{ color:var(--accent); border-color:rgba(84,255,224,.35); } .pstat.geplant{ color:#8bb8ff; border-color:rgba(139,184,255,.4); }
+  .pstat.bestellt{ color:#ffb36b; border-color:rgba(255,179,107,.4); } .pstat.ausgebaut{ color:var(--ink-faint); }
+  tr.gone td{ opacity:.45; } select.txt option{ background:#0b1b29; color:var(--ink); } select.txt{ margin-bottom:6px; }
 
   /* Foto im Detail */
   .photo{ margin:0 16px 12px; border-radius:9px; overflow:hidden; border:1px solid var(--line-strong); }
@@ -212,7 +216,7 @@
     <div class="modal-top"><span class="mt-title">Auswertung</span><span class="mt-x" id="repX">×</span></div>
     <div class="tabs" id="repTabs"></div>
     <div class="rep-body scrim" id="repBody"></div>
-    <div class="modal-foot"><div class="mini-btn" id="repCSV" style="flex:none;padding:8px 14px">Stückliste als CSV</div><div class="spacer"></div><div class="mini-btn" id="repPrint" style="flex:none;padding:8px 14px">Drucken / PDF</div></div>
+    <div class="modal-foot"><div class="mini-btn" id="repCSV" style="flex:none;padding:8px 14px">Teileliste als CSV</div><div class="spacer"></div><div class="mini-btn" id="repPrint" style="flex:none;padding:8px 14px">Drucken / PDF</div></div>
   </div>
 </div>
 <div class="botbar">
@@ -483,11 +487,12 @@ function applyNormal(){ const focus=selected,nb=focus?neighbors(focus.id):null;
     c._mesh.material.color.set(SYSTEMS[c.sys[0]].color); c._mesh.material.emissive.set(pend?0xffffff:SYSTEMS[c.sys[0]].color);
     c._mesh.material.emissiveIntensity=pend?0.9:(c===focus?0.95:(dim?0.12:0.35)); c._mesh.material.opacity=dim?0.5:1; c._mesh.material.transparent=true;
     c._mesh.scale.setScalar(c===focus||pend?1.35:1); c._label.material.opacity=dim?0.3:1;
-    c._halo.material.color.set(pend?0xffffff:SYSTEMS[c.sys[0]].color); c._halo.material.opacity=(c===focus||pend)?0.16:0; c._halo.scale.setScalar((c===focus||pend)?1:0.001); });
+    c._halo.material.color.set(pend?0xffffff:SYSTEMS[c.sys[0]].color); c._halo.material.opacity=(c===focus||pend)?0.16:0; c._halo.scale.setScalar((c===focus||pend)?1:0.001);
+    const st=partStatus(c); if(st!=="verbaut"){ c._mesh.material.opacity*=(st==="ausgebaut"?0.25:0.5); c._label.material.opacity*=(st==="ausgebaut"?0.35:0.65); } });  // geplant/bestellt blasser, ausgebaut fast unsichtbar
   connObjs.forEach(o=>{ const vis=activeSys.has(o.sys)&&compById[o.a]._mesh.visible&&compById[o.b]._mesh.visible; o.mesh.visible=vis;
     const rel=focus&&(o.a===focus.id||o.b===focus.id); o.mesh.material.color.set(o.col); o.mesh.material.emissive.set(o.col);
     o.mesh.material.emissiveIntensity=rel?1.1:(focus?0.15:0.5); o.mesh.material.opacity=focus?(rel?1:0.25):0.9; o.dots.forEach(d=>d.visible=false); o._flow=false; }); }
-function simulate(){ const P={}; COMPONENTS.forEach(c=>P[c.id]={}); const isOn=c=>c._on!==false;
+function simulate(){ const P={}; COMPONENTS.forEach(c=>P[c.id]={}); const isOn=c=>c._on!==false&&c.status!=="ausgebaut";
   const op=c=>{ if(!isOn(c)) return false; if(c.needs&&!P[c.id][c.needs]) return false; return true; };
   let changed=true,guard=0; const set=(id,s)=>{ if(!P[id][s]){ P[id][s]=true; changed=true; } };
   while(changed&&guard++<60){ changed=false;
@@ -518,9 +523,14 @@ function renderDetail(c){ if(!c){ detail.classList.remove('show'); return; } det
   function prodDisplay(){ let h='';
     if(c.photo) h+=`<div class="photo"><img src="${c.photo}"></div>`;
     const tech=[c.amp?fmt(c.amp,1)+' A'+(isCharger(c)?' Ladestrom':''):'',c.wp?fmt(c.wp,0)+' Wp':'',c.hours?fmt(c.hours,1)+' h/Tag':'',c.ah?fmt(c.ah,0)+' Ah':'',c.liter?fmt(c.liter,0)+' L':''].filter(Boolean).join(' · ');
-    if(p.brand||p.model||p.url||p.note||tech||c.service||c.warranty||c.logNote){ const title=[p.brand,p.model].filter(Boolean).join(' ');
+    const st=partStatus(c), ident=[c.partNo?'Art.-Nr. '+c.partNo:'',c.serial?'S/N '+c.serial:''].filter(Boolean).join(' · ');
+    h+=`<div class="prod-note" style="margin:0 16px 10px">${st!=='verbaut'?`<span class="pstat ${st}">${STATUS[st].name}</span> `:''}📍 ${esc(partLoc(c))}${c.qty>1?` · ${fmt(c.qty,0)} Stück`:''}</div>`;
+    if(p.brand||p.model||p.url||p.note||tech||ident||c.installed||c.price||c.service||c.warranty||c.logNote){ const title=[p.brand,p.model].filter(Boolean).join(' ');
       h+='<div class="prod">'; if(title) h+=`<div class="prod-name">${esc(title)}</div>`;
       if(tech) h+=`<div class="prod-note">${esc(tech)}</div>`;
+      if(ident) h+=`<div class="prod-note">${esc(ident)}</div>`;
+      if(c.installed) h+=`<div class="prod-note">Eingebaut: ${esc(c.installed)}</div>`;
+      if(c.price) h+=`<div class="prod-note">Preis: ${fmt(c.price,2)} €${c.qty>1?' je Stück':''}</div>`;
       if(p.note) h+=`<div class="prod-note">${esc(p.note)}</div>`;
       if(c.service) h+=`<div class="prod-note">Service: ${esc(c.service)}</div>`;
       if(c.warranty) h+=`<div class="prod-note">Garantie bis: ${esc(c.warranty)}</div>`;
@@ -537,6 +547,16 @@ function renderDetail(c){ if(!c){ detail.classList.remove('show'); return; } det
       <input class="txt" id="pModel" placeholder="Modell / Typ" value="${esc(p.model||'')}">
       <input class="txt" id="pUrl" placeholder="Link (https://…)" value="${esc(p.url||'')}">
       <input class="txt" id="pNote" placeholder="Notiz" value="${esc(p.note||'')}">
+      <div class="edit-lab">Einbau · Teileliste</div>
+      <select class="txt" id="iSt">${Object.entries(STATUS).map(([k,s])=>`<option value="${k}" ${partStatus(c)===k?'selected':''}>${s.name}</option>`).join('')}</select>
+      <input class="txt" id="iLoc" placeholder="Einbauort (automatisch: ${esc(autoLoc(c))})" value="${esc(c.loc||'')}">
+      <div class="tk-grid">
+        <input class="txt" id="iQty" placeholder="Menge (1)" value="${c.qty!=null?c.qty:''}">
+        <input class="txt" id="iPrice" placeholder="Preis € (Stück)" value="${c.price!=null?c.price:''}">
+        <input class="txt" id="iPart" placeholder="Artikel-/Teilenr." value="${esc(c.partNo||'')}">
+        <input class="txt" id="iSer" placeholder="Seriennummer" value="${esc(c.serial||'')}">
+      </div>
+      <input class="txt" id="iDate" placeholder="Eingebaut am (z. B. 2026-05)" value="${esc(c.installed||'')}">
       <div class="edit-lab">Technik</div>
       <div class="tk-grid">
         <input class="txt" id="tAmp" placeholder="${isCharger(c)?'Ladestrom A':'Strom A'}" title="${isCharger(c)?'Ladestrom in A (bei Bordspannung)':'Stromaufnahme in A bei Bordspannung'}" value="${c.amp!=null?c.amp:''}">
@@ -572,6 +592,13 @@ function renderDetail(c){ if(!c){ detail.classList.remove('show'); return; } det
     document.getElementById('wSvc').addEventListener('input',ev=>{ c.service=ev.target.value; markDirty(); });
     document.getElementById('wWar').addEventListener('input',ev=>{ c.warranty=ev.target.value; markDirty(); });
     document.getElementById('wLog').addEventListener('input',ev=>{ c.logNote=ev.target.value; markDirty(); });
+    document.getElementById('iSt').onchange=ev=>{ c.status=ev.target.value==='verbaut'?undefined:ev.target.value; markDirty(); refresh(); };
+    document.getElementById('iLoc').addEventListener('input',ev=>{ c.loc=ev.target.value.trim()||undefined; markDirty(); });
+    document.getElementById('iQty').addEventListener('input',ev=>{ const n=numOr(ev.target.value); c.qty=n>0?n:undefined; markDirty(); });
+    document.getElementById('iPrice').addEventListener('input',ev=>{ c.price=numOr(ev.target.value); markDirty(); });
+    document.getElementById('iPart').addEventListener('input',ev=>{ c.partNo=ev.target.value; markDirty(); });
+    document.getElementById('iSer').addEventListener('input',ev=>{ c.serial=ev.target.value; markDirty(); });
+    document.getElementById('iDate').addEventListener('input',ev=>{ c.installed=ev.target.value; markDirty(); });
     document.getElementById('hSl').addEventListener('input',ev=>{ c._mesh.position.y=parseFloat(ev.target.value); syncComp(c); });
     document.getElementById('swT').onclick=()=>{ c.sw=!c.sw; if(c.sw&&c._on===undefined) c._on=true; markDirty(); renderDetail(c); };
     ex.querySelectorAll('.stog').forEach(t=>t.onclick=()=>{ const k=t.dataset.k; const has=c.sys.includes(k); if(has){ if(c.sys.length>1) c.sys=c.sys.filter(x=>x!==k); } else c.sys=[...c.sys,k];
@@ -662,7 +689,7 @@ let SCENARIOS=[];
 function newBoatId(){ return 'b'+Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
 let BOATS=[{id:newBoatId(),name:'Mein Boot',state:null}]; let boatIx=0;
 function captureBoat(){ if(BOATS[boatIx]) BOATS[boatIx].state=buildState(); }
-function serializeComp(c){ return { id:c.id,name:c.name,type:c.type,sys:c.sys.slice(),shape:c.shape||'box',source:c.source,converts:c.converts,needs:c.needs,sw:!!c.sw,on:c._on!==false,pos:c.pos.slice(),desc:c.desc,product:c.product,amp:c.amp,ah:c.ah,liter:c.liter,hours:c.hours,wp:c.wp,charge:c.charge,photo:c.photo,service:c.service,warranty:c.warranty,logNote:c.logNote }; }
+function serializeComp(c){ return { id:c.id,name:c.name,type:c.type,sys:c.sys.slice(),shape:c.shape||'box',source:c.source,converts:c.converts,needs:c.needs,sw:!!c.sw,on:c._on!==false,pos:c.pos.slice(),desc:c.desc,product:c.product,amp:c.amp,ah:c.ah,liter:c.liter,hours:c.hours,wp:c.wp,charge:c.charge,status:c.status,loc:c.loc,qty:c.qty,price:c.price,partNo:c.partNo,serial:c.serial,installed:c.installed,photo:c.photo,service:c.service,warranty:c.warranty,logNote:c.logNote }; }
 /* Leitung: [von, nach, System, {amp, len}?] – das 4. Feld hält manuelle Werte für die Kabelauslegung */
 function copyConn(x){ return x[3]?[x[0],x[1],x[2],Object.assign({},x[3])]:[x[0],x[1],x[2]]; }
 function buildState(){ return { components:COMPONENTS.map(serializeComp), connections:CONNECTIONS.map(copyConn),
@@ -730,7 +757,7 @@ function importState(file){ const rd=new FileReader(); rd.onload=()=>{ let f; tr
     renderBoatSwitcher(); resetUndo(); markDirty(); }; rd.readAsText(file); }
 function applyBoatState(st){ clearScene(); st=st||{};
   ELEC=Object.assign({},ELEC_DEF,st.elec||{}); applyDcName();
-  (st.components||[]).forEach(cd=>{ const c={ id:cd.id,name:cd.name,type:cd.type,sys:(cd.sys||['dc12']).slice(),shape:cd.shape,source:cd.source,converts:cd.converts,needs:cd.needs,pos:(cd.pos||[5,0,0]).slice(),desc:cd.desc,product:cd.product,amp:cd.amp,ah:cd.ah,liter:cd.liter,hours:cd.hours,wp:cd.wp,charge:cd.charge,photo:cd.photo,service:cd.service,warranty:cd.warranty,logNote:cd.logNote };
+  (st.components||[]).forEach(cd=>{ const c={ id:cd.id,name:cd.name,type:cd.type,sys:(cd.sys||['dc12']).slice(),shape:cd.shape,source:cd.source,converts:cd.converts,needs:cd.needs,pos:(cd.pos||[5,0,0]).slice(),desc:cd.desc,product:cd.product,amp:cd.amp,ah:cd.ah,liter:cd.liter,hours:cd.hours,wp:cd.wp,charge:cd.charge,status:cd.status,loc:cd.loc,qty:cd.qty,price:cd.price,partNo:cd.partNo,serial:cd.serial,installed:cd.installed,photo:cd.photo,service:cd.service,warranty:cd.warranty,logNote:cd.logNote };
     if(cd.sw) c.sw=true; c.on=cd.on!==false; buildCompVisuals(c); COMPONENTS.push(c); });
   (st.connections||[]).forEach(cn=>{ if(compById[cn[0]]&&compById[cn[1]]&&SYSTEMS[cn[2]]){ CONNECTIONS.push(copyConn(cn)); buildConnObj(cn[0],cn[1],cn[2]); } });
   activeSys.clear(); (Array.isArray(st.activeSys)?st.activeSys:Object.keys(SYSTEMS)).forEach(s=>{ if(SYSTEMS[s]) activeSys.add(s); });
@@ -780,7 +807,7 @@ function isCharger(c){ if(typeof c.charge==='boolean') return c.charge;
 function chargeA(c){ return c.wp>0 ? c.wp*0.75/ELEC.volt : (c.amp||0); }                 // Solar: Wp × 0,75 (Verluste) ÷ U
 function chargeAhDay(c){ const h=(typeof c.hours==='number'?c.hours:0); return chargeA(c)*h; }
 function powerBalance(){ let totalAh=0,drawA=0,dailyAh=0,chargeDay=0,chargeNow=0; const cons=[],chg=[];
-  COMPONENTS.forEach(c=>{ if(isBattery(c)){ totalAh+=c.ah; return; } const on=c._on!==false, h=(typeof c.hours==='number'?c.hours:0);
+  COMPONENTS.forEach(c=>{ if(c.status==="ausgebaut") return; if(isBattery(c)){ totalAh+=c.ah; return; } const on=c._on!==false, h=(typeof c.hours==='number'?c.hours:0);
     if(isCharger(c)){ if(c.amp>0||c.wp>0){ const a=chargeA(c),d=chargeAhDay(c); chg.push({name:c.name,amp:a,wp:c.wp,hours:h,ah:d,on}); chargeDay+=d; if(on) chargeNow+=a; } return; }
     if(c.amp>0){ cons.push({name:c.name,amp:c.amp,hours:h,on}); if(on) drawA+=c.amp; dailyAh+=c.amp*h; } });
   const use=(BAT_TYPES[ELEC.bat]||BAT_TYPES.agm).use, usable=totalAh*use, net=dailyAh-chargeDay;
@@ -793,7 +820,7 @@ const FUSES=[1,2,3,5,7.5,10,15,20,25,30,40,50,60,70,80,100,125,150,175,200,225,2
 function connEntry(o){ return CONNECTIONS.find(x=>x[0]===o.a&&x[1]===o.b&&x[2]===o.sys); }
 function dcSide(start,skip){ const seen=new Set([start]),q=[start];
   while(q.length){ const id=q.shift(); connObjs.forEach(o=>{ if(o===skip||o.sys!=='dc12') return; const n=o.a===id?o.b:(o.b===id?o.a:null); if(n&&!seen.has(n)){ seen.add(n); q.push(n); } }); }
-  let src=false,load=0; seen.forEach(id=>{ const c=compById[id]; if(!c) return; if(isBattery(c)||isCharger(c)) src=true; else if(c.amp>0) load+=c.amp; });
+  let src=false,load=0; seen.forEach(id=>{ const c=compById[id]; if(!c||c.status==="ausgebaut") return; if(isBattery(c)||isCharger(c)) src=true; else if(c.amp>0) load+=c.amp; });
   return {src,load}; }
 /* Strom einer Leitung: Seite ohne Batterie/Ladequelle = Summe ihrer Verbraucher; sonst Ladestrom der angeschlossenen Ladequelle */
 function autoCurrent(o){ const sa=dcSide(o.a,o), sb=dcSide(o.b,o);
@@ -816,13 +843,80 @@ function tankTotals(){ const t={fresh:0,fuel:0,black:0},list=[];
   COMPONENTS.forEach(c=>{ if(c.liter>0){ const k=c.sys.includes('fresh')?'fresh':c.sys.includes('fuel')?'fuel':c.sys.includes('black')?'black':null; if(k){ t[k]+=c.liter; list.push({name:c.name,k,liter:c.liter}); } } });
   return {t,list}; }
 function lineLengths(){ const per={},f=mPerU(); connObjs.forEach(o=>{ per[o.sys]=(per[o.sys]||0)+o.curve.getLength()*f; }); return per; }
-function bomRows(){ return COMPONENTS.filter(c=>{ const p=c.product||{}; return p.brand||p.model||p.url||p.note||c.amp||c.ah||c.liter||c.wp; })
-  .map(c=>{ const p=c.product||{}; return { name:c.name,type:c.type||'',sys:c.sys.map(s=>SYSTEMS[s].name).join(', '),brand:p.brand||'',model:p.model||'',spec:[c.amp?fmt(c.amp,1)+' A':'',c.wp?fmt(c.wp,0)+' Wp':'',c.ah?fmt(c.ah,0)+' Ah':'',c.liter?fmt(c.liter,0)+' L':''].filter(Boolean).join(' · '),note:p.note||'',url:p.url||'' }; }); }
-function csvBOM(){ const head=['Bauteil','Typ','System','Hersteller','Modell','Technik','Notiz','Link']; const q=v=>'"'+String(v==null?'':v).replace(/"/g,'""')+'"';
-  const lines=[head.map(q).join(',')]; bomRows().forEach(r=>lines.push([r.name,r.type,r.sys,r.brand,r.model,r.spec,r.note,r.url].map(q).join(','))); return '﻿'+lines.join('\r\n'); }
+/* ---- Teileliste: alle Bauteile mit Einbauort, Status, Hersteller, Nummern, Preis + Kabel/Sicherungen aus der Kabelberechnung ---- */
+const STATUS={ verbaut:{name:'verbaut'}, geplant:{name:'geplant'}, bestellt:{name:'bestellt'}, ausgebaut:{name:'ausgebaut'} };
+function partStatus(c){ return STATUS[c.status]?c.status:'verbaut'; }
+/* Einbauort aus der Lage: über Deck → Deck/Heck/Bugdeck/Mast, sonst nächster Raum des Innenausbaus (≤ 0,6 m), sonst Bereich */
+function autoLoc(c){ const [x,y,z]=c.pos;
+  if(y>1.6) return 'Mast';
+  if(y>freeboardAt(Math.max(0,Math.min(1,x/L)))-0.05) return x<1.2?'Heck (außen)':(x>8.3?'Bugdeck':(x<3.4&&Math.abs(z)<1.2&&y<0.9?'Cockpit':'Deck'));
+  let best=null,bd=1e9;
+  INTERIOR.forEach(r=>{ const dx=Math.max(0,Math.abs(x-r.cx)-r.sx/2), dy=Math.max(0,Math.abs(y-r.cy)-r.sy/2), dz=Math.max(0,Math.abs(z-r.cz)-r.sz/2), d=dx*dx+dz*dz+0.25*dy*dy; if(d<bd){ bd=d; best=r; } });
+  if(best&&bd<0.36){ const nm=LOC_ALIAS[best.name]||best.name, below=y<best.cy-best.sy/2-0.15&&best.kind!=='engine'&&best.kind!=='zone'; return (below?'unter ':'')+nm; }
+  return (y<-0.7?'Bilge ':'')+(x<3?'achtern':(x>7?'vorn':'mittschiffs'))+(z>0.4?' Stb':(z<-0.4?' Bb':'')); }
+const LOC_ALIAS={ 'Salontisch':'Salon', 'Sitzecke':'Salon', 'Sitzbank Stb':'Cockpit', 'Sitzbank Bb':'Cockpit', 'Bugkoje':'Vorschiff' };
+function partLoc(c){ return c.loc||autoLoc(c); }
+function partSpec(c){ return [c.amp?fmt(c.amp,1)+' A':'',c.wp?fmt(c.wp,0)+' Wp':'',c.ah?fmt(c.ah,0)+' Ah':'',c.liter?fmt(c.liter,0)+' L':''].filter(Boolean).join(' · '); }
+function partRows(){ return COMPONENTS.map(c=>{ const p=c.product||{}; return { c, name:c.name, type:c.type||'', sys:c.sys.map(s=>SYSTEMS[s].name).join(', '), sys0:SYSTEMS[c.sys[0]].name,
+  loc:partLoc(c), status:partStatus(c), brand:p.brand||'', model:p.model||'', partNo:c.partNo||'', serial:c.serial||'', installed:c.installed||'',
+  qty:c.qty>0?c.qty:1, price:c.price>0?c.price:0, spec:partSpec(c), note:p.note||'', url:p.url||'' }; }); }
+/* Kabel und Sicherungen aus der Kabelauslegung: Meter je Querschnitt (Plus + Minus = 2 × Länge) und Sicherungen je Größe */
+function cableBOM(){ const per={}, fuses={}; let open=0;
+  connObjs.filter(o=>o.sys==='dc12').map(cableCalc).forEach(r=>{ if(!r.mm2){ open++; return; }
+    const k=r.mm2; per[k]=per[k]||{n:0,len:0}; per[k].n++; per[k].len+=r.len; if(r.fuse!=null) fuses[r.fuse]=(fuses[r.fuse]||0)+1; });
+  return {cables:Object.keys(per).map(Number).sort((a,b)=>a-b).map(k=>({mm2:k,n:per[k].n,len:per[k].len})), fuses:Object.keys(fuses).map(Number).sort((a,b)=>a-b).map(k=>({a:k,n:fuses[k]})), open}; }
+let partGroup='sys', partFilter='alle', partSearch='';
+function partsReport(){ const all=partRows(), q=partSearch.trim().toLowerCase();
+  const rows=all.filter(r=>(partFilter==='alle'||r.status===partFilter)&&(!q||[r.name,r.type,r.loc,r.brand,r.model,r.partNo,r.serial,r.note,r.sys].join(' ').toLowerCase().includes(q)));
+  const cnt=s=>all.filter(r=>r.status===s).reduce((a,r)=>a+r.qty,0), sum=list=>list.reduce((a,r)=>a+r.qty*r.price,0);
+  const toBuy=all.filter(r=>r.status==='geplant'||r.status==='bestellt');
+  let h=`<div class="rep-set"><span>Gruppieren</span><div class="seg">${[['sys','System'],['loc','Ort'],['status','Status']].map(([k,l])=>`<div class="sgb ${partGroup===k?'on':''}" data-pg="${k}">${l}</div>`).join('')}</div>
+    <div class="seg">${['alle',...Object.keys(STATUS)].map(k=>`<div class="sgb ${partFilter===k?'on':''}" data-pf="${k}">${k==='alle'?'alle':STATUS[k].name}</div>`).join('')}</div>
+    <input class="tin" id="pSearch" style="width:170px;text-align:left" placeholder="Suchen…" value="${esc(partSearch)}"></div>
+    <div class="stat-grid">
+      <div class="stat"><div class="k">Verbaut</div><div class="v">${fmt(cnt('verbaut'),0)} <small>Teile</small></div></div>
+      <div class="stat"><div class="k">Geplant / bestellt</div><div class="v">${fmt(cnt('geplant'),0)} / ${fmt(cnt('bestellt'),0)}</div></div>
+      <div class="stat"><div class="k">Noch zu kaufen</div><div class="v">${fmt(sum(toBuy),2)} <small>€</small></div></div>
+      <div class="stat"><div class="k">Wert verbaut</div><div class="v">${fmt(sum(all.filter(r=>r.status==='verbaut')),2)} <small>€</small></div></div></div>`;
+  const key=r=>partGroup==='loc'?r.loc:(partGroup==='status'?STATUS[r.status].name:r.sys0);
+  const groups=new Map(); rows.forEach(r=>{ const k=key(r); if(!groups.has(k)) groups.set(k,[]); groups.get(k).push(r); });
+  const order=[...groups.keys()].sort((a,b)=>a.localeCompare(b,'de'));
+  h+=`<table class="rep"><thead><tr><th>Bauteil</th><th>Ort</th><th>Hersteller / Modell</th><th>Technik</th><th class="num">Menge</th><th class="num">Preis</th><th>Status</th></tr></thead><tbody>`;
+  order.forEach(g=>{ h+=`<tr><td colspan="7" style="padding-top:14px;color:var(--accent);font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase">${esc(g)}</td></tr>`;
+    groups.get(g).sort((a,b)=>a.name.localeCompare(b.name,'de')).forEach(r=>{ const hm=[r.brand,r.model].filter(Boolean).join(' '), ids=[r.partNo?'Art.-Nr. '+r.partNo:'',r.serial?'S/N '+r.serial:''].filter(Boolean).join(' · ');
+      h+=`<tr class="${r.status==='ausgebaut'?'gone':''}"><td><a href="#" data-cid="${esc(r.c.id)}">${esc(r.name)}</a><div style="color:var(--ink-faint);font-size:11px">${esc(r.type)}</div></td>
+        <td>${esc(r.loc)}${r.c.loc?'':' <span style="color:var(--ink-faint)" title="automatisch aus der Lage">·</span>'}</td>
+        <td>${esc(hm)||'–'}${ids?`<div style="color:var(--ink-faint);font-size:11px">${esc(ids)}</div>`:''}${r.url?` <a href="${esc(r.url)}" target="_blank" rel="noopener">↗</a>`:''}</td>
+        <td>${esc(r.spec)||'–'}</td><td class="num">${fmt(r.qty,0)}</td><td class="num">${r.price?fmt(r.qty*r.price,2)+' €':'–'}</td>
+        <td><span class="pstat ${r.status}">${STATUS[r.status].name}</span>${r.installed?`<div style="color:var(--ink-faint);font-size:11px">${esc(r.installed)}</div>`:''}</td></tr>`; }); });
+  if(!rows.length) h+=`<tr><td colspan="7" style="color:var(--ink-faint)">Keine Bauteile${q||partFilter!=='alle'?' für diese Auswahl':''}.</td></tr>`;
+  h+=`</tbody></table>`;
+  const cb=cableBOM();
+  h+=`<div class="d-conn-head" style="margin-top:18px;padding-left:0">Kabel &amp; Sicherungen ${ELEC.volt} V (aus „Kabel &amp; Sicherungen“)</div>
+    <table class="rep"><thead><tr><th>Querschnitt</th><th class="num">Leitungen</th><th class="num">Länge einfach</th><th class="num">Kabel gesamt (Plus + Minus)</th></tr></thead><tbody>`;
+  cb.cables.forEach(k=>{ h+=`<tr><td>${fmt(k.mm2,2)} mm²</td><td class="num">${k.n}</td><td class="num">${fmt(k.len,1)} m</td><td class="num"><b>${fmt(Math.ceil(k.len*2),0)} m</b></td></tr>`; });
+  if(!cb.cables.length) h+=`<tr><td colspan="4" style="color:var(--ink-faint)">Noch keine berechneten Leitungen (Strom bei den Verbrauchern eintragen).</td></tr>`;
+  h+=`</tbody></table><table class="rep" style="margin-top:10px"><thead><tr><th>Sicherung</th><th class="num">Anzahl</th></tr></thead><tbody>`;
+  cb.fuses.forEach(f=>{ h+=`<tr><td>${fmt(f.a,1)} A</td><td class="num">${f.n}</td></tr>`; });
+  if(!cb.fuses.length) h+=`<tr><td colspan="2" style="color:var(--ink-faint)">–</td></tr>`;
+  h+=`</tbody></table><div class="rep-note">Ort ohne eigenen Eintrag (·) wird aus der Lage im Modell bestimmt – im Modus „Verschieben“ unter „Einbau · Teileliste“ überschreibbar, dort auch Status, Menge, Preis, Artikel- und Seriennummer. Kabelmeter = Leitungslänge × 2 (Hin- und Rückleiter), aufgerundet, ohne Verschnitt.${cb.open?` ${cb.open} Leitung(en) ohne Strom sind nicht enthalten.`:''} Ausgebaute Teile zählen nicht in Strombilanz und Simulation.</div>`;
+  return h; }
+function bindParts(body){
+  body.querySelectorAll('[data-pg]').forEach(b=>b.onclick=()=>{ partGroup=b.dataset.pg; renderReport(); });
+  body.querySelectorAll('[data-pf]').forEach(b=>b.onclick=()=>{ partFilter=b.dataset.pf; renderReport(); });
+  body.querySelectorAll('[data-cid]').forEach(a=>a.onclick=e=>{ e.preventDefault(); const c=compById[a.dataset.cid]; if(c){ closeReport(); select(c); } });
+  const s=body.querySelector('#pSearch'); if(s) s.oninput=()=>{ partSearch=s.value; const pos=s.selectionStart; renderReport(); const n=document.getElementById('pSearch'); n.focus(); n.setSelectionRange(pos,pos); }; }
+function csvParts(){ const q=v=>'"'+String(v==null?'':v).replace(/"/g,'""')+'"', dec=n=>n?String(Math.round(n*100)/100).replace('.',','):'';
+  const head=['Bauteil','Typ','System','Ort','Status','Hersteller','Modell','Artikelnr.','Seriennr.','Eingebaut','Technik','Menge','Preis/Stück €','Summe €','Notiz','Link'];
+  const lines=[head.map(q).join(';')];
+  partRows().forEach(r=>lines.push([r.name,r.type,r.sys,r.loc,STATUS[r.status].name,r.brand,r.model,r.partNo,r.serial,r.installed,r.spec,r.qty,dec(r.price),dec(r.qty*r.price),r.note,r.url].map(q).join(';')));
+  const cb=cableBOM(); lines.push('');
+  cb.cables.forEach(k=>lines.push([`Kabel ${fmt(k.mm2,2)} mm²`,'Kabel',SYSTEMS.dc12.name,'','','','','','','',`${k.n} Leitungen, ${fmt(k.len,1)} m einfach`,Math.ceil(k.len*2)+' m','','','Plus + Minus',''].map(q).join(';')));
+  cb.fuses.forEach(f=>lines.push([`Sicherung ${fmt(f.a,1)} A`,'Sicherung',SYSTEMS.dc12.name,'','','','','','','','',f.n,'','','',''].map(q).join(';')));
+  return '﻿'+lines.join('\r\n'); }
 function downloadBlob(content,type,name){ const b=new Blob([content],{type:type+';charset=utf-8'}); const u=URL.createObjectURL(b); const a=document.createElement('a'); a.href=u; a.download=name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(u),1500); }
 /* ---- Auswertungs-Fenster ---- */
-let repTab='strom'; const REPTABS=[['strom','Strombilanz'],['kabel','Kabel & Sicherungen'],['tanks','Tanks'],['leitungen','Leitungen'],['stueck','Stückliste']];
+let repTab='strom'; const REPTABS=[['strom','Strombilanz'],['kabel','Kabel & Sicherungen'],['tanks','Tanks'],['leitungen','Leitungen'],['teile','Teileliste']];
 function openReport(){ document.getElementById('report').classList.add('show'); renderReport(); }
 function closeReport(){ document.getElementById('report').classList.remove('show'); }
 function voltSeg(){ return `<span>Bordspannung</span><div class="seg">${[12,24].map(v=>`<div class="sgb ${ELEC.volt===v?'on':''}" data-volt="${v}">${v} V</div>`).join('')}</div>`; }
@@ -878,17 +972,14 @@ function renderReport(){
     keys.forEach(k=>{ h+=`<tr><td><span style="display:inline-block;width:9px;height:9px;border-radius:2px;background:${SYSTEMS[k].color};margin-right:7px"></span>${SYSTEMS[k].name}</td><td class="num">${fmt(per[k],1)} m</td></tr>`; });
     if(!keys.length) h+=`<tr><td colspan="2" style="color:var(--ink-faint)">Keine Leitungen vorhanden.</td></tr>`;
     h+=`</tbody></table><div class="rep-note">Grobe Luftlinien aus der 3D-Geometrie × Maßstab. Reale Kabel-/Schlauchwege sind länger — plane Zuschlag ein (für ${ELEC.volt}-V-Kabel unter „Kabel &amp; Sicherungen“ berücksichtigt). Maßstab im Plan-Modus über „Bootslänge“ einstellen.</div>`; }
-  else { const rows=bomRows();
-    h+=`<table class="rep"><thead><tr><th>Bauteil</th><th>Hersteller / Modell</th><th>Technik</th><th>Link</th></tr></thead><tbody>`;
-    rows.forEach(r=>{ const hm=[r.brand,r.model].filter(Boolean).join(' '); h+=`<tr><td>${esc(r.name)}<div style="color:var(--ink-faint);font-size:11px">${esc(r.sys)}</div></td><td>${esc(hm)||'–'}</td><td>${esc(r.spec)||'–'}</td><td>${r.url?`<a href="${esc(r.url)}" target="_blank" rel="noopener">öffnen ↗</a>`:'–'}</td></tr>`; });
-    if(!rows.length) h+=`<tr><td colspan="4" style="color:var(--ink-faint)">Noch keine Produkte/Technik hinterlegt.</td></tr>`;
-    h+=`</tbody></table>`; }
+  else h+=partsReport();
   const body=document.getElementById('repBody'); body.innerHTML=h;
   const num=v=>{ const n=parseFloat(String(v).replace(',','.')); return isFinite(n)?n:0; };
   body.querySelectorAll('[data-volt]').forEach(b=>b.onclick=()=>setElec('volt',parseInt(b.dataset.volt)));
   body.querySelectorAll('[data-bat]').forEach(b=>b.onclick=()=>setElec('bat',b.dataset.bat));
   const ed=body.querySelector('#eDrop'); if(ed) ed.onchange=()=>{ const v=num(ed.value); setElec('dropPct',v>0&&v<=20?v:ELEC_DEF.dropPct); };
   const er=body.querySelector('#eRoute'); if(er) er.onchange=()=>{ const v=num(er.value); setElec('route',v>=1&&v<=5?v:ELEC_DEF.route); };
+  if(repTab==='teile') bindParts(body);
   if(repTab==='kabel'){ const list=connObjs.filter(o=>o.sys==='dc12');
     body.querySelectorAll('input[data-k]').forEach(inp=>inp.onchange=()=>{ setConnVal(list[+inp.dataset.i],inp.dataset.k,num(inp.value)); renderReport(); }); }
 }
@@ -904,7 +995,7 @@ document.getElementById('imgBtn').onclick=exportImage;
 document.getElementById('repBtn').onclick=openReport;
 document.getElementById('repX').onclick=closeReport;
 document.getElementById('report').addEventListener('click',e=>{ if(e.target.id==='report') closeReport(); });
-document.getElementById('repCSV').onclick=()=>downloadBlob(csvBOM(),'text/csv','stueckliste-'+new Date().toISOString().slice(0,10)+'.csv');
+document.getElementById('repCSV').onclick=()=>downloadBlob(csvParts(),'text/csv','teileliste-'+(BOATS[boatIx]?BOATS[boatIx].name:'boot').replace(/[^A-Za-z0-9ÄÖÜäöüß_-]+/g,'-')+'-'+new Date().toISOString().slice(0,10)+'.csv');
 document.getElementById('repPrint').onclick=()=>window.print();
 document.getElementById('loadBtn').onclick=()=>document.getElementById('stateFile').click();
 document.getElementById('stateFile').onchange=e=>{ if(e.target.files[0]) importState(e.target.files[0]); e.target.value=''; };
