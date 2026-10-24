@@ -104,6 +104,15 @@
   .boatsel{ background:var(--panel); border:1px solid var(--line); color:var(--ink); border-radius:9px; padding:6px 8px; font-family:"IBM Plex Mono",monospace; font-size:11px; max-width:150px; }
   .iconbtn{ width:30px; height:30px; display:flex; align-items:center; justify-content:center; cursor:pointer; background:var(--panel); border:1px solid var(--line); border-radius:9px; color:var(--ink-dim); font-size:14px; }
   .iconbtn:hover{ color:var(--accent); border-color:var(--line-strong); }
+  .iconbtn.off{ opacity:.35; pointer-events:none; }
+
+  /* Eingaben in Auswertungstabellen */
+  .tin{ width:72px; background:rgba(255,255,255,.04); border:1px solid var(--line-strong); border-radius:6px; color:var(--ink); font-family:"IBM Plex Mono",monospace; font-size:12px; padding:4px 6px; text-align:right; outline:none; }
+  .tin:focus{ border-color:var(--accent); } .tin::placeholder{ color:var(--ink-faint); }
+  .rep-set{ display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center; margin-bottom:14px; font-size:12px; color:var(--ink-dim); }
+  .rep-set .seg{ padding:0; } .rep-set .sgb{ flex:none; padding:5px 10px; }
+  .warn{ color:#ffb36b; } .bad{ color:#ff9a9a; } .ok{ color:var(--accent); }
+  table.rep h4{ font-size:12px; }
 
   /* Foto im Detail */
   .photo{ margin:0 16px 12px; border-radius:9px; overflow:hidden; border:1px solid var(--line-strong); }
@@ -167,6 +176,8 @@
     <div class="iconbtn" id="boatNew" title="Neues Boot">＋</div>
     <div class="iconbtn" id="boatRen" title="Umbenennen">✎</div>
     <div class="iconbtn" id="boatDel" title="Boot löschen">🗑</div>
+    <div class="iconbtn off" id="undoBtn" title="Rückgängig (Strg+Z)">↶</div>
+    <div class="iconbtn off" id="redoBtn" title="Wiederholen (Strg+Y)">↷</div>
   </div>
   <div class="modes" id="modes">
     <div class="mode-btn active" data-mode="view">Ansicht</div>
@@ -177,6 +188,7 @@
   </div>
   <div class="boatbar" style="pointer-events:auto">
     <span id="syncStat" style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-dim);white-space:nowrap"></span>
+    <a class="iconbtn" id="logoutBtn" title="Abmelden" href="/outpost.goauthentik.io/sign_out" style="display:none;text-decoration:none">⎋</a>
   </div>
 </div>
 <div class="panel scrim" id="leftPanel"></div>
@@ -189,6 +201,12 @@
 <div class="panel" id="hint"></div>
 <input type="file" id="stateFile" accept="application/json,.json" style="display:none">
 <input type="file" id="photoFile" accept="image/*" style="display:none">
+<div class="modal" id="histModal">
+  <div class="modal-card" style="width:min(620px,94vw)">
+    <div class="modal-top"><span class="mt-title">Verlauf · gespeicherte Stände</span><span class="mt-x" id="histX">×</span></div>
+    <div class="rep-body scrim" id="histBody"></div>
+  </div>
+</div>
 <div class="modal" id="report">
   <div class="modal-card">
     <div class="modal-top"><span class="mt-title">Auswertung</span><span class="mt-x" id="repX">×</span></div>
@@ -202,6 +220,7 @@
   <button id="loadBtn" class="pbtn">⤒ Backup laden</button>
   <button id="repBtn" class="pbtn">▤ Auswertung</button>
   <button id="imgBtn" class="pbtn">◲ Bild</button>
+  <button id="histBtn" class="pbtn">◷ Verlauf</button>
   <button id="resetBtn" class="pbtn">⟲ Ansicht</button>
 </div>
 
@@ -428,7 +447,7 @@ updateCam();
 
 /* ============================================================ INTERAKTION ============================================================ */
 let mode='view',selected=null,pending=null,currentSys='dc12';
-let dirty=false; function markDirty(){ dirty=true; scheduleSave(); }
+let dirty=false; function markDirty(){ dirty=true; noteUndo(); updUndoBtns(); scheduleSave(); }
 const activeSys=new Set(Object.keys(SYSTEMS));
 const ray=new THREE.Raycaster(),ndc=new THREE.Vector2(),el=renderer.domElement;
 let camDrag=false,objDrag=null,lx=0,ly=0,moved=0;
@@ -498,7 +517,7 @@ function renderDetail(c){ if(!c){ detail.classList.remove('show'); return; } det
   const p=c.product||{};
   function prodDisplay(){ let h='';
     if(c.photo) h+=`<div class="photo"><img src="${c.photo}"></div>`;
-    const tech=[c.amp?fmt(c.amp,1)+' A':'',c.hours?fmt(c.hours,1)+' h/Tag':'',c.ah?fmt(c.ah,0)+' Ah':'',c.liter?fmt(c.liter,0)+' L':''].filter(Boolean).join(' · ');
+    const tech=[c.amp?fmt(c.amp,1)+' A'+(isCharger(c)?' Ladestrom':''):'',c.wp?fmt(c.wp,0)+' Wp':'',c.hours?fmt(c.hours,1)+' h/Tag':'',c.ah?fmt(c.ah,0)+' Ah':'',c.liter?fmt(c.liter,0)+' L':''].filter(Boolean).join(' · ');
     if(p.brand||p.model||p.url||p.note||tech||c.service||c.warranty||c.logNote){ const title=[p.brand,p.model].filter(Boolean).join(' ');
       h+='<div class="prod">'; if(title) h+=`<div class="prod-name">${esc(title)}</div>`;
       if(tech) h+=`<div class="prod-note">${esc(tech)}</div>`;
@@ -520,11 +539,13 @@ function renderDetail(c){ if(!c){ detail.classList.remove('show'); return; } det
       <input class="txt" id="pNote" placeholder="Notiz" value="${esc(p.note||'')}">
       <div class="edit-lab">Technik</div>
       <div class="tk-grid">
-        <input class="txt" id="tAmp" placeholder="Strom A" value="${c.amp!=null?c.amp:''}">
-        <input class="txt" id="tHours" placeholder="Std/Tag" value="${c.hours!=null?c.hours:''}">
+        <input class="txt" id="tAmp" placeholder="${isCharger(c)?'Ladestrom A':'Strom A'}" title="${isCharger(c)?'Ladestrom in A (bei Bordspannung)':'Stromaufnahme in A bei Bordspannung'}" value="${c.amp!=null?c.amp:''}">
+        <input class="txt" id="tHours" placeholder="${isCharger(c)?(c.wp>0?'Sonnen-h/Tag':'Lade-h/Tag'):'Std/Tag'}" value="${c.hours!=null?c.hours:''}">
         <input class="txt" id="tAh" placeholder="Batterie Ah" value="${c.ah!=null?c.ah:''}">
         <input class="txt" id="tLit" placeholder="Tank L" value="${c.liter!=null?c.liter:''}">
+        <input class="txt" id="tWp" placeholder="Solar Wp" title="Solar-Nennleistung; Ertrag = Wp × Sonnenstunden × 0,75 ÷ Bordspannung" value="${c.wp!=null?c.wp:''}">
       </div>
+      <div class="swrow" style="padding:10px 0 2px"><span class="lname">Ladequelle (lädt die Batterien)</span><div class="toggle ${isCharger(c)?'on':''}" id="chgT"></div></div>
       <div class="edit-lab">Foto</div>
       ${c.photo?`<div class="photo"><img src="${c.photo}"></div>`:''}
       <div class="photo-edit"><div class="mini-btn" id="foBtn">${c.photo?'Foto ersetzen':'Foto hinzufügen'}</div>${c.photo?'<div class="mini-btn" id="foDel">Entfernen</div>':''}</div>
@@ -544,6 +565,8 @@ function renderDetail(c){ if(!c){ detail.classList.remove('show'); return; } det
     document.getElementById('tHours').addEventListener('input',ev=>{ c.hours=numOr(ev.target.value); markDirty(); });
     document.getElementById('tAh').addEventListener('input',ev=>{ c.ah=numOr(ev.target.value); markDirty(); });
     document.getElementById('tLit').addEventListener('input',ev=>{ c.liter=numOr(ev.target.value); markDirty(); });
+    document.getElementById('tWp').addEventListener('input',ev=>{ c.wp=numOr(ev.target.value); markDirty(); });
+    document.getElementById('chgT').onclick=()=>{ c.charge=!isCharger(c); markDirty(); renderDetail(c); };
     document.getElementById('foBtn').onclick=()=>pickPhoto(c);
     const foDel=document.getElementById('foDel'); if(foDel) foDel.onclick=()=>{ c.photo=null; markDirty(); renderDetail(c); };
     document.getElementById('wSvc').addEventListener('input',ev=>{ c.service=ev.target.value; markDirty(); });
@@ -630,16 +653,24 @@ function clearScene(){
   COMPONENTS.length=0; compMeshes.length=0; Object.keys(compById).forEach(k=>delete compById[k]); CONNECTIONS.length=0;
 }
 let boatLengthM=10; function mPerU(){ return boatLengthM/L; }
+/* Elektrik-Einstellungen je Boot: Bordspannung, Batterietyp (nutzbarer Anteil), max. Spannungsabfall, Zuschlag Luftlinie → Kabelweg */
+const ELEC_DEF={ volt:12, bat:'agm', dropPct:3, route:1.5 };
+let ELEC={...ELEC_DEF};
+const BAT_TYPES={ agm:{name:'Blei/AGM/Gel',use:0.5}, lifepo4:{name:'LiFePO₄',use:0.85} };
+function applyDcName(){ SYSTEMS.dc12.name=ELEC.volt+' V Bordnetz'; }
 let SCENARIOS=[];
-let BOATS=[{name:'Mein Boot',state:null}]; let boatIx=0;
+function newBoatId(){ return 'b'+Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
+let BOATS=[{id:newBoatId(),name:'Mein Boot',state:null}]; let boatIx=0;
 function captureBoat(){ if(BOATS[boatIx]) BOATS[boatIx].state=buildState(); }
-function serializeComp(c){ return { id:c.id,name:c.name,type:c.type,sys:c.sys,shape:c.shape||'box',source:c.source,converts:c.converts,needs:c.needs,sw:!!c.sw,on:c._on!==false,pos:c.pos,desc:c.desc,product:c.product,amp:c.amp,ah:c.ah,liter:c.liter,hours:c.hours,photo:c.photo,service:c.service,warranty:c.warranty,logNote:c.logNote }; }
-function buildState(){ return { components:COMPONENTS.map(serializeComp), connections:CONNECTIONS.map(x=>x.slice()),
+function serializeComp(c){ return { id:c.id,name:c.name,type:c.type,sys:c.sys.slice(),shape:c.shape||'box',source:c.source,converts:c.converts,needs:c.needs,sw:!!c.sw,on:c._on!==false,pos:c.pos.slice(),desc:c.desc,product:c.product,amp:c.amp,ah:c.ah,liter:c.liter,hours:c.hours,wp:c.wp,charge:c.charge,photo:c.photo,service:c.service,warranty:c.warranty,logNote:c.logNote }; }
+/* Leitung: [von, nach, System, {amp, len}?] – das 4. Feld hält manuelle Werte für die Kabelauslegung */
+function copyConn(x){ return x[3]?[x[0],x[1],x[2],Object.assign({},x[3])]:[x[0],x[1],x[2]]; }
+function buildState(){ return { components:COMPONENTS.map(serializeComp), connections:CONNECTIONS.map(copyConn),
   ref: ref.tex?{ dataURL:ref.dataURL,mode:ref.mode,scale:ref.scale,ox:ref.ox,oy:ref.oy,oz:ref.oz,rot:ref.rot,opacity:ref.opacity,visible:ref.visible,aspect:ref.aspect }:null,
   activeSys:[...activeSys], camera:{theta:cam.theta,phi:cam.phi,radius:cam.radius}, customN:customN,
-  scenarios:SCENARIOS.map(s=>({name:s.name,states:Object.assign({},s.states)})), boatLengthM:boatLengthM }; }
+  scenarios:SCENARIOS.map(s=>({name:s.name,states:Object.assign({},s.states)})), boatLengthM:boatLengthM, elec:Object.assign({},ELEC) }; }
 function exportState(){ captureBoat();
-  const file={ version:3, activeBoat:boatIx, boats:BOATS.map(b=>({name:b.name,state:b.state})) };
+  const file={ version:3, activeBoat:boatIx, boats:BOATS.map(b=>({id:b.id,name:b.name,state:b.state})) };
   const blob=new Blob([JSON.stringify(file)],{type:'application/json'}); const url=URL.createObjectURL(blob);
   const a=document.createElement('a'); a.href=url; a.download='bordsysteme-'+new Date().toISOString().slice(0,10)+'.json';
   document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),1500);
@@ -693,14 +724,15 @@ function exportImage(){
 }
 addEventListener('beforeunload',e=>{ if(dirty){ e.preventDefault(); e.returnValue=''; } });
 function importState(file){ const rd=new FileReader(); rd.onload=()=>{ let f; try{ f=JSON.parse(rd.result); }catch(err){ alert('Diese Datei ist keine gültige Bordsysteme-Datei.'); return; }
-    if(f&&Array.isArray(f.boats)&&f.boats.length){ BOATS=f.boats.map(b=>({name:b.name||'Boot',state:b.state})); boatIx=Math.max(0,Math.min(f.activeBoat||0,BOATS.length-1)); applyBoatState(BOATS[boatIx].state); }
-    else if(f&&f.components){ BOATS=[{name:'Mein Boot',state:f}]; boatIx=0; applyBoatState(f); }
+    if(f&&Array.isArray(f.boats)&&f.boats.length){ BOATS=f.boats.map(b=>({id:b.id||newBoatId(),name:b.name||'Boot',state:b.state})); boatIx=Math.max(0,Math.min(f.activeBoat||0,BOATS.length-1)); applyBoatState(BOATS[boatIx].state); }
+    else if(f&&f.components){ BOATS=[{id:newBoatId(),name:'Mein Boot',state:f}]; boatIx=0; applyBoatState(f); }
     else { alert('Diese Datei enthält keinen gespeicherten Stand.'); return; }
-    renderBoatSwitcher(); markDirty(); }; rd.readAsText(file); }
+    renderBoatSwitcher(); resetUndo(); markDirty(); }; rd.readAsText(file); }
 function applyBoatState(st){ clearScene(); st=st||{};
-  (st.components||[]).forEach(cd=>{ const c={ id:cd.id,name:cd.name,type:cd.type,sys:(cd.sys||['dc12']).slice(),shape:cd.shape,source:cd.source,converts:cd.converts,needs:cd.needs,pos:(cd.pos||[5,0,0]).slice(),desc:cd.desc,product:cd.product,amp:cd.amp,ah:cd.ah,liter:cd.liter,hours:cd.hours,photo:cd.photo,service:cd.service,warranty:cd.warranty,logNote:cd.logNote };
+  ELEC=Object.assign({},ELEC_DEF,st.elec||{}); applyDcName();
+  (st.components||[]).forEach(cd=>{ const c={ id:cd.id,name:cd.name,type:cd.type,sys:(cd.sys||['dc12']).slice(),shape:cd.shape,source:cd.source,converts:cd.converts,needs:cd.needs,pos:(cd.pos||[5,0,0]).slice(),desc:cd.desc,product:cd.product,amp:cd.amp,ah:cd.ah,liter:cd.liter,hours:cd.hours,wp:cd.wp,charge:cd.charge,photo:cd.photo,service:cd.service,warranty:cd.warranty,logNote:cd.logNote };
     if(cd.sw) c.sw=true; c.on=cd.on!==false; buildCompVisuals(c); COMPONENTS.push(c); });
-  (st.connections||[]).forEach(cn=>{ if(compById[cn[0]]&&compById[cn[1]]&&SYSTEMS[cn[2]]){ CONNECTIONS.push([cn[0],cn[1],cn[2]]); buildConnObj(cn[0],cn[1],cn[2]); } });
+  (st.connections||[]).forEach(cn=>{ if(compById[cn[0]]&&compById[cn[1]]&&SYSTEMS[cn[2]]){ CONNECTIONS.push(copyConn(cn)); buildConnObj(cn[0],cn[1],cn[2]); } });
   activeSys.clear(); (Array.isArray(st.activeSys)?st.activeSys:Object.keys(SYSTEMS)).forEach(s=>{ if(SYSTEMS[s]) activeSys.add(s); });
   if(st.camera){ cam.theta=st.camera.theta; cam.phi=st.camera.phi; cam.radius=st.camera.radius; updateCam(); }
   customN=(typeof st.customN==='number')?st.customN:0;
@@ -712,48 +744,124 @@ function applyBoatState(st){ clearScene(); st=st||{};
 }
 /* ---- Mehrere Boote ---- */
 function renderBoatSwitcher(){ const sel=document.getElementById('boatSel'); sel.innerHTML=BOATS.map((b,i)=>`<option value="${i}" ${i===boatIx?'selected':''}>${esc(b.name)}</option>`).join(''); }
-async function switchBoat(n){ if(n===boatIx||!BOATS[n]) { renderBoatSwitcher(); return; } await flushSave(); boatIx=n; applyBoatState(BOATS[n].state); renderBoatSwitcher(); }
-async function newBoat(){ await flushSave(); BOATS.push({name:'Boot '+(BOATS.length+1),state:{components:[],connections:[],activeSys:Object.keys(SYSTEMS),boatLengthM:10}}); boatIx=BOATS.length-1; applyBoatState(BOATS[boatIx].state); renderBoatSwitcher(); markDirty(); }
+async function switchBoat(n){ if(n===boatIx||!BOATS[n]) { renderBoatSwitcher(); return; } await flushSave(); boatIx=n; applyBoatState(BOATS[n].state); renderBoatSwitcher(); resetUndo(); }
+async function newBoat(){ await flushSave(); BOATS.push({id:newBoatId(),name:'Boot '+(BOATS.length+1),state:{components:[],connections:[],activeSys:Object.keys(SYSTEMS),boatLengthM:10}}); boatIx=BOATS.length-1; applyBoatState(BOATS[boatIx].state); renderBoatSwitcher(); resetUndo(); markDirty(); }
 function renameBoat(){ const nm=prompt('Name des Boots:',BOATS[boatIx].name); if(nm){ BOATS[boatIx].name=nm; renderBoatSwitcher(); markDirty(); } }
 async function delBoat(){ if(BOATS.length<=1){ alert('Es muss mindestens ein Boot bleiben.'); return; } if(!confirm('Dieses Boot löschen?')) return;
-  BOATS.splice(boatIx,1); boatIx=Math.max(0,boatIx-1); applyBoatState(BOATS[boatIx].state); renderBoatSwitcher(); markDirty(); }
+  BOATS.splice(boatIx,1); boatIx=Math.max(0,boatIx-1); applyBoatState(BOATS[boatIx].state); renderBoatSwitcher(); resetUndo(); markDirty(); }
+
+/* ---- Rückgängig / Wiederholen (je Boot, Schnappschüsse des Bootszustands) ----
+   Änderungen innerhalb von 400 ms (z. B. ein Ziehvorgang, Tippen) werden zu einem Schritt zusammengefasst. */
+let undoStack=[], redoStack=[], undoBase=null, undoPending=false, undoTimer=null, undoMuted=false;
+const UNDO_MAX=60;
+function resetUndo(){ clearTimeout(undoTimer); undoStack=[]; redoStack=[]; undoPending=false; undoBase=buildState(); updUndoBtns(); }
+function noteUndo(){ if(undoMuted) return; if(!undoPending){ undoPending=true; } clearTimeout(undoTimer); undoTimer=setTimeout(commitUndo,400); }
+function commitUndo(){ clearTimeout(undoTimer); if(!undoPending) return; undoPending=false;
+  if(undoBase) undoStack.push(undoBase); if(undoStack.length>UNDO_MAX) undoStack.shift(); redoStack=[]; undoBase=buildState(); updUndoBtns(); }
+function restoreSnap(s){ const keepCam={theta:cam.theta,phi:cam.phi,radius:cam.radius}, selId=selected&&selected.id;
+  undoMuted=true; applyBoatState(Object.assign({},s,{camera:keepCam})); undoMuted=false;
+  undoBase=buildState(); if(selId&&compById[selId]) select(compById[selId]); dirty=true; scheduleSave(); updUndoBtns(); }
+function undo(){ commitUndo(); if(!undoStack.length) return; redoStack.push(buildState()); restoreSnap(undoStack.pop()); }
+function redo(){ commitUndo(); if(!redoStack.length) return; undoStack.push(buildState()); restoreSnap(redoStack.pop()); }
+function updUndoBtns(){ document.getElementById('undoBtn').classList.toggle('off',!undoStack.length&&!undoPending); document.getElementById('redoBtn').classList.toggle('off',!redoStack.length); }
+document.getElementById('undoBtn').onclick=undo;
+document.getElementById('redoBtn').onclick=redo;
+addEventListener('keydown',e=>{ const t=e.target, tag=t&&t.tagName; if(tag==='INPUT'||tag==='TEXTAREA'||tag==='SELECT'||(t&&t.isContentEditable)) return;
+  if(!(e.ctrlKey||e.metaKey)) return; const k=e.key.toLowerCase();
+  if(k==='z'&&!e.shiftKey){ e.preventDefault(); undo(); } else if(k==='y'||(k==='z'&&e.shiftKey)){ e.preventDefault(); redo(); } });
 /* ---- Szenarien ---- */
 function applyScenario(i){ const s=SCENARIOS[i]; if(!s) return; COMPONENTS.forEach(c=>{ if(c.sw&&s.states[c.id]!==undefined) c._on=s.states[c.id]; }); markDirty(); refresh(); renderLeft(); if(selected) renderDetail(selected); }
 /* ---- Berechnungen ---- */
 function fmt(n,d){ const p=Math.pow(10,d||0); return (Math.round((n||0)*p)/p).toLocaleString('de-DE'); }
-function powerBalance(){ let totalAh=0,drawA=0,dailyAh=0; const cons=[];
-  COMPONENTS.forEach(c=>{ if(c.ah>0&&c.sys.includes('dc12')) totalAh+=c.ah;
-    if(c.amp>0){ const on=c._on!==false, h=(typeof c.hours==='number'?c.hours:0); cons.push({name:c.name,amp:c.amp,hours:h,on}); if(on) drawA+=c.amp; dailyAh+=c.amp*h; } });
-  const usable=totalAh*0.5; return {totalAh,usable,drawA,dailyAh,runtime:drawA>0?usable/drawA:null,days:dailyAh>0?usable/dailyAh:null,cons}; }
+/* ---- Strombilanz: Verbraucher, Ladequellen, Batterien (Ströme jeweils bei Bordspannung ELEC.volt) ---- */
+function isBattery(c){ return c.ah>0&&c.sys.includes('dc12'); }
+function isCharger(c){ if(typeof c.charge==='boolean') return c.charge;
+  return !!((c.converts&&c.converts.to==='dc12')||((c.source||[]).includes('dc12')&&c.type!=='Speicher'&&!(c.ah>0))); }
+function chargeA(c){ return c.wp>0 ? c.wp*0.75/ELEC.volt : (c.amp||0); }                 // Solar: Wp × 0,75 (Verluste) ÷ U
+function chargeAhDay(c){ const h=(typeof c.hours==='number'?c.hours:0); return chargeA(c)*h; }
+function powerBalance(){ let totalAh=0,drawA=0,dailyAh=0,chargeDay=0,chargeNow=0; const cons=[],chg=[];
+  COMPONENTS.forEach(c=>{ if(isBattery(c)){ totalAh+=c.ah; return; } const on=c._on!==false, h=(typeof c.hours==='number'?c.hours:0);
+    if(isCharger(c)){ if(c.amp>0||c.wp>0){ const a=chargeA(c),d=chargeAhDay(c); chg.push({name:c.name,amp:a,wp:c.wp,hours:h,ah:d,on}); chargeDay+=d; if(on) chargeNow+=a; } return; }
+    if(c.amp>0){ cons.push({name:c.name,amp:c.amp,hours:h,on}); if(on) drawA+=c.amp; dailyAh+=c.amp*h; } });
+  const use=(BAT_TYPES[ELEC.bat]||BAT_TYPES.agm).use, usable=totalAh*use, net=dailyAh-chargeDay;
+  return {totalAh,use,usable,drawA,dailyAh,chargeDay,chargeNow,net,runtime:drawA>0?usable/drawA:null,days:net>0?usable/net:null,cons,chg}; }
+/* ---- Kabelauslegung Gleichstrom: Kupfer κ = 56 m/(Ω·mm²), Hin- + Rückleiter (2 × L) ----
+   Querschnitt = kleinster Normquerschnitt mit ΔU ≤ ELEC.dropPct und ausreichender Belastbarkeit; Sicherung ≥ 1,25 × I und ≤ Belastbarkeit. */
+const KAPPA=56;
+const CABLE=[[1,10],[1.5,15],[2.5,20],[4,25],[6,35],[10,50],[16,65],[25,90],[35,110],[50,140],[70,175],[95,215],[120,250],[150,285]]; // mm² (ab 1 mm², Mindestquerschnitt nach ISO 10133), Richtwert Dauerstrom A
+const FUSES=[1,2,3,5,7.5,10,15,20,25,30,40,50,60,70,80,100,125,150,175,200,225,250,300];
+function connEntry(o){ return CONNECTIONS.find(x=>x[0]===o.a&&x[1]===o.b&&x[2]===o.sys); }
+function dcSide(start,skip){ const seen=new Set([start]),q=[start];
+  while(q.length){ const id=q.shift(); connObjs.forEach(o=>{ if(o===skip||o.sys!=='dc12') return; const n=o.a===id?o.b:(o.b===id?o.a:null); if(n&&!seen.has(n)){ seen.add(n); q.push(n); } }); }
+  let src=false,load=0; seen.forEach(id=>{ const c=compById[id]; if(!c) return; if(isBattery(c)||isCharger(c)) src=true; else if(c.amp>0) load+=c.amp; });
+  return {src,load}; }
+/* Strom einer Leitung: Seite ohne Batterie/Ladequelle = Summe ihrer Verbraucher; sonst Ladestrom der angeschlossenen Ladequelle */
+function autoCurrent(o){ const sa=dcSide(o.a,o), sb=dcSide(o.b,o);
+  if(!sb.src&&sb.load>0) return sb.load; if(!sa.src&&sa.load>0) return sa.load;
+  const ch=[compById[o.a],compById[o.b]].filter(isCharger).map(chargeA); return ch.length?Math.max(...ch):0; }
+function cableCalc(o){ const m=(connEntry(o)||[])[3]||{};
+  const lenAuto=o.curve.getLength()*mPerU()*ELEC.route, len=m.len>0?m.len:lenAuto, ampAuto=autoCurrent(o), I=m.amp>0?m.amp:ampAuto;
+  const r={o,len,lenAuto,lenManual:m.len>0,I,ampAuto,ampManual:m.amp>0};
+  if(!(I>0)) return r;
+  r.need=2*len*I/(KAPPA*ELEC.volt*ELEC.dropPct/100);
+  r.fuse=FUSES.find(f=>f>=I*1.25)||null;
+  let ix=CABLE.findIndex(([a,cap])=>a>=r.need&&cap>=I);
+  if(ix>=0&&r.fuse!=null) while(ix<CABLE.length&&CABLE[ix][1]<r.fuse) ix++;
+  if(ix<0||ix>=CABLE.length){ r.tooBig=true; return r; }
+  r.mm2=CABLE[ix][0]; r.capA=CABLE[ix][1]; r.dropV=2*len*I/(KAPPA*r.mm2); r.dropPct=r.dropV/ELEC.volt*100; return r; }
+function setConnVal(o,key,val){ const e=connEntry(o); if(!e) return; const m=Object.assign({},e[3]||{});
+  if(val>0) m[key]=val; else delete m[key]; if(Object.keys(m).length) e[3]=m; else e.length=3; markDirty(); }
+function setElec(k,v){ ELEC[k]=v; if(k==='volt'){ applyDcName(); renderLeft(); if(selected) renderDetail(selected); } markDirty(); renderReport(); }
 function tankTotals(){ const t={fresh:0,fuel:0,black:0},list=[];
   COMPONENTS.forEach(c=>{ if(c.liter>0){ const k=c.sys.includes('fresh')?'fresh':c.sys.includes('fuel')?'fuel':c.sys.includes('black')?'black':null; if(k){ t[k]+=c.liter; list.push({name:c.name,k,liter:c.liter}); } } });
   return {t,list}; }
 function lineLengths(){ const per={},f=mPerU(); connObjs.forEach(o=>{ per[o.sys]=(per[o.sys]||0)+o.curve.getLength()*f; }); return per; }
-function bomRows(){ return COMPONENTS.filter(c=>{ const p=c.product||{}; return p.brand||p.model||p.url||p.note||c.amp||c.ah||c.liter; })
-  .map(c=>{ const p=c.product||{}; return { name:c.name,type:c.type||'',sys:c.sys.map(s=>SYSTEMS[s].name).join(', '),brand:p.brand||'',model:p.model||'',spec:[c.amp?fmt(c.amp,1)+' A':'',c.ah?fmt(c.ah,0)+' Ah':'',c.liter?fmt(c.liter,0)+' L':''].filter(Boolean).join(' · '),note:p.note||'',url:p.url||'' }; }); }
+function bomRows(){ return COMPONENTS.filter(c=>{ const p=c.product||{}; return p.brand||p.model||p.url||p.note||c.amp||c.ah||c.liter||c.wp; })
+  .map(c=>{ const p=c.product||{}; return { name:c.name,type:c.type||'',sys:c.sys.map(s=>SYSTEMS[s].name).join(', '),brand:p.brand||'',model:p.model||'',spec:[c.amp?fmt(c.amp,1)+' A':'',c.wp?fmt(c.wp,0)+' Wp':'',c.ah?fmt(c.ah,0)+' Ah':'',c.liter?fmt(c.liter,0)+' L':''].filter(Boolean).join(' · '),note:p.note||'',url:p.url||'' }; }); }
 function csvBOM(){ const head=['Bauteil','Typ','System','Hersteller','Modell','Technik','Notiz','Link']; const q=v=>'"'+String(v==null?'':v).replace(/"/g,'""')+'"';
-  const lines=[head.map(q).join(',')]; bomRows().forEach(r=>lines.push([r.name,r.type,r.sys,r.brand,r.model,r.spec,r.note,r.url].map(q).join(','))); return '\ufeff'+lines.join('\r\n'); }
+  const lines=[head.map(q).join(',')]; bomRows().forEach(r=>lines.push([r.name,r.type,r.sys,r.brand,r.model,r.spec,r.note,r.url].map(q).join(','))); return '﻿'+lines.join('\r\n'); }
 function downloadBlob(content,type,name){ const b=new Blob([content],{type:type+';charset=utf-8'}); const u=URL.createObjectURL(b); const a=document.createElement('a'); a.href=u; a.download=name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(u),1500); }
 /* ---- Auswertungs-Fenster ---- */
-let repTab='strom'; const REPTABS=[['strom','Strombilanz'],['tanks','Tanks'],['leitungen','Leitungen'],['stueck','Stückliste']];
+let repTab='strom'; const REPTABS=[['strom','Strombilanz'],['kabel','Kabel & Sicherungen'],['tanks','Tanks'],['leitungen','Leitungen'],['stueck','Stückliste']];
 function openReport(){ document.getElementById('report').classList.add('show'); renderReport(); }
 function closeReport(){ document.getElementById('report').classList.remove('show'); }
+function voltSeg(){ return `<span>Bordspannung</span><div class="seg">${[12,24].map(v=>`<div class="sgb ${ELEC.volt===v?'on':''}" data-volt="${v}">${v} V</div>`).join('')}</div>`; }
 function renderReport(){
   document.getElementById('repTabs').innerHTML=REPTABS.map(([k,l])=>`<div class="tab ${repTab===k?'on':''}" data-t="${k}">${l}</div>`).join('');
   document.querySelectorAll('#repTabs .tab').forEach(t=>t.onclick=()=>{ repTab=t.dataset.t; renderReport(); });
-  let h=`<div class="print-only" style="margin-bottom:14px;font-size:16px"><b>Bordsysteme – ${esc(BOATS[boatIx]?BOATS[boatIx].name:'Boot')}</b> · ${new Date().toLocaleDateString('de-DE')}</div>`;
-  if(repTab==='strom'){ const p=powerBalance();
+  let h=`<div class="print-only" style="margin-bottom:14px;font-size:16px"><b>Bordsysteme – ${esc(BOATS[boatIx]?BOATS[boatIx].name:'Boot')}</b> · ${ELEC.volt} V · ${new Date().toLocaleDateString('de-DE')}</div>`;
+  if(repTab==='strom'){ const p=powerBalance(), V=ELEC.volt;
+    h+=`<div class="rep-set">${voltSeg()}<span>Batterien</span><div class="seg">${Object.entries(BAT_TYPES).map(([k,b])=>`<div class="sgb ${ELEC.bat===k?'on':''}" data-bat="${k}">${b.name}</div>`).join('')}</div></div>`;
+    const bal=p.net<=0?`<span class="ok">+${fmt(-p.net,1)}</span>`:`<span class="warn">−${fmt(p.net,1)}</span>`;
     h+=`<div class="stat-grid">
-      <div class="stat"><div class="k">Batteriekapazität</div><div class="v">${fmt(p.totalAh,0)} <small>Ah</small></div></div>
-      <div class="stat"><div class="k">Nutzbar (~50 %)</div><div class="v">${fmt(p.usable,0)} <small>Ah</small></div></div>
-      <div class="stat"><div class="k">Last (eingeschaltet)</div><div class="v">${fmt(p.drawA,1)} <small>A</small></div></div>
-      <div class="stat"><div class="k">Laufzeit bei Last</div><div class="v">${p.runtime!=null?fmt(p.runtime,1):'–'} <small>h</small></div></div>
-      <div class="stat"><div class="k">Tagesverbrauch</div><div class="v">${fmt(p.dailyAh,0)} <small>Ah/Tag</small></div></div>
-      <div class="stat"><div class="k">Reichweite</div><div class="v">${p.days!=null?fmt(p.days,1):'–'} <small>Tage</small></div></div></div>
-      <table class="rep"><thead><tr><th>Verbraucher</th><th class="num">Strom</th><th class="num">h/Tag</th><th class="num">Ah/Tag</th><th>Status</th></tr></thead><tbody>`;
-    p.cons.forEach(c=>{ h+=`<tr><td>${esc(c.name)}</td><td class="num">${fmt(c.amp,1)} A</td><td class="num">${fmt(c.hours,1)}</td><td class="num">${fmt(c.amp*c.hours,1)}</td><td>${c.on?'● an':'○ aus'}</td></tr>`; });
-    if(!p.cons.length) h+=`<tr><td colspan="5" style="color:var(--ink-faint)">Noch keine Stromaufnahme hinterlegt — im Modus „Verschieben“ je Verbraucher Ampere und Stunden/Tag eintragen.</td></tr>`;
-    h+=`</tbody></table><div class="rep-note">Laufzeit/Reichweite mit 50 % nutzbarer Kapazität (Blei-Richtwert; bei LiFePO₄ eher 80–90 %). Ladequellen wie Solar oder Lichtmaschine sind hier nicht gegengerechnet.</div>`; }
+      <div class="stat"><div class="k">Batteriekapazität</div><div class="v">${fmt(p.totalAh,0)} <small>Ah · ${fmt(p.totalAh*V/1000,2)} kWh</small></div></div>
+      <div class="stat"><div class="k">Nutzbar (${fmt(p.use*100,0)} %)</div><div class="v">${fmt(p.usable,0)} <small>Ah</small></div></div>
+      <div class="stat"><div class="k">Verbrauch</div><div class="v">${fmt(p.dailyAh,0)} <small>Ah/Tag</small></div></div>
+      <div class="stat"><div class="k">Ladung</div><div class="v">${fmt(p.chargeDay,0)} <small>Ah/Tag</small></div></div>
+      <div class="stat"><div class="k">Bilanz</div><div class="v">${bal} <small>Ah/Tag</small></div></div>
+      <div class="stat"><div class="k">Autark</div><div class="v">${p.dailyAh<=0?'–':(p.days!=null?fmt(p.days,1)+' <small>Tage</small>':'<span class="ok">unbegrenzt</span>')}</div></div>
+      <div class="stat"><div class="k">Last jetzt (an)</div><div class="v">${fmt(p.drawA,1)} <small>A · ${fmt(p.drawA*V,0)} W</small></div></div>
+      <div class="stat"><div class="k">Laufzeit ohne Laden</div><div class="v">${p.runtime!=null?fmt(p.runtime,1):'–'} <small>h</small></div></div></div>
+      <table class="rep"><thead><tr><th>Verbraucher</th><th class="num">Strom</th><th class="num">Leistung</th><th class="num">h/Tag</th><th class="num">Ah/Tag</th><th>Status</th></tr></thead><tbody>`;
+    p.cons.forEach(c=>{ h+=`<tr><td>${esc(c.name)}</td><td class="num">${fmt(c.amp,1)} A</td><td class="num">${fmt(c.amp*V,0)} W</td><td class="num">${fmt(c.hours,1)}</td><td class="num">${fmt(c.amp*c.hours,1)}</td><td>${c.on?'● an':'○ aus'}</td></tr>`; });
+    if(!p.cons.length) h+=`<tr><td colspan="6" style="color:var(--ink-faint)">Noch keine Stromaufnahme hinterlegt — im Modus „Verschieben“ je Verbraucher Ampere und Stunden/Tag eintragen.</td></tr>`;
+    h+=`</tbody></table><table class="rep" style="margin-top:14px"><thead><tr><th>Ladequelle</th><th class="num">Ladestrom</th><th class="num">h/Tag</th><th class="num">Ah/Tag</th><th>Status</th></tr></thead><tbody>`;
+    p.chg.forEach(c=>{ h+=`<tr><td>${esc(c.name)}${c.wp>0?` <span style="color:var(--ink-faint)">(${fmt(c.wp,0)} Wp)</span>`:''}</td><td class="num">${fmt(c.amp,1)} A</td><td class="num">${fmt(c.hours,1)}</td><td class="num">${fmt(c.ah,1)}</td><td>${c.on?'● an':'○ aus'}</td></tr>`; });
+    if(!p.chg.length) h+=`<tr><td colspan="5" style="color:var(--ink-faint)">Keine Ladequelle mit Werten — bei Solar Wp + Sonnenstunden/Tag, bei Lichtmaschine/Ladegerät Ladestrom + Stunden/Tag eintragen.</td></tr>`;
+    h+=`</tbody></table><div class="rep-note">Alle Ströme bei ${V} V. Nutzbare Kapazität je Batterietyp (Blei/AGM/Gel 50 %, LiFePO₄ 85 %). Solarertrag = Wp × Sonnenstunden × 0,75 ÷ ${V} V (Verluste, Ausrichtung). „Autark“ = nutzbare Kapazität ÷ Tagesdefizit; bei positiver Bilanz unbegrenzt. Beim Wechsel 12 ↔ 24 V werden eingetragene Ströme nicht umgerechnet.</div>`; }
+  else if(repTab==='kabel'){ const rows=connObjs.filter(o=>o.sys==='dc12').map(cableCalc);
+    h+=`<div class="rep-set">${voltSeg()}<span>max. Spannungsabfall</span><input class="tin" id="eDrop" value="${ELEC.dropPct}"> %<span>Zuschlag Kabelweg</span><input class="tin" id="eRoute" value="${ELEC.route}"> × Luftlinie</div>`;
+    h+=`<table class="rep"><thead><tr><th>Leitung</th><th class="num">Länge m</th><th class="num">Strom A</th><th class="num">Querschnitt</th><th class="num">ΔU</th><th class="num">Sicherung</th></tr></thead><tbody>`;
+    rows.forEach((r,i)=>{ const A=compById[r.o.a],B=compById[r.o.b];
+      let res;
+      if(!(r.I>0)) res=`<td colspan="3" style="color:var(--ink-faint)">Strom unbekannt — eintragen oder bei den Verbrauchern hinterlegen</td>`;
+      else if(r.tooBig) res=`<td colspan="3" class="bad">über ${CABLE[CABLE.length-1][0]} mm² — Leitung kürzen, Spannung erhöhen oder aufteilen</td>`;
+      else res=`<td class="num"><b>${fmt(r.mm2,2)} mm²</b></td><td class="num ${r.dropPct>ELEC.dropPct?'warn':''}">${fmt(r.dropPct,1)} % <small style="color:var(--ink-faint)">${fmt(r.dropV,2)} V</small></td><td class="num">${r.fuse!=null?fmt(r.fuse,1)+' A':'–'}</td>`;
+      h+=`<tr><td>${esc(A.name)} → ${esc(B.name)}</td>
+        <td class="num"><input class="tin" data-k="len" data-i="${i}" placeholder="${fmt(r.lenAuto,1)}" value="${r.lenManual?r.len:''}"></td>
+        <td class="num"><input class="tin" data-k="amp" data-i="${i}" placeholder="${r.ampAuto>0?fmt(r.ampAuto,1):'?'}" value="${r.ampManual?r.I:''}"></td>${res}</tr>`; });
+    if(!rows.length) h+=`<tr><td colspan="6" style="color:var(--ink-faint)">Keine ${ELEC.volt}-V-Leitungen vorhanden (Modus „Verbinden“).</td></tr>`;
+    h+=`</tbody></table><div class="rep-note">Graue Werte sind automatisch: Länge = Luftlinie × Zuschlag × Maßstab, Strom = Summe der Verbraucher hinter der Leitung bzw. Ladestrom der Ladequelle. Eigene Werte überschreiben sie (Feld leeren = wieder automatisch). Querschnitt nach ΔU = 2·L·I ÷ (56·A) für Kupfer, Hin- und Rückleiter gleich lang; Belastbarkeit und Sicherung sind Richtwerte für einzeln verlegte Kupferleitungen — im Motorraum, im Bündel oder bei hoher Temperatur eine Stufe größer wählen. Sicherung möglichst nah an der Batterie. Verbindlich sind ISO 10133 / Herstellerangaben.</div>`; }
   else if(repTab==='tanks'){ const {t,list}=tankTotals();
     h+=`<div class="stat-grid">
       <div class="stat"><div class="k">Frischwasser</div><div class="v">${fmt(t.fresh,0)} <small>L</small></div></div>
@@ -769,13 +877,20 @@ function renderReport(){
       <table class="rep"><thead><tr><th>System</th><th class="num">Länge</th></tr></thead><tbody>`;
     keys.forEach(k=>{ h+=`<tr><td><span style="display:inline-block;width:9px;height:9px;border-radius:2px;background:${SYSTEMS[k].color};margin-right:7px"></span>${SYSTEMS[k].name}</td><td class="num">${fmt(per[k],1)} m</td></tr>`; });
     if(!keys.length) h+=`<tr><td colspan="2" style="color:var(--ink-faint)">Keine Leitungen vorhanden.</td></tr>`;
-    h+=`</tbody></table><div class="rep-note">Grobe Luftlinien aus der 3D-Geometrie × Maßstab. Reale Kabel-/Schlauchwege sind länger — plane Zuschlag ein. Maßstab im Plan-Modus über „Bootslänge“ einstellen.</div>`; }
+    h+=`</tbody></table><div class="rep-note">Grobe Luftlinien aus der 3D-Geometrie × Maßstab. Reale Kabel-/Schlauchwege sind länger — plane Zuschlag ein (für ${ELEC.volt}-V-Kabel unter „Kabel &amp; Sicherungen“ berücksichtigt). Maßstab im Plan-Modus über „Bootslänge“ einstellen.</div>`; }
   else { const rows=bomRows();
     h+=`<table class="rep"><thead><tr><th>Bauteil</th><th>Hersteller / Modell</th><th>Technik</th><th>Link</th></tr></thead><tbody>`;
     rows.forEach(r=>{ const hm=[r.brand,r.model].filter(Boolean).join(' '); h+=`<tr><td>${esc(r.name)}<div style="color:var(--ink-faint);font-size:11px">${esc(r.sys)}</div></td><td>${esc(hm)||'–'}</td><td>${esc(r.spec)||'–'}</td><td>${r.url?`<a href="${esc(r.url)}" target="_blank" rel="noopener">öffnen ↗</a>`:'–'}</td></tr>`; });
     if(!rows.length) h+=`<tr><td colspan="4" style="color:var(--ink-faint)">Noch keine Produkte/Technik hinterlegt.</td></tr>`;
     h+=`</tbody></table>`; }
-  document.getElementById('repBody').innerHTML=h;
+  const body=document.getElementById('repBody'); body.innerHTML=h;
+  const num=v=>{ const n=parseFloat(String(v).replace(',','.')); return isFinite(n)?n:0; };
+  body.querySelectorAll('[data-volt]').forEach(b=>b.onclick=()=>setElec('volt',parseInt(b.dataset.volt)));
+  body.querySelectorAll('[data-bat]').forEach(b=>b.onclick=()=>setElec('bat',b.dataset.bat));
+  const ed=body.querySelector('#eDrop'); if(ed) ed.onchange=()=>{ const v=num(ed.value); setElec('dropPct',v>0&&v<=20?v:ELEC_DEF.dropPct); };
+  const er=body.querySelector('#eRoute'); if(er) er.onchange=()=>{ const v=num(er.value); setElec('route',v>=1&&v<=5?v:ELEC_DEF.route); };
+  if(repTab==='kabel'){ const list=connObjs.filter(o=>o.sys==='dc12');
+    body.querySelectorAll('input[data-k]').forEach(inp=>inp.onchange=()=>{ setConnVal(list[+inp.dataset.i],inp.dataset.k,num(inp.value)); renderReport(); }); }
 }
 /* ---- Foto pro Bauteil ---- */
 let photoTarget=null;
@@ -799,31 +914,83 @@ document.getElementById('boatRen').onclick=renameBoat;
 document.getElementById('boatDel').onclick=delBoat;
 
 /* ============================================================ SPEICHERUNG AUF DEM HEIMSERVER ============================================================
-   Dienst bordsysteme-api auf CT 210 (über Caddy unter /api/*). Ganzer Stand = Backup-Format (version 3, alle Boote).
-   GET api/state -> {rev,saved,data} · PUT api/state {rev,data} -> {rev} | 409 (anderes Gerät war schneller → Server-Stand laden) */
+   Dienst bordsysteme-api auf CT 210 (über Caddy unter /api/*). Ganzer Stand = Backup-Format (version 3, alle Boote mit fester id).
+   GET api/state -> {rev,saved,by,data} · PUT api/state {rev,data} -> {rev} | 409 + aktueller Stand (anderes Gerät war schneller).
+   Bei 409 wird pro Boot zusammengeführt: hat nur eine Seite das Boot geändert, gewinnt sie; haben beide es geändert,
+   bleibt die Server-Fassung und die eigene kommt als Kopie „(Konflikt …)“ dazu. */
 const syncStat=document.getElementById('syncStat');
 function setSync(txt){ syncStat.textContent=txt; }
-let serverRev=0, loaded=false, saveTimer=null, saving=null;
-function fileData(){ captureBoat(); return { version:3, activeBoat:boatIx, boats:BOATS.map(b=>({name:b.name,state:b.state})) }; }
+let serverRev=0, loaded=false, saveTimer=null, saving=null, baseKeys=new Map();
+function fileData(){ captureBoat(); return { version:3, activeBoat:boatIx, boats:BOATS.map(b=>({id:b.id,name:b.name,state:b.state})) }; }
+function boatKey(b){ return JSON.stringify({n:b.name,s:Object.assign({},b.state,{camera:null})}); }     // Kameraposition zählt nicht als Änderung
+function setBase(boats){ baseKeys=new Map(boats.map(b=>[b.id,boatKey(b)])); }
+function withIds(boats){ return boats.map(b=>({id:b.id||newBoatId(),name:b.name||'Boot',state:b.state})); }
 function scheduleSave(){ if(!loaded) return; clearTimeout(saveTimer); setSync('Ungespeicherte Änderungen'); saveTimer=setTimeout(saveToServer,1200); }
 async function flushSave(){ clearTimeout(saveTimer); captureBoat(); if(dirty&&loaded) await saveToServer(); }
-function applyServer(st){ serverRev=st.rev; const f=st.data;
-  if(f&&Array.isArray(f.boats)&&f.boats.length){ BOATS=f.boats.map(b=>({name:b.name||'Boot',state:b.state})); boatIx=Math.max(0,Math.min(f.activeBoat||0,BOATS.length-1)); applyBoatState(BOATS[boatIx].state); renderBoatSwitcher(); }
-  dirty=false; }
+function applyServer(st){ serverRev=st.rev; const f=st.data; let needIds=false;
+  if(f&&Array.isArray(f.boats)&&f.boats.length){ needIds=f.boats.some(b=>!b.id); BOATS=withIds(f.boats); boatIx=Math.max(0,Math.min(f.activeBoat||0,BOATS.length-1));
+    applyBoatState(BOATS[boatIx].state); renderBoatSwitcher(); resetUndo(); setBase(needIds?[]:BOATS); }
+  if(st.saved) syncStat.title='Zuletzt gespeichert '+fmtTime(st.saved)+(st.by?' von '+st.by:'');
+  dirty=needIds; }
+function mergeBoats(S,Lc){ const sm=new Map(S.map(b=>[b.id,b])), lm=new Map(Lc.map(b=>[b.id,b])), out=[]; let conflicts=0;
+  const ids=[...S.map(b=>b.id),...Lc.map(b=>b.id).filter(id=>!sm.has(id))];
+  ids.forEach(id=>{ const s=sm.get(id), l=lm.get(id), base=baseKeys.get(id), ks=s&&boatKey(s), kl=l&&boatKey(l);
+    if(s&&l){ if(ks===kl||kl===base) out.push(s); else if(ks===base) out.push(l);
+      else { out.push(s); out.push({id:newBoatId(),name:l.name+' (Konflikt '+new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})+')',state:l.state}); conflicts++; } }
+    else if(s){ if(!(base!==undefined&&ks===base)) out.push(s); }   // hier gelöscht, auf dem Server unverändert → bleibt gelöscht
+    else if(l){ if(!(base!==undefined&&kl===base)) out.push(l); } }); // auf dem Server gelöscht, hier unverändert → weg
+  return {boats:out.length?out:S,conflicts}; }
+function takeMerged(cur){ const S=withIds((cur.data&&cur.data.boats)||[]), curId=BOATS[boatIx]&&BOATS[boatIx].id, local=fileData().boats;
+  const before=boatKey(BOATS[boatIx]), {boats,conflicts}=mergeBoats(S,local);
+  BOATS=boats; const ix=BOATS.findIndex(b=>b.id===curId); boatIx=ix<0?0:ix;
+  if(ix<0||boatKey(BOATS[boatIx])!==before){ const keep={theta:cam.theta,phi:cam.phi,radius:cam.radius};
+    undoMuted=true; applyBoatState(Object.assign({},BOATS[boatIx].state,{camera:keep})); undoMuted=false; resetUndo(); }
+  renderBoatSwitcher(); serverRev=cur.rev; setBase(S); return conflicts; }
 async function saveToServer(){ clearTimeout(saveTimer); if(saving){ await saving; if(!dirty) return; }
-  saving=(async()=>{ setSync('Speichert…'); dirty=false;
-    try{ const r=await fetch('api/state',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({rev:serverRev,data:fileData()})});
-      if(r.status===409){ applyServer(await r.json()); setSync('Neuerer Stand von anderem Gerät geladen'); return; }
+  saving=(async()=>{ setSync('Speichert…'); dirty=false; const data=fileData();
+    try{ const r=await fetch('api/state',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({rev:serverRev,data})});
+      if(r.status===409){ const conflicts=takeMerged(await r.json()); dirty=true;
+        setSync(conflicts?'Gleichzeitig geändert – Kopie „(Konflikt …)“ angelegt':'Mit Änderungen von anderem Gerät zusammengeführt'); saveTimer=setTimeout(saveToServer,300); return; }
       if(!r.ok) throw new Error('HTTP '+r.status);
-      serverRev=(await r.json()).rev; setSync(dirty?'Ungespeicherte Änderungen':'Auf dem Server gespeichert'); }
+      serverRev=(await r.json()).rev; setBase(data.boats); setSync(dirty?'Ungespeicherte Änderungen':'Auf dem Server gespeichert'); }
     catch(err){ console.error(err); dirty=true; setSync('Server nicht erreichbar – neuer Versuch …'); saveTimer=setTimeout(saveToServer,10000); } })();
   await saving; saving=null; }
 async function loadFromServer(){ setSync('Lädt…');
   try{ const r=await fetch('api/state',{cache:'no-store'}); if(!r.ok) throw new Error('HTTP '+r.status); const st=await r.json();
-    if(st.data) applyServer(st); else serverRev=st.rev;
-    loaded=true; if(st.data) setSync('Auf dem Server gespeichert'); else { dirty=true; await saveToServer(); } }
+    loaded=true;
+    if(st.data){ applyServer(st); if(dirty) await saveToServer(); else setSync('Auf dem Server gespeichert'); }
+    else { serverRev=st.rev; setBase([]); resetUndo(); dirty=true; await saveToServer(); } }
   catch(err){ console.error(err); setSync('Server nicht erreichbar – neuer Versuch …'); setTimeout(loadFromServer,10000); } }
 addEventListener('visibilitychange',()=>{ if(document.visibilityState==='hidden'&&dirty&&loaded) saveToServer(); });
+
+/* ---- Verlauf: Schnappschüsse auf dem Server (höchstens alle 10 Min einer, letzte 300) ---- */
+const histModal=document.getElementById('histModal');
+function fmtTime(s){ if(!s) return '–'; const d=new Date(s); return isNaN(d)?s:d.toLocaleString('de-DE',{dateStyle:'medium',timeStyle:'short'}); }
+async function openHistory(){ histModal.classList.add('show'); const body=document.getElementById('histBody'); body.innerHTML='<div class="note">Lädt…</div>';
+  try{ const r=await fetch('api/history',{cache:'no-store'}); if(!r.ok) throw new Error('HTTP '+r.status); const list=await r.json();
+    if(!list.length){ body.innerHTML='<div class="note">Noch keine älteren Stände. Der Server legt beim Speichern höchstens alle 10 Minuten einen an.</div>'; return; }
+    body.innerHTML=`<table class="rep"><thead><tr><th>Gespeichert</th><th>Boote</th><th>von</th><th></th></tr></thead><tbody>${list.map(e=>`<tr>
+      <td style="white-space:nowrap">${esc(fmtTime(e.saved))}<div style="color:var(--ink-faint);font-size:11px">Stand ${e.rev} · ${fmt(e.size/1024,0)} KB</div></td>
+      <td>${esc((e.boats||[]).join(', '))||'–'}</td><td>${esc(e.by||'–')}</td>
+      <td style="text-align:right"><span class="mini-btn" data-f="${esc(e.file)}" style="display:inline-block;padding:5px 10px">Wiederherstellen</span></td></tr>`).join('')}</tbody></table>
+      <div class="rep-note">Wiederherstellen ersetzt den ganzen Stand (alle Boote). Der jetzige Stand wird vorher selbst im Verlauf gesichert und lässt sich genauso zurückholen.</div>`;
+    body.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>restoreHistory(b.dataset.f)); }
+  catch(err){ console.error(err); body.innerHTML='<div class="note bad">Verlauf nicht erreichbar.</div>'; } }
+async function restoreHistory(file){ if(!confirm('Diesen Stand wiederherstellen? Alle Boote werden ersetzt – der jetzige Stand bleibt im Verlauf.')) return;
+  await flushSave();
+  try{ const s=await fetch('api/history/'+encodeURIComponent(file),{cache:'no-store'}); if(!s.ok) throw new Error('HTTP '+s.status);
+    const data=(await s.json()).data; data.boats=withIds(data.boats||[]);
+    const r=await fetch('api/state',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({rev:serverRev,data,restore:true})});
+    if(r.status===409){ alert('Inzwischen hat ein anderes Gerät gespeichert – der neue Stand wird geladen, dann bitte erneut wiederherstellen.'); histModal.classList.remove('show'); return loadFromServer(); }
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    applyServer({rev:(await r.json()).rev,data}); setBase(BOATS); dirty=false; setSync('Stand wiederhergestellt'); histModal.classList.remove('show'); }
+  catch(err){ console.error(err); alert('Wiederherstellen fehlgeschlagen: '+err.message); } }
+document.getElementById('histBtn').onclick=openHistory;
+document.getElementById('histX').onclick=()=>histModal.classList.remove('show');
+histModal.addEventListener('click',e=>{ if(e.target===histModal) histModal.classList.remove('show'); });
+
+/* Von außen (über Authentik angemeldet) gibt es einen Abmelde-Knopf; im Heimnetz (*.horsti.home) nicht */
+if(!/\.horsti\.home$/.test(location.hostname)) document.getElementById('logoutBtn').style.display='flex';
 loadFromServer();
 
 /* ============================================================ LOOP ============================================================ */
@@ -832,7 +999,7 @@ let t0=performance.now();
 (function loop(now){ requestAnimationFrame(loop); const t=(now-t0)/1000;
   if(mode==='sim'){ connObjs.forEach(o=>{ if(o._flow){ o.dots.forEach((d,i)=>{ d.visible=true; const u=((t*0.35)+i*0.5)%1; o.curve.getPoint(u,d.position); }); } else o.dots.forEach(d=>d.visible=false); }); }
   renderer.render(scene,camera); })(t0);
-setMode('view'); select(null); renderBoatSwitcher();
+setMode('view'); select(null); renderBoatSwitcher(); resetUndo();
 </script>
 </body>
 </html>
