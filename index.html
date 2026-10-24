@@ -10,7 +10,7 @@
 <style>
   :root{ --bg-0:#05101a; --bg-1:#0a1a28; --panel:rgba(10,24,37,.82);
     --line:rgba(120,170,195,.16); --line-strong:rgba(120,170,195,.32);
-    --ink:#dcecf1; --ink-dim:#7f97a3; --ink-faint:#4f6470; --accent:#54ffe0; --accent-dim:rgba(84,255,224,.14); }
+    --ink:#dcecf1; --ink-dim:#7f97a3; --ink-faint:#4f6470; --accent:#54ffe0; --accent-dim:rgba(84,255,224,.14); --panel-solid:#0b1b29; }
   *{ box-sizing:border-box; margin:0; padding:0; }
   html,body{ height:100%; overflow:hidden; }
   body{ font-family:"Space Grotesk",system-ui,-apple-system,sans-serif; color:var(--ink);
@@ -177,7 +177,6 @@
   </div>
   <div class="boatbar" style="pointer-events:auto">
     <span id="syncStat" style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-dim);white-space:nowrap"></span>
-    <div class="iconbtn" id="logoutBtn" title="Abmelden">⎋</div>
   </div>
 </div>
 <div class="panel scrim" id="leftPanel"></div>
@@ -198,24 +197,6 @@
     <div class="modal-foot"><div class="mini-btn" id="repCSV" style="flex:none;padding:8px 14px">Stückliste als CSV</div><div class="spacer"></div><div class="mini-btn" id="repPrint" style="flex:none;padding:8px 14px">Drucken / PDF</div></div>
   </div>
 </div>
-<div class="modal show" id="authGate" style="z-index:30">
-  <div class="modal-card" style="width:min(380px,92vw)">
-    <div class="modal-top"><span class="mt-title">◈ Bordsysteme — Anmelden</span></div>
-    <div class="rep-body">
-      <div class="note" style="padding-bottom:10px">Deine Boote und Bauteile werden in der Cloud gespeichert, damit du jederzeit von jedem Gerät zurückkehren kannst.</div>
-      <div class="edit-lab">E-Mail</div>
-      <input class="txt" id="authEmail" type="email" placeholder="du@example.com" autocomplete="email">
-      <div class="edit-lab">Passwort <span style="opacity:.6">(für Magic Link nicht nötig)</span></div>
-      <input class="txt" id="authPass" type="password" placeholder="Passwort" autocomplete="current-password">
-      <div id="authMsg" class="note" style="min-height:16px;padding:10px 0 0"></div>
-    </div>
-    <div class="modal-foot" style="flex-wrap:wrap;gap:8px">
-      <div class="mini-btn" id="authLoginBtn" style="flex:1 1 auto">Anmelden</div>
-      <div class="mini-btn" id="authSignupBtn" style="flex:1 1 auto">Registrieren</div>
-      <div class="mini-btn" id="authMagicBtn" style="flex:1 1 100%">✉ Magic Link senden</div>
-    </div>
-  </div>
-</div>
 <div class="botbar">
   <button id="saveBtn" class="pbtn primary">⤓ Backup</button>
   <button id="loadBtn" class="pbtn">⤒ Backup laden</button>
@@ -224,8 +205,7 @@
   <button id="resetBtn" class="pbtn">⟲ Ansicht</button>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="three.min.js"></script>
 <script>
 /* ============================================================
    BOOTSDATEN — Segelyacht ~10 m.  x = Länge (0 Heck…10 Bug)
@@ -662,7 +642,7 @@ function exportState(){ captureBoat();
   const file={ version:3, activeBoat:boatIx, boats:BOATS.map(b=>({name:b.name,state:b.state})) };
   const blob=new Blob([JSON.stringify(file)],{type:'application/json'}); const url=URL.createObjectURL(blob);
   const a=document.createElement('a'); a.href=url; a.download='bordsysteme-'+new Date().toISOString().slice(0,10)+'.json';
-  document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),1500); dirty=false;
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),1500);
 }
 function contentBounds(){
   let minX=-0.3,maxX=L+0.3,minY=-2.95,maxY=1.35,minZ=-2.2,maxZ=2.2;
@@ -712,12 +692,11 @@ function exportImage(){
   document.body.appendChild(a); a.click(); a.remove();
 }
 addEventListener('beforeunload',e=>{ if(dirty){ e.preventDefault(); e.returnValue=''; } });
-function importState(file){ const rd=new FileReader(); rd.onload=async()=>{ let f; try{ f=JSON.parse(rd.result); }catch(err){ alert('Diese Datei ist keine gültige Bordsysteme-Datei.'); return; }
-    if(f&&Array.isArray(f.boats)){ BOATS=f.boats.map(b=>({id:null,name:b.name||'Boot',state:b.state})); boatIx=Math.max(0,Math.min(f.activeBoat||0,BOATS.length-1)); applyBoatState(BOATS[boatIx].state); }
-    else if(f&&f.components){ BOATS=[{id:null,name:'Mein Boot',state:f}]; boatIx=0; applyBoatState(f); }
+function importState(file){ const rd=new FileReader(); rd.onload=()=>{ let f; try{ f=JSON.parse(rd.result); }catch(err){ alert('Diese Datei ist keine gültige Bordsysteme-Datei.'); return; }
+    if(f&&Array.isArray(f.boats)&&f.boats.length){ BOATS=f.boats.map(b=>({name:b.name||'Boot',state:b.state})); boatIx=Math.max(0,Math.min(f.activeBoat||0,BOATS.length-1)); applyBoatState(BOATS[boatIx].state); }
+    else if(f&&f.components){ BOATS=[{name:'Mein Boot',state:f}]; boatIx=0; applyBoatState(f); }
     else { alert('Diese Datei enthält keinen gespeicherten Stand.'); return; }
-    renderBoatSwitcher(); dirty=false;
-    if(dbUser){ setSync('Importiere…'); for(const b of BOATS){ b.id=await pushBoatToDB(null,b.name,b.state||buildState()); } setSync('Gespeichert'); } }; rd.readAsText(file); }
+    renderBoatSwitcher(); markDirty(); }; rd.readAsText(file); }
 function applyBoatState(st){ clearScene(); st=st||{};
   (st.components||[]).forEach(cd=>{ const c={ id:cd.id,name:cd.name,type:cd.type,sys:(cd.sys||['dc12']).slice(),shape:cd.shape,source:cd.source,converts:cd.converts,needs:cd.needs,pos:(cd.pos||[5,0,0]).slice(),desc:cd.desc,product:cd.product,amp:cd.amp,ah:cd.ah,liter:cd.liter,hours:cd.hours,photo:cd.photo,service:cd.service,warranty:cd.warranty,logNote:cd.logNote };
     if(cd.sw) c.sw=true; c.on=cd.on!==false; buildCompVisuals(c); COMPONENTS.push(c); });
@@ -734,11 +713,10 @@ function applyBoatState(st){ clearScene(); st=st||{};
 /* ---- Mehrere Boote ---- */
 function renderBoatSwitcher(){ const sel=document.getElementById('boatSel'); sel.innerHTML=BOATS.map((b,i)=>`<option value="${i}" ${i===boatIx?'selected':''}>${esc(b.name)}</option>`).join(''); }
 async function switchBoat(n){ if(n===boatIx||!BOATS[n]) { renderBoatSwitcher(); return; } await flushSave(); boatIx=n; applyBoatState(BOATS[n].state); renderBoatSwitcher(); }
-async function newBoat(){ await flushSave(); BOATS.push({id:null,name:'Boot '+(BOATS.length+1),state:{components:[],connections:[],activeSys:Object.keys(SYSTEMS),boatLengthM:10}}); boatIx=BOATS.length-1; applyBoatState(BOATS[boatIx].state); renderBoatSwitcher(); markDirty(); }
+async function newBoat(){ await flushSave(); BOATS.push({name:'Boot '+(BOATS.length+1),state:{components:[],connections:[],activeSys:Object.keys(SYSTEMS),boatLengthM:10}}); boatIx=BOATS.length-1; applyBoatState(BOATS[boatIx].state); renderBoatSwitcher(); markDirty(); }
 function renameBoat(){ const nm=prompt('Name des Boots:',BOATS[boatIx].name); if(nm){ BOATS[boatIx].name=nm; renderBoatSwitcher(); markDirty(); } }
 async function delBoat(){ if(BOATS.length<=1){ alert('Es muss mindestens ein Boot bleiben.'); return; } if(!confirm('Dieses Boot löschen?')) return;
-  const gone=BOATS[boatIx]; clearTimeout(saveTimer); BOATS.splice(boatIx,1); boatIx=Math.max(0,boatIx-1); applyBoatState(BOATS[boatIx].state); renderBoatSwitcher();
-  if(dbUser&&gone.id){ setSync('Löscht…'); const {error}=await sb.from('boats').delete().eq('id',gone.id); setSync(error?'Fehler beim Löschen':'Gespeichert'); } }
+  BOATS.splice(boatIx,1); boatIx=Math.max(0,boatIx-1); applyBoatState(BOATS[boatIx].state); renderBoatSwitcher(); markDirty(); }
 /* ---- Szenarien ---- */
 function applyScenario(i){ const s=SCENARIOS[i]; if(!s) return; COMPONENTS.forEach(c=>{ if(c.sw&&s.states[c.id]!==undefined) c._on=s.states[c.id]; }); markDirty(); refresh(); renderLeft(); if(selected) renderDetail(selected); }
 /* ---- Berechnungen ---- */
@@ -820,53 +798,33 @@ document.getElementById('boatNew').onclick=newBoat;
 document.getElementById('boatRen').onclick=renameBoat;
 document.getElementById('boatDel').onclick=delBoat;
 
-/* ============================================================ CLOUD-KONTO & SPEICHERUNG ============================================================ */
-const sb=window.supabase.createClient('https://ehswgsquvjrhlfesiwdz.supabase.co','sb_publishable_PY0b6QUk5QCoO77_CBqgSA_IWkeE3xw');
-const authGate=document.getElementById('authGate'), authMsg=document.getElementById('authMsg'), syncStat=document.getElementById('syncStat');
+/* ============================================================ SPEICHERUNG AUF DEM HEIMSERVER ============================================================
+   Dienst bordsysteme-api auf CT 210 (über Caddy unter /api/*). Ganzer Stand = Backup-Format (version 3, alle Boote).
+   GET api/state -> {rev,saved,data} · PUT api/state {rev,data} -> {rev} | 409 (anderes Gerät war schneller → Server-Stand laden) */
+const syncStat=document.getElementById('syncStat');
 function setSync(txt){ syncStat.textContent=txt; }
-document.getElementById('authLoginBtn').onclick=async()=>{
-  const email=document.getElementById('authEmail').value.trim(), pass=document.getElementById('authPass').value;
-  if(!email||!pass){ authMsg.textContent='E-Mail und Passwort eingeben.'; return; }
-  authMsg.textContent='Melde an…'; const {error}=await sb.auth.signInWithPassword({email,password:pass}); authMsg.textContent=error?error.message:''; };
-document.getElementById('authSignupBtn').onclick=async()=>{
-  const email=document.getElementById('authEmail').value.trim(), pass=document.getElementById('authPass').value;
-  if(!email||!pass){ authMsg.textContent='E-Mail und Passwort eingeben.'; return; }
-  if(pass.length<6){ authMsg.textContent='Passwort mindestens 6 Zeichen.'; return; }
-  authMsg.textContent='Registriere…'; const {error}=await sb.auth.signUp({email,password:pass});
-  authMsg.textContent=error?error.message:'Fast fertig — bitte den Bestätigungslink in deiner E-Mail öffnen.'; };
-document.getElementById('authMagicBtn').onclick=async()=>{
-  const email=document.getElementById('authEmail').value.trim(); if(!email){ authMsg.textContent='E-Mail eingeben.'; return; }
-  authMsg.textContent='Sende Link…'; const {error}=await sb.auth.signInWithOtp({email}); authMsg.textContent=error?error.message:'Link gesendet — E-Mail öffnen, um dich anzumelden.'; };
-document.getElementById('logoutBtn').onclick=()=>sb.auth.signOut();
-
-let dbUser=null, saveTimer=null;
-function scheduleSave(){ if(!dbUser) return; clearTimeout(saveTimer); setSync('Ungespeicherte Änderungen'); saveTimer=setTimeout(saveCurrentBoatToDB,1200); }
-async function flushSave(){ clearTimeout(saveTimer); if(dbUser&&dirty) await saveCurrentBoatToDB(); else captureBoat(); }
-async function pushBoatToDB(id,name,state){
-  const payload={ id, name, boat_length_m:state.boatLengthM, active_sys:state.activeSys, camera:state.camera, ref:state.ref, custom_n:state.customN, components:state.components, connections:state.connections, scenarios:state.scenarios };
-  const {data,error}=await sb.rpc('save_boat',{payload}); if(error){ setSync('Fehler beim Speichern'); console.error(error); return id; } return data; }
-async function saveCurrentBoatToDB(){ if(!dbUser) return; clearTimeout(saveTimer);
-  const b=BOATS[boatIx]; if(!b) return; setSync('Speichert…');
-  const state=buildState(); b.state=state; const id=await pushBoatToDB(b.id,b.name,state); if(id) b.id=id; dirty=false; setSync('Gespeichert'); }
-function dbRowToState(row){ return {
-  components: row.components.map(c=>({ id:c.id,name:c.name,type:c.type,sys:c.sys,shape:c.shape,source:c.source,converts:c.converts,needs:c.needs,sw:c.sw,on:c.is_on,pos:c.pos,desc:c.description,product:c.product,amp:c.amp,ah:c.ah,liter:c.liter,hours:c.hours,photo:c.photo,service:c.service,warranty:c.warranty,logNote:c.log_note })),
-  connections: row.connections.map(cn=>[cn.comp_a,cn.comp_b,cn.sys]), ref: row.ref||null,
-  activeSys: row.active_sys, camera: row.camera, customN: row.custom_n,
-  scenarios: row.scenarios.map(s=>({name:s.name,states:s.states})), boatLengthM: row.boat_length_m }; }
-async function loadBoatsFromDB(){
-  const {data,error}=await sb.from('boats').select('*, components(*), connections(*), scenarios(*)').order('created_at',{ascending:true});
-  if(error){ setSync('Fehler beim Laden'); console.error(error); return; }
-  if(!data||!data.length){
-    const state=buildState(), boatName=(BOATS[0]&&BOATS[0].name)||'Mein Boot';
-    setSync('Speichert…'); const id=await pushBoatToDB(null,boatName,state);
-    BOATS=[{id,name:boatName,state}]; boatIx=0; renderBoatSwitcher(); setSync('Gespeichert'); return; }
-  BOATS=data.map(row=>({ id:row.id, name:row.name, state:dbRowToState(row) }));
-  boatIx=0; applyBoatState(BOATS[0].state); renderBoatSwitcher(); dirty=false; setSync('Gespeichert'); }
-async function handleAuthChange(session){ const user=session?session.user:null;
-  if(user&&(!dbUser||dbUser.id!==user.id)){ dbUser=user; authGate.classList.remove('show'); setSync('Lädt…'); await loadBoatsFromDB(); }
-  else if(!user){ dbUser=null; authGate.classList.add('show'); setSync(''); } }
-sb.auth.onAuthStateChange((event,session)=>handleAuthChange(session));
-sb.auth.getSession().then(({data})=>handleAuthChange(data.session));
+let serverRev=0, loaded=false, saveTimer=null, saving=null;
+function fileData(){ captureBoat(); return { version:3, activeBoat:boatIx, boats:BOATS.map(b=>({name:b.name,state:b.state})) }; }
+function scheduleSave(){ if(!loaded) return; clearTimeout(saveTimer); setSync('Ungespeicherte Änderungen'); saveTimer=setTimeout(saveToServer,1200); }
+async function flushSave(){ clearTimeout(saveTimer); captureBoat(); if(dirty&&loaded) await saveToServer(); }
+function applyServer(st){ serverRev=st.rev; const f=st.data;
+  if(f&&Array.isArray(f.boats)&&f.boats.length){ BOATS=f.boats.map(b=>({name:b.name||'Boot',state:b.state})); boatIx=Math.max(0,Math.min(f.activeBoat||0,BOATS.length-1)); applyBoatState(BOATS[boatIx].state); renderBoatSwitcher(); }
+  dirty=false; }
+async function saveToServer(){ clearTimeout(saveTimer); if(saving){ await saving; if(!dirty) return; }
+  saving=(async()=>{ setSync('Speichert…'); dirty=false;
+    try{ const r=await fetch('api/state',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({rev:serverRev,data:fileData()})});
+      if(r.status===409){ applyServer(await r.json()); setSync('Neuerer Stand von anderem Gerät geladen'); return; }
+      if(!r.ok) throw new Error('HTTP '+r.status);
+      serverRev=(await r.json()).rev; setSync(dirty?'Ungespeicherte Änderungen':'Auf dem Server gespeichert'); }
+    catch(err){ console.error(err); dirty=true; setSync('Server nicht erreichbar – neuer Versuch …'); saveTimer=setTimeout(saveToServer,10000); } })();
+  await saving; saving=null; }
+async function loadFromServer(){ setSync('Lädt…');
+  try{ const r=await fetch('api/state',{cache:'no-store'}); if(!r.ok) throw new Error('HTTP '+r.status); const st=await r.json();
+    if(st.data) applyServer(st); else serverRev=st.rev;
+    loaded=true; if(st.data) setSync('Auf dem Server gespeichert'); else { dirty=true; await saveToServer(); } }
+  catch(err){ console.error(err); setSync('Server nicht erreichbar – neuer Versuch …'); setTimeout(loadFromServer,10000); } }
+addEventListener('visibilitychange',()=>{ if(document.visibilityState==='hidden'&&dirty&&loaded) saveToServer(); });
+loadFromServer();
 
 /* ============================================================ LOOP ============================================================ */
 addEventListener('resize',()=>{ camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth,innerHeight); });
