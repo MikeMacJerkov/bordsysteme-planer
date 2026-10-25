@@ -178,17 +178,19 @@
   }
   .print-only{ display:none; }
 </style>
+<script defer src="/s.js" data-website-id="ce174d8b-e7b4-4395-a40c-810dbb9e813e" data-domains="bordsysteme.skipr.me" data-do-not-track="true"></script>
 </head>
 <body>
 <div id="stage"></div>
 <input type="file" id="planFile" accept="image/*" style="display:none">
 <div class="topbar">
-  <div class="brand"><b>◈</b> Bordsysteme</div>
+  <a class="brand" href="https://skipr.me" title="Zu Skipr.me (Segeltagebuch)" style="text-decoration:none;color:inherit;pointer-events:auto"><span style="color:var(--ink-dim)">⛵ Skipr ›</span> <b>◈</b> Bordsysteme</a>
   <div class="boatbar" style="pointer-events:auto">
     <select class="boatsel" id="boatSel"></select>
     <div class="iconbtn" id="boatNew" title="Neues Boot">＋</div>
     <div class="iconbtn" id="boatRen" title="Umbenennen">✎</div>
     <div class="iconbtn" id="boatDel" title="Boot löschen">🗑</div>
+    <div class="iconbtn" id="skiprBtn" title="Mit Skipr-Schiffen abgleichen">⇄</div>
     <div class="iconbtn off" id="undoBtn" title="Rückgängig (Strg+Z)">↶</div>
     <div class="iconbtn off" id="redoBtn" title="Wiederholen (Strg+Y)">↷</div>
   </div>
@@ -201,7 +203,7 @@
   </div>
   <div class="boatbar" style="pointer-events:auto">
     <span id="syncStat" style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-dim);white-space:nowrap"></span>
-    <a class="iconbtn" id="logoutBtn" title="Abmelden" href="/outpost.goauthentik.io/sign_out" style="display:none;text-decoration:none">⎋</a>
+    <div class="iconbtn" id="logoutBtn" title="Abmelden">⎋</div>
   </div>
 </div>
 <div class="panel scrim" id="leftPanel"></div>
@@ -248,6 +250,26 @@
     <div class="rep-body scrim" id="histBody"></div>
   </div>
 </div>
+<div class="modal" id="skModal">
+  <div class="modal-card" style="width:min(640px,94vw)">
+    <div class="modal-top"><span class="mt-title">⇄ Abgleich mit Skipr-Schiffen</span><span class="mt-x" id="skX">×</span></div>
+    <div class="rep-body scrim" id="skBody"></div>
+  </div>
+</div>
+<div class="modal" id="authModal" style="z-index:40">
+  <div class="modal-card" style="width:min(400px,92vw)">
+    <div class="modal-top"><span class="mt-title">⛵ Mit Skipr-Konto anmelden</span></div>
+    <div class="rep-body">
+      <div class="rep-note" id="authMsg" style="margin:0 0 12px">Bordsysteme gehört zu Skipr.me – du nutzt dasselbe Konto. Bist du auf skipr.me angemeldet, geht es hier automatisch weiter.</div>
+      <form id="authForm">
+        <div class="edit-lab">E-Mail</div><input class="txt" id="authEmail" type="email" autocomplete="username" required>
+        <div class="edit-lab">Passwort</div><input class="txt" id="authPw" type="password" autocomplete="current-password" required>
+        <button class="pbtn primary" type="submit" style="width:100%;margin-top:14px">Anmelden</button>
+      </form>
+      <div class="rep-note">Noch kein Konto oder Passwort vergessen? → <a href="https://skipr.me" style="color:var(--accent)">skipr.me</a><br><a href="https://skipr.me/impressum.html" style="color:var(--ink-dim)">Impressum</a> · <a href="https://skipr.me/datenschutz.html" style="color:var(--ink-dim)">Datenschutz</a></div>
+    </div>
+  </div>
+</div>
 <div class="modal" id="report">
   <div class="modal-card">
     <div class="modal-top"><span class="mt-title">Auswertung</span><span class="mt-x" id="repX">×</span></div>
@@ -266,6 +288,29 @@
 </div>
 
 <script src="three.min.js"></script>
+<script src="supabase.js?v=2.98.0"></script>
+<script>
+/* ============================================================ SKIPR-KONTO ============================================================
+   Bordsysteme ist Teil von Skipr.me: Anmeldung mit dem Skipr-Konto (Supabase im Heimnetz, api.skipr.me).
+   Die Sitzung liegt als Cookie für .skipr.me – so teilen sich skipr.me und bordsysteme.skipr.me die Anmeldung.
+   Gleicher Speicher-Code wie in Skipr (src/sessionCookie.js). */
+const SKIPR_API='https://api.skipr.me', SKIPR_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzkyMTQ1NDUyLCJleHAiOjE5NDk4MjU0NTJ9.F-qQvK5GmQ0HKCN7N6PlVCIFwMge0klxNs2FMH5SvBQ';
+const skCookieStorage=(()=>{ const dom=/(^|\.)skipr\.me$/.test(location.hostname)?'; Domain=.skipr.me':'', sec=location.protocol==='https:'?'; Secure':'';
+  const MAX=3500, AGE=400*86400;
+  const all=()=>Object.fromEntries(document.cookie.split('; ').filter(Boolean).map(c=>{ const i=c.indexOf('='); return [c.slice(0,i),c.slice(i+1)]; }));
+  const put=(n,v,age)=>{ document.cookie=n+'='+v+'; Path=/; Max-Age='+age+'; SameSite=Lax'+sec+dom; };
+  const count=(c,k)=>parseInt(c[k+'.n']||'0',10)||0;
+  return {
+    getItem(k){ const c=all(), n=count(c,k); if(!n) return null; let s=''; for(let i=0;i<n;i++){ if(c[k+'.'+i]===undefined) return null; s+=c[k+'.'+i]; } try{ return decodeURIComponent(s); }catch(e){ return null; } },
+    setItem(k,v){ const enc=encodeURIComponent(v), parts=[]; for(let i=0;i<enc.length;i+=MAX) parts.push(enc.slice(i,i+MAX));
+      const old=count(all(),k); parts.forEach((p,i)=>put(k+'.'+i,p,AGE)); put(k+'.n',String(parts.length),AGE); for(let i=parts.length;i<old;i++) put(k+'.'+i,'',0); },
+    removeItem(k){ const old=count(all(),k); for(let i=0;i<old;i++) put(k+'.'+i,'',0); put(k+'.n','',0); } }; })();
+const sb=supabase.createClient(SKIPR_API,SKIPR_ANON,{auth:{storage:skCookieStorage,storageKey:'sb-skipr-auth',persistSession:true,autoRefreshToken:true,detectSessionInUrl:false}});
+async function skSession(){ const {data}=await sb.auth.getSession(); return data.session||null; }
+/* fetch an den Speicherdienst mit Skipr-Token; 401 → Anmeldefenster */
+async function apiFetch(url,opts={}){ const s=await skSession(); const headers=Object.assign({},opts.headers||{},s?{Authorization:'Bearer '+s.access_token}:{});
+  const r=await fetch(url,Object.assign({},opts,{headers})); if(r.status===401) showLogin('Bitte (erneut) mit dem Skipr-Konto anmelden.'); return r; }
+</script>
 <script>
 /* ============================================================
    BOOTSDATEN — Segelyacht ~10 m.  x = Länge (0 Heck…10 Bug)
@@ -1195,7 +1240,7 @@ async function loadBitmap(file){ if(window.createImageBitmap){ try{ return await
 function toJpeg(src,max,q){ const sc=Math.min(1,max/Math.max(src.width,src.height)), cv=document.createElement('canvas');
   cv.width=Math.round(src.width*sc); cv.height=Math.round(src.height*sc); cv.getContext('2d').drawImage(src,0,0,cv.width,cv.height); return cv.toDataURL('image/jpeg',q); }
 function thumbOf(dataUrl){ return new Promise((ok,err)=>{ const img=new Image(); img.onload=()=>ok(toJpeg(img,PHOTO_THUMB,0.75)); img.onerror=err; img.src=dataUrl; }); }
-async function uploadPhoto(full,thumb){ const r=await fetch('api/photo',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({full,thumb})});
+async function uploadPhoto(full,thumb){ const r=await apiFetch('api/photo',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({full,thumb})});
   if(!r.ok) throw new Error('HTTP '+r.status); return (await r.json()).id; }
 async function addPhotos(c,files){ files=files.filter(f=>/^image\//.test(f.type)||/\.(jpe?g|png|webp|gif|heic)$/i.test(f.name)); if(!files.length) return;
   c.photos=c.photos||[]; let n=0, offline=0;
@@ -1280,13 +1325,14 @@ function loadTemplates(){ return tplLoad||(tplLoad=new Promise((ok,err)=>{ const
 const syncStat=document.getElementById('syncStat');
 function setSync(txt){ syncStat.textContent=txt; }
 let serverRev=0, loaded=false, saveTimer=null, saving=null, baseKeys=new Map();
-function fileData(){ captureBoat(); return { version:3, activeBoat:boatIx, boats:BOATS.map(b=>({id:b.id,name:b.name,state:b.state})) }; }
-function boatKey(b){ return JSON.stringify({n:b.name,s:Object.assign({},b.state,{camera:null})}); }     // Kameraposition zählt nicht als Änderung
+let SKIPR_ASKED=false;     // wurde nach der ersten Anmeldung schon gefragt, ob Skipr-Schiffe übernommen werden sollen?
+function fileData(){ captureBoat(); return { version:3, activeBoat:boatIx, skiprAsked:SKIPR_ASKED, boats:BOATS.map(b=>({id:b.id,name:b.name,state:b.state,skiprId:b.skiprId||undefined})) }; }
+function boatKey(b){ return JSON.stringify({n:b.name,k:b.skiprId||null,s:Object.assign({},b.state,{camera:null})}); }     // Kameraposition zählt nicht als Änderung
 function setBase(boats){ baseKeys=new Map(boats.map(b=>[b.id,boatKey(b)])); }
-function withIds(boats){ return boats.map(b=>({id:b.id||newBoatId(),name:b.name||'Boot',state:b.state})); }
+function withIds(boats){ return boats.map(b=>({id:b.id||newBoatId(),name:b.name||'Boot',state:b.state,skiprId:b.skiprId||undefined})); }
 function scheduleSave(){ if(!loaded) return; clearTimeout(saveTimer); setSync('Ungespeicherte Änderungen'); saveTimer=setTimeout(saveToServer,1200); }
 async function flushSave(){ clearTimeout(saveTimer); captureBoat(); if(dirty&&loaded) await saveToServer(); }
-function applyServer(st){ serverRev=st.rev; const f=st.data; let needIds=false;
+function applyServer(st){ serverRev=st.rev; const f=st.data; let needIds=false; SKIPR_ASKED=!!(f&&f.skiprAsked);
   if(f&&Array.isArray(f.boats)&&f.boats.length){ needIds=f.boats.some(b=>!b.id); BOATS=withIds(f.boats); boatIx=Math.max(0,Math.min(f.activeBoat||0,BOATS.length-1));
     applyBoatState(BOATS[boatIx].state); renderBoatSwitcher(); resetUndo(); setBase(needIds?[]:BOATS); }
   if(st.saved) syncStat.title='Zuletzt gespeichert '+fmtTime(st.saved)+(st.by?' von '+st.by:'');
@@ -1307,7 +1353,7 @@ function takeMerged(cur){ const S=withIds((cur.data&&cur.data.boats)||[]), curId
   renderBoatSwitcher(); serverRev=cur.rev; setBase(S); return conflicts; }
 async function saveToServer(){ clearTimeout(saveTimer); if(saving){ await saving; if(!dirty) return; }
   saving=(async()=>{ setSync('Speichert…'); dirty=false; const data=fileData();
-    try{ const r=await fetch('api/state',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({rev:serverRev,data})});
+    try{ const r=await apiFetch('api/state',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({rev:serverRev,data})});
       if(r.status===409){ const conflicts=takeMerged(await r.json()); dirty=true;
         setSync(conflicts?'Gleichzeitig geändert – Kopie „(Konflikt …)“ angelegt':'Mit Änderungen von anderem Gerät zusammengeführt'); saveTimer=setTimeout(saveToServer,300); return; }
       if(!r.ok) throw new Error('HTTP '+r.status);
@@ -1315,7 +1361,7 @@ async function saveToServer(){ clearTimeout(saveTimer); if(saving){ await saving
     catch(err){ console.error(err); dirty=true; setSync('Server nicht erreichbar – neuer Versuch …'); saveTimer=setTimeout(saveToServer,10000); } })();
   await saving; saving=null; }
 async function loadFromServer(){ setSync('Lädt…');
-  try{ const r=await fetch('api/state',{cache:'no-store'}); if(!r.ok) throw new Error('HTTP '+r.status); const st=await r.json();
+  try{ const r=await apiFetch('api/state',{cache:'no-store'}); if(!r.ok) throw new Error('HTTP '+r.status); const st=await r.json();
     loaded=true;
     if(st.data){ applyServer(st); if(dirty) await saveToServer(); else setSync('Auf dem Server gespeichert'); }
     else { serverRev=st.rev; setBase([]); resetUndo(); dirty=true; await saveToServer(); } }
@@ -1326,7 +1372,7 @@ addEventListener('visibilitychange',()=>{ if(document.visibilityState==='hidden'
 const histModal=document.getElementById('histModal');
 function fmtTime(s){ if(!s) return '–'; const d=new Date(s); return isNaN(d)?s:d.toLocaleString('de-DE',{dateStyle:'medium',timeStyle:'short'}); }
 async function openHistory(){ histModal.classList.add('show'); const body=document.getElementById('histBody'); body.innerHTML='<div class="note">Lädt…</div>';
-  try{ const r=await fetch('api/history',{cache:'no-store'}); if(!r.ok) throw new Error('HTTP '+r.status); const list=await r.json();
+  try{ const r=await apiFetch('api/history',{cache:'no-store'}); if(!r.ok) throw new Error('HTTP '+r.status); const list=await r.json();
     if(!list.length){ body.innerHTML='<div class="note">Noch keine älteren Stände. Der Server legt beim Speichern höchstens alle 10 Minuten einen an.</div>'; return; }
     body.innerHTML=`<table class="rep"><thead><tr><th>Gespeichert</th><th>Boote</th><th>von</th><th></th></tr></thead><tbody>${list.map(e=>`<tr>
       <td style="white-space:nowrap">${esc(fmtTime(e.saved))}<div style="color:var(--ink-faint);font-size:11px">Stand ${e.rev} · ${fmt(e.size/1024,0)} KB</div></td>
@@ -1337,9 +1383,9 @@ async function openHistory(){ histModal.classList.add('show'); const body=docume
   catch(err){ console.error(err); body.innerHTML='<div class="note bad">Verlauf nicht erreichbar.</div>'; } }
 async function restoreHistory(file){ if(!confirm('Diesen Stand wiederherstellen? Alle Boote werden ersetzt – der jetzige Stand bleibt im Verlauf.')) return;
   await flushSave();
-  try{ const s=await fetch('api/history/'+encodeURIComponent(file),{cache:'no-store'}); if(!s.ok) throw new Error('HTTP '+s.status);
+  try{ const s=await apiFetch('api/history/'+encodeURIComponent(file),{cache:'no-store'}); if(!s.ok) throw new Error('HTTP '+s.status);
     const data=(await s.json()).data; data.boats=withIds(data.boats||[]);
-    const r=await fetch('api/state',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({rev:serverRev,data,restore:true})});
+    const r=await apiFetch('api/state',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({rev:serverRev,data,restore:true})});
     if(r.status===409){ alert('Inzwischen hat ein anderes Gerät gespeichert – der neue Stand wird geladen, dann bitte erneut wiederherstellen.'); histModal.classList.remove('show'); return loadFromServer(); }
     if(!r.ok) throw new Error('HTTP '+r.status);
     applyServer({rev:(await r.json()).rev,data}); setBase(BOATS); dirty=false; setSync('Stand wiederhergestellt'); histModal.classList.remove('show'); }
@@ -1348,10 +1394,71 @@ document.getElementById('histBtn').onclick=openHistory;
 document.getElementById('histX').onclick=()=>histModal.classList.remove('show');
 histModal.addEventListener('click',e=>{ if(e.target===histModal) histModal.classList.remove('show'); });
 
-/* Von außen (über Authentik angemeldet) gibt es einen Abmelde-Knopf; im Heimnetz (*.horsti.home) nicht */
-if(!/\.horsti\.home$/.test(location.hostname)) document.getElementById('logoutBtn').style.display='flex';
+/* ============================================================ VERKNÜPFUNG MIT SKIPR ============================================================
+   Ein Boot kann einem Skipr-Schiff zugeordnet sein (boat.skiprId = schiffe.id). Abgleich nur von Hand (⇄) –
+   nach der ersten Anmeldung wird einmal gefragt, ob für die Skipr-Schiffe Pläne angelegt werden sollen.
+   Direktlink aus Skipr: bordsysteme.skipr.me/#schiff=<id> öffnet den verknüpften Plan (oder bietet an, einen anzulegen). */
+const skModal=document.getElementById('skModal'), authModal=document.getElementById('authModal'), authMsg=document.getElementById('authMsg');
+async function skiprSchiffe(){ const {data,error}=await sb.from('schiffe').select('id,name,segelnummer,klasse').order('name'); if(error) throw error; return data||[]; }
+function schiffText(s){ return s.name+(s.segelnummer?' · '+s.segelnummer:'')+(s.klasse?' · '+s.klasse:''); }
+function emptyBoatState(){ return {components:[],connections:[],activeSys:Object.keys(SYSTEMS),boatLengthM:10,hull:hullType}; }
+async function addBoatForSchiff(s,open){ await flushSave(); const st=emptyBoatState();
+  BOATS.push({id:newBoatId(),name:s.name,state:st,skiprId:s.id});
+  if(open){ boatIx=BOATS.length-1; applyBoatState(st); resetUndo(); } renderBoatSwitcher(); markDirty(); }
+async function openSkipr(){ skModal.classList.add('show'); const body=document.getElementById('skBody'); body.innerHTML='<div class="note">Lädt Schiffe aus Skipr…</div>';
+  let list; try{ list=await skiprSchiffe(); }catch(err){ console.error(err); body.innerHTML='<div class="note bad">Skipr nicht erreichbar.</div>'; return; }
+  const cur=BOATS[boatIx], linked=list.find(s=>s.id===cur.skiprId), byId=new Map(list.map(s=>[s.id,s]));
+  const planFor=s=>BOATS.findIndex(b=>b.skiprId===s.id);
+  body.innerHTML=`<div class="edit-lab" style="padding-top:0">Dieses Boot: ${esc(cur.name)}</div>
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+      <select class="txt" id="skSel" style="flex:1;min-width:200px"><option value="">– nicht mit Skipr verknüpft –</option>${list.map(s=>`<option value="${esc(s.id)}" ${s.id===cur.skiprId?'selected':''}>${esc(schiffText(s))}</option>`).join('')}</select>
+      <span class="mini-btn" id="skPull" style="flex:none;padding:7px 10px" title="Name aus Skipr übernehmen">⤓ Name aus Skipr</span></div>
+    ${cur.skiprId&&!linked?'<div class="rep-note bad">Das verknüpfte Skipr-Schiff gibt es nicht mehr.</div>':''}
+    <div class="edit-lab">Deine Skipr-Schiffe</div>
+    ${list.length?`<table class="rep"><tbody>${list.map(s=>{ const i=planFor(s); return `<tr><td>${esc(schiffText(s))}</td>
+      <td style="text-align:right;white-space:nowrap">${i>=0?`<span class="mini-btn" data-open="${i}" style="display:inline-block;padding:5px 10px">Plan »${esc(BOATS[i].name)}« öffnen</span>`
+        :`<span class="mini-btn" data-add="${esc(s.id)}" style="display:inline-block;padding:5px 10px">＋ Plan anlegen</span>`}</td></tr>`; }).join('')}</tbody></table>`
+      :'<div class="note" style="padding:0">In Skipr sind noch keine Schiffe angelegt (Skipr → Profil → Schiffe).</div>'}
+    <div class="modal-foot" style="padding:12px 0 0;border:none;flex-wrap:wrap">
+      ${list.some(s=>planFor(s)<0)?'<span class="mini-btn" id="skAll" style="flex:none;padding:7px 12px">＋ Für alle fehlenden Schiffe Pläne anlegen</span>':''}
+      ${BOATS.some(b=>b.skiprId&&byId.has(b.skiprId))?'<span class="mini-btn" id="skNames" style="flex:none;padding:7px 12px">⤓ Namen aller verknüpften Boote aus Skipr übernehmen</span>':''}</div>
+    <div class="rep-note">Der Abgleich passiert nur, wenn du ihn hier auslöst. Bordsystem-Pläne bleiben in Bordsysteme, Törns und Schiffsdaten in Skipr.</div>`;
+  document.getElementById('skSel').onchange=e=>{ const id=e.target.value; if(id&&BOATS.some((b,i)=>i!==boatIx&&b.skiprId===id)&&!confirm('Dieses Schiff ist schon mit einem anderen Plan verknüpft. Trotzdem auch hier verknüpfen?')){ openSkipr(); return; }
+    cur.skiprId=id||undefined; markDirty(); openSkipr(); };
+  document.getElementById('skPull').onclick=()=>{ const s=byId.get(cur.skiprId); if(!s){ alert('Erst ein Skipr-Schiff auswählen.'); return; } cur.name=s.name; renderBoatSwitcher(); markDirty(); openSkipr(); };
+  body.querySelectorAll('[data-open]').forEach(b=>b.onclick=async()=>{ skModal.classList.remove('show'); await switchBoat(+b.dataset.open); });
+  body.querySelectorAll('[data-add]').forEach(b=>b.onclick=async()=>{ await addBoatForSchiff(byId.get(b.dataset.add),false); openSkipr(); });
+  const all=document.getElementById('skAll'); if(all) all.onclick=async()=>{ for(const s of list) if(planFor(s)<0) await addBoatForSchiff(s,false); openSkipr(); };
+  const nm=document.getElementById('skNames'); if(nm) nm.onclick=()=>{ BOATS.forEach(b=>{ const s=byId.get(b.skiprId); if(s) b.name=s.name; }); renderBoatSwitcher(); markDirty(); openSkipr(); }; }
+document.getElementById('skiprBtn').onclick=openSkipr;
+document.getElementById('skX').onclick=()=>skModal.classList.remove('show');
+skModal.addEventListener('click',e=>{ if(e.target===skModal) skModal.classList.remove('show'); });
+
+/* Nach dem Laden: einmalige Nachfrage + Direktlink #schiff=<id> */
+async function skiprAfterLoad(){ let list=null;
+  if(!SKIPR_ASKED){ try{ list=await skiprSchiffe(); }catch(e){ return; }
+    const fehlend=list.filter(s=>!BOATS.some(b=>b.skiprId===s.id));
+    if(fehlend.length){ const ja=confirm(`Willkommen bei Bordsysteme!\n\nIn Skipr hast du ${fehlend.length===1?'ein Schiff':fehlend.length+' Schiffe'}: ${fehlend.map(s=>s.name).join(', ')}.\n\nFür ${fehlend.length===1?'dieses Schiff':'jedes'} einen leeren Bordsystem-Plan anlegen und verknüpfen?\n\n(Abbrechen = nein. Geht jederzeit später über ⇄.)`);
+      if(ja) for(const s of fehlend) await addBoatForSchiff(s,false); }
+    SKIPR_ASKED=true; markDirty(); }
+  const m=/^#schiff=([0-9a-f-]{36})$/.exec(location.hash); if(!m) return; history.replaceState(null,'',location.pathname);
+  const i=BOATS.findIndex(b=>b.skiprId===m[1]); if(i>=0){ await switchBoat(i); return; }
+  try{ list=list||await skiprSchiffe(); }catch(e){ return; } const s=list.find(x=>x.id===m[1]); if(!s) return;
+  if(confirm(`Für „${s.name}“ gibt es noch keinen Bordsystem-Plan. Jetzt einen leeren anlegen?`)) await addBoatForSchiff(s,true); }
+
+/* ---- Anmeldung ---- */
+function showLogin(msg){ if(msg){ authMsg.textContent=msg; } authModal.classList.add('show'); setTimeout(()=>document.getElementById('authEmail').focus(),50); }
+document.getElementById('authForm').onsubmit=async e=>{ e.preventDefault(); authMsg.classList.remove('bad'); authMsg.textContent='Meldet an…';
+  const {error}=await sb.auth.signInWithPassword({email:document.getElementById('authEmail').value.trim(),password:document.getElementById('authPw').value});
+  if(error){ authMsg.classList.add('bad'); authMsg.textContent=/invalid login/i.test(error.message)?'E-Mail oder Passwort falsch.':'Anmeldung fehlgeschlagen: '+error.message; return; }
+  document.getElementById('authPw').value=''; authModal.classList.remove('show'); if(!loaded) skStart(); else saveToServer(); };
+document.getElementById('logoutBtn').onclick=async()=>{ if(!confirm('Abmelden? (gilt auch für skipr.me)')) return; await flushSave(); await sb.auth.signOut(); location.reload(); };
+async function skStart(){ const s=await skSession(); if(!s){ setSync('Nicht angemeldet'); showLogin(); return; }
+  document.getElementById('logoutBtn').title='Abmelden ('+(s.user.email||'')+')';
+  await loadFromServer(); if(loaded) await skiprAfterLoad(); }
+sb.auth.onAuthStateChange(ev=>{ if(ev==='SIGNED_OUT'&&loaded) location.reload(); });
 const DEMO_STATE=JSON.parse(JSON.stringify(buildState()));   // Vorführboot als Vorlage „Beispiel“, bevor der Server-Stand geladen ist
-loadFromServer();
+skStart();
 
 /* ============================================================ LOOP ============================================================ */
 addEventListener('resize',()=>{ camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth,innerHeight); });
